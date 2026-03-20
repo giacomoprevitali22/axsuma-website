@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Formation Services — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#222831">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --summit:#0F4C3A;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
+      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
+      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
+      --border:rgba(208,220,227,.1);--font:'Inter','Helvetica Neue',Arial,sans-serif;
+      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+    /* NAV */
+    .nav{background:rgba(34,40,49,.95);padding:.8rem 0;border-bottom:1px solid var(--border)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1140px}
+    .nav-logo{height:36px}
+    .nav-logo .bl{fill:var(--frost)}.nav-logo .bc{fill:var(--summit)}.nav-logo .lt{fill:var(--frost)}
+    .nav-back{font-size:.82rem;color:var(--text-mid);display:flex;align-items:center;gap:.4rem}
+    .nav-back:hover{color:var(--white)}
+
+    /* PAGE */
+    .page-header{padding:4rem 0 2rem;text-align:center}
+    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
+    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
+    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+
+    /* HERO IMAGE */
+    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .hero-image img{width:100%;height:auto;display:block}
+
+    /* OVERVIEW */
+    .overview-section{margin-bottom:3rem}
+    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+
+    /* SERVICE DETAIL SECTION */
+    .service-detail{margin-bottom:3rem}
+    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
+    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
+    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
+    .service-detail p:last-of-type{margin-bottom:0}
+
+    /* DETAIL IMAGE */
+    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+    .detail-image img{width:100%;height:auto;display:block}
+
+    /* WHY AXSUMA */
+    .why-section{margin-bottom:3rem}
+    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
+    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
+
+    /* CTA SECTION */
+    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
+    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
+    .btn-cta:hover{background:var(--slate-blue)}
+
+    /* FOOTER */
+    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+
+    @media(max-width:768px){
+      .why-grid{grid-template-columns:1fr}
+      .page-header h1{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="index.html">
+      <svg class="nav-logo" viewBox="0 0 717 260" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M 310 30 L 228 210 L 282 210 L 314 36 Z"/>
+        <path class="bl" d="M 374 30 L 456 210 L 402 210 L 370 36 Z"/>
+        <path class="bc" d="M 342 2 L 327 210 L 357 210 Z"/>
+        <text class="lt" x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2">AXSUMA</text>
+      </svg>
+    </a>
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="#solutions">Solutions</a> / Company Formation</p>
+    <h1>Company Formation Services</h1>
+    <p>Expert UK company incorporation and establishment. From limited companies to LLPs, we handle everything under the Companies Act 2006.</p>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="container">
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80" alt="Modern skyscrapers reflecting UK business growth">
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="container">
+  <div class="overview-section">
+    <h2>Establishing Your UK Business Foundation</h2>
+    <p>Forming a UK company is the cornerstone of establishing a serious, credible business entity. Whether you're launching a startup, setting up a subsidiary, or consolidating existing operations, choosing the right legal structure matters. Our company formation service combines comprehensive legislative knowledge with hands-on support to ensure your business is established correctly from day one.</p>
+    <p>We specialise in navigating the Companies House registration process, managing articles of association, establishing company governance, and ensuring you meet all statutory obligations from incorporation onwards. Our team has processed hundreds of incorporations, from straightforward single-director companies to complex multi-shareholder corporate structures.</p>
+    <p>Every company we form is registered with Companies House under the Companies Act 2006 and comes with proper documentation, statutory registers, and a clear governance framework tailored to your business needs.</p>
+  </div>
+</div>
+
+<!-- SERVICE 1: UK COMPANY INCORPORATIONS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-building service-detail-icon"></i>
+      <div>
+        <h3>UK Company Incorporations (Private Limited Companies)</h3>
+      </div>
+    </div>
+    <p>A private limited company (Ltd) is the most popular business structure in the UK, offering liability protection and tax efficiency. When you incorporate with Axsuma, we handle every detail: from submitting your incorporation documents to Companies House through to delivering your completed incorporation package.</p>
+    <p>The incorporation process begins with choosing a unique company name that complies with Companies House naming rules and is not already registered. We verify name availability, ensure compliance with the Sensitive Words List, and confirm trade mark clearance. Your memorandum and articles of association are prepared bespoke to your structure, outlining shareholdings, director powers, shareholder rights, voting procedures, and dividend distributions in line with the Companies Act 2006.</p>
+    <p>We prepare all required statutory documents including the application for incorporation (Form IN01), confirmation of the company secretary (if applicable), statement of initial officers, and statement of capital and initial shareholdings. All documents are digitally signed and submitted to Companies House, with submission typically completed within 1-2 working days. You'll receive your Certificate of Incorporation, company registration number (CRN), and a complete corporate governance package ready for operations.</p>
+    <p>Our incorporations include setup of statutory registers (members, directors, secretaries, charges, and persons with significant control), issuance of share certificates, and registration for corporation tax with HMRC. We ensure your company is fully tax-registered and ready for trading immediately upon incorporation.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1577415124269-fc1140a69e91?w=1200&q=80" alt="Professional business meeting">
+  </div>
+</div>
+
+<!-- SERVICE 2: READY-MADE COMPANIES -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-rocket service-detail-icon"></i>
+      <div>
+        <h3>Ready-Made Companies (Off-the-Shelf)</h3>
+      </div>
+    </div>
+    <p>For businesses that need to operate immediately, ready-made companies offer instant trading capability. We maintain a stock of pre-incorporated companies with unique names, registered shares, and clean statutory registers. You acquire the company through a transfer of shares, change directors and shareholders through standard resolutions, and commence trading the same day.</p>
+    <p>Ready-made companies are ideal for fast-moving ventures, time-sensitive acquisitions, or situations where waiting for Companies House processing is commercially unviable. The company arrives fully registered with Companies House, with a current Confirmation Statement, and registered with HMRC for corporation tax and PAYE. You simply provide your director, shareholder, and registered office details, we update the registers, and you're live.</p>
+    <p>Each ready-made company includes a clean cap table, blank statutory registers, and a resignation letter from the existing director (who is Axsuma's nominee). The transfer process is completed within hours, making ready-made companies perfect for time-critical mandates such as immediate trading requirements, acquisition closings, or regulatory submissions under tight deadlines.</p>
+    <p>We maintain a diverse range of company names across multiple industries and sectors. All ready-made companies comply fully with the Companies Act 2006 and Companies House requirements, with no hidden liabilities or historical baggage. You're acquiring a clean, dormant company structure ready for your business operations.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=1200&q=80" alt="Professional handshake and collaboration">
+  </div>
+</div>
+
+<!-- SERVICE 3: LLP INCORPORATIONS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-link service-detail-icon"></i>
+      <div>
+        <h3>Limited Liability Partnership (LLP) Incorporations</h3>
+      </div>
+    </div>
+    <p>Limited Liability Partnerships (LLPs) combine the flexibility of partnership with corporate liability protection. Regulated by the Limited Liability Partnerships Act 2000 and the Limited Liability Partnerships Regulations 2001, LLPs are particularly popular in professional services, accounting, law, and management consulting. Unlike traditional partnerships, LLP members (equivalent to directors) enjoy limited liability protection—you're not personally liable for the negligence or misconduct of other members.</p>
+    <p>LLP formation mirrors company incorporation but with distinct statutory requirements. We prepare the incorporation application (Form LLP IN01) alongside the LLP agreement, which defines member contributions, profit-sharing arrangements, management rights, member exit procedures, and dispute resolution. Unlike companies with prescriptive articles, LLP agreements offer flexibility and are contractually binding on all members. Members also have designated membership interests rather than shares, with taxation typically passing through to individual members rather than at the LLP level.</p>
+    <p>The incorporation process involves submitting incorporation documents to Companies House, registration of initial members, and filing the LLP agreement. Upon completion, you'll receive confirmation of the LLP's registration number and incorporation certificate. We then register the LLP with HMRC for corporation tax and any relevant regulatory bodies (such as the Solicitors Regulation Authority for legal LLPs or the Institute of Chartered Accountants for accounting partnerships).</p>
+    <p>LLPs must file annual accounts and confirmation statements with Companies House, though they benefit from certain filing exemptions available to smaller LLPs. We ensure your LLP is fully established, properly governed, and registered with all relevant authorities from day one.</p>
+  </div>
+</div>
+
+<!-- SERVICE 4: REGISTERED OFFICE & ADDRESS SERVICES -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-map-pin service-detail-icon"></i>
+      <div>
+        <h3>Registered Office & Address Services</h3>
+      </div>
+    </div>
+    <p>Every company incorporated in the UK must have a registered office address where statutory notices, documents, and correspondence can be delivered. This is a mandatory Companies House filing requirement under the Companies Act 2006, and the registered office address is publicly searchable on the Companies House register. Many growing businesses use our professional registered office service rather than listing their home or temporary office address.</p>
+    <p>Our central London registered office services provide a prestigious business address that enhances your company's corporate profile. We receive all statutory and legal correspondence on your behalf, including documents from Companies House, HMRC, and regulatory bodies. Our service includes secure mail handling, scanning of important documents for your online portal, and weekly email alerts of any correspondence received. We maintain confidentiality and professionalism, never disclosing your details beyond what's required by law.</p>
+    <p>The registered office is distinct from your trading address or operational premises. Many companies operating from home offices, flexible workspaces, or multiple locations use a professional registered office to present a permanent, credible corporate presence. Directors' home addresses remain private (filed with Companies House under private register provisions) while the registered office appears on public filings.</p>
+    <p>Should your circumstances change—relocation, office closure, or business restructuring—you can update your registered office through a simple Companies House Form CH01, which we'll prepare and file on your behalf. Our registered office service includes the option to maintain this address indefinitely as your company evolves, with no additional setup costs when you incorporate or register a new entity with us.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?w=1200&q=80" alt="Documents and professional signatures">
+  </div>
+</div>
+
+<!-- WHY AXSUMA -->
+<div class="container">
+  <div class="why-section">
+    <h2>Why Axsuma for Company Formation</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="fas fa-gavel"></i>
+        <h4>Companies Act 2006 Expertise</h4>
+        <p>Deep knowledge of UK company law, statutory obligations, and best-practice governance. Every incorporation reflects current legislative requirements and future compliance needs.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-hourglass-end"></i>
+        <h4>Speed and Efficiency</h4>
+        <p>Companies House submissions completed within 24-48 hours. Ready-made companies available for same-day trading. No delays, no bureaucracy—just clean, fast incorporation.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-shield-halved"></i>
+        <h4>Comprehensive Governance</h4>
+        <p>Articles tailored to your structure. Statutory registers properly maintained. Director protections and shareholder rights clearly defined. Compliance built in from day one.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="container">
+  <div class="cta-section">
+    <h2>Ready to Incorporate Your UK Company?</h2>
+    <p>Discuss your business structure, incorporation timeline, and governance needs. We'll recommend the ideal formation approach for your situation.</p>
+    <a href="mailto:enquiries@axsuma.co.uk?subject=Company%20Formation%20Inquiry" class="btn-cta">
+      <i class="fas fa-envelope"></i> Discuss Your Requirements
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini">
+  <div class="container">
+    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
+    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="terms.html">Terms</a> &nbsp;|&nbsp;
+    <a href="gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>

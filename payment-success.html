@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:#222831;color:#D0DCE3;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+    .card{max-width:500px;text-align:center;background:rgba(255,255,255,.03);border:1px solid rgba(208,220,227,.1);border-radius:12px;padding:3rem 2.5rem}
+    .icon{width:80px;height:80px;border-radius:50%;background:rgba(15,76,58,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+    .icon i{font-size:2rem;color:#0F4C3A}
+    h1{font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:.8rem}
+    p{color:#A1A6B4;font-size:.95rem;line-height:1.7;margin-bottom:1rem}
+    .ref{font-size:.8rem;color:rgba(208,220,227,.4);margin:1.5rem 0}
+    .ref span{color:#D0DCE3;font-weight:500}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;border:2px solid rgba(208,220,227,.1);color:#D0DCE3;background:transparent;text-decoration:none;transition:all .3s}
+    .btn:hover{background:#0F4C3A;border-color:#0F4C3A;color:#fff}
+    .steps{text-align:left;margin:1.5rem 0;padding:1.5rem;background:rgba(255,255,255,.02);border-radius:8px}
+    .steps h3{font-size:.85rem;font-weight:600;color:#fff;margin-bottom:.8rem}
+    .steps li{font-size:.82rem;color:#A1A6B4;margin-bottom:.5rem;list-style:none;display:flex;gap:.5rem}
+    .steps li i{color:#0F4C3A;margin-top:.2rem;font-size:.7rem}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon"><i class="fas fa-check"></i></div>
+    <h1>Payment Successful</h1>
+    <p>Thank you for your order. Your ID verification request has been received and our compliance team will be in touch shortly.</p>
+
+    <div class="steps">
+      <h3>What happens next?</h3>
+      <ul>
+        <li><i class="fas fa-check"></i> You'll receive a confirmation email within minutes</li>
+        <li><i class="fas fa-check"></i> We'll send secure verification links to the individual(s)</li>
+        <li><i class="fas fa-check"></i> Verification results delivered within 24 hours</li>
+        <li><i class="fas fa-check"></i> Full audit-ready report available in your dashboard</li>
+      </ul>
+    </div>
+
+    <p class="ref">Reference: <span id="refId">Loading...</span></p>
+
+    <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Axsuma</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+    if (sessionId) {
+      document.getElementById('refId').textContent = sessionId.substring(0, 20) + '...';
+      // In production: fetch /api/session-status?session_id=... to verify and show details
+    } else {
+      document.getElementById('refId').textContent = 'TEST-' + Date.now().toString(36).toUpperCase();
+    }
+  </script>
+</body>
+</html>

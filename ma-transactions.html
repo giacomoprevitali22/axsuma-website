@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M&A Transaction Services — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#222831">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --summit:#0F4C3A;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
+      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
+      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
+      --border:rgba(208,220,227,.1);--font:'Inter','Helvetica Neue',Arial,sans-serif;
+      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+    /* NAV */
+    .nav{background:rgba(34,40,49,.95);padding:.8rem 0;border-bottom:1px solid var(--border)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1140px}
+    .nav-logo{height:36px}
+    .nav-logo .bl{fill:var(--frost)}.nav-logo .bc{fill:var(--summit)}.nav-logo .lt{fill:var(--frost)}
+    .nav-back{font-size:.82rem;color:var(--text-mid);display:flex;align-items:center;gap:.4rem}
+    .nav-back:hover{color:var(--white)}
+
+    /* PAGE */
+    .page-header{padding:4rem 0 2rem;text-align:center}
+    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
+    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
+    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+
+    /* HERO IMAGE */
+    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .hero-image img{width:100%;height:auto;display:block}
+
+    /* OVERVIEW */
+    .overview-section{margin-bottom:3rem}
+    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+
+    /* SERVICE DETAIL SECTION */
+    .service-detail{margin-bottom:3rem}
+    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
+    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
+    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
+    .service-detail p:last-of-type{margin-bottom:0}
+
+    /* DETAIL IMAGE */
+    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+    .detail-image img{width:100%;height:auto;display:block}
+
+    /* WHY AXSUMA */
+    .why-section{margin-bottom:3rem}
+    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
+    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
+
+    /* CTA SECTION */
+    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
+    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
+    .btn-cta:hover{background:var(--slate-blue)}
+
+    /* FOOTER */
+    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+
+    @media(max-width:768px){
+      .why-grid{grid-template-columns:1fr}
+      .page-header h1{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="index.html">
+      <svg class="nav-logo" viewBox="0 0 717 260" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M 310 30 L 228 210 L 282 210 L 314 36 Z"/>
+        <path class="bl" d="M 374 30 L 456 210 L 402 210 L 370 36 Z"/>
+        <path class="bc" d="M 342 2 L 327 210 L 357 210 Z"/>
+        <text class="lt" x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2">AXSUMA</text>
+      </svg>
+    </a>
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="#solutions">Solutions</a> / M&A Transactions</p>
+    <h1>M&A Transaction Services</h1>
+    <p>Corporate acquisitions, disposals, and mergers. Complete deal stack management from acquisition structure through post-completion integration.</p>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="container">
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=80" alt="London financial district skyline and River Thames">
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="container">
+  <div class="overview-section">
+    <h2>Expert Guidance Through M&A Transactions</h2>
+    <p>Mergers and acquisitions are complex, high-stakes transactions that require meticulous corporate structuring and governance. Whether you're acquiring a business, managing a disposal, or undertaking a merger, the corporate structure you implement will have profound tax, legal, and operational consequences for years to come.</p>
+    <p>Our M&A services encompass the full transaction lifecycle: from pre-acquisition corporate due diligence and acquisition vehicle structuring, through completion mechanics and statutory filing, to post-completion governance and integration. We work with private equity houses, strategic buyers, business owners, and management teams to ensure transactions are properly structured, documented, and executed under the Companies Act 2006 and English law principles.</p>
+    <p>We specialise in managing completion mechanics, coordinating board resolutions, preparing disclosure schedules, drafting completion accounts, managing statutory notifications, and establishing post-completion governance. Every transaction we manage closes with proper corporate documentation, clear chains of title, and confident knowledge of your new corporate structure.</p>
+  </div>
+</div>
+
+<!-- SERVICE 1: DEAL STACK MANAGEMENT -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-layer-group service-detail-icon"></i>
+      <div>
+        <h3>Deal Stack Management & Acquisition Vehicle Setup</h3>
+      </div>
+    </div>
+    <p>Acquisition vehicles (acquisition companies, merger companies, or newco structures) must be properly established before transaction execution. We manage the complete setup: incorporation of the acquisition vehicle, capitalisation of the newco with investor funds, establishment of loan facilities if applicable, and structuring of the vehicle's shareholding and board composition to reflect deal requirements.</p>
+    <p>The acquisition structure itself is foundational to deal success. Asset acquisitions versus share acquisitions have dramatically different legal, tax, and liability implications. We work with your advisors to determine optimal deal structure—whether a straightforward share acquisition of the target company, an asset acquisition followed by company dissolution, a merger under section 110 Companies Act 2006, or a complex reorganisation. Each structure requires distinct corporate mechanics and statutory filings.</p>
+    <p>For private equity acquisitions, we establish the fund investment vehicle (typically a limited company or LLP depending on fund structure), capitalise it with investor commitments, establish shareholder agreements and board governance, and prepare the acquisition vehicle for deployment. Where debt financing is used, we coordinate with funders on facility documentation, establish loan agreements, and manage security arrangements over the target company's assets.</p>
+    <p>We prepare board minutes reflecting directors' approval of the acquisition strategy, manage conflicts of interest where existing management is rolling equity into the acquirer, and ensure all corporate authorities are properly documented. Upon completion, the acquisition vehicle holds the target company as a subsidiary or holds the target's assets, with clear contractual documentation and board-approved strategic rationale.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Modern glass corporate tower architecture">
+  </div>
+</div>
+
+<!-- SERVICE 2: SPV MANAGEMENT -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-sitemap service-detail-icon"></i>
+      <div>
+        <h3>SPV Management & Subsidiary Structuring</h3>
+      </div>
+    </div>
+    <p>Special Purpose Vehicles (SPVs)—narrow-purpose companies established for specific transactions or operational functions—require careful governance and statutory management. Whether establishing an SPV to isolate operational risk, segregate assets, facilitate financings, or hold specific business units, we manage the SPV's complete corporate lifecycle.</p>
+    <p>SPVs are commonly used to acquire specific assets or business lines, to facilitate management buyouts, to isolate pension liabilities, or to separate operational activities from parent company risk. The SPV structure must comply with the Companies Act 2006, maintain arm's length transfer pricing, preserve the substance of the SPV's operations (avoiding permanent establishment issues if it's a foreign SPV), and maintain corporate separation through proper capitalisation, board governance, and statutory filing.</p>
+    <p>We establish the SPV with appropriate articles of association, capitalise it with parent company funding (via equity investment or intercompany loans), and establish governance protocols ensuring independent board decision-making and statutory compliance. We prepare acquisition structures where the SPV acquires the target's assets or business, transfer pricing documentation for intercompany charges, and management accounts demonstrating the SPV's financial independence.</p>
+    <p>Upon acquisition, the SPV becomes the operating company or holding company for the acquired business. We manage its statutory registers, ensure its annual confirmation statements reflect the actual business structure, manage intercompany agreements between the SPV and parent company, and coordinate the SPV's integration into the wider group governance.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=1200&q=80" alt="Executive signing corporate documents">
+  </div>
+</div>
+
+<!-- SERVICE 3: UK HOLDING COMPANIES -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-building service-detail-icon"></i>
+      <div>
+        <h3>UK Holding Company Structures</h3>
+      </div>
+    </div>
+    <p>Holding companies serve as parent entities managing subsidiary companies, operational companies, and asset structures. Proper holding company structuring is essential for tax efficiency, regulatory compliance, dividend cascade control, and corporate governance. We establish holding company structures tailored to your group's operational needs and financial structure.</p>
+    <p>Holding companies under English law (section 1159 Companies Act 2006) must have subsidiaries where the parent company can exercise dominant influence and hold at least 50% of subsidiary shares. Holding company exemptions from preparing consolidated accounts, group accounts structures, and dividend payment limitations require careful statutory compliance. We ensure your holding company is properly registered as such with Companies House and maintains documentation demonstrating its status.</p>
+    <p>We establish holding company articles reflecting multi-subsidiary governance requirements, manage shareholder agreements between holding company and subsidiary operators, and coordinate group-wide board decision-making. Where the holding company is a foreign entity, we establish a UK registered office and ensure compliance with overseas company registration requirements.</p>
+    <p>Holding company structures often involve managing cash flows—consolidating profits from operating subsidiaries, distributing dividends, managing intercompany loan arrangements, and optimising tax efficiency across the group. We prepare the holding company's statutory accounts reflecting subsidiary valuations, manage its annual filing obligations, and advise on corporate restructuring as the group evolves.</p>
+  </div>
+</div>
+
+<!-- SERVICE 4: PROFESSIONAL DIRECTORSHIPS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-user-tie service-detail-icon"></i>
+      <div>
+        <h3>Professional Directorships & Board Management</h3>
+      </div>
+    </div>
+    <p>In many acquisitions and complex transactions, professional directors bring independent oversight and governance credibility. We provide professional directors (both executive and non-executive) who join company boards to ensure statutory compliance, manage conflicts of interest, and provide fiduciary duty oversight. This is particularly valuable in management buyouts, institutional investments, or where management team members have competing interests.</p>
+    <p>Professional directors ensure the company has independent board scrutiny of major decisions, compliance with the Companies Act 2006 director duties (care, diligence, good faith, independent judgment, and avoiding conflicts), and statutory filing obligations. Our professional directors have extensive experience in M&A transactions, post-acquisition integration, financial restructuring, and corporate governance across sectors.</p>
+    <p>We manage director appointment and resignation procedures, prepare board meeting minutes reflecting statutory decision-making, manage director appointment forms (Form AP01) and resignation forms (Form TM01), and ensure director addresses comply with Companies House disclosure requirements. Where conflicts arise (for example, where selling shareholders roll equity into the buyer), our professional directors manage the conflict disclosure process and ensure decisions are made with proper independent oversight.</p>
+    <p>Professional directors also facilitate communication between operational management and investor boards, oversee compliance reporting, manage statutory filing deadlines, and provide governance oversight of restructuring or disposal processes. We ensure your company maintains credible, independent board governance even where management team changes occur.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1573167243872-43c6433b9d40?w=1200&q=80" alt="Corporate boardroom meeting">
+  </div>
+</div>
+
+<!-- SERVICE 5: PRE & POST-DEAL GOVERNANCE -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-check-circle service-detail-icon"></i>
+      <div>
+        <h3>Pre & Post-Completion Governance & Board Packs</h3>
+      </div>
+    </div>
+    <p>Completion governance encompasses the final stages of transaction execution. In the weeks before completion, we prepare comprehensive board packs documenting: the transaction rationale, share purchase agreement mechanics, completion obligations, post-completion integration plans, and board resolutions authorising the transaction. Directors must make informed decisions with full visibility of transaction terms, risks, and post-completion expectations.</p>
+    <p>At completion, we manage statutory filing of acquisition documents, including transfer of shares (Forms IN02), updates to the register of members and directors, and notification to HMRC of the acquisition. If the transaction involves assets rather than shares, we coordinate property/asset transfers, manage statutory notifications (such as notification of change of ownership to landlords or suppliers), and update Companies House of the restructuring.</p>
+    <p>Post-completion, we establish the acquired company's governance within the acquirer's group. This includes preparing disclosure of the parent company relationship, updating articles of association where necessary, establishing intercompany governance protocols, and managing shareholder agreements between acquirer and any rolling equity holders. We ensure the acquired company's board composition reflects the new ownership structure and that director appointments reflect the acquirer's governance standards.</p>
+    <p>We also manage post-completion tax reporting (including capital gains notifications, transfer pricing documentation, and tax clearance filings), coordinate regulatory notifications where the acquisition triggers regulatory filing obligations, and oversee integration from a corporate governance perspective. Post-completion, we ensure the acquired company is fully integrated into the acquirer's compliance framework and governance systems.</p>
+  </div>
+</div>
+
+<!-- SERVICE 6: POST-COMPLETION SUPPORT -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-handshake service-detail-icon"></i>
+      <div>
+        <h3>Post-Completion Support & Integration</h3>
+      </div>
+    </div>
+    <p>Post-completion integration extends well beyond transaction closing. We manage the acquired company's transition into the acquirer's corporate and operational structures, including establishment of new governance protocols, implementation of acquirer's statutory filing processes, and integration of the acquired company into the group's consolidated reporting and compliance framework.</p>
+    <p>We coordinate completion accounts preparation (if the purchase price is subject to working capital adjustments), manage earnout documentation and payment mechanics, oversee earn-out satisfaction determinations, and manage post-completion disputes over price adjustments or completion mechanics. We prepare detailed completion accounts schedules reconciling pre-closing and post-closing financial positions, manage working capital reconciliation processes, and facilitate any price adjustments owed to sellers or adjustments owed to buyers.</p>
+    <p>We manage covenant compliance reporting under any acquisition agreement, coordinate any post-completion guarantee or warranty claims, and oversee seller indemnity procedures. Where the transaction involves transaction-specific debt facilities, we manage the transition from acquisition financing into permanent refinancing and manage any covenants or reporting obligations required by lenders.</p>
+    <p>Integration also includes managing statutory filings flowing from the acquisition—from the acquired company's perspective (change of directors, updated shareholder registers), from the acquirer's perspective (consolidated group accounts preparation, acquisition disclosure in the acquirer's notes to accounts), and from HMRC's perspective (tax clearance filings, group relief claim establishment). We ensure the integration process is smooth, compliant, and properly documented.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Financial markets data and analysis">
+  </div>
+</div>
+
+<!-- WHY AXSUMA -->
+<div class="container">
+  <div class="why-section">
+    <h2>Why Axsuma for M&A Transactions</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="fas fa-brain"></i>
+        <h4>Deep Transactional Experience</h4>
+        <p>Hundreds of acquisitions, disposals, and complex restructurings. We understand deal mechanics, completion procedures, and integration challenges across industries and deal sizes.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-project-diagram"></i>
+        <h4>Flawless Deal Execution</h4>
+        <p>Board resolutions, completion accounts, statutory filings, and post-completion governance managed with meticulous attention to detail. No closing delays, no corporate gaps.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-compass"></i>
+        <h4>Strategic Transaction Advice</h4>
+        <p>Beyond mechanics—we advise on acquisition structure, holding company setup, SPV segregation, and integration strategy. Your corporate structure drives value.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="container">
+  <div class="cta-section">
+    <h2>Ready to Execute Your Acquisition or Disposal?</h2>
+    <p>Discuss your transaction structure, completion timeline, and governance requirements. We'll guide you through every stage from deal structure through post-completion integration.</p>
+    <a href="mailto:enquiries@axsuma.co.uk?subject=M%26A%20Transaction%20Inquiry" class="btn-cta">
+      <i class="fas fa-envelope"></i> Get in Touch
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini">
+  <div class="container">
+    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
+    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="terms.html">Terms</a> &nbsp;|&nbsp;
+    <a href="gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>

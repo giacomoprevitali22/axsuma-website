@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accounting & Tax Services — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#222831">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --summit:#0F4C3A;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
+      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
+      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
+      --border:rgba(208,220,227,.1);--font:'Inter','Helvetica Neue',Arial,sans-serif;
+      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+    /* NAV */
+    .nav{background:rgba(34,40,49,.95);padding:.8rem 0;border-bottom:1px solid var(--border)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1140px}
+    .nav-logo{height:36px}
+    .nav-logo .bl{fill:var(--frost)}.nav-logo .bc{fill:var(--summit)}.nav-logo .lt{fill:var(--frost)}
+    .nav-back{font-size:.82rem;color:var(--text-mid);display:flex;align-items:center;gap:.4rem}
+    .nav-back:hover{color:var(--white)}
+
+    /* PAGE */
+    .page-header{padding:4rem 0 2rem;text-align:center}
+    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
+    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
+    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+
+    /* HERO IMAGE */
+    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .hero-image img{width:100%;height:auto;display:block}
+
+    /* OVERVIEW */
+    .overview-section{margin-bottom:3rem}
+    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+
+    /* SERVICE DETAIL SECTION */
+    .service-detail{margin-bottom:3rem}
+    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
+    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
+    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
+    .service-detail p:last-of-type{margin-bottom:0}
+
+    /* DETAIL IMAGE */
+    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+    .detail-image img{width:100%;height:auto;display:block}
+
+    /* WHY AXSUMA */
+    .why-section{margin-bottom:3rem}
+    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
+    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
+
+    /* CTA SECTION */
+    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
+    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
+    .btn-cta:hover{background:var(--slate-blue)}
+
+    /* FOOTER */
+    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+
+    @media(max-width:768px){
+      .why-grid{grid-template-columns:1fr}
+      .page-header h1{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="index.html">
+      <svg class="nav-logo" viewBox="0 0 717 260" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M 310 30 L 228 210 L 282 210 L 314 36 Z"/>
+        <path class="bl" d="M 374 30 L 456 210 L 402 210 L 370 36 Z"/>
+        <path class="bc" d="M 342 2 L 327 210 L 357 210 Z"/>
+        <text class="lt" x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2">AXSUMA</text>
+      </svg>
+    </a>
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="#solutions">Solutions</a> / Accounting</p>
+    <h1>Accounting & Tax Services</h1>
+    <p>Comprehensive accounting, bookkeeping, tax compliance, and VAT management for UK companies of all sizes.</p>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="container">
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Financial analysis and accounting">
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="container">
+  <div class="overview-section">
+    <h2>Complete Financial & Tax Compliance</h2>
+    <p>Accurate accounting is the foundation of business decision-making and regulatory compliance. Companies House, HMRC, and your investors all rely on your financial records to be accurate, timely, and properly audited (where required). Whether you're a startup tracking early-stage finances or an established company managing complex group accounting, maintaining clean books and meeting tax deadlines is non-negotiable.</p>
+    <p>Our accounting services span the complete financial lifecycle: monthly bookkeeping and reconciliations, preparation of management accounts, year-end financial statements under the Companies Act 2006, corporation tax compliance, VAT administration, PAYE and payroll services, and strategic tax planning. We use industry-standard accounting software, maintain audit trails, and ensure your financial records are compliant with UK GAAP and tax legislation.</p>
+    <p>Beyond compliance, accurate accounting provides visibility into business performance. Our management accounts help you understand profitability by division or customer, track cash flow, monitor working capital, and make informed strategic decisions. We translate complex tax legislation into practical advice that saves you money while ensuring full HMRC compliance.</p>
+  </div>
+</div>
+
+<!-- SERVICE 1: BOOKKEEPING & ACCOUNTING -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-book service-detail-icon"></i>
+      <div>
+        <h3>Bookkeeping & Monthly Accounting</h3>
+      </div>
+    </div>
+    <p>Monthly bookkeeping ensures your financial records are accurate and current. We process invoices, record expenses, reconcile bank statements, manage payables and receivables, and maintain a complete audit trail of financial transactions. Every transaction is categorized correctly for tax purposes, with proper supporting documentation and approval workflows.</p>
+    <p>We manage your general ledger, bank reconciliations, and subsidiary ledgers (debtors, creditors, fixed assets, inventory). Monthly bank reconciliations catch errors early, identify reconciling items, and ensure your accounting records match your actual bank position. For companies with multiple bank accounts or complex cash flows, we coordinate all accounts through a consolidated cash management system.</p>
+    <p>Bookkeeping also includes management of invoicing and receivables. We ensure customer invoices are issued timely, recorded in the sales ledger, and tracked through aging analysis. We identify overdue receivables, manage payment collections, and forecast cash flow based on receivables patterns. Similarly, we manage purchase invoices, record supplier payments, maintain a creditor aging analysis, and coordinate payment schedules with cash flow forecasts.</p>
+    <p>We provide monthly reporting—your company's profit and loss statement, balance sheet, and key performance metrics—enabling you to track business performance month-by-month. These management accounts become the foundation for tax planning, bank covenant reporting, and strategic decision-making. All bookkeeping is conducted using cloud-based accounting software with automated bank feeds, reducing data entry errors and improving timeliness.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80" alt="Team collaboration">
+  </div>
+</div>
+
+<!-- SERVICE 2: TAX COMPLIANCE & CORPORATION TAX -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-calculator service-detail-icon"></i>
+      <div>
+        <h3>Corporation Tax Compliance & Tax Returns</h3>
+      </div>
+    </div>
+    <p>Every company must file a Corporation Tax return with HMRC within 12 months of the end of its accounting period. The return includes the company's profit calculation, tax adjustments, allowable deductions (capital allowances, interest, trading losses), and tax liability. HMRC uses submitted returns to set tax payment deadlines, trigger enquiry processes, and assess penalties for late or inaccurate filing.</p>
+    <p>We prepare corporation tax returns (CT600 forms) from your accounting records, applying HMRC rules for trading expenses, capital allowances, interest deductibility, and loss relief. We identify tax-efficient deductions your business qualifies for, ensuring you don't pay tax on profits you're not entitled to. We claim capital allowances for equipment and assets (plant and machinery allowances, industrial buildings allowances, R&D tax credits where applicable), maximizing tax relief for capital investment.</p>
+    <p>Tax returns must be filed within statutory deadlines to avoid penalties. Companies filing returns after the deadline face penalties of £100+ for first failure, escalating to £300+ for subsequent failures, plus interest. Making Tax Digital (MTD) requirements mean many companies must file returns and keep digital records. We ensure your filing is timely, accurate, and compliant with HMRC's MTD standards.</p>
+    <p>We also manage tax planning throughout the year, identifying opportunities to structure transactions tax-efficiently. This includes advising on dividends versus salary optimization for owner-managers, timing of capital investments for tax relief, management of trading losses, and intercompany transactions (where applicable for group companies). Tax planning is not about avoiding tax illegally; it's about structuring legitimate transactions efficiently within the law.</p>
+  </div>
+</div>
+
+<!-- SERVICE 3: VAT COMPLIANCE & RETURNS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-percent service-detail-icon"></i>
+      <div>
+        <h3>VAT Returns, Compliance & HMRC Management</h3>
+      </div>
+    </div>
+    <p>VAT (Value Added Tax) is a complex tax affecting companies with turnover above the £85,000 threshold. VAT-registered companies must file VAT returns (typically quarterly) showing output tax (VAT charged to customers), input tax (VAT paid to suppliers), and net VAT payable to HMRC or credit from HMRC. VAT returns must be filed within one month and seven days of the quarter end.</p>
+    <p>We manage your VAT compliance: maintaining proper VAT records (invoices, receipts, and VAT accounts), calculating output and input tax correctly, filing VAT returns on time, and managing VAT payments to HMRC. We ensure all eligible input tax is claimed (including acquisitions of goods and services), maximizing VAT recovery while maintaining compliance with HMRC rules on blocked input tax (for example, VAT on fuel for personal use cannot be recovered).</p>
+    <p>We also advise on VAT optimization. Some supplies are VAT-exempt (making it difficult to recover VAT incurred), while others qualify for zero-rating (allowing full VAT recovery). Structuring transactions correctly—for example, the difference between supplying goods versus services, domestic versus export supplies—can dramatically affect VAT treatment. We advise on exemptions and zero-rating opportunities, protecting your company from overpaying VAT while maintaining compliance.</p>
+    <p>We manage VAT recovery for import/export transactions, cross-border services, and EU/international business. We handle HMRC VAT enquiries, support HMRC visits, prepare supporting documentation, and negotiate with HMRC on VAT assessments. Late VAT returns trigger penalties of 5-15% of unpaid VAT, with additional interest, making timely filing essential.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1570126618953-d437176e8c79?w=1200&q=80" alt="Global business and finance">
+  </div>
+</div>
+
+<!-- SERVICE 4: MANAGEMENT ACCOUNTS & FINANCIAL REPORTING -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-chart-line service-detail-icon"></i>
+      <div>
+        <h3>Management Accounts & Financial Reporting</h3>
+      </div>
+    </div>
+    <p>Monthly or quarterly management accounts provide current visibility into your business's financial performance. Management accounts show your profit and loss (revenue, gross profit, operating expenses, EBITDA), balance sheet (assets, liabilities, equity), and cash flow statement. Unlike statutory accounts (filed with Companies House after year-end), management accounts are timely and support day-to-day business management.</p>
+    <p>We produce detailed management accounts with variance analysis (comparing actual results against budget or prior periods), profitability analysis by division/product/customer, working capital reporting (inventory, receivables, payables levels), and cash flow forecasts. Many companies adjust price, costs, or strategy based on management accounting insights. A business without current financial visibility is essentially flying blind—management accounts eliminate that risk.</p>
+    <p>For companies with loan facilities, management accounts often form part of bank covenant reporting. Banks typically require quarterly management accounts showing compliance with financial covenants (for example, minimum EBITDA, maximum debt-to-EBITDA ratios, minimum interest coverage). We prepare management accounts to bank reporting standards, showing full compliance or highlighting any covenant concerns early enough to address them with your lender.</p>
+    <p>We also advise investors and stakeholders based on financial reporting. Investor boards require detailed financial and operational reporting to monitor investment performance. We prepare investor reports, manage data rooms for fundraising or M&A, and coordinate financial due diligence processes.</p>
+  </div>
+</container>
+
+<!-- SERVICE 5: PAYE, PAYROLL & EMPLOYMENT TAX -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-users service-detail-icon"></i>
+      <div>
+        <h3>PAYE & Payroll Management</h3>
+      </div>
+    </div>
+    <p>Companies with employees must operate PAYE (Pay As You Earn), deducting income tax and National Insurance contributions from employee salaries and remitting these to HMRC. PAYE compliance includes calculating employee tax and NI correctly, issuing payslips, filing monthly PAYE returns (Real Time Information—RTI submissions), and managing end-of-year tax coding and P60 documents.</p>
+    <p>We manage your payroll from start to finish: setting up payroll systems, calculating salaries and deductions, processing employee payments, managing pension contributions, and maintaining employee records. We ensure statutory deductions are correct (income tax bands, National Insurance, student loan repayments where applicable), voluntary deductions are processed (pension contributions, charitable giving), and statutory maternity/paternity/adoption pay is paid correctly.</p>
+    <p>We file Real Time Information (RTI) returns with HMRC—when we pay employees, we notify HMRC of pay and deductions. RTI simplifies HMRC's monitoring of PAYE compliance and reduces year-end adjustments. We also manage employer National Insurance contributions (which are separate from employee NI), claiming any available reliefs (for example, employment allowance for small employers, startup NI relief).</p>
+    <p>We advise on tax-efficient structuring of remuneration: the mix of salary versus dividends/pension contributions for owner-managed businesses, optimization of benefits-in-kind versus salary (for example, company cars versus cash), and compliance with National Living Wage requirements. We also manage employee tax documentation (P45s for leavers, P60s for tax return purposes) and coordinate with HMRC on payroll queries or audits.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Financial metrics and analysis">
+  </div>
+</div>
+
+<!-- SERVICE 6: ATED RETURNS & LAND TAX -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-home service-detail-icon"></i>
+      <div>
+        <h3>ATED Returns & Property Tax Compliance</h3>
+      </div>
+    </div>
+    <p>Companies holding UK residential property valued above £500,000 must file Annual Tax on Enveloped Dwellings (ATED) returns with HMRC. ATED was introduced to ensure UK residential property owned by companies pays tax on the property, preventing tax-avoidance schemes. ATED applies to companies, trusts, and foreign entities holding residential properties over the £500,000 threshold, regardless of whether the property generates rental income.</p>
+    <p>ATED returns must be filed by April 30th each year, showing the property's valuation, relief claims (where the property qualifies for relief—for example, properties under renovation), and ATED tax liability. Annual ATED returns range from £3,500 (properties valued £500k-£1m) to £19,500+ (properties valued over £20m). Late ATED filing triggers penalties starting at £100 per month of delay.</p>
+    <p>We calculate ATED liability based on property valuations, identify any available reliefs (properties under substantial renovation, protected buildings, properties occupied as only/main residences by non-UK persons), prepare and file ATED returns by the statutory deadline, and manage ATED payments to HMRC. We also coordinate with your property advisors on valuations and ensure ATED compliance doesn't conflict with property tax structuring.</p>
+    <p>Beyond ATED, companies holding property may be subject to Stamp Duty Land Tax (SDLT) on purchase, Land Value Tax considerations (for future implementations), and Council Tax if the property is residential. We advise on property ownership structures that minimize tax burden while maintaining legitimate business purposes and compliance with anti-avoidance rules.</p>
+  </div>
+</div>
+
+<!-- WHY AXSUMA -->
+<div class="container">
+  <div class="why-section">
+    <h2>Why Axsuma for Accounting & Tax</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="fas fa-lock"></i>
+        <h4>HMRC Compliance</h4>
+        <p>No missed deadlines, no inaccurate returns, no penalties. We ensure your corporation tax, VAT, PAYE, and ATED obligations are always current and compliant with HMRC's exacting standards.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-lightbulb"></i>
+        <h4>Tax Efficiency</h4>
+        <p>We identify tax-saving opportunities—capital allowances, relief claims, optimal structuring. Legitimate tax planning reduces your tax bill while maintaining full compliance.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-chart-pie"></i>
+        <h4>Business Insight</h4>
+        <p>Detailed management accounts and financial reporting help you understand profitability, cash flow, and performance. Data-driven decisions drive better business outcomes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="container">
+  <div class="cta-section">
+    <h2>Let's Get Your Finances in Order</h2>
+    <p>From startup bookkeeping through to complex group tax planning, we provide comprehensive accounting and tax compliance tailored to your business.</p>
+    <a href="mailto:enquiries@axsuma.co.uk?subject=Accounting%20Services%20Inquiry" class="btn-cta">
+      <i class="fas fa-envelope"></i> Discuss Your Accounting Needs
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini">
+  <div class="container">
+    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
+    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="terms.html">Terms</a> &nbsp;|&nbsp;
+    <a href="gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 717 440" xmlns="http://www.w3.org/2000/svg" width="717" height="440">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap');</style>
+</defs>
+
+<!-- LEFT BLADE - mountain peak -->
+<path d="
+  M 310 30
+  L 228 210
+  L 282 210
+  L 314 36
+  Z" fill="#3d4a4f"/>
+
+<!-- RIGHT BLADE - mountain peak -->
+<path d="
+  M 374 30
+  L 456 210
+  L 402 210
+  L 370 36
+  Z" fill="#3d4a4f"/>
+
+<!-- CENTER BLADE - wider -->
+<path d="
+  M 342 2
+  L 327 210
+  L 357 210
+  Z" fill="#7a9b7a"/>
+
+<!-- AXSUMA text - proportioned to symbol width -->
+<text x="342" y="278" text-anchor="middle"
+      font-family="Montserrat, Arial, sans-serif" font-weight="600"
+      font-size="48" fill="#3d4a4f" letter-spacing="2">AXSUMA</text>
+
+<!-- Tagline -->
+<text x="342" y="322" text-anchor="middle"
+      font-family="Montserrat, Arial, sans-serif" font-weight="300"
+      font-size="15" fill="#6b7b7b" letter-spacing="1.5">Cutting through the complexity</text>
+
+<!-- URL -->
+<text x="342" y="358" text-anchor="middle"
+      font-family="Montserrat, Arial, sans-serif" font-weight="400"
+      font-size="13" fill="#8a9a9a" letter-spacing="0.5">www.axsuma.co.uk</text>
+</svg>

@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+server/node_modules/
+
+# Environment
+.env
+server/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build/temp
+*.log
+hero_original.jpg
+
+# Python temp files
+__pycache__/
+*.py
+*.pyc
+
+# Working files
+Logo sample.png
+image001.png
+cloud_mask.jpg
+hero-mountain.jpg

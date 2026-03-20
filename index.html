@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axsuma — Cutting Through the Complexity</title>
+  <meta name="description" content="Axsuma delivers premium corporate, governance, M&A and accounting solutions for international private equity funds, multinational corporations and high-net-worth individuals operating in the UK.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#222831">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --summit:#0F4C3A;
+      --onyx:#222831;
+      --silver:#A1A6B4;
+      --white:#FFFFFF;
+      --olive:#7F8C5A;
+      --slate-blue:#536878;
+      --bronze:#C08B5C;
+      --frost:#D0DCE3;
+      --text:#D0DCE3;
+      --text-mid:#A1A6B4;
+      --text-dim:rgba(208,220,227,.5);
+      --border:rgba(208,220,227,.1);
+      --font:'Inter','Helvetica Neue',Arial,sans-serif;
+      --max:1140px;
+      --ease:0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx)}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+    /* ===== COOKIE ===== */
+    .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#1a1f27;color:var(--text);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;font-size:.82rem;border-top:1px solid var(--border);transform:translateY(100%);animation:slideUp .5s 2s forwards}
+    .cookie-banner.hidden{display:none}
+    @keyframes slideUp{to{transform:translateY(0)}}
+    .cookie-banner a{color:var(--summit);text-decoration:underline}
+    .cookie-btn{background:var(--summit);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:4px;cursor:pointer;font-family:var(--font);font-weight:600;font-size:.82rem;transition:background var(--ease)}
+    .cookie-btn:hover{background:var(--slate-blue)}
+    .cookie-btn.sec{background:transparent;border:1px solid var(--border)}
+
+    /* ===== NAV ===== */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 0;transition:all var(--ease)}
+    .nav.scrolled{background:rgba(34,40,49,.95);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border);padding:.7rem 0}
+    .nav .container{display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{height:42px;transition:all var(--ease)}
+    .nav.scrolled .nav-logo{height:36px}
+    .nav-logo .bl{fill:var(--frost)}.nav-logo .bc{fill:var(--summit)}.nav-logo .lt{fill:var(--frost)}
+    .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-mid);transition:color var(--ease)}
+    .nav-links a:hover{color:var(--white)}
+    .nav-cta{background:var(--summit);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:var(--slate-blue);color:#fff!important}
+
+    /* Mega Menu */
+    .nav-drop{position:relative}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform var(--ease)}
+    .nav-drop:hover>a i{transform:rotate(180deg)}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:#1a1f27;border:1px solid var(--border);border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.4);z-index:100}
+    .nav-drop:hover .mega{opacity:1;visibility:visible}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--summit);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
+    .mega ul{list-style:none;margin-bottom:1rem}
+    .mega li{margin-bottom:.2rem}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:var(--text-mid)!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:var(--white)!important}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--frost);margin:5px 0;transition:var(--ease)}
+
+    /* ===== HERO ===== */
+    .hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden;color:#fff;background:var(--onyx)}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center bottom;opacity:.5}
+    .hero-content{position:relative;z-index:2;max-width:var(--max);width:100%;margin:0 auto;padding:0 2rem;display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;padding-top:12vh}
+    .hero-inner{max-width:520px;flex-shrink:0;margin-top:2vh}
+    .hero-logo-big{width:480px;opacity:0;animation:fadeInRight 1.2s .5s forwards;flex-shrink:0;margin-top:-22vh;margin-right:2rem}
+    @keyframes fadeInRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}
+    .hero h1{font-size:3rem;font-weight:300;line-height:1.15;margin-bottom:1.2rem;opacity:0;animation:fadeIn 1s .6s forwards;color:var(--white);letter-spacing:-.5px}
+    .hero h1 em{font-style:normal;color:var(--frost);font-weight:500}
+    .hero p{font-size:1rem;line-height:1.8;opacity:0;font-weight:300;margin-bottom:2rem;animation:fadeIn 1s .9s forwards;color:var(--text-mid)}
+    .hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;opacity:0;animation:fadeIn 1s 1.2s forwards}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
+    .btn-summit{background:var(--summit);color:#fff;border-color:var(--summit)}
+    .btn-summit:hover{background:var(--slate-blue);border-color:var(--slate-blue)}
+    .btn-ghost{background:rgba(255,255,255,.06);color:var(--frost);border-color:rgba(255,255,255,.15)}
+    .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+    .btn-outline{background:transparent;color:var(--frost);border-color:var(--border)}
+    .btn-outline:hover{background:var(--summit);color:#fff;border-color:var(--summit)}
+    .hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;animation:bounce 2s infinite}
+    .hero-scroll i{font-size:1.2rem;color:var(--text-dim)}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+    /* ===== SECTIONS ===== */
+    .section{padding:6rem 0;background:var(--onyx)}
+    .section-alt{background:#1a1f27}
+    .section-dark{background:#161a21;color:var(--text)}
+    .s-label{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--summit);margin-bottom:.6rem}
+    .s-title{font-size:2.2rem;font-weight:300;line-height:1.2;margin-bottom:1rem;color:var(--white);letter-spacing:-.3px}
+    .s-sub{font-size:.95rem;color:var(--text-mid);max-width:580px;line-height:1.8;font-weight:300}
+
+    /* ===== SERVICES STRIP ===== */
+    .services-strip{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:2rem}
+    .svc-item{text-align:center;flex:0 0 120px}
+    .svc-icon{width:56px;height:56px;border-radius:50%;background:rgba(15,76,58,.15);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;transition:all var(--ease)}
+    .svc-item:hover .svc-icon{background:var(--summit)}
+    .svc-icon i{font-size:1rem;color:var(--summit)}
+    .svc-item:hover .svc-icon i{color:#fff}
+    .svc-item h4{font-size:.78rem;font-weight:500;color:var(--text-mid);line-height:1.3}
+
+    /* ===== WHY ===== */
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    .why-card{padding:2rem 1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border);transition:all var(--ease);position:relative;overflow:hidden}
+    .why-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--summit);transform:scaleX(0);transform-origin:left;transition:transform var(--ease)}
+    .why-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.2);background:rgba(255,255,255,.05)}
+    .why-card:hover::before{transform:scaleX(1)}
+    .why-num{font-size:2rem;font-weight:200;color:var(--slate-blue);margin-bottom:.6rem}
+    .why-card h3{font-size:1rem;font-weight:600;margin-bottom:.6rem;color:var(--white)}
+    .why-card p{font-size:.85rem;color:var(--text-mid);line-height:1.7}
+
+    /* ===== SOLUTIONS ===== */
+    .sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:2.5rem}
+    .sol-card{position:relative;border-radius:8px;overflow:hidden;min-height:260px;display:flex;align-items:flex-end;cursor:pointer;transition:transform var(--ease)}
+    .sol-card:hover{transform:scale(1.01)}
+    .sol-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+    .sol-card:hover img{transform:scale(1.04)}
+    .sol-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(34,40,49,.95) 0%,rgba(34,40,49,.4) 60%,transparent 100%)}
+    .sol-body{position:relative;z-index:1;padding:1.8rem;color:#fff;width:100%}
+    .sol-body h3{font-size:1.15rem;font-weight:600;margin-bottom:.4rem}
+    .sol-body p{font-size:.82rem;color:var(--text-mid);line-height:1.6}
+    .sol-arrow{position:absolute;top:1.2rem;right:1.2rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;z-index:1;transition:all var(--ease)}
+    .sol-card:hover .sol-arrow{background:var(--summit)}
+    .sol-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem}
+
+    /* ===== ABOUT ===== */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .about-img{border-radius:8px;overflow:hidden}
+    .about-img img{width:100%;height:420px;object-fit:cover}
+    .about-text h2{font-size:2rem;font-weight:300;line-height:1.2;margin-bottom:1.2rem;color:var(--white)}
+    .about-text p{margin-bottom:1rem;color:var(--text-mid);font-size:.92rem}
+    .highlight-box{font-size:1rem;font-weight:400;color:var(--frost);border-left:3px solid var(--summit);padding-left:1.2rem;margin:1.5rem 0;line-height:1.7}
+
+    /* ===== SECTORS ===== */
+    .sectors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    .sector-card{text-align:center;padding:2.5rem 1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border);transition:all var(--ease)}
+    .sector-card:hover{background:rgba(255,255,255,.06);transform:translateY(-4px)}
+    .sector-icon{width:60px;height:60px;border-radius:50%;background:rgba(15,76,58,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
+    .sector-icon i{font-size:1.3rem;color:var(--summit)}
+    .sector-card h3{font-size:1.1rem;font-weight:600;margin-bottom:.6rem;color:var(--white)}
+    .sector-card p{font-size:.85rem;color:var(--text-mid);line-height:1.7}
+
+    /* ===== INSIGHTS ===== */
+    .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+    .ins-card{border-radius:8px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);transition:all var(--ease)}
+    .ins-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.2)}
+    .ins-img{height:180px;overflow:hidden}
+    .ins-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .ins-card:hover .ins-img img{transform:scale(1.04)}
+    .ins-body{padding:1.5rem}
+    .ins-tag{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--summit);margin-bottom:.6rem}
+    .ins-body h3{font-size:1.05rem;font-weight:600;line-height:1.35;margin-bottom:.6rem;color:var(--white)}
+    .ins-body p{font-size:.82rem;color:var(--text-mid);line-height:1.6}
+    .ins-foot{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;border-top:1px solid var(--border)}
+    .ins-foot span{font-size:.72rem;color:var(--text-dim)}
+    .ins-foot a{font-size:.78rem;font-weight:600;color:var(--bronze)}
+    .ins-foot a:hover{color:var(--white)}
+
+    /* ===== CTA ===== */
+    .cta{position:relative;padding:6rem 0;background:#161a21;color:#fff;text-align:center;overflow:hidden}
+    .cta h2{font-size:2.4rem;font-weight:300;margin-bottom:1rem;color:var(--white)}
+    .cta p{font-size:1rem;color:var(--text-mid);max-width:500px;margin:0 auto 2rem;font-weight:300}
+
+    /* ===== FOOTER ===== */
+    .footer{background:#161a21;color:var(--text-mid);padding:4rem 0 0;border-top:1px solid var(--border)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+    .footer-brand p{margin-top:1rem;font-size:.82rem;line-height:1.7}
+    .footer h4{font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:1rem;letter-spacing:.5px}
+    .footer ul{list-style:none}
+    .footer li{margin-bottom:.4rem}
+    .footer a{font-size:.8rem;transition:color var(--ease)}
+    .footer a:hover{color:var(--summit)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;font-size:.75rem;flex-wrap:wrap;gap:1rem;color:var(--text-dim)}
+    .footer-legal{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .footer-social{display:flex;gap:.8rem}
+    .footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--text-mid);transition:all var(--ease)}
+    .footer-social a:hover{background:var(--summit);border-color:var(--summit);color:#fff}
+
+    /* ===== REVEAL ===== */
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
+    .reveal.vis{opacity:1;transform:translateY(0)}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:1024px){
+      .why-grid,.sectors-grid,.insights-grid{grid-template-columns:repeat(2,1fr)}
+      .sol-grid,.sol-3{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr;gap:2rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .mega{width:600px;grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .nav-toggle{display:block}
+      .hero h1{font-size:2.2rem}
+      .hero-logo-big{display:none}
+      .hero-content{flex-direction:column}
+      .section{padding:4rem 0}
+      .s-title{font-size:1.8rem}
+      .why-grid,.sectors-grid,.insights-grid,.sol-3{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .cookie-banner{flex-direction:column;text-align:center}
+      .services-strip{gap:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- COOKIE -->
+<div class="cookie-banner" id="cb">
+  <p>We use cookies to enhance your experience. By continuing, you agree to our <a href="cookie-policy.html">Cookie Policy</a>.</p>
+  <div style="display:flex;gap:.4rem;flex-shrink:0">
+    <button class="cookie-btn sec" onclick="this.closest('.cookie-banner').classList.add('hidden')">Reject</button>
+    <button class="cookie-btn" onclick="this.closest('.cookie-banner').classList.add('hidden')">Accept</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="index.html">
+      <svg class="nav-logo" viewBox="0 0 717 260" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M 310 30 L 228 210 L 282 210 L 314 36 Z"/>
+        <path class="bl" d="M 374 30 L 456 210 L 402 210 L 370 36 Z"/>
+        <path class="bc" d="M 342 2 L 327 210 L 357 210 Z"/>
+        <text class="lt" x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2">AXSUMA</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li class="nav-drop">
+        <a href="#solutions">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="mega">
+          <div>
+            <h5>Company Formations</h5>
+            <ul><li><a href="company-formations.html">Company Incorporations</a></li><li><a href="company-formations.html">Ready-made Companies</a></li><li><a href="company-formations.html">LLP Incorporations</a></li></ul>
+            <h5>Governance &amp; CoSec</h5>
+            <ul><li><a href="governance.html">CoSec Support</a></li><li><a href="governance.html">Registered Office</a></li><li><a href="governance.html">Mail Forwarding</a></li><li><a href="governance.html">Service Address</a></li></ul>
+          </div>
+          <div>
+            <h5>M&amp;A &amp; Transactions</h5>
+            <ul><li><a href="ma-transactions.html">Deal Stack Management</a></li><li><a href="ma-transactions.html">SPV Management</a></li><li><a href="ma-transactions.html">UK Holding Companies</a></li><li><a href="ma-transactions.html">Professional Directorships</a></li><li><a href="ma-transactions.html">Pre- &amp; Post-Deal Governance</a></li><li><a href="ma-transactions.html">Acquisition Vehicles</a></li></ul>
+          </div>
+          <div>
+            <h5>Accounting &amp; Tax</h5>
+            <ul><li><a href="accounting.html">Bookkeeping</a></li><li><a href="accounting.html">Tax Compliance</a></li><li><a href="accounting.html">VAT &amp; ATED</a></li><li><a href="accounting.html">PAYE &amp; Payroll</a></li></ul>
+            <h5>Specialist</h5>
+            <ul><li><a href="overseas-entities.html">Overseas Entities (ROE)</a></li><li><a href="process-agent.html">Process Agent</a></li><li><a href="id-verification.html">ID Verification</a></li></ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1920&q=80" alt="Mountain layers">
+  </div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <h1 style="opacity:0;animation:fadeIn 1s .4s forwards">The Sharpest Edge<br>in a <em>Complex World.</em></h1>
+      <p>Corporate administration, M&A support, governance and accounting for international funds, multinational enterprises and private clients operating in the United Kingdom.</p>
+      <div class="hero-btns">
+        <a href="#solutions" class="btn btn-summit">Explore Solutions</a>
+        <a href="#contact" class="btn btn-ghost">Request a Proposal</a>
+      </div>
+    </div>
+    <svg class="hero-logo-big" viewBox="0 0 717 340" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 310 30 L 228 210 L 282 210 L 314 36 Z" fill="var(--frost)"/>
+      <path d="M 374 30 L 456 210 L 402 210 L 370 36 Z" fill="var(--frost)"/>
+      <path d="M 342 2 L 327 210 L 357 210 Z" fill="var(--summit)"/>
+      <text x="342" y="270" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2" fill="var(--frost)">AXSUMA</text>
+      <text x="342" y="314" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="14" letter-spacing="3.5" fill="var(--frost)">CUTTING THROUGH THE COMPLEXITY</text>
+    </svg>
+  </div>
+  <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- SERVICES STRIP -->
+<section class="section section-alt" style="padding:3rem 0">
+  <div class="container">
+    <div class="services-strip">
+      <div class="svc-item"><div class="svc-icon"><i class="fas fa-building"></i></div><h4>Company Formations</h4></div>
+      <div class="svc-item"><div class="svc-icon"><i class="fas fa-handshake"></i></div><h4>M&A Support</h4></div>
+      <div class="svc-item"><div class="svc-icon"><i class="fas fa-calculator"></i></div><h4>Accounting &amp; Tax</h4></div>
+      <div class="svc-item"><div class="svc-icon"><i class="fas fa-shield-halved"></i></div><h4>Governance</h4></div>
+      <div class="svc-item"><div class="svc-icon"><i class="fas fa-globe"></i></div><h4>Overseas Entities</h4></div>
+      <div class="svc-item"><div class="svc-icon"><i class="fas fa-user-tie"></i></div><h4>Directorships</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="reveal"><p class="s-label">Why Axsuma</p><h2 class="s-title">Built Different. Built for You.</h2><p class="s-sub">The professional services industry consolidated into sprawling groups that lost sight of what matters: <strong style="color:var(--white)">you</strong>. We exist to restore the partnership model.</p></div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-num">01</div><h3>Speed as a Standard</h3><p>Same-day incorporations. Rapid deal-stack turnarounds. We operate with founder-led urgency that eliminates bureaucracy.</p></div>
+      <div class="why-card reveal"><div class="why-num">02</div><h3>True Partnership</h3><p>Senior professionals who know your business, anticipate your needs and treat your deadlines as their own.</p></div>
+      <div class="why-card reveal"><div class="why-num">03</div><h3>Uncompromising Compliance</h3><p>Every structure we build is designed for regulatory resilience. From Companies House to HMRC — we keep you ahead.</p></div>
+      <div class="why-card reveal"><div class="why-num">04</div><h3>Cross-Border Fluency</h3><p>Whether you're a Luxembourg fund or a US corporate — we engineer the compliant UK framework for your operations.</p></div>
+      <div class="why-card reveal"><div class="why-num">05</div><h3>Trust &amp; Discretion</h3><p>Fiduciary standards embedded in our culture. Your information never leaves the circle of trust.</p></div>
+      <div class="why-card reveal"><div class="why-num">06</div><h3>Tech-Enabled</h3><p>Automated compliance calendars, real-time entity dashboards. The efficiency of tech, the rigour of the City.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="section section-alt" id="solutions">
+  <div class="container">
+    <div class="reveal"><p class="s-label">Our Solutions</p><h2 class="s-title">End-to-End Corporate Infrastructure</h2><p class="s-sub">From incorporation to exit, we architect and manage the corporate frameworks that power your investments and transactions.</p></div>
+    <div class="sol-grid">
+      <a href="company-formations.html" class="sol-card reveal"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&q=80" alt="Formations"><div class="sol-ov"></div><div class="sol-arrow"><i class="fas fa-arrow-right"></i></div><div class="sol-body"><h3>Company Formations</h3><p>UK Ltd, LLP and ready-made companies. Same-day filings, live and compliant within hours.</p></div></a>
+      <a href="ma-transactions.html" class="sol-card reveal"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80" alt="M&A"><div class="sol-ov"></div><div class="sol-arrow"><i class="fas fa-arrow-right"></i></div><div class="sol-body"><h3>M&amp;A &amp; Transaction Support</h3><p>Deal-stack management, SPV structuring, professional directorships, acquisition vehicles — LOI to post-completion.</p></div></a>
+      <a href="governance.html" class="sol-card reveal"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=700&q=80" alt="Governance"><div class="sol-ov"></div><div class="sol-arrow"><i class="fas fa-arrow-right"></i></div><div class="sol-body"><h3>Governance &amp; Company Secretarial</h3><p>CoSec support, registered office, mail forwarding, service address and statutory compliance.</p></div></a>
+      <a href="accounting.html" class="sol-card reveal"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=700&q=80" alt="Accounting"><div class="sol-ov"></div><div class="sol-arrow"><i class="fas fa-arrow-right"></i></div><div class="sol-body"><h3>Accounting &amp; Tax</h3><p>Bookkeeping, tax compliance, management accounts, VAT, ATED returns, PAYE and payroll.</p></div></a>
+    </div>
+    <div class="sol-3">
+      <a href="overseas-entities.html" class="sol-card reveal" style="min-height:200px"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700&q=80" alt="ROE"><div class="sol-ov"></div><div class="sol-arrow"><i class="fas fa-arrow-right"></i></div><div class="sol-body"><h3>Overseas Entities (ROE)</h3><p>Registration, annual updates and Economic Crime Act compliance.</p></div></a>
+      <a href="process-agent.html" class="sol-card reveal" style="min-height:200px"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" alt="Process Agent"><div class="sol-ov"></div><div class="sol-arrow"><i class="fas fa-arrow-right"></i></div><div class="sol-body"><h3>Process Agent</h3><p>UK-based appointments for cross-border contracts and finance documents.</p></div></a>
+      <a href="id-verification.html" class="sol-card reveal" style="min-height:200px"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80" alt="ID"><div class="sol-ov"></div><div class="sol-arrow"><i class="fas fa-arrow-right"></i></div><div class="sol-body"><h3>ID Verification</h3><p>Digital AML/KYC verification — fast, secure, with integrated Stripe payments.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=700&q=80" alt="Mountains"></div>
+      <div class="about-text reveal">
+        <p class="s-label">About Axsuma</p>
+        <h2>A New Standard in Professional Services</h2>
+        <p>The consolidation wave that swept through professional services created scale — but also distance. Distance between client and adviser. Between a request and a meaningful response.</p>
+        <div class="highlight-box">We founded Axsuma to close that gap. Direct access to senior expertise. Speed as a cultural value. Trust earned through action.</div>
+        <p>We combine deep UK regulatory knowledge with international perspective to serve the world's most sophisticated investors, enterprises and individuals.</p>
+        <a href="#" class="btn btn-outline" style="margin-top:1rem">Our Story <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="section section-alt" id="sectors">
+  <div class="container" style="text-align:center">
+    <div class="reveal"><p class="s-label">Sectors We Serve</p><h2 class="s-title">Capital. Commerce. Wealth.</h2><p class="s-sub" style="margin:0 auto">Three distinct ecosystems — each with dedicated teams, tailored workflows and sector-specific intelligence.</p></div>
+    <div class="sectors-grid">
+      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-landmark"></i></div><h3>Private Equity &amp; Funds</h3><p>SPV lifecycle, deal-stack execution, transaction directorships and post-completion governance for the velocity of PE.</p></div>
+      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-building"></i></div><h3>Multinational Corporates</h3><p>UK subsidiary setup, ongoing CoSec, board governance, statutory compliance and full accounting backbone.</p></div>
+      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-gem"></i></div><h3>HNW &amp; Family Offices</h3><p>Property vehicles, investment structures, estate entities and philanthropic frameworks — with absolute discretion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LAW FIRMS -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid" style="direction:rtl">
+      <div class="about-img reveal" style="direction:ltr"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" alt="Legal" style="height:380px"></div>
+      <div class="about-text reveal" style="direction:ltr">
+        <p class="s-label">For International Law Firms</p>
+        <h2>Your Trusted UK Corporate Partner</h2>
+        <p>When your clients need complex cross-border structures delivered compliantly and at pace, we become an extension of your team.</p>
+        <div class="highlight-box">Same-day incorporations. Rapid KYC turnaround. Direct senior access — no ticket systems, no delays.</div>
+        <p>From multi-layered holding structures to post-completion reorganisations — the corporate infrastructure that underpins your legal advice.</p>
+        <a href="#contact" class="btn btn-outline" style="margin-top:1rem">Partner With Us <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="section section-alt" id="insights">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem">
+      <div><p class="s-label">Insights</p><h2 class="s-title">Perspectives That Matter</h2></div>
+      <a href="#" class="btn btn-outline" style="margin-bottom:.5rem">All Insights <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="insights-grid">
+      <div class="ins-card reveal"><div class="ins-img"><img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=500&q=80" alt="PE"></div><div class="ins-body"><p class="ins-tag">Market Entry</p><h3>Why International PE Funds Are Doubling Down on UK Acquisitions</h3><p>Sterling dynamics, regulatory clarity and deep talent pools make the UK the destination of choice.</p></div><div class="ins-foot"><span>March 2026</span><a href="#">Read &rarr;</a></div></div>
+      <div class="ins-card reveal"><div class="ins-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&q=80" alt="ROE"></div><div class="ins-body"><p class="ins-tag">Regulatory</p><h3>Register of Overseas Entities: What You Need to Know</h3><p>Critical deadlines, common pitfalls and best practices as enforcement enters its third year.</p></div><div class="ins-foot"><span>February 2026</span><a href="#">Read &rarr;</a></div></div>
+      <div class="ins-card reveal"><div class="ins-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=80" alt="SPV"></div><div class="ins-body"><p class="ins-tag">Governance</p><h3>The Hidden Cost of Poor SPV Governance in Multi-Asset Portfolios</h3><p>How institutional investors are rethinking entity-level governance after regulatory scrutiny.</p></div><div class="ins-foot"><span>January 2026</span><a href="#">Read &rarr;</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="container reveal">
+    <p class="s-label" style="color:var(--summit)">Get in Touch</p>
+    <h2>Ready to Cut Through the Complexity?</h2>
+    <p>Whether you're structuring an acquisition, entering the UK market or seeking a trusted corporate partner — we move at your pace.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn btn-summit">Contact Us</a>
+      <a href="#" class="btn btn-ghost">Download Brochure</a>
+    </div>
+    <p style="margin-top:2rem;font-size:.82rem;color:var(--text-dim)">London &bull; enquiries@axsuma.co.uk</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 717 260" width="130" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 310 30 L 228 210 L 282 210 L 314 36 Z" fill="var(--frost)"/>
+          <path d="M 374 30 L 456 210 L 402 210 L 370 36 Z" fill="var(--frost)"/>
+          <path d="M 342 2 L 327 210 L 357 210 Z" fill="var(--summit)"/>
+          <text x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2" fill="var(--frost)">AXSUMA</text>
+        </svg>
+        <p>Cutting through the complexity. Premium corporate, governance and transaction solutions for the world's most ambitious investors and enterprises.</p>
+      </div>
+      <div><h4>Solutions</h4><ul><li><a href="#">Company Formations</a></li><li><a href="#">Governance &amp; CoSec</a></li><li><a href="#">M&amp;A Support</a></li><li><a href="#">Accounting &amp; Tax</a></li><li><a href="#">Overseas Entities</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About Axsuma</a></li><li><a href="#">Leadership</a></li><li><a href="#">Sectors</a></li><li><a href="#">Insights</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>London</h4><ul><li style="line-height:1.6"><i class="fas fa-map-marker-alt" style="color:var(--summit);margin-right:.3rem"></i>London EC2V</li><li><i class="fas fa-envelope" style="color:var(--summit);margin-right:.3rem"></i>enquiries@axsuma.co.uk</li></ul>
+        <div class="footer-social" style="margin-top:1rem"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axsuma Ltd. Registered in England &amp; Wales.</span>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Terms</a><a href="#">GDPR</a><a href="#">Whistleblowing</a><a href="#">Modern Slavery</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
+document.getElementById('nt')?.addEventListener('click',function(){const l=document.querySelector('.nav-links');if(l.style.display==='flex'){l.style.display='none'}else{l.style.display='flex';l.style.flexDirection='column';l.style.position='absolute';l.style.top='100%';l.style.left='0';l.style.right='0';l.style.background='rgba(34,40,49,.98)';l.style.padding='1rem 2rem';l.style.boxShadow='0 10px 30px rgba(0,0,0,.3)'}});
+</script>
+</body>
+</html>

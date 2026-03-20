@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overseas Entities & Beneficial Ownership — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#222831">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --summit:#0F4C3A;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
+      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
+      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
+      --border:rgba(208,220,227,.1);--font:'Inter','Helvetica Neue',Arial,sans-serif;
+      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+    /* NAV */
+    .nav{background:rgba(34,40,49,.95);padding:.8rem 0;border-bottom:1px solid var(--border)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1140px}
+    .nav-logo{height:36px}
+    .nav-logo .bl{fill:var(--frost)}.nav-logo .bc{fill:var(--summit)}.nav-logo .lt{fill:var(--frost)}
+    .nav-back{font-size:.82rem;color:var(--text-mid);display:flex;align-items:center;gap:.4rem}
+    .nav-back:hover{color:var(--white)}
+
+    /* PAGE */
+    .page-header{padding:4rem 0 2rem;text-align:center}
+    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
+    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
+    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+
+    /* HERO IMAGE */
+    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .hero-image img{width:100%;height:auto;display:block}
+
+    /* OVERVIEW */
+    .overview-section{margin-bottom:3rem}
+    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+
+    /* SERVICE DETAIL SECTION */
+    .service-detail{margin-bottom:3rem}
+    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
+    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
+    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
+    .service-detail p:last-of-type{margin-bottom:0}
+
+    /* DETAIL IMAGE */
+    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+    .detail-image img{width:100%;height:auto;display:block}
+
+    /* WHY AXSUMA */
+    .why-section{margin-bottom:3rem}
+    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
+    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
+
+    /* CTA SECTION */
+    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
+    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
+    .btn-cta:hover{background:var(--slate-blue)}
+
+    /* FOOTER */
+    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+
+    @media(max-width:768px){
+      .why-grid{grid-template-columns:1fr}
+      .page-header h1{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="index.html">
+      <svg class="nav-logo" viewBox="0 0 717 260" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M 310 30 L 228 210 L 282 210 L 314 36 Z"/>
+        <path class="bl" d="M 374 30 L 456 210 L 402 210 L 370 36 Z"/>
+        <path class="bc" d="M 342 2 L 327 210 L 357 210 Z"/>
+        <text class="lt" x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2">AXSUMA</text>
+      </svg>
+    </a>
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="#solutions">Solutions</a> / Overseas Entities</p>
+    <h1>Overseas Entities & Beneficial Ownership</h1>
+    <p>Register of Overseas Entities (ROE) compliance and beneficial ownership verification under the Economic Crime Act 2022.</p>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="container">
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1448906654166-444d494666b3?w=1200&q=80" alt="Tower Bridge London at night — international business gateway">
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="container">
+  <div class="overview-section">
+    <h2>Beneficial Ownership Transparency & ROE Compliance</h2>
+    <p>The Economic Crime Act 2022, introduced following recommendations from the National Crime Agency and Financial Action Task Force, requires overseas entities that own or acquire property in the UK to register with Companies House and disclose their beneficial owners. The Register of Overseas Entities (ROE) represents a fundamental shift toward transparency—foreign companies and their true beneficial owners are now part of the public record, preventing anonymous property ownership by corrupt officials, sanctions evaders, and money launderers.</p>
+    <p>For overseas entities, ROE registration is now mandatory before acquiring or holding UK property. Failure to register incurs significant penalties: up to £2,500 per day for unregistered entities (up to £20,000 cumulative), and overseas entities cannot hold property in their own name without registration. Beneficial owners of registered overseas entities must be accurately identified, with ongoing reporting obligations if beneficial ownership structures change.</p>
+    <p>We guide overseas entities through ROE registration, collect beneficial ownership information, verify identity documentation, and manage ongoing reporting obligations. Our international compliance expertise ensures your entity meets UK transparency requirements while maintaining any legitimate offshore structures for tax or operational purposes.</p>
+  </div>
+</div>
+
+<!-- SERVICE 1: WHAT IS THE REGISTER OF OVERSEAS ENTITIES -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-globe service-detail-icon"></i>
+      <div>
+        <h3>What is the Register of Overseas Entities (ROE)</h3>
+      </div>
+    </div>
+    <p>The Register of Overseas Entities is Companies House's public register of overseas entities that own or hold UK property. Introduced under the Economic Crime Act 2022, the ROE is part of the UK's anti-money laundering and sanctions compliance framework. Every overseas entity (including foreign companies, trusts, and partnerships) holding property in the UK must be registered on the ROE with disclosed beneficial owners.</p>
+    <p>Beneficial owners are individuals who ultimately own or control an overseas entity. For company structures, beneficial owners are typically shareholders owning 25%+ of shares or voting power. For trusts, beneficial owners include settlors, trustees, and beneficiaries with entitlements to distributions. For partnerships, partners with 25%+ interest are beneficial owners. Identifying beneficial owners can be complex in layered structures (holding companies, trusts controlling companies, offshore funds), but the ROE requires disclosure of all individuals ultimately benefiting from the entity's assets.</p>
+    <p>The ROE creates transparency about who owns UK property—particularly important given historical concerns about corrupt officials, sanctions evaders, and criminal organizations hiding stolen assets through anonymous property purchases. The register is publicly searchable, allowing law enforcement, journalists, and researchers to identify beneficial owners of properties. Non-compliance triggers substantial penalties and potential criminal prosecution for false statements.</p>
+    <p>Overseas entities registering before November 2022 were required to do so by November 1, 2022 (later extended to January 27, 2023 for entities already holding property). New overseas entities acquiring property must register before completion. The registration process requires certified documentation of beneficial owners, proof of identity, and declaration under penalty of perjury that information is accurate.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80" alt="Modern corporate glass tower">
+  </div>
+</div>
+
+<!-- SERVICE 2: WHO MUST REGISTER -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-check-circle service-detail-icon"></i>
+      <div>
+        <h3>Who Must Register & ROE Exemptions</h3>
+      </div>
+    </div>
+    <p>The ROE requirement applies to all overseas entities holding "legal estate" in UK land or property. Legal estate includes freehold ownership or long leasehold (leases of more than 7 years). Entities holding shorter leasehold interests, mortgages, or options to acquire property do not trigger ROE registration obligations. Overseas entities owning UK commercial property, residential property, agricultural land, or any other real property must register.</p>
+    <p>Overseas entities include foreign companies, foreign partnerships, foreign trusts, foreign funds, and other entities incorporated or established outside the UK. Entities incorporated in England & Wales, Scotland, or Northern Ireland are "UK entities" and do not require ROE registration (though they may be registered at Companies House under other UK corporate registration requirements).</p>
+    <p>Exemptions from ROE registration include: UK-listed companies (already regulated and disclosed), entities wholly owned by exempt entities, entities with registered branches in the UK (regulated financial institutions and central banks), and entities already subject to UK financial regulation with equivalent beneficial ownership reporting requirements. However, these exemptions are narrow; most overseas entities holding property must register.</p>
+    <p>Timing is important: overseas entities that owned property before November 1, 2022 were initially required to register by that date (extended to January 27, 2023). Overseas entities acquiring property after those dates must register before completion. Failure to register before the applicable deadline triggers penalties, potential injunctions against property transfer, and (for entities holding property after the deadline without registration) criminal liability.</p>
+  </div>
+</div>
+
+<!-- SERVICE 3: NEW REGISTRATION & ROE FILING -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-file-alt service-detail-icon"></i>
+      <div>
+        <h3>New Registration & ROE Filing Process</h3>
+      </div>
+    </div>
+    <p>ROE registration requires gathering comprehensive information about the overseas entity and its beneficial owners. We guide you through the registration process: collecting entity information (name, jurisdiction of incorporation, registered office, company registration numbers), identifying all beneficial owners (shareholders 25%+, settlors, trustees, beneficiaries of trusts), verifying beneficial owner identities, and obtaining certified documentation.</p>
+    <p>The registration form (ROE01) requires disclosure of beneficial owners with certified identity verification. Identity verification typically requires documents like passports, national ID cards, or utility bills (for proof of address). For entities with complex ownership (holding companies, trusts, or funds with multiple layers), we identify the ultimate beneficial owners through the entire ownership chain, ensuring complete transparency.</p>
+    <p>We prepare and submit the ROE01 registration form to Companies House with supporting documentation of beneficial owner identities. Registration typically processes within 2-3 weeks. Once registered, the overseas entity receives a Companies House registration number and becomes listed on the public ROE. The entity is then permitted to acquire or hold UK property in its own name.</p>
+    <p>Before property completion, we ensure ROE registration is complete and the entity is listed on the public register. Real estate practitioners typically require evidence of ROE registration (or exemption confirmation) before allowing property transfers. ROE registration also facilitates mortgage and financing arrangements—lenders typically require ROE registration before advancing property finance.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80" alt="Executive business strategy meeting">
+  </div>
+</div>
+
+<!-- SERVICE 4: ANNUAL UPDATES & ONGOING COMPLIANCE -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-sync-alt service-detail-icon"></i>
+      <div>
+        <h3>Annual Updates & Ongoing ROE Compliance</h3>
+      </div>
+    </div>
+    <p>Registered overseas entities must file annual updates confirming that beneficial ownership information remains accurate. These updates are similar to Confirmation Statements filed by UK companies—annual affirmations that the registered details are still correct. Annual updates must be filed within a specified period each year (typically the anniversary of registration or by June 30th depending on registration timing).</p>
+    <p>If beneficial ownership changes (for example, a shareholder sells their shares, a new member joins, or beneficial owner details change), the entity must notify Companies House within 14 days. This includes changes in the percentage of beneficial ownership (if a beneficial owner's shareholding drops below 25%), changes in beneficial owner names or addresses, or death of beneficial owners. Any material changes trigger obligation to file updated beneficial owner information.</p>
+    <p>We monitor your registered beneficial ownership structure and alert you to any changes requiring ROE updates. For overseas entities with changing ownership (particularly those receiving investment, undergoing restructuring, or in succession planning), we coordinate beneficial owner identification and Companies House notification to remain compliant.</p>
+    <p>The ROE framework includes significant penalties for non-compliance. Penalties for failure to file annual updates escalate from £100 (initial failure) to £500+ (subsequent failures). False statements in ROE filings constitute criminal fraud and can result in prosecution. We ensure your ROE compliance is maintained throughout your entity's lifecycle—from initial registration through ongoing updates to eventual deregistration if you cease holding UK property.</p>
+  </div>
+</div>
+
+<!-- SERVICE 5: TRANSFER IN & RESTRUCTURING -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-exchange-alt service-detail-icon"></i>
+      <div>
+        <h3>Transfer In & ROE Restructuring</h3>
+      </div>
+    </div>
+    <p>If your overseas entity was previously managed by another provider, we can coordinate ROE transfer and verify ongoing compliance. We review your current ROE registration, confirm beneficial owner information is accurate and current, identify any pending annual updates, and assume responsibility for ongoing reporting obligations.</p>
+    <p>We also advise on ROE implications for corporate restructuring. If you're acquiring UK property through a new overseas entity, we advise on optimal structure for ROE purposes and ensure the acquiring entity registers before property completion. If you're restructuring group ownership (consolidating multiple entities, moving property between entities in a group), we coordinate ROE filings reflecting the restructured ownership.</p>
+    <p>For entities disposing of UK property, we advise on deregistration requirements. If an overseas entity ceases to hold UK property, it may apply for deregistration. However, deregistration is not automatic; you must affirmatively apply to remove the entity from the register. We coordinate deregistration processes, ensuring the entity is removed once no longer holding UK property.</p>
+    <p>We also advise on international beneficial ownership considerations. Your overseas entity may have beneficial ownership reporting obligations in its jurisdiction of incorporation that complement or conflict with UK ROE requirements. We coordinate international compliance, ensuring your entity meets reporting obligations across multiple jurisdictions simultaneously.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=1200&q=80" alt="Financial Times and corporate intelligence">
+  </div>
+</div>
+
+<!-- SERVICE 6: PENALTIES & ENFORCEMENT -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-exclamation-triangle service-detail-icon"></i>
+      <div>
+        <h3>Penalties & Enforcement of ROE Obligations</h3>
+      </div>
+    </div>
+    <p>The Economic Crime Act 2022 establishes substantial penalties for ROE non-compliance. Overseas entities holding property without ROE registration face civil penalties of up to £2,500 per day the entity remains unregistered (capped at £20,000 aggregate per entity). These penalties accumulate daily, creating significant exposure for entities acquiring property without registering first. Criminal penalties are also available for deliberate failure to register.</p>
+    <p>False or misleading information in ROE filings constitutes fraud under the Fraud Act 2006 and can result in criminal prosecution, imprisonment, and unlimited fines. If you knowingly provide false beneficial owner information, deliberately omit beneficial owners, or falsely certify information, you face criminal liability—not merely civil penalties. The threshold for prosecution is deliberately false statements; innocent errors can typically be corrected through amendment.</p>
+    <p>Overseas entities holding property after registration deadlines without ROE compliance face potential injunctions preventing property transfers. UK courts can freeze property transfers or impose restrictions until ROE compliance is achieved. This has practical significance—properties cannot be mortgaged, sold, or transferred without ROE registration confirmation.</p>
+    <p>We ensure your overseas entity maintains compliance to avoid penalties entirely. This includes timely registration before property acquisition, accurate beneficial owner disclosure, annual update filing, and prompt notification of beneficial ownership changes. Early compliance prevents penalties, facilitates property transactions, and demonstrates good faith to regulators and lenders.</p>
+  </div>
+</div>
+
+<!-- WHY AXSUMA -->
+<div class="container">
+  <div class="why-section">
+    <h2>Why Axsuma for Overseas Entities & ROE</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="fas fa-passport"></i>
+        <h4>Beneficial Ownership Expertise</h4>
+        <p>We identify beneficial owners through complex ownership chains. From holding companies to trusts to offshore funds—we pierce through layers to identify ultimate beneficial owners for ROE compliance.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-balance-scale"></i>
+        <h4>Anti-Money Laundering Compliance</h4>
+        <p>We understand the regulatory framework behind beneficial ownership. ROE requirements serve anti-money laundering objectives; we ensure your compliance reflects best practices in financial crime prevention.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-sync"></i>
+        <h4>Ongoing Compliance Management</h4>
+        <p>ROE compliance doesn't end at registration. We track beneficial owner changes, file annual updates, and maintain your entity's registration throughout its lifecycle—from property acquisition through eventual deregistration.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="container">
+  <div class="cta-section">
+    <h2>Register Your Overseas Entity Today</h2>
+    <p>Whether acquiring UK property for the first time or ensuring existing registrations remain compliant, we'll guide you through ROE registration and ongoing beneficial ownership reporting.</p>
+    <a href="mailto:enquiries@axsuma.co.uk?subject=Overseas%20Entity%20Registration" class="btn-cta">
+      <i class="fas fa-envelope"></i> Get in Touch
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini">
+  <div class="container">
+    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
+    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="terms.html">Terms</a> &nbsp;|&nbsp;
+    <a href="gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 717 379" xmlns="http://www.w3.org/2000/svg" width="717" height="379">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+
+<!-- LEFT BLADE -->
+<path d="
+  M 324 30
+  L 240 196
+  L 275 196
+  C 283 180 293 160 302 140
+  C 312 120 322 100 331 80
+  C 333 70 333 60 330 50
+  C 328 40 326 35 324 30
+  Z" fill="#1a472a"/>
+
+<!-- RIGHT BLADE -->
+<path d="
+  M 361 30
+  L 445 196
+  L 409 196
+  C 401 180 392 160 382 140
+  C 372 120 363 100 354 80
+  C 352 70 352 60 355 50
+  C 357 40 359 35 361 30
+  Z" fill="#1a472a"/>
+
+<!-- CENTER BLADE -->
+<path d="
+  M 342 24
+  C 340 60 337 110 337 145
+  C 337 165 339 182 342 193
+  C 345 182 347 165 347 145
+  C 347 110 344 60 342 24
+  Z" fill="#228B37"/>
+
+<!-- AXSUMA text -->
+<text x="342" y="255" text-anchor="middle"
+      font-family="Montserrat, Arial, sans-serif" font-weight="600"
+      font-size="48" fill="#1a472a" letter-spacing="2">AXSUMA</text>
+
+<!-- Tagline -->
+<text x="342" y="310" text-anchor="middle"
+      font-family="Montserrat, Arial, sans-serif" font-weight="400"
+      font-size="14" fill="#1a472a" font-style="italic"
+      letter-spacing="0.8">Cutting through the complexity.</text>
+</svg>
