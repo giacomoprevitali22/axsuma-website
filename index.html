@@ -451,8 +451,10 @@ const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
 const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
-document.getElementById('nt')?.addEventListener('click',function(){const l=document.querySelector('.nav-links');if(l.style.display==='flex'){l.style.display='none'}else{l.style.display='flex';l.style.flexDirection='column';l.style.position='absolute';l.style.top='100%';l.style.left='0';l.style.right='0';l.style.background='rgba(34,40,49,.98)';l.style.padding='1rem 2rem';l.style.boxShadow='0 10px 30px rgba(0,0,0,.3)'}});
+const mobileMenu=document.querySelector('.nav-links');
+function closeMobileMenu(){if(window.innerWidth<=768&&mobileMenu)mobileMenu.style.display='none'}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();closeMobileMenu();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
+document.getElementById('nt')?.addEventListener('click',function(){if(mobileMenu.style.display==='flex'){mobileMenu.style.display='none'}else{mobileMenu.style.display='flex';mobileMenu.style.flexDirection='column';mobileMenu.style.position='absolute';mobileMenu.style.top='100%';mobileMenu.style.left='0';mobileMenu.style.right='0';mobileMenu.style.background='rgba(34,40,49,.98)';mobileMenu.style.padding='1rem 2rem';mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.3)'}});
 </script>
 </body>
 </html>
