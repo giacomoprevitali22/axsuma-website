@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -144,10 +145,10 @@
     .sol-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem}
 
     /* ===== ABOUT (video bg) ===== */
-    .about-section{position:relative;overflow:hidden}
-    .about-video{position:absolute;inset:0;z-index:0}
+    .about-section{position:relative;overflow:hidden;background:var(--dark)}
+    .about-video{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
     .about-video video{width:100%;height:100%;object-fit:cover}
-    .about-overlay{position:absolute;inset:0;z-index:1;background:rgba(42,47,54,.88)}
+    .about-overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;background:rgba(42,47,54,.88)}
     .about-section .container{position:relative;z-index:2}
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
     .about-text h2{font-size:2rem;font-weight:300;line-height:1.2;margin-bottom:1.2rem;color:var(--white)}
@@ -205,6 +206,8 @@
     /* ===== REVEAL ===== */
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
     .reveal.vis{opacity:1;transform:translateY(0)}
+    /* Fallback: if JS fails, show all content */
+    .no-js .reveal{opacity:1;transform:none}
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:1024px){
@@ -219,15 +222,28 @@
     @media(max-width:768px){
       .nav-links{display:none}
       .nav-toggle{display:block}
+      .nav-logo{height:55px}
+      .nav.scrolled .nav-logo{height:40px}
       .hero{padding:7rem 0 3rem}
       .hero h1{font-size:2.2rem}
       .section{padding:3.5rem 0}
       .s-title{font-size:1.8rem}
       .why-grid,.sectors-grid,.insights-grid,.sol-3{grid-template-columns:1fr}
       .services-strip,.services-section .services-strip{grid-template-columns:repeat(2,1fr)}
+      .svc-tile{min-height:auto;padding:1.2rem .6rem}
       .pillars-grid{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr;gap:2rem}
+      .about-video video{display:none}
+      .about-section{background:var(--dark)}
+      .lawfirms-grid{grid-template-columns:1fr;gap:2rem}
       .footer-grid{grid-template-columns:1fr}
       .cookie-banner{flex-direction:column;text-align:center}
+      .mega{display:none!important}
+    }
+    @media(max-width:480px){
+      .services-strip,.services-section .services-strip{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:1.8rem}
+      .container{padding:0 1.2rem}
     }
   </style>
 </head>
@@ -488,14 +504,62 @@
 </footer>
 
 <script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
-const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const mobileMenu=document.querySelector('.nav-links');
-function closeMobileMenu(){if(window.innerWidth<=768&&mobileMenu)mobileMenu.style.display='none'}
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();closeMobileMenu();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
-document.getElementById('nt')?.addEventListener('click',function(){if(mobileMenu.style.display==='flex'){mobileMenu.style.display='none'}else{mobileMenu.style.display='flex';mobileMenu.style.flexDirection='column';mobileMenu.style.position='absolute';mobileMenu.style.top='100%';mobileMenu.style.left='0';mobileMenu.style.right='0';mobileMenu.style.background='rgba(255,255,255,.98)';mobileMenu.style.padding='1rem 2rem';mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.08)'}});
+try{
+  // Nav scroll
+  var nav=document.getElementById('nav');
+  if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+
+  // Reveal animations with fallback
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.classList.add('vis');obs.unobserve(el.target)}})},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  }else{
+    // Fallback: show everything if IntersectionObserver not supported
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')});
+  }
+
+  // Mobile menu
+  var mobileMenu=document.querySelector('.nav-links');
+  var menuOpen=false;
+  function closeMobileMenu(){
+    if(mobileMenu){mobileMenu.style.display='';menuOpen=false}
+  }
+  var toggleBtn=document.getElementById('nt');
+  if(toggleBtn){
+    toggleBtn.addEventListener('click',function(){
+      if(menuOpen){
+        closeMobileMenu();
+      }else{
+        mobileMenu.style.display='flex';
+        mobileMenu.style.flexDirection='column';
+        mobileMenu.style.position='absolute';
+        mobileMenu.style.top='100%';
+        mobileMenu.style.left='0';
+        mobileMenu.style.right='0';
+        mobileMenu.style.background='rgba(255,255,255,.98)';
+        mobileMenu.style.padding='1rem 2rem';
+        mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.08)';
+        mobileMenu.style.zIndex='999';
+        menuOpen=true;
+      }
+    });
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var href=a.getAttribute('href');
+      if(!href||href==='#')return;
+      e.preventDefault();
+      closeMobileMenu();
+      var t=document.querySelector(href);
+      if(t)t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+}catch(e){
+  // If any JS fails, make sure content is visible
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')});
+}
 </script>
 </body>
 </html>
