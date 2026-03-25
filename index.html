@@ -46,12 +46,15 @@
     .cookie-btn:hover{background:var(--teal-light)}
     .cookie-btn.sec{background:transparent;border:1px solid var(--border);color:var(--mid)}
 
+    /* ===== TOP STRIPE ===== */
+    .top-stripe{position:fixed;top:0;left:0;right:0;height:4px;z-index:1001;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 60%,var(--dark) 100%)}
+
     /* ===== NAV ===== */
-    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:1rem 0;background:var(--white);transition:all var(--ease)}
-    .nav.scrolled{box-shadow:0 1px 0 var(--border);padding:.7rem 0}
+    .nav{position:fixed;top:4px;width:100%;z-index:1000;padding:1.2rem 0;background:var(--white);transition:all var(--ease);border-bottom:1px solid var(--border)}
+    .nav.scrolled{box-shadow:0 2px 8px rgba(0,0,0,.06);padding:.6rem 0}
     .nav .container{display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{height:44px;transition:all var(--ease)}
-    .nav.scrolled .nav-logo{height:38px}
+    .nav-logo{height:70px;transition:all var(--ease)}
+    .nav.scrolled .nav-logo{height:50px}
     .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
     .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
     .nav-links a:hover{color:var(--dark)}
@@ -73,7 +76,7 @@
     .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
 
     /* ===== HERO ===== */
-    .hero{position:relative;padding:9rem 0 3.5rem;background:var(--dark);overflow:hidden}
+    .hero{position:relative;padding:10rem 0 3.5rem;background:var(--dark);overflow:hidden}
     .hero-bg{position:absolute;inset:0;z-index:0}
     .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.45}
     .hero-inner{max-width:720px;position:relative;z-index:2}
@@ -228,15 +231,18 @@
   </div>
 </div>
 
+<!-- TOP STRIPE -->
+<div class="top-stripe"></div>
+
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="container">
     <a href="index.html">
-      <svg class="nav-logo" viewBox="0 0 717 260" xmlns="http://www.w3.org/2000/svg">
+      <svg class="nav-logo" viewBox="0 0 717 290" xmlns="http://www.w3.org/2000/svg">
         <path d="M 310 30 L 228 210 L 282 210 L 314 36 Z" fill="#2a2f36"/>
         <path d="M 374 30 L 456 210 L 402 210 L 370 36 Z" fill="#2a2f36"/>
         <path d="M 342 2 L 327 210 L 357 210 Z" fill="#00594a"/>
-        <text x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2" fill="#2a2f36">AXSUMA</text>
+        <text x="342" y="272" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="62" letter-spacing="4" fill="#2a2f36">AXSUMA</text>
       </svg>
     </a>
     <ul class="nav-links">
@@ -471,11 +477,11 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <svg viewBox="0 0 717 260" width="130" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 717 290" width="140" xmlns="http://www.w3.org/2000/svg">
           <path d="M 310 30 L 228 210 L 282 210 L 314 36 Z" fill="rgba(255,255,255,.6)"/>
           <path d="M 374 30 L 456 210 L 402 210 L 370 36 Z" fill="rgba(255,255,255,.6)"/>
           <path d="M 342 2 L 327 210 L 357 210 Z" fill="#00594a"/>
-          <text x="342" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="48" letter-spacing="2" fill="rgba(255,255,255,.8)">AXSUMA</text>
+          <text x="342" y="272" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="62" letter-spacing="4" fill="rgba(255,255,255,.8)">AXSUMA</text>
         </svg>
         <p>Corporate administration, governance and transaction solutions for the world's most ambitious investors and enterprises.</p>
       </div>
