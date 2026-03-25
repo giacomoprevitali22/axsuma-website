@@ -43,6 +43,34 @@
     .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
     .hero-image img{width:100%;height:auto;display:block}
 
+    /* NAME CHECKER — Tahoe */
+    .name-checker{margin:2rem 0 3rem;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:2.5rem 2.5rem 2rem;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    .name-checker h2{font-size:1.1rem;font-weight:500;color:var(--white);margin-bottom:.3rem}
+    .name-checker p.nc-sub{font-size:.82rem;color:var(--text-mid);margin-bottom:1.5rem;font-weight:300}
+    .nc-input-row{display:flex;gap:.5rem;margin-bottom:.5rem}
+    .nc-input{flex:1;padding:.75rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:var(--white);font-family:var(--font);font-size:.88rem;outline:none;transition:all .25s}
+    .nc-input::placeholder{color:var(--text-dim)}
+    .nc-input:focus{border-color:var(--summit);background:rgba(255,255,255,.08);box-shadow:0 0 0 3px rgba(0,89,74,.15)}
+    .nc-btn{padding:.75rem 1.4rem;border-radius:10px;border:none;background:var(--summit);color:#fff;font-family:var(--font);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .25s;white-space:nowrap}
+    .nc-btn:hover{background:#007a66}
+    .nc-btn:active{transform:scale(.97)}
+    .nc-btn:disabled{opacity:.5;cursor:not-allowed}
+    .nc-hint{font-size:.72rem;color:var(--text-dim);margin-bottom:0}
+    .nc-results{margin-top:1.2rem}
+    .nc-result-item{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin-bottom:.4rem;transition:all .25s}
+    .nc-result-item:hover{background:rgba(255,255,255,.06)}
+    .nc-result-name{font-size:.85rem;font-weight:500;color:var(--white)}
+    .nc-result-num{font-size:.72rem;color:var(--text-dim);font-weight:400}
+    .nc-result-status{font-size:.7rem;font-weight:500;padding:.25rem .7rem;border-radius:6px;letter-spacing:.3px;text-transform:uppercase}
+    .nc-status-active{background:rgba(0,89,74,.2);color:#6ee7b7}
+    .nc-status-dissolved{background:rgba(255,255,255,.06);color:var(--text-dim)}
+    .nc-empty{text-align:center;padding:1.5rem;font-size:.85rem;color:var(--text-mid)}
+    .nc-empty .nc-check{color:#6ee7b7;font-size:1.2rem;margin-bottom:.4rem;display:block}
+    .nc-loading{text-align:center;padding:1.5rem;color:var(--text-mid);font-size:.85rem}
+    .nc-loading::after{content:'';display:inline-block;width:14px;height:14px;border:2px solid var(--text-dim);border-top-color:var(--summit);border-radius:50%;margin-left:.5rem;animation:spin .6s linear infinite;vertical-align:middle}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .nc-error{text-align:center;padding:1rem;font-size:.82rem;color:#f87171;border-radius:10px;background:rgba(248,113,113,.06)}
+
     /* OVERVIEW */
     .overview-section{margin-bottom:3rem}
     .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
@@ -112,10 +140,17 @@
   </div>
 </div>
 
-<!-- HERO IMAGE -->
+<!-- NAME AVAILABILITY CHECKER -->
 <div class="container">
-  <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80" alt="Modern skyscrapers reflecting UK business growth">
+  <div class="name-checker">
+    <h2>Check Company Name Availability</h2>
+    <p class="nc-sub">Search the Companies House register to see if your desired name is already taken.</p>
+    <div class="nc-input-row">
+      <input class="nc-input" id="nc-query" type="text" placeholder="e.g. Horizon Ventures" autocomplete="off">
+      <button class="nc-btn" id="nc-btn" onclick="searchName()">Search</button>
+    </div>
+    <p class="nc-hint">Powered by Companies House public data</p>
+    <div class="nc-results" id="nc-results"></div>
   </div>
 </div>
 
@@ -256,5 +291,62 @@
   </div>
 </div>
 
+<script>
+// ─── CONFIG ───
+// Replace with your deployed Cloudflare Worker URL
+const WORKER_URL = 'https://ch-proxy.YOUR-SUBDOMAIN.workers.dev';
+
+const ncInput=document.getElementById('nc-query');
+const ncBtn=document.getElementById('nc-btn');
+const ncResults=document.getElementById('nc-results');
+
+ncInput.addEventListener('keydown',e=>{if(e.key==='Enter')searchName()});
+
+async function searchName(){
+  const q=ncInput.value.trim();
+  if(!q)return;
+  ncBtn.disabled=true;
+  ncResults.innerHTML='<div class="nc-loading">Searching Companies House</div>';
+
+  try{
+    const res=await fetch(`${WORKER_URL}?q=${encodeURIComponent(q)}`);
+    if(!res.ok) throw new Error('API unavailable');
+
+    const data=await res.json();
+    if(!data.items||data.items.length===0){
+      ncResults.innerHTML=`
+        <div class="nc-empty">
+          <span class="nc-check"><i class="fas fa-circle-check"></i></span>
+          <strong>"${escHtml(q)}"</strong> does not match any registered company.<br>
+          <span style="font-size:.78rem;color:var(--text-dim)">This name may be available — subject to Companies House naming rules.</span>
+        </div>`;
+    }else{
+      ncResults.innerHTML=data.items.map(c=>{
+        const active=c.company_status==='active';
+        return `<div class="nc-result-item">
+          <div>
+            <div class="nc-result-name">${escHtml(c.title)}</div>
+            <div class="nc-result-num">${c.company_number||''}</div>
+          </div>
+          <span class="nc-result-status ${active?'nc-status-active':'nc-status-dissolved'}">${c.company_status||'unknown'}</span>
+        </div>`;
+      }).join('');
+    }
+  }catch(e){
+    // Fallback: link to official Companies House search
+    ncResults.innerHTML=`
+      <div class="nc-error" style="color:var(--text-mid);background:rgba(255,255,255,.03)">
+        <p style="margin-bottom:.8rem">Search unavailable. Check directly on the official register:</p>
+        <a href="https://find-and-update.company-information.service.gov.uk/search/companies?q=${encodeURIComponent(q)}"
+           target="_blank" rel="noopener" class="btn-cta" style="font-size:.82rem;padding:.6rem 1.4rem;display:inline-flex;gap:.4rem;border-radius:8px">
+          <i class="fas fa-external-link-alt"></i> Search on Companies House
+        </a>
+      </div>`;
+  }
+  ncBtn.disabled=false;
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+</script>
 </body>
 </html>

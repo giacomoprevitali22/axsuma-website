@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID Verification Services — Axsuma</title>
+  <title>ID Verification — Axsuma</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <meta name="theme-color" content="#222831">
@@ -13,18 +13,17 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --summit:#00594a;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
-      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
-      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
+      --summit:#00594a;--summit-light:#007a66;--onyx:#222831;--white:#FFFFFF;
+      --frost:#D0DCE3;--text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
       --border:rgba(208,220,227,.1);--font:'Inter','Helvetica Neue',Arial,sans-serif;
-      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+      --max:720px;--ease:0.3s cubic-bezier(0.4,0,0.2,1);
     }
     html{scroll-behavior:smooth;font-size:16px}
     body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
 
-    /* NAV (simplified) */
+    /* NAV */
     .nav{background:rgba(34,40,49,.95);padding:.8rem 0;border-bottom:1px solid var(--border)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1140px}
     .nav-logo{height:36px}
@@ -32,75 +31,87 @@
     .nav-back{font-size:.82rem;color:var(--text-mid);display:flex;align-items:center;gap:.4rem}
     .nav-back:hover{color:var(--white)}
 
-    /* PAGE */
-    .page-header{padding:4rem 0 2rem;text-align:center}
+    /* HEADER */
+    .page-header{padding:4rem 0 1.5rem;text-align:center}
     .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
-    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
+    .page-header p{color:var(--text-mid);font-size:.92rem;max-width:500px;margin:0 auto}
     .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
     .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
 
-    /* PRICING CARD */
-    .pricing{display:flex;gap:1.5rem;margin:2rem 0 3rem;flex-wrap:wrap;justify-content:center}
-    .price-card{flex:1;min-width:250px;max-width:350px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:2rem;text-align:center;transition:all var(--ease)}
-    .price-card:hover{border-color:var(--summit);background:rgba(15,76,58,.05)}
-    .price-card.featured{border-color:var(--summit);background:rgba(15,76,58,.08)}
-    .price-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--summit);margin-bottom:.8rem}
-    .price-amount{font-size:2.5rem;font-weight:300;color:var(--white);margin-bottom:.3rem}
-    .price-amount span{font-size:1rem;color:var(--text-mid)}
-    .price-desc{font-size:.85rem;color:var(--text-mid);margin-bottom:1.5rem;line-height:1.6}
-    .price-features{list-style:none;text-align:left;margin-bottom:1.5rem}
-    .price-features li{font-size:.82rem;color:var(--text-mid);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
-    .price-features li i{color:var(--summit);font-size:.7rem}
+    /* PRICE BANNER — Tahoe */
+    .price-banner{margin:2rem 0;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .price-banner-text h2{font-size:1.05rem;font-weight:500;color:var(--white);margin-bottom:.2rem}
+    .price-banner-text p{font-size:.82rem;color:var(--text-mid);margin:0}
+    .price-tag{font-size:2.2rem;font-weight:300;color:var(--white);white-space:nowrap}
+    .price-tag span{font-size:.85rem;color:var(--text-mid);font-weight:400}
 
-    /* FORM */
-    .order-form{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem}
-    .form-title{font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:.4rem}
-    .form-subtitle{font-size:.85rem;color:var(--text-mid);margin-bottom:2rem}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .form-group{display:flex;flex-direction:column;gap:.4rem}
-    .form-group.full{grid-column:1/-1}
-    .form-group label{font-size:.78rem;font-weight:500;color:var(--text-mid);text-transform:uppercase;letter-spacing:.8px}
-    .form-group input,.form-group select,.form-group textarea{
-      background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;
-      padding:.7rem 1rem;color:var(--white);font-family:var(--font);font-size:.9rem;
-      transition:border-color var(--ease);outline:none}
-    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--summit)}
-    .form-group input::placeholder{color:var(--text-dim)}
-    .form-group textarea{resize:vertical;min-height:80px}
-    .form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23A1A6B4' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
-    .form-group select option{background:var(--onyx);color:var(--text)}
+    /* FEATURES ROW */
+    .features-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:0 0 2.5rem}
+    .feat{border-radius:12px;background:rgba(255,255,255,.03);padding:1.2rem 1rem;text-align:center}
+    .feat-icon{font-size:.9rem;color:var(--summit);margin-bottom:.4rem}
+    .feat p{font-size:.75rem;color:var(--text-mid);margin:0;line-height:1.4}
 
-    .form-divider{grid-column:1/-1;height:1px;background:var(--border);margin:.5rem 0}
+    /* FORM CARD */
+    .order-card{border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin-bottom:2.5rem}
+    .order-card h3{font-size:1rem;font-weight:500;color:var(--white);margin-bottom:.2rem}
+    .order-card .sub{font-size:.82rem;color:var(--text-mid);margin-bottom:1.8rem}
 
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);width:100%}
-    .btn-pay{background:var(--summit);color:#fff;font-size:1rem;padding:1rem 2rem;margin-top:1rem}
-    .btn-pay:hover{background:var(--slate-blue)}
+    /* PERSON BLOCK */
+    .person-block{border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:1.5rem;margin-bottom:.8rem;position:relative;transition:all .25s}
+    .person-block:hover{border-color:rgba(255,255,255,.12)}
+    .person-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+    .person-num{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--summit)}
+    .person-remove{background:none;border:none;color:var(--text-dim);font-size:.78rem;cursor:pointer;padding:.2rem .5rem;border-radius:6px;transition:all .2s}
+    .person-remove:hover{color:#f87171;background:rgba(248,113,113,.08)}
+    .person-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+
+    /* INPUTS — Tahoe */
+    .fg{display:flex;flex-direction:column;gap:.3rem}
+    .fg.full{grid-column:1/-1}
+    .fg label{font-size:.72rem;font-weight:500;color:var(--text-mid);letter-spacing:.5px}
+    .fg input,.fg select{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;
+      padding:.7rem 1rem;color:var(--white);font-family:var(--font);font-size:.85rem;outline:none;transition:all .25s}
+    .fg input::placeholder{color:var(--text-dim)}
+    .fg input:focus,.fg select:focus{border-color:var(--summit);background:rgba(255,255,255,.08);box-shadow:0 0 0 3px rgba(0,89,74,.15)}
+    .fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23A1A6B4' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+    .fg select option{background:var(--onyx);color:var(--text)}
+
+    /* ADD PERSON BUTTON */
+    .add-person{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.8rem;border-radius:12px;border:1px dashed rgba(255,255,255,.12);background:transparent;color:var(--text-mid);font-family:var(--font);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .25s;margin-bottom:1.5rem}
+    .add-person:hover{border-color:var(--summit);color:var(--summit);background:rgba(0,89,74,.04)}
+
+    /* DIVIDER */
+    .form-divider{height:1px;background:var(--border);margin:1.5rem 0}
+
+    /* YOUR DETAILS */
+    .your-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.5rem}
+
+    /* SUMMARY */
+    .summary{border-radius:12px;background:rgba(0,89,74,.08);border:1px solid rgba(0,89,74,.15);padding:1.2rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between}
+    .summary-text{font-size:.85rem;color:var(--text-mid)}
+    .summary-text strong{color:var(--white)}
+    .summary-total{font-size:1.3rem;font-weight:500;color:var(--white)}
+    .summary-total span{font-size:.75rem;color:var(--text-mid);font-weight:400}
+
+    /* PAY BUTTON */
+    .btn-pay{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:1rem;border-radius:12px;border:none;background:var(--summit);color:#fff;font-family:var(--font);font-size:.92rem;font-weight:600;cursor:pointer;transition:all .25s}
+    .btn-pay:hover{background:var(--summit-light)}
+    .btn-pay:active{transform:scale(.98)}
     .btn-pay:disabled{opacity:.5;cursor:not-allowed}
-    .btn-pay i{font-size:1.1rem}
-
-    .secure-note{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;font-size:.75rem;color:var(--text-dim)}
+    .secure-note{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:.8rem;font-size:.72rem;color:var(--text-dim)}
     .secure-note i{color:var(--summit)}
-
-    .stripe-badge{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:.8rem;font-size:.72rem;color:var(--text-dim)}
-
-    /* INFO */
-    .info-section{margin-bottom:3rem}
-    .info-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
-    .info-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
-    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
-    .info-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-    .info-card i{color:var(--summit);font-size:1.2rem;margin-bottom:.8rem}
-    .info-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.4rem}
-    .info-card p{font-size:.8rem;color:var(--text-mid);line-height:1.5;margin:0}
+    .stripe-badge{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:.5rem;font-size:.7rem;color:var(--text-dim)}
 
     /* FOOTER */
-    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:1rem}
     .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
 
-    @media(max-width:768px){
-      .form-grid{grid-template-columns:1fr}
-      .pricing{flex-direction:column;align-items:center}
-      .info-grid{grid-template-columns:1fr}
+    @media(max-width:600px){
+      .price-banner{flex-direction:column;text-align:center}
+      .person-grid,.your-grid{grid-template-columns:1fr}
+      .features-row{grid-template-columns:1fr}
+      .summary{flex-direction:column;gap:.6rem;text-align:center}
     }
   </style>
 </head>
@@ -124,136 +135,86 @@
 <!-- HEADER -->
 <div class="page-header">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="#solutions">Solutions</a> / ID Verification</p>
-    <h1>ID Verification Services</h1>
-    <p>Digital identity verification for AML/KYC compliance. Fast, secure, fully auditable — with instant online payment.</p>
+    <p class="breadcrumb"><a href="index.html">Home</a> / ID Verification</p>
+    <h1>ID Verification</h1>
+    <p>Digital identity verification for AML/KYC compliance. Fast, secure, fully auditable.</p>
   </div>
 </div>
 
-<!-- PRICING -->
+<!-- PRICE -->
 <div class="container">
-  <div class="pricing">
-    <div class="price-card">
-      <p class="price-label">Individual</p>
-      <p class="price-amount">£75 <span>+ VAT</span></p>
-      <p class="price-desc">Single individual identity verification</p>
-      <ul class="price-features">
-        <li><i class="fas fa-check"></i> Document verification (passport/driving licence)</li>
-        <li><i class="fas fa-check"></i> Liveness check</li>
-        <li><i class="fas fa-check"></i> PEP & sanctions screening</li>
-        <li><i class="fas fa-check"></i> Audit-ready compliance report</li>
-        <li><i class="fas fa-check"></i> Results within 24 hours</li>
-      </ul>
+  <div class="price-banner">
+    <div class="price-banner-text">
+      <h2>Individual Verification</h2>
+      <p>Per person. Add multiple individuals from the same group below.</p>
     </div>
-    <div class="price-card featured">
-      <p class="price-label">Corporate Bundle</p>
-      <p class="price-amount">£250 <span>+ VAT</span></p>
-      <p class="price-desc">Up to 4 individuals (directors/UBOs)</p>
-      <ul class="price-features">
-        <li><i class="fas fa-check"></i> Everything in Individual</li>
-        <li><i class="fas fa-check"></i> Up to 4 persons verified</li>
-        <li><i class="fas fa-check"></i> Corporate structure review</li>
-        <li><i class="fas fa-check"></i> Enhanced due diligence available</li>
-        <li><i class="fas fa-check"></i> Dedicated compliance officer</li>
-      </ul>
-    </div>
+    <div class="price-tag">£125 <span>+ VAT / person</span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="container">
+  <div class="features-row">
+    <div class="feat"><div class="feat-icon"><i class="fas fa-id-card"></i></div><p>Document &amp; liveness verification</p></div>
+    <div class="feat"><div class="feat-icon"><i class="fas fa-user-shield"></i></div><p>PEP &amp; sanctions screening</p></div>
+    <div class="feat"><div class="feat-icon"><i class="fas fa-file-circle-check"></i></div><p>Audit-ready report within 24h</p></div>
   </div>
 </div>
 
 <!-- ORDER FORM -->
 <div class="container">
-  <form class="order-form" id="orderForm">
-    <p class="form-title">Verification Order Form</p>
-    <p class="form-subtitle">Complete the form below and proceed to secure payment via Stripe.</p>
+  <form class="order-card" id="orderForm">
+    <h3>Individuals to Verify</h3>
+    <p class="sub">Enter the details for each person. You can add more from the same group.</p>
 
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Package</label>
-        <select id="package" required>
-          <option value="">Select package...</option>
-          <option value="individual">Individual — £75 + VAT</option>
-          <option value="corporate">Corporate Bundle — £250 + VAT</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Number of individuals</label>
-        <select id="numPersons" required>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
-      </div>
-
-      <div class="form-divider"></div>
-
-      <div class="form-group">
-        <label>Your full name</label>
-        <input type="text" id="clientName" placeholder="John Smith" required>
-      </div>
-      <div class="form-group">
-        <label>Email address</label>
-        <input type="email" id="clientEmail" placeholder="john@company.com" required>
-      </div>
-      <div class="form-group">
-        <label>Company name</label>
-        <input type="text" id="companyName" placeholder="Acme Holdings Ltd">
-      </div>
-      <div class="form-group">
-        <label>Phone</label>
-        <input type="tel" id="phone" placeholder="+44 7700 900000">
-      </div>
-
-      <div class="form-divider"></div>
-
-      <div class="form-group full">
-        <label>Person(s) to be verified</label>
-        <textarea id="persons" placeholder="Full name, date of birth, nationality for each person to be verified" required></textarea>
-      </div>
-      <div class="form-group full">
-        <label>Additional notes (optional)</label>
-        <textarea id="notes" placeholder="Any specific requirements, urgency, or context"></textarea>
-      </div>
-
-      <div class="form-group full">
-        <button type="submit" class="btn btn-pay" id="payBtn">
-          <i class="fas fa-lock"></i> Proceed to Secure Payment
-        </button>
-        <p class="secure-note"><i class="fas fa-shield-halved"></i> 256-bit SSL encryption. Your data is safe.</p>
-        <p class="stripe-badge"><i class="fab fa-stripe" style="font-size:1.4rem;color:var(--text-mid)"></i> Powered by Stripe</p>
+    <div id="persons-list">
+      <!-- Person 1 (always present) -->
+      <div class="person-block" data-index="1">
+        <div class="person-header">
+          <span class="person-num">Person 1</span>
+        </div>
+        <div class="person-grid">
+          <div class="fg"><label>Full name</label><input type="text" name="name_1" placeholder="John Smith" required></div>
+          <div class="fg"><label>Date of birth</label><input type="date" name="dob_1" required></div>
+          <div class="fg"><label>Nationality</label><input type="text" name="nationality_1" placeholder="British"></div>
+          <div class="fg"><label>Email (for verification link)</label><input type="email" name="email_1" placeholder="john@example.com" required></div>
+        </div>
       </div>
     </div>
+
+    <button type="button" class="add-person" id="addPersonBtn">
+      <i class="fas fa-plus"></i> Add another individual — £125 + VAT
+    </button>
+
+    <div class="form-divider"></div>
+
+    <h3 style="margin-bottom:.2rem">Your Details</h3>
+    <p class="sub">Who is ordering this verification?</p>
+    <div class="your-grid">
+      <div class="fg"><label>Your name</label><input type="text" id="clientName" placeholder="Jane Doe" required></div>
+      <div class="fg"><label>Email</label><input type="email" id="clientEmail" placeholder="jane@company.com" required></div>
+      <div class="fg"><label>Company (optional)</label><input type="text" id="companyName" placeholder="Acme Holdings Ltd"></div>
+      <div class="fg"><label>Phone (optional)</label><input type="tel" id="phone" placeholder="+44 7700 900000"></div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+      <div class="summary-text"><strong id="summaryCount">1</strong> individual verification</div>
+      <div class="summary-total">£<span id="summaryAmount">150.00</span> <span>inc. VAT</span></div>
+    </div>
+
+    <button type="submit" class="btn-pay" id="payBtn">
+      <i class="fas fa-lock"></i> Proceed to Secure Payment
+    </button>
+    <p class="secure-note"><i class="fas fa-shield-halved"></i> 256-bit SSL encryption</p>
+    <p class="stripe-badge"><i class="fab fa-stripe" style="font-size:1.4rem;color:var(--text-mid)"></i> Powered by Stripe</p>
   </form>
-</div>
-
-<!-- INFO -->
-<div class="container">
-  <div class="info-section">
-    <h2>How It Works</h2>
-    <div class="info-grid">
-      <div class="info-card">
-        <i class="fas fa-file-lines"></i>
-        <h4>1. Submit Order</h4>
-        <p>Complete the form above with details of the person(s) to be verified and proceed to payment.</p>
-      </div>
-      <div class="info-card">
-        <i class="fas fa-id-card"></i>
-        <h4>2. Verification Link</h4>
-        <p>We send a secure verification link to each individual. They upload ID documents and complete a liveness check.</p>
-      </div>
-      <div class="info-card">
-        <i class="fas fa-circle-check"></i>
-        <h4>3. Compliance Report</h4>
-        <p>You receive an audit-ready verification report within 24 hours, stored securely for your records.</p>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer-mini">
   <div class="container">
-    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
+    &copy; 2026 Axsuma Ltd. Registered in England &amp; Wales. &nbsp;|&nbsp;
     <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
     <a href="terms.html">Terms</a> &nbsp;|&nbsp;
     <a href="gdpr.html">GDPR</a>
@@ -261,72 +222,99 @@
 </div>
 
 <script>
-// Stripe Test Mode - Publishable key
-const STRIPE_PK = 'pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'; // Replace with your Stripe test publishable key
+const UNIT_PRICE = 125;    // £ net
+const VAT_RATE = 0.20;
+const personsList = document.getElementById('persons-list');
+const addBtn = document.getElementById('addPersonBtn');
+const summaryCount = document.getElementById('summaryCount');
+const summaryAmount = document.getElementById('summaryAmount');
+let personCount = 1;
 
-// Price IDs (create these in Stripe Dashboard > Products)
-const PRICES = {
-  individual: 'price_test_individual', // £75 + VAT = £90 (9000 pence)
-  corporate: 'price_test_corporate'    // £250 + VAT = £300 (30000 pence)
-};
+function updateSummary(){
+  const n = personsList.querySelectorAll('.person-block').length;
+  summaryCount.textContent = n;
+  const total = n * UNIT_PRICE * (1 + VAT_RATE);
+  summaryAmount.textContent = total.toFixed(2);
+}
 
-// For demo/test: simulate Stripe Checkout without actual keys
-const form = document.getElementById('orderForm');
-const payBtn = document.getElementById('payBtn');
-const packageSelect = document.getElementById('package');
-
-// Update button text based on selection
-packageSelect.addEventListener('change', function() {
-  const prices = { individual: '£90.00', corporate: '£300.00' };
-  if (this.value && prices[this.value]) {
-    payBtn.innerHTML = `<i class="fas fa-lock"></i> Pay ${prices[this.value]} via Stripe`;
-  } else {
-    payBtn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment';
-  }
+addBtn.addEventListener('click', function(){
+  personCount++;
+  const block = document.createElement('div');
+  block.className = 'person-block';
+  block.dataset.index = personCount;
+  block.innerHTML = `
+    <div class="person-header">
+      <span class="person-num">Person ${personCount}</span>
+      <button type="button" class="person-remove" onclick="removePerson(this)"><i class="fas fa-xmark"></i> Remove</button>
+    </div>
+    <div class="person-grid">
+      <div class="fg"><label>Full name</label><input type="text" name="name_${personCount}" placeholder="Full name" required></div>
+      <div class="fg"><label>Date of birth</label><input type="date" name="dob_${personCount}" required></div>
+      <div class="fg"><label>Nationality</label><input type="text" name="nationality_${personCount}" placeholder="Nationality"></div>
+      <div class="fg"><label>Email (for verification link)</label><input type="email" name="email_${personCount}" placeholder="email@example.com" required></div>
+    </div>`;
+  personsList.appendChild(block);
+  updateSummary();
+  block.querySelector('input').focus();
 });
 
-form.addEventListener('submit', async function(e) {
+function removePerson(btn){
+  btn.closest('.person-block').remove();
+  // Re-number
+  personsList.querySelectorAll('.person-block').forEach((b,i)=>{
+    b.querySelector('.person-num').textContent = `Person ${i+1}`;
+  });
+  updateSummary();
+}
+
+// Form submit
+document.getElementById('orderForm').addEventListener('submit', async function(e){
   e.preventDefault();
+  const payBtn = document.getElementById('payBtn');
   payBtn.disabled = true;
   payBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting to Stripe...';
 
+  const persons = [];
+  personsList.querySelectorAll('.person-block').forEach(b => {
+    const inputs = b.querySelectorAll('input');
+    persons.push({
+      name: inputs[0]?.value,
+      dob: inputs[1]?.value,
+      nationality: inputs[2]?.value,
+      email: inputs[3]?.value
+    });
+  });
+
   const data = {
-    package: packageSelect.value,
-    numPersons: document.getElementById('numPersons').value,
+    persons,
     clientName: document.getElementById('clientName').value,
     clientEmail: document.getElementById('clientEmail').value,
     companyName: document.getElementById('companyName').value,
     phone: document.getElementById('phone').value,
-    persons: document.getElementById('persons').value,
-    notes: document.getElementById('notes').value
+    totalPersons: persons.length,
+    totalAmount: (persons.length * UNIT_PRICE * (1 + VAT_RATE)).toFixed(2)
   };
 
   try {
-    // In production: POST to your server to create a Stripe Checkout Session
     const response = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-
     if (response.ok) {
       const { url } = await response.json();
-      window.location.href = url; // Redirect to Stripe Checkout
+      window.location.href = url;
     } else {
       throw new Error('Server error');
     }
   } catch (err) {
-    // DEMO MODE: Show test message since we don't have a live server
-    alert('STRIPE TEST MODE\n\nIn production, this would redirect to Stripe Checkout.\n\nOrder details:\n' +
-      `Package: ${data.package}\n` +
-      `Client: ${data.clientName} (${data.clientEmail})\n` +
-      `Company: ${data.companyName}\n` +
-      `Persons: ${data.persons}`);
-
+    alert(`STRIPE TEST MODE\n\nOrder: ${persons.length} verification(s)\nTotal: £${data.totalAmount} inc. VAT\n\nIn production this redirects to Stripe Checkout.`);
     payBtn.disabled = false;
     payBtn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment';
   }
 });
+
+updateSummary();
 </script>
 </body>
 </html>
