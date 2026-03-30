@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <meta name="theme-color" content="#222831">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -16,24 +16,41 @@
       --summit:#00594a;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
       --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
       --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
-      --border:rgba(208,220,227,.1);--font:'Inter','Helvetica Neue',Arial,sans-serif;
+      --border:rgba(208,220,227,.1);--font:'DM Sans','Helvetica Neue',Arial,sans-serif;--font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
       --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
     }
     html{scroll-behavior:smooth;font-size:16px}
     body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
+    h1,h2,h3,h4,h5,h6{font-family:var(--font-heading)}
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
 
-    /* NAV */
-    .nav{background:rgba(34,40,49,.95);padding:.8rem 0;border-bottom:1px solid var(--border)}
-    .nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1140px}
-    .nav-logo{height:40px}
-    
-    .nav-back{font-size:.82rem;color:var(--text-mid);display:flex;align-items:center;gap:.4rem}
-    .nav-back:hover{color:var(--white)}
+        /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white,#fff);border-bottom:1px solid rgba(226,229,233,.8);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem;max-width:1140px}
+    .nav-logo{height:44px}
+    .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#6b7280;transition:color .3s;font-family:'Inter',sans-serif}
+    .nav-links a:hover{color:#2a2f36}
+    .nav-cta{background:#00594a;color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:#007a66;color:#fff!important}
+    .nav-drop{position:relative}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform .3s}
+    .nav-drop:hover>a i{transform:rotate(180deg)}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:#fff;border:1px solid #e2e5e9;border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
+    .nav-drop:hover .mega{opacity:1;visibility:visible}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#00594a;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid #f0f1f3}
+    .mega ul{list-style:none;margin-bottom:1rem}
+    .mega li{margin-bottom:.2rem}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:#6b7280!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:#2a2f36!important}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer}
+    .nav-toggle span{display:block;width:22px;height:2px;background:#2a2f36;margin:5px 0;transition:.3s}
+    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}.mega{display:none!important}}
+
 
     /* PAGE */
-    .page-header{padding:4rem 0 2rem;text-align:center}
+    .page-header{padding:6rem 0 2rem;text-align:center}
     .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
     .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
     .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
@@ -89,12 +106,39 @@
 <body>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="container">
     <a href="index.html">
-      <img class="nav-logo" src="logo-light.svg" alt="Axsuma">
+      <img class="nav-logo" src="logo.svg" alt="Axsuma">
     </a>
-    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li class="nav-drop">
+        <a href="index.html#solutions">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="mega">
+          <div>
+            <h5>Company Formations</h5>
+            <ul><li><a href="company-formations.html">Company Incorporations</a></li><li><a href="company-formations.html">Ready-made Companies</a></li><li><a href="company-formations.html">LLP Incorporations</a></li></ul>
+            <h5>Governance &amp; CoSec</h5>
+            <ul><li><a href="governance.html">CoSec Support</a></li><li><a href="governance.html">Registered Office</a></li><li><a href="governance.html">Mail Forwarding</a></li><li><a href="governance.html">Service Address</a></li></ul>
+          </div>
+          <div>
+            <h5>M&amp;A &amp; Transactions</h5>
+            <ul><li><a href="ma-transactions.html">Deal Stack Management</a></li><li><a href="ma-transactions.html">SPV Management</a></li><li><a href="ma-transactions.html">UK Holding Companies</a></li><li><a href="ma-transactions.html">Professional Directorships</a></li><li><a href="ma-transactions.html">Pre- &amp; Post-Deal Governance</a></li><li><a href="ma-transactions.html">Acquisition Vehicles</a></li></ul>
+          </div>
+          <div>
+            <h5>Accounting &amp; Tax</h5>
+            <ul><li><a href="accounting.html">Bookkeeping</a></li><li><a href="accounting.html">Tax Compliance</a></li><li><a href="accounting.html">VAT &amp; ATED</a></li><li><a href="accounting.html">PAYE &amp; Payroll</a></li></ul>
+            <h5>Specialist</h5>
+            <ul><li><a href="overseas-entities.html">Overseas Entities (ROE)</a></li><li><a href="process-agent.html">Process Agent</a></li><li><a href="id-verification.html">ID Verification</a></li></ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="index.html#sectors">Sectors</a></li>
+      <li><a href="index.html#insights">Insights</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
