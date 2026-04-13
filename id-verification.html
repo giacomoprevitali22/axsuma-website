@@ -175,8 +175,8 @@
 <div class="page-header">
   <div class="container">
     <p class="breadcrumb"><a href="index.html">Home</a> / ID Verification</p>
-    <h1>ID Verification</h1>
-    <p>Digital identity verification for AML/KYC compliance. Fast, secure, fully auditable.</p>
+    <h1>Companies House Identity Verification</h1>
+    <p>Axsuma is a Companies House Authorised Corporate Service Provider (ACSP), authorised to carry out identity verification on behalf of clients under the Economic Crime and Corporate Transparency Act.</p>
   </div>
 </div>
 
@@ -194,9 +194,9 @@
 <!-- FEATURES -->
 <div class="container">
   <div class="features-row">
-    <div class="feat"><div class="feat-icon"><i class="fas fa-id-card"></i></div><p>Document &amp; liveness verification</p></div>
-    <div class="feat"><div class="feat-icon"><i class="fas fa-user-shield"></i></div><p>PEP &amp; sanctions screening</p></div>
-    <div class="feat"><div class="feat-icon"><i class="fas fa-file-circle-check"></i></div><p>Audit-ready report within 24h</p></div>
+    <div class="feat"><div class="feat-icon"><i class="fas fa-id-card"></i></div><p>ACSP-authorised identity verification</p></div>
+    <div class="feat"><div class="feat-icon"><i class="fas fa-user-shield"></i></div><p>ECCTA compliant &amp; fully supported</p></div>
+    <div class="feat"><div class="feat-icon"><i class="fas fa-file-circle-check"></i></div><p>Unique Companies House code issued</p></div>
   </div>
 </div>
 
@@ -204,7 +204,7 @@
 <div class="container">
   <form class="order-card" id="orderForm">
     <h3>Individuals to Verify</h3>
-    <p class="sub">Enter the details for each person. You can add more from the same group.</p>
+    <p class="sub">Enter the details for each person. You can add details for additional individuals to be verified below.</p>
 
     <div id="persons-list">
       <!-- Person 1 (always present) -->
@@ -227,13 +227,14 @@
 
     <div class="form-divider"></div>
 
-    <h3 style="margin-bottom:.2rem">Your Details</h3>
-    <p class="sub">Who is ordering this verification?</p>
+    <h3 style="margin-bottom:.2rem">Invoice Details</h3>
+    <p class="sub">Please provide details of who the receipted invoice should be issued to below.</p>
     <div class="your-grid">
       <div class="fg"><label>Your name</label><input type="text" id="clientName" placeholder="Jane Doe" required></div>
       <div class="fg"><label>Email</label><input type="email" id="clientEmail" placeholder="jane@company.com" required></div>
       <div class="fg"><label>Company (optional)</label><input type="text" id="companyName" placeholder="Acme Holdings Ltd"></div>
       <div class="fg"><label>Phone (optional)</label><input type="tel" id="phone" placeholder="+44 7700 900000"></div>
+      <div class="fg" style="grid-column:1/-1"><label>Full address</label><input type="text" id="clientAddress" placeholder="123 Example Street, London, EC1A 1BB" required></div>
     </div>
 
     <!-- SUMMARY -->
