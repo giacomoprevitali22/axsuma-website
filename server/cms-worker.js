@@ -131,40 +131,62 @@ function errorResponse(message, status = 400) {
   return jsonResponse({ error: message }, status);
 }
 
-// Initialize super admin on first run
+// Default credentials (used if env vars are not set)
+const DEFAULT_USERS = [
+  {
+    name: 'Giacomo Previtali',
+    email: 'giacomo.previtali@sdcprevitali.com',
+    password: '3548Omagreb.g22;',
+    role: 'super_admin',
+  },
+  {
+    name: 'Jason Reader',
+    email: 'jason.reader@axsuma.co.uk',
+    password: 'Axsuma2026!!',
+    role: 'editor',
+  },
+  {
+    name: 'Charlotte Phipps-Hornby',
+    email: 'charlotte.phippshornby@axsuma.co.uk',
+    password: 'Axsuma2026!!',
+    role: 'editor',
+  },
+];
+
+const DEFAULT_JWT_SECRET = 'axsuma-cms-jwt-secret-k8f3m9x2q7w4';
+
+// Initialize all users on first run
 async function initializeIfNeeded(env) {
   const usersIndex = await env.CMS_USERS.get('users:index');
   if (usersIndex) {
     return; // Already initialized
   }
 
-  const superAdminEmail = env.SUPER_ADMIN_EMAIL;
-  const superAdminPassword = env.SUPER_ADMIN_PASSWORD;
+  const userIds = [];
 
-  if (!superAdminEmail || !superAdminPassword) {
-    console.error('Super admin credentials not configured in environment variables');
-    return;
+  for (const userData of DEFAULT_USERS) {
+    const userId = generateUUID();
+    const passwordHash = await hashPassword(userData.password);
+
+    const user = {
+      id: userId,
+      name: userData.name,
+      email: userData.email,
+      role: userData.role,
+      passwordHash,
+      locked: false,
+      createdAt: new Date().toISOString(),
+    };
+
+    await env.CMS_USERS.put(`user:${userId}`, JSON.stringify(user));
+    await env.CMS_USERS.put(`email:${userData.email}`, userId);
+    userIds.push(userId);
+
+    console.log(`User initialized: ${userData.email} (${userData.role})`);
   }
 
-  const superAdminId = generateUUID();
-  const passwordHash = await hashPassword(superAdminPassword);
-
-  const superAdminUser = {
-    id: superAdminId,
-    name: 'Super Admin',
-    email: superAdminEmail,
-    role: 'super_admin',
-    passwordHash,
-    locked: false,
-    createdAt: new Date().toISOString(),
-  };
-
-  // Store user
-  await env.CMS_USERS.put(`user:${superAdminId}`, JSON.stringify(superAdminUser));
-  await env.CMS_USERS.put(`email:${superAdminEmail}`, superAdminId);
-  await env.CMS_USERS.put('users:index', JSON.stringify([superAdminId]));
-
-  console.log('Super admin initialized:', superAdminEmail);
+  await env.CMS_USERS.put('users:index', JSON.stringify(userIds));
+  console.log('All users initialized successfully');
 }
 
 // Get user by email
@@ -228,7 +250,7 @@ async function getAuthUser(request, env) {
   }
 
   const token = authHeader.slice(7);
-  const payload = await verifyJWT(token, env.JWT_SECRET);
+  const payload = await verifyJWT(token, env.JWT_SECRET || DEFAULT_JWT_SECRET);
   if (!payload) return null;
 
   const user = await getUserById(env, payload.sub);
@@ -273,7 +295,7 @@ async function handleLogin(request, env) {
   }
 
   // Create JWT
-  const token = await createJWT({ sub: user.id, role: user.role }, env.JWT_SECRET);
+  const token = await createJWT({ sub: user.id, role: user.role }, env.JWT_SECRET || DEFAULT_JWT_SECRET);
 
   const responseUser = {
     id: user.id,

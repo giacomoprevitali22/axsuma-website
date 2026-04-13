@@ -13,11 +13,10 @@ id = "REPLACE_WITH_CMS_CONTENT_NAMESPACE_ID"
 binding = "CMS_USERS"
 id = "REPLACE_WITH_CMS_USERS_NAMESPACE_ID"
 
-# Environment variables (set securely via wrangler secret)
-# Do NOT put real values here — use:
+# Environment variables (optional — defaults are hardcoded in the Worker)
+# To override, use:
 #   wrangler secret put JWT_SECRET
-#   wrangler secret put SUPER_ADMIN_EMAIL
-#   wrangler secret put SUPER_ADMIN_PASSWORD
+# The default users (Giacomo, Jason, Charlotte) are created automatically on first run.
 
 # Custom domain (optional — configure after first deploy)
 # routes = [
