@@ -1,0 +1,524 @@
+{
+  "company-formations": {
+    "header": {
+      "title": "Company Formation Services",
+      "subtitle": "Expert UK company incorporation and establishment. From limited companies to LLPs, we handle everything under the Companies Act 2006."
+    },
+    "overview": {
+      "title": "Establishing Your UK Business Foundation",
+      "paragraphs": [
+        "Forming a UK company is the cornerstone of establishing a serious, credible business entity. Whether you're launching a startup, setting up a subsidiary, or consolidating existing operations, choosing the right legal structure matters. Our company formation service combines comprehensive legislative knowledge with hands-on support to ensure your business is established correctly from day one.",
+        "We specialise in navigating the Companies House registration process, managing articles of association, establishing company governance, and ensuring you meet all statutory obligations from incorporation onwards. Our team has processed hundreds of incorporations, from straightforward single-director companies to complex multi-shareholder corporate structures.",
+        "Every company we form is registered with Companies House under the Companies Act 2006 and comes with proper documentation, statutory registers, and a clear governance framework tailored to your business needs."
+      ]
+    },
+    "services": [
+      {
+        "title": "UK Company Incorporations (Private Limited Companies)",
+        "paragraphs": [
+          "A private limited company (Ltd) is the most popular business structure in the UK, offering liability protection and tax efficiency. When you incorporate with Axsuma, we handle every detail: from submitting your incorporation documents to Companies House through to delivering your completed incorporation package.",
+          "The incorporation process begins with choosing a unique company name that complies with Companies House naming rules and is not already registered. We verify name availability, ensure compliance with the Sensitive Words List, and confirm trade mark clearance. Your memorandum and articles of association are prepared bespoke to your structure, outlining shareholdings, director powers, shareholder rights, voting procedures, and dividend distributions in line with the Companies Act 2006.",
+          "We prepare all required statutory documents including the application for incorporation (Form IN01), confirmation of the company secretary (if applicable), statement of initial officers, and statement of capital and initial shareholdings. All documents are digitally signed and submitted to Companies House, with submission typically completed within 1-2 working days. You'll receive your Certificate of Incorporation, company registration number (CRN), and a complete corporate governance package ready for operations.",
+          "Our incorporations include setup of statutory registers (members, directors, secretaries, charges, and persons with significant control), issuance of share certificates, and registration for corporation tax with HMRC. We ensure your company is fully tax-registered and ready for trading immediately upon incorporation."
+        ]
+      },
+      {
+        "title": "Ready-Made Companies (Off-the-Shelf)",
+        "paragraphs": [
+          "For businesses that need to operate immediately, ready-made companies offer instant trading capability. We maintain a stock of pre-incorporated companies with unique names, registered shares, and clean statutory registers. You acquire the company through a transfer of shares, change directors and shareholders through standard resolutions, and commence trading the same day.",
+          "Ready-made companies are ideal for fast-moving ventures, time-sensitive acquisitions, or situations where waiting for Companies House processing is commercially unviable. The company arrives fully registered with Companies House, with a current Confirmation Statement, and registered with HMRC for corporation tax and PAYE. You simply provide your director, shareholder, and registered office details, we update the registers, and you're live.",
+          "Each ready-made company includes a clean cap table, blank statutory registers, and a resignation letter from the existing director (who is Axsuma's nominee). The transfer process is completed within hours, making ready-made companies perfect for time-critical mandates such as immediate trading requirements, acquisition closings, or regulatory submissions under tight deadlines.",
+          "We maintain a diverse range of company names across multiple industries and sectors. All ready-made companies comply fully with the Companies Act 2006 and Companies House requirements, with no hidden liabilities or historical baggage. You're acquiring a clean, dormant company structure ready for your business operations."
+        ]
+      },
+      {
+        "title": "Limited Liability Partnership (LLP) Incorporations",
+        "paragraphs": [
+          "Limited Liability Partnerships (LLPs) combine the flexibility of partnership with corporate liability protection. Regulated by the Limited Liability Partnerships Act 2000 and the Limited Liability Partnerships Regulations 2001, LLPs are particularly popular in professional services, accounting, law, and management consulting. Unlike traditional partnerships, LLP members (equivalent to directors) enjoy limited liability protection—you're not personally liable for the negligence or misconduct of other members.",
+          "LLP formation mirrors company incorporation but with distinct statutory requirements. We prepare the incorporation application (Form LLP IN01) alongside the LLP agreement, which defines member contributions, profit-sharing arrangements, management rights, member exit procedures, and dispute resolution. Unlike companies with prescriptive articles, LLP agreements offer flexibility and are contractually binding on all members. Members also have designated membership interests rather than shares, with taxation typically passing through to individual members rather than at the LLP level.",
+          "The incorporation process involves submitting incorporation documents to Companies House, registration of initial members, and filing the LLP agreement. Upon completion, you'll receive confirmation of the LLP's registration number and incorporation certificate. We then register the LLP with HMRC for corporation tax and any relevant regulatory bodies (such as the Solicitors Regulation Authority for legal LLPs or the Institute of Chartered Accountants for accounting partnerships).",
+          "LLPs must file annual accounts and confirmation statements with Companies House, though they benefit from certain filing exemptions available to smaller LLPs. We ensure your LLP is fully established, properly governed, and registered with all relevant authorities from day one.",
+          "Every company incorporated in the UK must have a registered office address where statutory notices, documents, and correspondence can be delivered. This is a mandatory Companies House filing requirement under the Companies Act 2006, and the registered office address is publicly searchable on the Companies House register. Many growing businesses use our professional registered office service rather than listing their home or temporary office address.",
+          "Our central London registered office services provide a prestigious business address that enhances your company's corporate profile. We receive all statutory and legal correspondence on your behalf, including documents from Companies House, HMRC, and regulatory bodies. Our service includes secure mail handling, scanning of important documents for your online portal, and weekly email alerts of any correspondence received. We maintain confidentiality and professionalism, never disclosing your details beyond what's required by law.",
+          "The registered office is distinct from your trading address or operational premises. Many companies operating from home offices, flexible workspaces, or multiple locations use a professional registered office to present a permanent, credible corporate presence. Directors' home addresses remain private (filed with Companies House under private register provisions) while the registered office appears on public filings.",
+          "Should your circumstances change—relocation, office closure, or business restructuring—you can update your registered office through a simple Companies House Form CH01, which we'll prepare and file on your behalf. Our registered office service includes the option to maintain this address indefinitely as your company evolves, with no additional setup costs when you incorporate or register a new entity with us."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Companies Act 2006 Expertise",
+        "description": "Deep knowledge of UK company law, statutory obligations, and best-practice governance. Every incorporation reflects current legislative requirements and future compliance needs."
+      },
+      {
+        "title": "Speed and Efficiency",
+        "description": "Companies House submissions completed within 24-48 hours. Ready-made companies available for same-day trading. No delays, no bureaucracy—just clean, fast incorporation."
+      },
+      {
+        "title": "Comprehensive Governance",
+        "description": "Articles tailored to your structure. Statutory registers properly maintained. Director protections and shareholder rights clearly defined. Compliance built in from day one."
+      }
+    ],
+    "cta": {
+      "title": "Ready to Incorporate Your UK Company?",
+      "body": "Discuss your business structure, incorporation timeline, and governance needs. We'll recommend the ideal formation approach for your situation.",
+      "ctaText": "Get in Touch"
+    }
+  },
+  "governance": {
+    "header": {
+      "title": "Company Secretarial & Governance Services",
+      "subtitle": "We support organisations in establishing and operating robust, proportionate governance frameworks that stand up to regulatory scrutiny and scale with growth."
+    },
+    "overview": {
+      "title": "Practical Governance, Delivered with Precision",
+      "paragraphs": [
+        "The role of company secretaries, in-house legal teams, and compliance teams is becoming increasingly complex. We support our clients as an extension of their team, whenever and however they need us. This could be interim support during busy periods, specialist project assistance, or a fully outsourced company secretarial function — all tailored to suit your specific needs.",
+        "Our company secretarial services ensure your company remains compliant with the Companies Act 2006, Companies House filing obligations, and corporate governance best practices. Our team manages the complete framework of statutory obligations, including maintaining registers, filing annual confirmations, managing director changes, handling persons with significant control (PSC) notifications, and keeping corporate records current and compliant.",
+        "We can be formally appointed as your corporate Company Secretary or provide flexible company secretarial support. Whether you are a small private company or a larger corporate structure, our services adapt to meet your needs."
+      ]
+    },
+    "services": [
+      {
+        "title": "Core Company Secretarial Services",
+        "paragraphs": [
+          "We work with companies, funds, family offices and their advisers across a range of jurisdictions, often in complex or fast-moving environments. Whether you require targeted advisory input, interim support, or a fully outsourced company secretarial function, our model is designed to integrate seamlessly and deliver with precision.",
+          "Our core services include: maintaining and updating statutory registers for shareholders, directors, and PSCs; preparing and filing Confirmation Statements; providing a prestigious London registered office and, optionally, acting as your appointed corporate secretary; managing governance changes such as officer appointments, share transfers, and restructures; and drafting legal documents, including resolutions, minutes, powers of attorney, and filings.",
+          "We also support board and meeting coordination — including agendas, papers and minutes — as well as interim and outsourced Company Secretary support with flexible resourcing to bridge gaps, manage peak periods or fully outsource the function."
+        ]
+      },
+      {
+        "title": "Registered Office & Mail Forwarding Services",
+        "paragraphs": [
+          "Every company must have a registered office for statutory notices and legal correspondence. Axsuma provides a prestigious London address that appears on all Companies House filings, public documents, and statutory notices. We receive all statutory correspondence, including documents from Companies House (such as confirmation statement reminders and annual filing notices) and HMRC communications (tax assessments, penalties, enquiries).",
+          "Our mail forwarding service includes email notifications with scanned copies of all mail received, ensuring you stay fully informed without the need for a physical office presence.",
+          "The Companies Act 2006 requires companies to maintain detailed statutory registers: the register of members (shareholders), register of directors, register of directors' residential addresses, register of secretaries, register of charges (mortgages/security interests), and (since 2016) the register of persons with significant control. These registers must be accurate, current, and available for inspection by members and (for PSC information) the public.",
+          "We maintain your statutory registers, ensuring they reflect current shareholdings, director changes, charges (such as bank security interests), and PSC information. When directors change (appointments, resignations, retirements), we update the directors register, file notifications with Companies House (Forms AP01 for appointments, TM01 for resignations), and manage director address confidentiality (filing private registers for residential addresses).",
+          "The PSC register records beneficial owners—individuals who ultimately own or control 25% or more of the company's shares or voting power. PSC identification has become increasingly important for anti-money laundering compliance, sanctions screening, and beneficial ownership transparency. We identify PSC holders, collect beneficial ownership information, verify PSC documentation, and maintain the PSC register with Companies House, filing PSC notifications (Forms PSC01-PSC08) within statutory 14-day deadlines.",
+          "For companies with nominee shareholders or complex ownership structures, we manage shareholder register accuracy while maintaining confidentiality of beneficial owners. For companies acquiring other companies or undertaking restructurings, we update registers to reflect new shareholdings, transfers of shares, and changes in corporate structure. All register updates are timely, accurate, and compliant with Companies House requirements."
+        ]
+      },
+      {
+        "title": "Annual Confirmation Statements & Statutory Filings",
+        "paragraphs": [
+          "Every company (with limited exemptions) must file a Confirmation Statement with Companies House at least once every 12 months, typically coinciding with the company's accounting reference date. The Confirmation Statement confirms that the company's statutory registers (directors, members, charges, PSC) are accurate as of the confirmation date. Failure to file confirmation statements results in penalties escalating from £150 to £750+, potential striking off the register, and director disqualification.",
+          "We prepare and file Confirmation Statements on your behalf, gathering required information: confirmation of director details and changes, shareholder register accuracy, PSC information updates, charge register accuracy (including confirmation of security interests and liens), and registered office confirmation. We file Confirmation Statements within statutory deadlines (14 days after the due date incurs a £150 penalty; more than 3 months incurs £750+). For companies in financial distress, timely confirmation statement filing can be the difference between company survival and striking off.",
+          "We also manage other statutory filings: accounts and reports filing (for companies above the small company threshold), directors' reports, auditors' reports (if required), and changes to corporate structure (mergers, capital changes, share issuances). We ensure all filings are accurate, timely, and comply with Companies House filing requirements and the Companies Act 2006.",
+          "For companies undergoing changes—acquisitions, mergers, restructuring, management changes—we coordinate all necessary statutory filings to reflect the company's evolving structure. We maintain a comprehensive filing calendar ensuring no statutory deadlines are missed and all Companies House obligations remain current.",
+          "If your company is currently managed by another provider, Axsuma can seamlessly take over company secretarial support. We coordinate the transition, retrieve all statutory information, verify register accuracy, identify pending filings, and assume responsibility for ongoing governance and compliance.",
+          "During the transfer-in process, we conduct a comprehensive compliance review: ensuring confirmation statements are up to date, verifying accounts are properly filed, checking director and PSC details for accuracy, and confirming charges are correctly registered. Any gaps or regulatory exposure are addressed with a remediation plan to bring your company fully into compliance."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Deadline Reliability",
+        "description": "Zero missed deadlines. We maintain a comprehensive filing calendar ensuring every confirmation statement, PSC notification, and statutory filing is timely and accurate. No penalties, no striking off."
+      },
+      {
+        "title": "Comprehensive Compliance",
+        "description": "Beyond basic filings—we ensure your statutory registers are accurate, PSC information is current, director details are correct, and board governance is compliant. Full governance oversight."
+      },
+      {
+        "title": "Seamless Transitions",
+        "description": "Transferring from another provider? We coordinate transitions, verify compliance, identify gaps, and ensure no disruption to your governance framework or filing obligations."
+      }
+    ],
+    "cta": {
+      "title": "Ensure Your Company Stays Compliant",
+      "body": "Whether establishing secretarial support, transferring from another provider, or resolving compliance gaps, we provide the governance framework your company needs.",
+      "ctaText": "Get in Touch"
+    }
+  },
+  "ma-transactions": {
+    "header": {
+      "title": "M&A Transaction Services",
+      "subtitle": "Readiness solutions for complex corporate transactions. UK ready-made packages for M&A, restructuring, and joint ventures."
+    },
+    "overview": {
+      "title": "Transaction-Ready. When You Need It.",
+      "paragraphs": [
+        "In the fast-paced environment of complex corporate transactions, timing is critical. Complex deal structures, regulatory hurdles, and aggressive timelines mean there is zero margin for administrative delay. We know that as dealmakers, your focus belongs on negotiation, strategy, and execution — not on the distraction of corporate administration.",
+        "Axsuma streamlines the process. We support lawyers, corporates, and private equity firms with pre-established corporate structures purpose-built for fast-moving M&A, restructuring, and carve-outs. We handle the essential administrative groundwork, providing the speed and structural certainty required to close the deal. Beyond completion, we ensure all entities remain fully compliant across their regulatory, accounting, tax, and payroll obligations.",
+        "We offer ready-made HoldCo, MidCo, and BidCo entities available for immediate reservation. These structures are securely held to order exclusively for law firms and advisors, allowing you to focus on deal structuring and negotiation without administrative bottlenecks."
+      ]
+    },
+    "services": [
+      {
+        "title": "Transaction-Ready Corporate Stacks",
+        "paragraphs": [
+          "Delays in entity formation, governance setup, or appointing directors can create unnecessary friction during sensitive deal phases. Our solution eliminates these risks. We offer ready-made HoldCo, MidCo, and BidCo entities available for immediate reservation.",
+          "Our fully aligned three-tier acquisition structure is configurable to specific transaction requirements. All entities are established with clean corporate records, dormant status, and are maintained in good standing. HoldCo serves as the ultimate parent entity, structured to support ownership, financing, and long-term governance. MidCo acts as an intermediary holding entity designed for structural flexibility and risk segregation. BidCo is the acquisition vehicle, purpose-built to execute the purchase and receive assets or shares at closing.",
+          "Entities can be reserved instantly upon instruction, securing exclusivity for your transaction. We maintain the corporate stack on your behalf — dormant, compliant, and ready — while deal negotiations progress, held to order for up to 6 months (extendable by agreement). Upon confirmation, entities are fully activated and transferred in accordance with your instructions and transaction timeline."
+        ]
+      },
+      {
+        "title": "SPV Management & Subsidiary Structuring",
+        "paragraphs": [
+          "Special Purpose Vehicles (SPVs)—narrow-purpose companies established for specific transactions or operational functions—require careful governance and statutory management. Whether establishing an SPV to isolate operational risk, segregate assets, facilitate financings, or hold specific business units, we manage the SPV's complete corporate lifecycle.",
+          "SPVs are commonly used to acquire specific assets or business lines, to facilitate management buyouts, to isolate pension liabilities, or to separate operational activities from parent company risk. The SPV structure must comply with the Companies Act 2006, maintain arm's length transfer pricing, preserve the substance of the SPV's operations (avoiding permanent establishment issues if it's a foreign SPV), and maintain corporate separation through proper capitalisation, board governance, and statutory filing.",
+          "We establish the SPV with appropriate articles of association, capitalise it with parent company funding (via equity investment or intercompany loans), and establish governance protocols ensuring independent board decision-making and statutory compliance. We prepare acquisition structures where the SPV acquires the target's assets or business, transfer pricing documentation for intercompany charges, and management accounts demonstrating the SPV's financial independence.",
+          "Upon acquisition, the SPV becomes the operating company or holding company for the acquired business. We manage its statutory registers, ensure its annual confirmation statements reflect the actual business structure, manage intercompany agreements between the SPV and parent company, and coordinate the SPV's integration into the wider group governance."
+        ]
+      },
+      {
+        "title": "UK Holding Company Structures",
+        "paragraphs": [
+          "Holding companies serve as parent entities managing subsidiary companies, operational companies, and asset structures. Proper holding company structuring is essential for tax efficiency, regulatory compliance, dividend cascade control, and corporate governance. We establish holding company structures tailored to your group's operational needs and financial structure.",
+          "Holding companies under English law (section 1159 Companies Act 2006) must have subsidiaries where the parent company can exercise dominant influence and hold at least 50% of subsidiary shares. Holding company exemptions from preparing consolidated accounts, group accounts structures, and dividend payment limitations require careful statutory compliance. We ensure your holding company is properly registered as such with Companies House and maintains documentation demonstrating its status.",
+          "We establish holding company articles reflecting multi-subsidiary governance requirements, manage shareholder agreements between holding company and subsidiary operators, and coordinate group-wide board decision-making. Where the holding company is a foreign entity, we establish a UK registered office and ensure compliance with overseas company registration requirements.",
+          "Holding company structures often involve managing cash flows—consolidating profits from operating subsidiaries, distributing dividends, managing intercompany loan arrangements, and optimising tax efficiency across the group. We prepare the holding company's statutory accounts reflecting subsidiary valuations, manage its annual filing obligations, and advise on corporate restructuring as the group evolves.",
+          "In many acquisitions and complex transactions, professional directors bring independent oversight and governance credibility. We provide professional directors (both executive and non-executive) who join company boards to ensure statutory compliance, manage conflicts of interest, and provide fiduciary duty oversight. This is particularly valuable in management buyouts, institutional investments, or where management team members have competing interests.",
+          "Professional directors ensure the company has independent board scrutiny of major decisions, compliance with the Companies Act 2006 director duties (care, diligence, good faith, independent judgment, and avoiding conflicts), and statutory filing obligations. Our professional directors have extensive experience in M&A transactions, post-acquisition integration, financial restructuring, and corporate governance across sectors.",
+          "We manage director appointment and resignation procedures, prepare board meeting minutes reflecting statutory decision-making, manage director appointment forms (Form AP01) and resignation forms (Form TM01), and ensure director addresses comply with Companies House disclosure requirements. Where conflicts arise (for example, where selling shareholders roll equity into the buyer), our professional directors manage the conflict disclosure process and ensure decisions are made with proper independent oversight.",
+          "Professional directors also facilitate communication between operational management and investor boards, oversee compliance reporting, manage statutory filing deadlines, and provide governance oversight of restructuring or disposal processes. We ensure your company maintains credible, independent board governance even where management team changes occur."
+        ]
+      },
+      {
+        "title": "Pre & Post-Completion Governance & Board Packs",
+        "paragraphs": [
+          "Completion governance encompasses the final stages of transaction execution. In the weeks before completion, we prepare comprehensive board packs documenting: the transaction rationale, share purchase agreement mechanics, completion obligations, post-completion integration plans, and board resolutions authorising the transaction. Directors must make informed decisions with full visibility of transaction terms, risks, and post-completion expectations.",
+          "At completion, we manage statutory filing of acquisition documents, including transfer of shares (Forms IN02), updates to the register of members and directors, and notification to HMRC of the acquisition. If the transaction involves assets rather than shares, we coordinate property/asset transfers, manage statutory notifications (such as notification of change of ownership to landlords or suppliers), and update Companies House of the restructuring.",
+          "Post-completion, we establish the acquired company's governance within the acquirer's group. This includes preparing disclosure of the parent company relationship, updating articles of association where necessary, establishing intercompany governance protocols, and managing shareholder agreements between acquirer and any rolling equity holders. We ensure the acquired company's board composition reflects the new ownership structure and that director appointments reflect the acquirer's governance standards.",
+          "We also manage post-completion tax reporting (including capital gains notifications, transfer pricing documentation, and tax clearance filings), coordinate regulatory notifications where the acquisition triggers regulatory filing obligations, and oversee integration from a corporate governance perspective. Post-completion, we ensure the acquired company is fully integrated into the acquirer's compliance framework and governance systems.",
+          "Post-completion integration extends well beyond transaction closing. We manage the acquired company's transition into the acquirer's corporate and operational structures, including establishment of new governance protocols, implementation of acquirer's statutory filing processes, and integration of the acquired company into the group's consolidated reporting and compliance framework.",
+          "We coordinate completion accounts preparation (if the purchase price is subject to working capital adjustments), manage earnout documentation and payment mechanics, oversee earn-out satisfaction determinations, and manage post-completion disputes over price adjustments or completion mechanics. We prepare detailed completion accounts schedules reconciling pre-closing and post-closing financial positions, manage working capital reconciliation processes, and facilitate any price adjustments owed to sellers or adjustments owed to buyers.",
+          "We manage covenant compliance reporting under any acquisition agreement, coordinate any post-completion guarantee or warranty claims, and oversee seller indemnity procedures. Where the transaction involves transaction-specific debt facilities, we manage the transition from acquisition financing into permanent refinancing and manage any covenants or reporting obligations required by lenders.",
+          "Integration also includes managing statutory filings flowing from the acquisition—from the acquired company's perspective (change of directors, updated shareholder registers), from the acquirer's perspective (consolidated group accounts preparation, acquisition disclosure in the acquirer's notes to accounts), and from HMRC's perspective (tax clearance filings, group relief claim establishment). We ensure the integration process is smooth, compliant, and properly documented."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Deep Transactional Experience",
+        "description": "Hundreds of acquisitions, disposals, and complex restructurings. We understand deal mechanics, completion procedures, and integration challenges across industries and deal sizes."
+      },
+      {
+        "title": "Flawless Deal Execution",
+        "description": "Board resolutions, completion accounts, statutory filings, and post-completion governance managed with meticulous attention to detail. No closing delays, no corporate gaps."
+      },
+      {
+        "title": "Strategic Transaction Advice",
+        "description": "Beyond mechanics—we advise on acquisition structure, holding company setup, SPV segregation, and integration strategy. Your corporate structure drives value."
+      }
+    ],
+    "cta": {
+      "title": "Ready to Execute Your Acquisition or Disposal?",
+      "body": "Discuss your transaction structure, completion timeline, and governance requirements. We'll guide you through every stage from deal structure through post-completion integration.",
+      "ctaText": "Get in Touch"
+    }
+  },
+  "accounting": {
+    "header": {
+      "title": "Accounting & Tax Services",
+      "subtitle": "A unified, scalable solution designed to simplify compliance, enhance visibility, and support better financial decision-making across jurisdictions and structures."
+    },
+    "overview": {
+      "title": "Streamlined Finance & Tax Functions",
+      "paragraphs": [
+        "Finance and tax functions are often fragmented across multiple providers, creating inefficiency, inconsistent reporting, and unnecessary administrative burden. We deliver a unified, scalable solution designed to simplify compliance, enhance visibility, and support better financial decision-making across jurisdictions and structures.",
+        "Our services include: statutory accounts preparation and financial reporting in line with relevant accounting standards; corporate tax compliance, filings, and advisory support, including optimisation of reliefs and allowances; monthly and quarterly management accounts with tailored, multi-entity and multi-currency reporting; and outsourced finance functions, including bookkeeping, payroll, and VAT compliance."
+      ]
+    },
+    "services": [
+      {
+        "title": "Bookkeeping & Monthly Accounting",
+        "paragraphs": [
+          "Monthly bookkeeping ensures your financial records are accurate and current. We process invoices, record expenses, reconcile bank statements, manage payables and receivables, and maintain a complete audit trail of financial transactions. Every transaction is categorized correctly for tax purposes, with proper supporting documentation and approval workflows.",
+          "We manage your general ledger, bank reconciliations, and subsidiary ledgers (debtors, creditors, fixed assets, inventory). Monthly bank reconciliations catch errors early, identify reconciling items, and ensure your accounting records match your actual bank position. For companies with multiple bank accounts or complex cash flows, we coordinate all accounts through a consolidated cash management system.",
+          "Bookkeeping also includes management of invoicing and receivables. We ensure customer invoices are issued timely, recorded in the sales ledger, and tracked through aging analysis. We identify overdue receivables, manage payment collections, and forecast cash flow based on receivables patterns. Similarly, we manage purchase invoices, record supplier payments, maintain a creditor aging analysis, and coordinate payment schedules with cash flow forecasts.",
+          "We provide monthly reporting—your company's profit and loss statement, balance sheet, and key performance metrics—enabling you to track business performance month-by-month. These management accounts become the foundation for tax planning, bank covenant reporting, and strategic decision-making. All bookkeeping is conducted using cloud-based accounting software with automated bank feeds, reducing data entry errors and improving timeliness."
+        ]
+      },
+      {
+        "title": "Corporation Tax Compliance & Tax Returns",
+        "paragraphs": [
+          "Every company must file a Corporation Tax return with HMRC within 12 months of the end of its accounting period. The return includes the company's profit calculation, tax adjustments, allowable deductions (capital allowances, interest, trading losses), and tax liability. HMRC uses submitted returns to set tax payment deadlines, trigger enquiry processes, and assess penalties for late or inaccurate filing.",
+          "We prepare corporation tax returns (CT600 forms) from your accounting records, applying HMRC rules for trading expenses, capital allowances, interest deductibility, and loss relief. We identify tax-efficient deductions your business qualifies for, ensuring you don't pay tax on profits you're not entitled to. We claim capital allowances for equipment and assets (plant and machinery allowances, industrial buildings allowances, R&D tax credits where applicable), maximizing tax relief for capital investment.",
+          "Tax returns must be filed within statutory deadlines to avoid penalties. Companies filing returns after the deadline face penalties of £100+ for first failure, escalating to £300+ for subsequent failures, plus interest. Making Tax Digital (MTD) requirements mean many companies must file returns and keep digital records. We ensure your filing is timely, accurate, and compliant with HMRC's MTD standards.",
+          "We also manage tax planning throughout the year, identifying opportunities to structure transactions tax-efficiently. This includes advising on dividends versus salary optimization for owner-managers, timing of capital investments for tax relief, management of trading losses, and intercompany transactions (where applicable for group companies). Tax planning is not about avoiding tax illegally; it's about structuring legitimate transactions efficiently within the law.",
+          "VAT (Value Added Tax) is a complex tax affecting companies with turnover above the £85,000 threshold. VAT-registered companies must file VAT returns (typically quarterly) showing output tax (VAT charged to customers), input tax (VAT paid to suppliers), and net VAT payable to HMRC or credit from HMRC. VAT returns must be filed within one month and seven days of the quarter end.",
+          "We manage your VAT compliance: maintaining proper VAT records (invoices, receipts, and VAT accounts), calculating output and input tax correctly, filing VAT returns on time, and managing VAT payments to HMRC. We ensure all eligible input tax is claimed (including acquisitions of goods and services), maximizing VAT recovery while maintaining compliance with HMRC rules on blocked input tax (for example, VAT on fuel for personal use cannot be recovered).",
+          "We also advise on VAT optimization. Some supplies are VAT-exempt (making it difficult to recover VAT incurred), while others qualify for zero-rating (allowing full VAT recovery). Structuring transactions correctly—for example, the difference between supplying goods versus services, domestic versus export supplies—can dramatically affect VAT treatment. We advise on exemptions and zero-rating opportunities, protecting your company from overpaying VAT while maintaining compliance.",
+          "We manage VAT recovery for import/export transactions, cross-border services, and EU/international business. We handle HMRC VAT enquiries, support HMRC visits, prepare supporting documentation, and negotiate with HMRC on VAT assessments. Late VAT returns trigger penalties of 5-15% of unpaid VAT, with additional interest, making timely filing essential."
+        ]
+      },
+      {
+        "title": "Management Accounts & Financial Reporting",
+        "paragraphs": [
+          "Monthly or quarterly management accounts provide current visibility into your business's financial performance. Management accounts show your profit and loss (revenue, gross profit, operating expenses, EBITDA), balance sheet (assets, liabilities, equity), and cash flow statement. Unlike statutory accounts (filed with Companies House after year-end), management accounts are timely and support day-to-day business management.",
+          "We produce detailed management accounts with variance analysis (comparing actual results against budget or prior periods), profitability analysis by division/product/customer, working capital reporting (inventory, receivables, payables levels), and cash flow forecasts. Many companies adjust price, costs, or strategy based on management accounting insights. A business without current financial visibility is essentially flying blind—management accounts eliminate that risk.",
+          "For companies with loan facilities, management accounts often form part of bank covenant reporting. Banks typically require quarterly management accounts showing compliance with financial covenants (for example, minimum EBITDA, maximum debt-to-EBITDA ratios, minimum interest coverage). We prepare management accounts to bank reporting standards, showing full compliance or highlighting any covenant concerns early enough to address them with your lender.",
+          "We also advise investors and stakeholders based on financial reporting. Investor boards require detailed financial and operational reporting to monitor investment performance. We prepare investor reports, manage data rooms for fundraising or M&A, and coordinate financial due diligence processes.",
+          "Companies with employees must operate PAYE (Pay As You Earn), deducting income tax and National Insurance contributions from employee salaries and remitting these to HMRC. PAYE compliance includes calculating employee tax and NI correctly, issuing payslips, filing monthly PAYE returns (Real Time Information—RTI submissions), and managing end-of-year tax coding and P60 documents.",
+          "We manage your payroll from start to finish: setting up payroll systems, calculating salaries and deductions, processing employee payments, managing pension contributions, and maintaining employee records. We ensure statutory deductions are correct (income tax bands, National Insurance, student loan repayments where applicable), voluntary deductions are processed (pension contributions, charitable giving), and statutory maternity/paternity/adoption pay is paid correctly.",
+          "We file Real Time Information (RTI) returns with HMRC—when we pay employees, we notify HMRC of pay and deductions. RTI simplifies HMRC's monitoring of PAYE compliance and reduces year-end adjustments. We also manage employer National Insurance contributions (which are separate from employee NI), claiming any available reliefs (for example, employment allowance for small employers, startup NI relief).",
+          "We advise on tax-efficient structuring of remuneration: the mix of salary versus dividends/pension contributions for owner-managed businesses, optimization of benefits-in-kind versus salary (for example, company cars versus cash), and compliance with National Living Wage requirements. We also manage employee tax documentation (P45s for leavers, P60s for tax return purposes) and coordinate with HMRC on payroll queries or audits."
+        ]
+      },
+      {
+        "title": "ATED Returns & Property Tax Compliance",
+        "paragraphs": [
+          "Companies holding UK residential property valued above £500,000 must file Annual Tax on Enveloped Dwellings (ATED) returns with HMRC. ATED was introduced to ensure UK residential property owned by companies pays tax on the property, preventing tax-avoidance schemes. ATED applies to companies, trusts, and foreign entities holding residential properties over the £500,000 threshold, regardless of whether the property generates rental income.",
+          "ATED returns must be filed by April 30th each year, showing the property's valuation, relief claims (where the property qualifies for relief—for example, properties under renovation), and ATED tax liability. Annual ATED returns range from £3,500 (properties valued £500k-£1m) to £19,500+ (properties valued over £20m). Late ATED filing triggers penalties starting at £100 per month of delay.",
+          "We calculate ATED liability based on property valuations, identify any available reliefs (properties under substantial renovation, protected buildings, properties occupied as only/main residences by non-UK persons), prepare and file ATED returns by the statutory deadline, and manage ATED payments to HMRC. We also coordinate with your property advisors on valuations and ensure ATED compliance doesn't conflict with property tax structuring.",
+          "Beyond ATED, companies holding property may be subject to Stamp Duty Land Tax (SDLT) on purchase, Land Value Tax considerations (for future implementations), and Council Tax if the property is residential. We advise on property ownership structures that minimize tax burden while maintaining legitimate business purposes and compliance with anti-avoidance rules."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "HMRC Compliance",
+        "description": "No missed deadlines, no inaccurate returns, no penalties. We ensure your corporation tax, VAT, PAYE, and ATED obligations are always current and compliant with HMRC's exacting standards."
+      },
+      {
+        "title": "Tax Efficiency",
+        "description": "We identify tax-saving opportunities—capital allowances, relief claims, optimal structuring. Legitimate tax planning reduces your tax bill while maintaining full compliance."
+      },
+      {
+        "title": "Business Insight",
+        "description": "Detailed management accounts and financial reporting help you understand profitability, cash flow, and performance. Data-driven decisions drive better business outcomes."
+      }
+    ],
+    "cta": {
+      "title": "Let's Get Your Finances in Order",
+      "body": "From startup bookkeeping through to complex group tax planning, we provide comprehensive accounting and tax compliance tailored to your business.",
+      "ctaText": "Get in Touch"
+    }
+  },
+  "id-verification": {
+    "header": {
+      "title": "Companies House Identity Verification",
+      "subtitle": "Axsuma is a Companies House Authorised Corporate Service Provider (ACSP), authorised to carry out identity verification on behalf of clients under the Economic Crime and Corporate Transparency Act."
+    }
+  },
+  "overseas-entities": {
+    "header": {
+      "title": "Overseas Entities & Beneficial Ownership",
+      "subtitle": "Register of Overseas Entities (ROE) compliance and beneficial ownership verification under the Economic Crime Act 2022."
+    },
+    "overview": {
+      "title": "Beneficial Ownership Transparency & ROE Compliance",
+      "paragraphs": [
+        "The Economic Crime Act 2022, introduced following recommendations from the National Crime Agency and Financial Action Task Force, requires overseas entities that own or acquire property in the UK to register with Companies House and disclose their beneficial owners. The Register of Overseas Entities (ROE) represents a fundamental shift toward transparency—foreign companies and their true beneficial owners are now part of the public record, preventing anonymous property ownership by corrupt officials, sanctions evaders, and money launderers.",
+        "For overseas entities, ROE registration is now mandatory before acquiring or holding UK property. Failure to register incurs significant penalties: up to £2,500 per day for unregistered entities (up to £20,000 cumulative), and overseas entities cannot hold property in their own name without registration. Beneficial owners of registered overseas entities must be accurately identified, with ongoing reporting obligations if beneficial ownership structures change.",
+        "We guide overseas entities through ROE registration, collect beneficial ownership information, verify identity documentation, and manage ongoing reporting obligations. Our international compliance expertise ensures your entity meets UK transparency requirements while maintaining any legitimate offshore structures for tax or operational purposes."
+      ]
+    },
+    "services": [
+      {
+        "title": "What is the Register of Overseas Entities (ROE)",
+        "paragraphs": [
+          "The Register of Overseas Entities is Companies House's public register of overseas entities that own or hold UK property. Introduced under the Economic Crime Act 2022, the ROE is part of the UK's anti-money laundering and sanctions compliance framework. Every overseas entity (including foreign companies, trusts, and partnerships) holding property in the UK must be registered on the ROE with disclosed beneficial owners.",
+          "Beneficial owners are individuals who ultimately own or control an overseas entity. For company structures, beneficial owners are typically shareholders owning 25%+ of shares or voting power. For trusts, beneficial owners include settlors, trustees, and beneficiaries with entitlements to distributions. For partnerships, partners with 25%+ interest are beneficial owners. Identifying beneficial owners can be complex in layered structures (holding companies, trusts controlling companies, offshore funds), but the ROE requires disclosure of all individuals ultimately benefiting from the entity's assets.",
+          "The ROE creates transparency about who owns UK property—particularly important given historical concerns about corrupt officials, sanctions evaders, and criminal organizations hiding stolen assets through anonymous property purchases. The register is publicly searchable, allowing law enforcement, journalists, and researchers to identify beneficial owners of properties. Non-compliance triggers substantial penalties and potential criminal prosecution for false statements.",
+          "Overseas entities registering before November 2022 were required to do so by November 1, 2022 (later extended to January 27, 2023 for entities already holding property). New overseas entities acquiring property must register before completion. The registration process requires certified documentation of beneficial owners, proof of identity, and declaration under penalty of perjury that information is accurate."
+        ]
+      },
+      {
+        "title": "Who Must Register & ROE Exemptions",
+        "paragraphs": [
+          "The ROE requirement applies to all overseas entities holding \"legal estate\" in UK land or property. Legal estate includes freehold ownership or long leasehold (leases of more than 7 years). Entities holding shorter leasehold interests, mortgages, or options to acquire property do not trigger ROE registration obligations. Overseas entities owning UK commercial property, residential property, agricultural land, or any other real property must register.",
+          "Overseas entities include foreign companies, foreign partnerships, foreign trusts, foreign funds, and other entities incorporated or established outside the UK. Entities incorporated in England & Wales, Scotland, or Northern Ireland are \"UK entities\" and do not require ROE registration (though they may be registered at Companies House under other UK corporate registration requirements).",
+          "Exemptions from ROE registration include: UK-listed companies (already regulated and disclosed), entities wholly owned by exempt entities, entities with registered branches in the UK (regulated financial institutions and central banks), and entities already subject to UK financial regulation with equivalent beneficial ownership reporting requirements. However, these exemptions are narrow; most overseas entities holding property must register.",
+          "Timing is important: overseas entities that owned property before November 1, 2022 were initially required to register by that date (extended to January 27, 2023). Overseas entities acquiring property after those dates must register before completion. Failure to register before the applicable deadline triggers penalties, potential injunctions against property transfer, and (for entities holding property after the deadline without registration) criminal liability.",
+          "ROE registration requires gathering comprehensive information about the overseas entity and its beneficial owners. We guide you through the registration process: collecting entity information (name, jurisdiction of incorporation, registered office, company registration numbers), identifying all beneficial owners (shareholders 25%+, settlors, trustees, beneficiaries of trusts), verifying beneficial owner identities, and obtaining certified documentation.",
+          "The registration form (ROE01) requires disclosure of beneficial owners with certified identity verification. Identity verification typically requires documents like passports, national ID cards, or utility bills (for proof of address). For entities with complex ownership (holding companies, trusts, or funds with multiple layers), we identify the ultimate beneficial owners through the entire ownership chain, ensuring complete transparency.",
+          "We prepare and submit the ROE01 registration form to Companies House with supporting documentation of beneficial owner identities. Registration typically processes within 2-3 weeks. Once registered, the overseas entity receives a Companies House registration number and becomes listed on the public ROE. The entity is then permitted to acquire or hold UK property in its own name.",
+          "Before property completion, we ensure ROE registration is complete and the entity is listed on the public register. Real estate practitioners typically require evidence of ROE registration (or exemption confirmation) before allowing property transfers. ROE registration also facilitates mortgage and financing arrangements—lenders typically require ROE registration before advancing property finance."
+        ]
+      },
+      {
+        "title": "Annual Updates & Ongoing ROE Compliance",
+        "paragraphs": [
+          "Registered overseas entities must file annual updates confirming that beneficial ownership information remains accurate. These updates are similar to Confirmation Statements filed by UK companies—annual affirmations that the registered details are still correct. Annual updates must be filed within a specified period each year (typically the anniversary of registration or by June 30th depending on registration timing).",
+          "If beneficial ownership changes (for example, a shareholder sells their shares, a new member joins, or beneficial owner details change), the entity must notify Companies House within 14 days. This includes changes in the percentage of beneficial ownership (if a beneficial owner's shareholding drops below 25%), changes in beneficial owner names or addresses, or death of beneficial owners. Any material changes trigger obligation to file updated beneficial owner information.",
+          "We monitor your registered beneficial ownership structure and alert you to any changes requiring ROE updates. For overseas entities with changing ownership (particularly those receiving investment, undergoing restructuring, or in succession planning), we coordinate beneficial owner identification and Companies House notification to remain compliant.",
+          "The ROE framework includes significant penalties for non-compliance. Penalties for failure to file annual updates escalate from £100 (initial failure) to £500+ (subsequent failures). False statements in ROE filings constitute criminal fraud and can result in prosecution. We ensure your ROE compliance is maintained throughout your entity's lifecycle—from initial registration through ongoing updates to eventual deregistration if you cease holding UK property.",
+          "If your overseas entity was previously managed by another provider, we can coordinate ROE transfer and verify ongoing compliance. We review your current ROE registration, confirm beneficial owner information is accurate and current, identify any pending annual updates, and assume responsibility for ongoing reporting obligations.",
+          "We also advise on ROE implications for corporate restructuring. If you're acquiring UK property through a new overseas entity, we advise on optimal structure for ROE purposes and ensure the acquiring entity registers before property completion. If you're restructuring group ownership (consolidating multiple entities, moving property between entities in a group), we coordinate ROE filings reflecting the restructured ownership.",
+          "For entities disposing of UK property, we advise on deregistration requirements. If an overseas entity ceases to hold UK property, it may apply for deregistration. However, deregistration is not automatic; you must affirmatively apply to remove the entity from the register. We coordinate deregistration processes, ensuring the entity is removed once no longer holding UK property.",
+          "We also advise on international beneficial ownership considerations. Your overseas entity may have beneficial ownership reporting obligations in its jurisdiction of incorporation that complement or conflict with UK ROE requirements. We coordinate international compliance, ensuring your entity meets reporting obligations across multiple jurisdictions simultaneously."
+        ]
+      },
+      {
+        "title": "Penalties & Enforcement of ROE Obligations",
+        "paragraphs": [
+          "The Economic Crime Act 2022 establishes substantial penalties for ROE non-compliance. Overseas entities holding property without ROE registration face civil penalties of up to £2,500 per day the entity remains unregistered (capped at £20,000 aggregate per entity). These penalties accumulate daily, creating significant exposure for entities acquiring property without registering first. Criminal penalties are also available for deliberate failure to register.",
+          "False or misleading information in ROE filings constitutes fraud under the Fraud Act 2006 and can result in criminal prosecution, imprisonment, and unlimited fines. If you knowingly provide false beneficial owner information, deliberately omit beneficial owners, or falsely certify information, you face criminal liability—not merely civil penalties. The threshold for prosecution is deliberately false statements; innocent errors can typically be corrected through amendment.",
+          "Overseas entities holding property after registration deadlines without ROE compliance face potential injunctions preventing property transfers. UK courts can freeze property transfers or impose restrictions until ROE compliance is achieved. This has practical significance—properties cannot be mortgaged, sold, or transferred without ROE registration confirmation.",
+          "We ensure your overseas entity maintains compliance to avoid penalties entirely. This includes timely registration before property acquisition, accurate beneficial owner disclosure, annual update filing, and prompt notification of beneficial ownership changes. Early compliance prevents penalties, facilitates property transactions, and demonstrates good faith to regulators and lenders."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Beneficial Ownership Expertise",
+        "description": "We identify beneficial owners through complex ownership chains. From holding companies to trusts to offshore funds—we pierce through layers to identify ultimate beneficial owners for ROE compliance."
+      },
+      {
+        "title": "Anti-Money Laundering Compliance",
+        "description": "We understand the regulatory framework behind beneficial ownership. ROE requirements serve anti-money laundering objectives; we ensure your compliance reflects best practices in financial crime prevention."
+      },
+      {
+        "title": "Ongoing Compliance Management",
+        "description": "ROE compliance doesn't end at registration. We track beneficial owner changes, file annual updates, and maintain your entity's registration throughout its lifecycle—from property acquisition through eventual deregistration."
+      }
+    ],
+    "cta": {
+      "title": "Register Your Overseas Entity Today",
+      "body": "Whether acquiring UK property for the first time or ensuring existing registrations remain compliant, we'll guide you through ROE registration and ongoing beneficial ownership reporting.",
+      "ctaText": "Get in Touch"
+    }
+  },
+  "process-agent": {
+    "header": {
+      "title": "Process Agent Services",
+      "subtitle": "Legal process representation for overseas companies operating in the UK. CPR compliance and court document service."
+    },
+    "overview": {
+      "title": "Legal Process Representation in UK Courts",
+      "paragraphs": [
+        "Overseas companies operating in the UK, selling goods or services, or subject to legal proceedings must appoint a process agent—a UK representative authorized to accept legal documents and court proceedings on their behalf. UK courts cannot serve legal documents directly on overseas entities; instead, documents are served on their appointed UK process agent, who then forwards them to the company.",
+        "The Civil Procedure Rules (CPR) require overseas companies involved in UK litigation to have a process agent appointed. Without a process agent, overseas companies face default judgments, inability to defend claims, and exposure to unlimited liability. Additionally, overseas companies registering branches with Companies House are required to appoint a process agent as part of their UK regulatory compliance.",
+        "We provide professional process agent services, acting as your authorized UK representative for legal service and court proceedings. Our service ensures that all court documents, legal notices, and litigation correspondence are received promptly, secured confidentially, and forwarded immediately to your company's decision-makers. We maintain secure document handling, provide proof of service, and coordinate with your legal advisors throughout litigation processes."
+      ]
+    },
+    "services": [
+      {
+        "title": "What is a Process Agent & Why You Need One",
+        "paragraphs": [
+          "A process agent is a UK-based representative appointed by an overseas company to accept legal documents, court proceedings, and formal notices on its behalf. When a company is sued in UK courts, legal documents must be properly \"served\" (delivered) according to the Civil Procedure Rules (CPR). UK courts cannot serve documents directly on foreign addresses; instead, documents are served on the company's appointed UK process agent.",
+          "The process agent acts as a conduit between UK courts and the overseas company. Once documents are served on the process agent, the agent must forward them immediately to the company and confirm to the court that service has been completed. The process agent is not a legal representative (that's your solicitor's role); the agent is simply the person authorized to receive legal service and ensure the company is notified of proceedings.",
+          "Process agents are mandatory for: (1) overseas companies with UK branches required to register at Companies House, (2) overseas companies subject to litigation in UK courts (the court will require you to appoint a process agent as a condition of defending the claim), (3) overseas companies bound by cross-border contracts specifying UK jurisdiction or legal proceedings, and (4) overseas companies engaged in significant UK commercial activity that might trigger litigation exposure.",
+          "Without a process agent, overseas companies cannot properly defend UK legal claims. Courts will serve documents by other means (international service), but if the overseas company fails to respond, courts may issue default judgments against the unrepresented company. A company facing litigation without a process agent risks losing the case by default and facing enforcement of judgments without ever knowing proceedings were brought against them."
+        ]
+      },
+      {
+        "title": "When You Need a Process Agent",
+        "paragraphs": [
+          "Process agent requirements arise in several common situations. First, overseas companies establishing UK branches must appoint a process agent under Companies House regulations. This is mandatory—UK branch registration cannot be completed without a process agent appointment. Companies registering branches include overseas subsidiaries of international groups, foreign parent companies expanding into the UK, and overseas private equity funds establishing UK operating entities.",
+          "Second, overseas companies entering UK litigation must have a process agent. This may occur defensively (someone sues you in UK courts) or proactively (you sue someone in the UK and need a process agent to manage the proceedings). If you're defending a claim in UK courts, you must appoint a process agent as part of your defense. The court will not allow you to proceed without proper UK legal representation and a process agent for document service.",
+          "Third, overseas companies with UK business exposure benefit from process agent appointment even before litigation arises. Many UK commercial contracts specify English law and UK jurisdiction, meaning any dispute will be litigated in UK courts. Having a process agent already appointed streamlines dispute resolution if a contract dispute arises. You can transition immediately to litigation without the delays of appointing a process agent mid-dispute.",
+          "Fourth, overseas companies exposed to regulatory action may need a process agent. If UK regulatory bodies (such as the Financial Conduct Authority, Competition and Markets Authority, or sector-specific regulators) take enforcement action against an overseas company, service of regulatory notices on a process agent ensures the company is properly notified. Similarly, HMRC enforcement or insolvency proceedings may require process agent service.",
+          "Appointing Axsuma as your process agent is straightforward. We provide you with a process agent appointment letter that you sign and countersign, confirming your appointment of Axsuma as your authorized UK process agent. This letter is kept on file and produced to courts, regulators, or other parties requiring evidence of your process agent appointment.",
+          "For overseas companies registering branches with Companies House, the process agent appointment is disclosed on the branch registration form (BR01). Companies House registers the process agent's details (our address, contact information) and lists us as the company's authorized service representative. If someone needs to serve legal documents, they contact us; our details are publicly registered with Companies House.",
+          "For overseas companies without UK branch registration, the process agent appointment is contractual between you and Axsuma. If you're involved in UK litigation or regulatory proceedings, you produce the appointment letter as evidence that we're authorized to receive service. UK courts and regulatory authorities recognize process agent appointments and will serve documents on us accordingly.",
+          "Process agent appointment requires our authority—we must be willing to act in the role. We confirm our willingness to act, our UK address for service, and our commitment to forwarding documents immediately upon receipt. Once appointed, we are bound by the Civil Procedure Rules to accept service and immediately notify you of any proceedings. If circumstances change (for example, you dissolve the company, cease UK operations, or need to change process agents), you notify us and we step down from the role."
+        ]
+      },
+      {
+        "title": "Our Professional Process Agent Service",
+        "paragraphs": [
+          "We provide comprehensive process agent services ensuring seamless document receipt, secure handling, and immediate company notification. Our UK address is registered as your process agent address with Companies House (for branch registrations) or made available to courts and parties as required. All service of documents is received at our address, properly logged, and immediately forwarded to you.",
+          "When documents are received, we: (1) immediately note receipt, (2) scan documents and email them to you electronically, (3) secure original documents in our client vault, (4) provide proof of service confirming when documents were received and forwarded, and (5) advise you of any urgent deadlines or action required. For litigation documents, timing is critical—court-imposed deadlines for responding to claims, filing defenses, or producing evidence require immediate notification to enable legal action.",
+          "We coordinate with your legal advisors, providing them with service proof and documentation, and facilitating their involvement in any proceedings. We also maintain confidentiality—all documents received are kept confidential and only disclosed to authorized company representatives or legal advisors. We never disclose document contents publicly unless you authorize it.",
+          "Our process agent service includes maintaining contact information, forwarding address, and document receipt procedures throughout your appointment. We're available to respond to inquiries from courts, regulators, or other parties regarding your process agent status. We also provide written confirmation of appointment status, which you can produce to third parties confirming your compliance with process agent requirements."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "CPR Compliance Expertise",
+        "description": "We understand Civil Procedure Rules requirements, service standards, and court procedures. Your appointment with us ensures full compliance with UK litigation requirements and Companies House regulations."
+      },
+      {
+        "title": "Immediate Document Notification",
+        "description": "Zero delays in document receipt and notification. We receive legal service instantly and forward documents to you electronically within hours, ensuring critical deadlines are never missed due to slow communication."
+      },
+      {
+        "title": "Secure & Confidential Handling",
+        "description": "Documents are received securely, stored in our client vault, and disclosed only to authorized representatives. Your litigation matters remain confidential and properly protected throughout our process agent relationship."
+      }
+    ],
+    "cta": {
+      "title": "Appoint Your UK Process Agent Today",
+      "body": "Whether establishing a UK branch, entering UK litigation, or protecting against regulatory exposure, appointing a reliable process agent ensures you remain fully informed of all legal proceedings.",
+      "ctaText": "Get in Touch"
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "We handle the complexity.",
+      "title": "We handle the complexity.",
+      "titleAccent": "growth",
+      "subtitle": "Corporate administration and governance, delivered with accountability end-to-end."
+    },
+    "services": [
+      {
+        "title": "Company Formations",
+        "description": "UK Ltd, LLP and ready-made companies. Same-day filings, live and compliant within hours."
+      },
+      {
+        "title": "M&A & Transaction Support",
+        "description": "Deal-stack management, SPV structuring, professional directorships, acquisition vehicles — LOI to post-completion."
+      },
+      {
+        "title": "Governance & Company Secretarial",
+        "description": "CoSec support, registered office, mail forwarding, service address and statutory compliance."
+      },
+      {
+        "title": "Accounting & Tax",
+        "description": "Bookkeeping, tax compliance, management accounts, VAT, ATED returns, PAYE and payroll."
+      },
+      {
+        "title": "Overseas Entities (ROE)",
+        "description": "Registration, annual updates and Economic Crime Act compliance."
+      },
+      {
+        "title": "Process Agent",
+        "description": "UK-based appointments for cross-border contracts and finance documents."
+      },
+      {
+        "title": "ID Verification",
+        "description": "Digital AML/KYC verification — fast, secure, with integrated payments."
+      }
+    ],
+    "about": {
+      "label": "About Axsuma",
+      "title": "Corporate Administration & Governance Services",
+      "intro": "Axsuma is a UK-based provider of corporate administration and governance services. We support businesses, family offices, funds, and their advisors with their administration needs at every stage of the company lifecycle, from entity formation through company secretarial, M&A deal support, accounting and tax compliance, and payroll in the United Kingdom.",
+      "highlight": "Accountability drives everything we do.",
+      "body": "We do not provide legal advice or structuring. Instead, we work closely with clients' lawyers and accountants to ensure decisions are implemented cleanly, accurately and without friction. Our role is to take ownership of execution — translating professional advice into precise, dependable delivery.",
+      "ctaText": "Get in Touch"
+    },
+    "sectors": {
+      "label": "Sectors We Serve",
+      "title": "Clarity & Governance Across Every Sector",
+      "subtitle": "We provide operational clarity and robust governance frameworks across a wide range of sectors.",
+      "items": [
+        {
+          "title": "Businesses & Corporates",
+          "description": "We support companies of all sizes, from start-ups to multinational corporations, ensuring statutory and regulatory obligations are met efficiently."
+        },
+        {
+          "title": "Family Offices",
+          "description": "We provide family offices with bespoke governance, entity management, and reporting solutions."
+        },
+        {
+          "title": "Funds & Investment Vehicles",
+          "description": "We help investment funds and special purpose vehicles navigate corporate administration and compliance with confidence."
+        },
+        {
+          "title": "Advisors & Professional Partners",
+          "description": "We work closely with lawyers, accountants, and other advisors to deliver a seamless service to their clients."
+        },
+        {
+          "title": "International Law Firms",
+          "description": "When your clients need complex cross-border structures delivered compliantly and at pace, we become an extension of your team."
+        }
+      ]
+    },
+    "insights": {
+      "label": "News & Insights",
+      "title": "Perspectives That Matter",
+      "subtitle": "We work with clients to help solve their business challenges. Explore the latest news and insights."
+    },
+    "contact": {
+      "label": "Get in Touch",
+      "title": "Ready to work with us?",
+      "body": "Contact Axsuma to discuss your corporate administration and governance requirements.",
+      "email": "enquiries@axsuma.co.uk"
+    }
+  }
+}

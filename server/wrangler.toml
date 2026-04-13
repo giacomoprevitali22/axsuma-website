@@ -1,0 +1,25 @@
+name = "axsuma-cms"
+main = "cms-worker.js"
+compatibility_date = "2024-01-01"
+
+# KV Namespace bindings — replace the IDs after running:
+#   wrangler kv namespace create CMS_CONTENT
+#   wrangler kv namespace create CMS_USERS
+[[kv_namespaces]]
+binding = "CMS_CONTENT"
+id = "REPLACE_WITH_CMS_CONTENT_NAMESPACE_ID"
+
+[[kv_namespaces]]
+binding = "CMS_USERS"
+id = "REPLACE_WITH_CMS_USERS_NAMESPACE_ID"
+
+# Environment variables (set securely via wrangler secret)
+# Do NOT put real values here — use:
+#   wrangler secret put JWT_SECRET
+#   wrangler secret put SUPER_ADMIN_EMAIL
+#   wrangler secret put SUPER_ADMIN_PASSWORD
+
+# Custom domain (optional — configure after first deploy)
+# routes = [
+#   { pattern = "cms.axsuma.com/*", zone_name = "axsuma.com" }
+# ]

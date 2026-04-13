@@ -1,0 +1,85 @@
+AXSUMA WEBSITE CONTENT EXTRACTION - SUMMARY
+============================================
+
+Generated: April 13, 2026
+Output File: content.json (73 KB)
+
+PAGES ANALYZED (8 total):
+1. Homepage (index.html)
+2. Company Formations
+3. Governance & Company Secretarial
+4. M&A Transactions
+5. Accounting & Tax Services
+6. ID Verification
+7. Overseas Entities & ROE Compliance
+8. Process Agent Services
+
+EXTRACTED STRUCTURE:
+===================
+
+Homepage:
+- Hero section (tagline, title, subtitle)
+- 7 main service offerings
+- About Axsuma section
+- 5 industry sectors served
+- News & Insights section
+- Contact information
+
+Service Pages (Company Formations, Governance, M&A, Accounting, Overseas Entities, Process Agent):
+- Page header (title + subtitle)
+- Overview section with detailed paragraphs
+- 3-4 service detail sections with multiple paragraphs each
+- 3 "Why Axsuma" value proposition cards
+- Call-to-action section
+
+ID Verification Page:
+- Form-based structure with pricing and order form
+- Header with service description
+
+CONTENT STATISTICS:
+===================
+
+Total Services Extracted: 25+
+Total Paragraphs: 100+
+Total Why-Cards: 18
+Total CTAs: 7
+
+All HTML entities converted to readable text:
+- & (ampersand)
+- Proper quotation marks
+- Currency symbols where applicable
+
+JSON STRUCTURE:
+===============
+
+{
+  "home": {
+    "hero": {...},
+    "services": [...],
+    "about": {...},
+    "sectors": {...},
+    "insights": {...},
+    "contact": {...}
+  },
+  "company-formations": {
+    "header": {...},
+    "overview": {...},
+    "services": [...],
+    "why_cards": [...],
+    "cta": {...}
+  },
+  // ... similar structure for other pages
+}
+
+USAGE:
+======
+
+The content.json file is ready for:
+- Content management system import
+- Translation workflows
+- Copy editing and updates
+- Analytics and SEO optimization
+- Multi-language versioning
+- Content audit and compliance review
+
+All text content is machine-readable and properly formatted for downstream processing.

@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axsuma CMS Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #222831;
+            color: #D0DCE3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Screen transitions */
+        .screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .screen.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Login Screen */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: #2d3139;
+            border-radius: 12px;
+            padding: 48px 40px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .axsuma-logo {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+        }
+
+        .login-card h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 8px;
+            color: #D0DCE3;
+        }
+
+        .login-card .subtitle {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #D0DCE3;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #404854;
+            background: #222831;
+            color: #D0DCE3;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00594a;
+            box-shadow: 0 0 0 3px rgba(0, 89, 74, 0.1);
+        }
+
+        .login-error {
+            background: #c0392b;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #00594a;
+            color: #D0DCE3;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #004036;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary.loading {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #404854;
+            color: #D0DCE3;
+        }
+
+        .btn-secondary:hover {
+            background: #4a5360;
+        }
+
+        .btn-danger {
+            background: #c0392b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #a93226;
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        /* Dashboard & Main Layout */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: #2d3139;
+            border-right: 1px solid #404854;
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+        }
+
+        .topbar {
+            background: #2d3139;
+            border-bottom: 1px solid #404854;
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #D0DCE3;
+        }
+
+        .topbar-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .role-badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .role-badge.super-admin {
+            background: rgba(0, 150, 136, 0.2);
+            color: #4db8ac;
+        }
+
+        .role-badge.editor {
+            background: rgba(66, 165, 245, 0.2);
+            color: #42a5f5;
+        }
+
+        .nav-item {
+            padding: 12px 24px;
+            color: #D0DCE3;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: #353d45;
+            border-left-color: #00594a;
+        }
+
+        .nav-item.active {
+            background: rgba(0, 89, 74, 0.2);
+            border-left-color: #00594a;
+            color: #4db8ac;
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            padding: 40px 32px;
+            max-width: 1400px;
+        }
+
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #D0DCE3;
+        }
+
+        .page-header p {
+            color: #999;
+            font-size: 16px;
+        }
+
+        .page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .page-card {
+            background: #2d3139;
+            border: 1px solid #404854;
+            border-radius: 12px;
+            padding: 32px 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .page-card:hover {
+            border-color: #00594a;
+            box-shadow: 0 8px 24px rgba(0, 89, 74, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .page-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 89, 74, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+        }
+
+        .page-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #D0DCE3;
+        }
+
+        .page-card p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Page Editor */
+        .editor-container {
+            padding: 40px 32px;
+            max-width: 900px;
+        }
+
+        .editor-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #D0DCE3;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.2s;
+        }
+
+        .back-button:hover {
+            color: #00594a;
+        }
+
+        .editor-header h2 {
+            font-size: 28px;
+            color: #D0DCE3;
+            margin: 0;
+        }
+
+        .content-sections {
+            margin-bottom: 80px;
+        }
+
+        .content-section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #00594a;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #404854;
+        }
+
+        .field-group {
+            margin-bottom: 32px;
+            background: #2d3139;
+            border: 1px solid #404854;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .field-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .field-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #222831;
+            border: 1px solid #404854;
+            color: #D0DCE3;
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            resize: none;
+            transition: border-color 0.2s;
+        }
+
+        .field-input:focus {
+            outline: none;
+            border-color: #00594a;
+        }
+
+        .field-input[type="textarea"],
+        textarea.field-input {
+            min-height: 100px;
+        }
+
+        .field-input-growing {
+            overflow: hidden;
+            min-height: 100px;
+        }
+
+        .array-item {
+            background: #222831;
+            border: 1px solid #404854;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .array-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .array-item-label {
+            font-weight: 600;
+            color: #D0DCE3;
+            font-size: 13px;
+        }
+
+        .array-item-remove {
+            background: none;
+            border: none;
+            color: #c0392b;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+        }
+
+        .collapsible-header {
+            cursor: pointer;
+            padding: 12px 16px;
+            background: #222831;
+            border: 1px solid #404854;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #D0DCE3;
+            margin-bottom: 12px;
+            user-select: none;
+        }
+
+        .collapsible-header:hover {
+            background: #2a3138;
+        }
+
+        .collapsible-content {
+            padding: 16px;
+            background: #222831;
+            border: 1px solid #404854;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            display: none;
+        }
+
+        .collapsible-content.expanded {
+            display: block;
+        }
+
+        .collapsible-icon {
+            transition: transform 0.2s;
+        }
+
+        .collapsible-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 16px;
+            position: fixed;
+            bottom: 32px;
+            left: 312px;
+            right: 32px;
+            max-width: calc(900px - 32px);
+            z-index: 200;
+        }
+
+        .btn-save {
+            flex: 1;
+            background: #00594a;
+            color: #D0DCE3;
+            padding: 14px 32px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-save:hover {
+            background: #004036;
+        }
+
+        .btn-save.loading {
+            opacity: 0.6;
+        }
+
+        .btn-discard {
+            background: #404854;
+            color: #D0DCE3;
+            padding: 14px 32px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-discard:hover {
+            background: #4a5360;
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: #2d3139;
+            border: 1px solid #404854;
+            border-left: 4px solid #00594a;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+            pointer-events: auto;
+            max-width: 400px;
+        }
+
+        .toast.error {
+            border-left-color: #c0392b;
+        }
+
+        .toast.success {
+            border-left-color: #27ae60;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Users Management */
+        .users-container {
+            padding: 40px 32px;
+            max-width: 1200px;
+        }
+
+        .add-user-form {
+            background: #2d3139;
+            border: 1px solid #404854;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .add-user-form h3 {
+            font-size: 18px;
+            margin-bottom: 24px;
+            color: #D0DCE3;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        .users-table th {
+            text-align: left;
+            padding: 16px;
+            background: #2d3139;
+            border-bottom: 2px solid #404854;
+            font-weight: 600;
+            color: #D0DCE3;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .users-table td {
+            padding: 16px;
+            border-bottom: 1px solid #404854;
+            font-size: 14px;
+        }
+
+        .users-table tr:hover {
+            background: #2a3138;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(46, 213, 115, 0.2);
+            color: #2ed573;
+        }
+
+        .status-locked {
+            background: rgba(192, 57, 43, 0.2);
+            color: #e74c3c;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #404854;
+            border-top: 2px solid #00594a;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            gap: 12px;
+            color: #999;
+        }
+
+        /* Activity Log */
+        .activity-container {
+            padding: 40px 32px;
+            max-width: 900px;
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            padding: 20px;
+            border-left: 3px solid #404854;
+            margin-bottom: 16px;
+            background: #2d3139;
+            border-radius: 0 6px 6px 0;
+            transition: border-color 0.2s;
+        }
+
+        .activity-item:hover {
+            border-left-color: #00594a;
+        }
+
+        .activity-text {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #404854;
+                display: none;
+            }
+
+            .sidebar.mobile-open {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .editor-actions {
+                left: 16px;
+                right: 16px;
+                max-width: none;
+                flex-direction: column;
+            }
+
+            .dashboard-content,
+            .editor-container,
+            .users-container,
+            .activity-container {
+                padding: 24px 16px;
+            }
+
+            .page-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                padding: 16px;
+            }
+
+            .topbar-title {
+                font-size: 20px;
+            }
+        }
+
+        /* Unsaved changes warning */
+        .unsaved-indicator {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #ff9800;
+            border-radius: 50%;
+        }
+
+        /* Modal/Confirmation Dialog */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 5000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #2d3139;
+            border: 1px solid #404854;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #D0DCE3;
+        }
+
+        .modal-content p {
+            color: #999;
+            margin-bottom: 24px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Login Screen -->
+    <div class="screen login-screen active" id="loginScreen">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="logo-container">
+                    <svg class="axsuma-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,10 90,40 70,90 30,90 10,40" fill="#00594a" opacity="0.9"/>
+                        <polygon points="50,25 75,45 60,75 40,75 25,45" fill="#D0DCE3"/>
+                    </svg>
+                    <h1>Axsuma CMS</h1>
+                    <p class="subtitle">Content Management System</p>
+                </div>
+                <div class="login-error" id="loginError"></div>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="admin@axsuma.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div class="screen dashboard-screen" id="dashboardScreen">
+        <div class="dashboard-container">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar" id="sidebar">
+                <nav id="sidebarNav">
+                    <div class="nav-item active" data-nav="dashboard">Dashboard</div>
+                    <div class="nav-item" data-nav="activity">Activity Log</div>
+                    <div class="nav-item" data-nav="users" style="display: none;" id="usersNavItem">Users</div>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Topbar -->
+                <div class="topbar">
+                    <h1 class="topbar-title">Axsuma CMS</h1>
+                    <div class="topbar-actions">
+                        <div class="user-info">
+                            <span id="userName">Admin</span>
+                            <span class="role-badge super-admin" id="roleBadge">Super Admin</span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" onclick="handleLogout()">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Dashboard Content -->
+                <div id="dashboardContent" class="dashboard-content">
+                    <div class="page-header">
+                        <h2>Pages</h2>
+                        <p>Select a page to edit its content</p>
+                    </div>
+                    <div class="page-grid" id="pageGrid"></div>
+                </div>
+
+                <!-- Activity Log -->
+                <div id="activityContent" class="activity-container" style="display: none;">
+                    <div class="page-header">
+                        <h2>Activity Log</h2>
+                        <p>Recent content changes</p>
+                    </div>
+                    <ul class="activity-list" id="activityList"></ul>
+                </div>
+
+                <!-- Users Management -->
+                <div id="usersContent" class="users-container" style="display: none;">
+                    <div class="page-header">
+                        <h2>User Management</h2>
+                        <p>Manage administrators and editors</p>
+                    </div>
+                    <div class="add-user-form">
+                        <h3>Add New User</h3>
+                        <form id="addUserForm" onsubmit="handleAddUser(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="newUserName">Name</label>
+                                    <input type="text" id="newUserName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newUserEmail">Email</label>
+                                    <input type="email" id="newUserEmail" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="newUserPassword">Password</label>
+                                    <input type="password" id="newUserPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newUserRole">Role</label>
+                                    <select id="newUserRole" style="width: 100%; padding: 12px 16px; border: 1px solid #404854; background: #222831; color: #D0DCE3; border-radius: 6px; font-family: inherit; font-size: 14px;">
+                                        <option value="editor">Editor</option>
+                                        <option value="super_admin">Super Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create User</button>
+                        </form>
+                    </div>
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersList"></tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Editor Screen -->
+    <div class="screen editor-screen" id="editorScreen">
+        <div class="editor-container">
+            <div class="editor-header">
+                <button class="back-button" onclick="goToDashboard()">←</button>
+                <h2 id="editorPageTitle">Page Title</h2>
+            </div>
+
+            <div class="content-sections" id="contentSections"></div>
+
+            <div class="editor-actions">
+                <button class="btn-discard" onclick="handleDiscard()">Discard Changes</button>
+                <button class="btn-save" id="saveButton" onclick="handleSave()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-content">
+            <h3 id="confirmTitle">Confirm</h3>
+            <p id="confirmMessage">Are you sure?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-danger" id="confirmButton">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_URL = '/api';
+
+        // State
+        let currentUser = null;
+        let currentPage = null;
+        let contentData = {};
+        let originalContent = {};
+        let hasUnsavedChanges = false;
+
+        // Pages configuration
+        const PAGES = {
+            home: { name: 'Home', icon: '🏠' },
+            'company-formations': { name: 'Company Formations', icon: '🏢' },
+            governance: { name: 'Governance', icon: '⚖️' },
+            'ma-transactions': { name: 'M&A Transactions', icon: '💼' },
+            accounting: { name: 'Accounting', icon: '📊' },
+            'id-verification': { name: 'ID Verification', icon: '🔐' },
+            'overseas-entities': { name: 'Overseas Entities', icon: '🌍' },
+            'process-agent': { name: 'Process Agent', icon: '📋' }
+        };
+
+        // Utilities
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        function switchScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        async function apiCall(method, endpoint, data = null) {
+            const options = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                }
+            };
+
+            if (data) options.body = JSON.stringify(data);
+
+            try {
+                const response = await fetch(`${API_URL}${endpoint}`, options);
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || 'API Error');
+                }
+
+                return result;
+            } catch (error) {
+                showToast(error.message, 'error');
+                throw error;
+            }
+        }
+
+        // Auth
+        async function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('loginError');
+
+            try {
+                const result = await apiCall('POST', '/auth/login', { email, password });
+                sessionStorage.setItem('token', result.token);
+                currentUser = result.user;
+                goToDashboard();
+                loadDashboard();
+            } catch (error) {
+                errorDiv.classList.add('show');
+                errorDiv.textContent = error.message;
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('token');
+            currentUser = null;
+            currentPage = null;
+            contentData = {};
+            switchScreen('loginScreen');
+        }
+
+        // Navigation
+        function goToDashboard() {
+            if (hasUnsavedChanges) {
+                showConfirm('Unsaved Changes', 'You have unsaved changes. Discard them?', () => {
+                    hasUnsavedChanges = false;
+                    switchScreen('dashboardScreen');
+                    loadDashboard();
+                });
+            } else {
+                switchScreen('dashboardScreen');
+                loadDashboard();
+            }
+        }
+
+        // Dashboard
+        async function loadDashboard() {
+            const grid = document.getElementById('pageGrid');
+            grid.innerHTML = '';
+
+            // Update user info
+            document.getElementById('userName').textContent = currentUser.name;
+            const roleEl = document.getElementById('roleBadge');
+            if (currentUser.role === 'super_admin') {
+                roleEl.textContent = 'Super Admin';
+                roleEl.className = 'role-badge super-admin';
+                document.getElementById('usersNavItem').style.display = 'block';
+            } else {
+                roleEl.textContent = 'Editor';
+                roleEl.className = 'role-badge editor';
+                document.getElementById('usersNavItem').style.display = 'none';
+            }
+
+            // Render page cards
+            Object.entries(PAGES).forEach(([key, page]) => {
+                const card = document.createElement('div');
+                card.className = 'page-card';
+                card.innerHTML = `
+                    <div class="page-icon">${page.icon}</div>
+                    <h3>${page.name}</h3>
+                    <p>Edit content</p>
+                `;
+                card.onclick = () => openPageEditor(key);
+                grid.appendChild(card);
+            });
+
+            // Load activity
+            await loadActivity();
+        }
+
+        // Page Editor
+        async function openPageEditor(pageKey) {
+            currentPage = pageKey;
+            document.getElementById('editorPageTitle').textContent = PAGES[pageKey].name;
+
+            try {
+                const result = await apiCall('GET', `/content/${pageKey}`);
+                contentData = result.content || {};
+                originalContent = JSON.parse(JSON.stringify(contentData));
+                renderEditor();
+                switchScreen('editorScreen');
+                hasUnsavedChanges = false;
+            } catch (error) {
+                showToast('Failed to load page content', 'error');
+            }
+        }
+
+        function renderEditor() {
+            const container = document.getElementById('contentSections');
+            container.innerHTML = '';
+
+            const renderValue = (value, parentKey, fieldKey, depth = 0) => {
+                const inputId = `${parentKey}-${fieldKey}`;
+
+                if (value === null || value === undefined) {
+                    return '';
+                }
+
+                if (typeof value === 'string') {
+                    return `
+                        <div class="field-group">
+                            <label class="field-label">${formatLabel(fieldKey)}</label>
+                            <textarea class="field-input" id="${inputId}" data-path="${parentKey}.${fieldKey}">${value}</textarea>
+                        </div>
+                    `;
+                }
+
+                if (typeof value === 'object') {
+                    if (Array.isArray(value)) {
+                        // Array of strings
+                        if (value.length > 0 && typeof value[0] === 'string') {
+                            return `
+                                <div class="field-group">
+                                    <label class="field-label">${formatLabel(fieldKey)}</label>
+                                    <div id="${inputId}">
+                                        ${value.map((item, idx) => `
+                                            <div class="array-item">
+                                                <textarea class="field-input" data-path="${parentKey}.${fieldKey}[${idx}]">${item}</textarea>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }
+
+                        // Array of objects
+                        return `
+                            <div class="field-group">
+                                <label class="field-label">${formatLabel(fieldKey)}</label>
+                                <div id="${inputId}">
+                                    ${value.map((item, idx) => renderCollapsibleObject(item, `${parentKey}.${fieldKey}[${idx}]`, idx)).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // Object
+                    let html = '';
+                    Object.entries(value).forEach(([key, val]) => {
+                        html += renderValue(val, parentKey + (depth === 0 ? '.' + fieldKey : `.${fieldKey}`), key, depth + 1);
+                    });
+                    return html;
+                }
+
+                return '';
+            };
+
+            // Render sections
+            Object.entries(contentData).forEach(([sectionKey, sectionValue]) => {
+                const section = document.createElement('div');
+                section.className = 'content-section';
+
+                const title = document.createElement('h3');
+                title.className = 'section-title';
+                title.textContent = formatLabel(sectionKey);
+                section.appendChild(title);
+
+                section.innerHTML += renderValue(sectionValue, sectionKey, '', 0);
+                container.appendChild(section);
+            });
+
+            setupFieldListeners();
+        }
+
+        function renderCollapsibleObject(obj, path, index) {
+            const id = `collapse-${path}`;
+            const fields = Object.entries(obj).map(([key, val]) => {
+                if (typeof val === 'string') {
+                    return `
+                        <div class="field-group">
+                            <label class="field-label">${formatLabel(key)}</label>
+                            <textarea class="field-input" data-path="${path}.${key}">${val}</textarea>
+                        </div>
+                    `;
+                }
+                if (Array.isArray(val) && val.length > 0 && typeof val[0] === 'string') {
+                    return `
+                        <div class="field-group">
+                            <label class="field-label">${formatLabel(key)}</label>
+                            ${val.map((item, idx) => `
+                                <div class="array-item">
+                                    <textarea class="field-input" data-path="${path}.${key}[${idx}]">${item}</textarea>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+                return '';
+            }).join('');
+
+            return `
+                <div class="collapsible-header" onclick="toggleCollapsible('${id}')">
+                    <span>Item ${index + 1}</span>
+                    <span class="collapsible-icon">▼</span>
+                </div>
+                <div class="collapsible-content" id="${id}">
+                    ${fields}
+                </div>
+            `;
+        }
+
+        function toggleCollapsible(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('expanded');
+            el.previousElementSibling.querySelector('.collapsible-icon').classList.toggle('expanded');
+        }
+
+        function setupFieldListeners() {
+            document.querySelectorAll('.field-input').forEach(input => {
+                input.addEventListener('change', () => markUnsavedChanges());
+                input.addEventListener('input', autoGrowTextarea);
+            });
+        }
+
+        function autoGrowTextarea(e) {
+            e.target.style.height = 'auto';
+            e.target.style.height = e.target.scrollHeight + 'px';
+        }
+
+        function markUnsavedChanges() {
+            hasUnsavedChanges = true;
+        }
+
+        async function handleSave() {
+            const saveBtn = document.getElementById('saveButton');
+            saveBtn.classList.add('loading');
+            saveBtn.disabled = true;
+
+            try {
+                // Collect all field values
+                const updatedContent = JSON.parse(JSON.stringify(contentData));
+
+                document.querySelectorAll('.field-input').forEach(input => {
+                    const path = input.getAttribute('data-path');
+                    const value = input.value;
+                    setNestedValue(updatedContent, path, value);
+                });
+
+                await apiCall('POST', `/content/${currentPage}`, { content: updatedContent });
+                contentData = updatedContent;
+                originalContent = JSON.parse(JSON.stringify(contentData));
+                hasUnsavedChanges = false;
+                showToast('Changes saved successfully!', 'success');
+            } catch (error) {
+                showToast('Failed to save changes', 'error');
+            } finally {
+                saveBtn.classList.remove('loading');
+                saveBtn.disabled = false;
+            }
+        }
+
+        function handleDiscard() {
+            if (!hasUnsavedChanges) return;
+            showConfirm('Discard Changes', 'Are you sure you want to discard your changes?', () => {
+                contentData = JSON.parse(JSON.stringify(originalContent));
+                hasUnsavedChanges = false;
+                renderEditor();
+                showToast('Changes discarded', 'success');
+            });
+        }
+
+        function setNestedValue(obj, path, value) {
+            const parts = path.split(/[\.\[\]]/).filter(p => p);
+            let current = obj;
+
+            for (let i = 0; i < parts.length - 1; i++) {
+                const key = parts[i];
+                if (!(key in current)) {
+                    current[key] = isNaN(parts[i + 1]) ? {} : [];
+                }
+                current = current[key];
+            }
+
+            current[parts[parts.length - 1]] = value;
+        }
+
+        function getNestedValue(obj, path) {
+            return path.split(/[\.\[\]]/).filter(p => p).reduce((acc, key) => acc?.[key], obj);
+        }
+
+        function formatLabel(text) {
+            return text
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, str => str.toUpperCase())
+                .trim();
+        }
+
+        // Activity Log
+        async function loadActivity() {
+            try {
+                const result = await apiCall('GET', '/activity');
+                const list = document.getElementById('activityList');
+                list.innerHTML = '';
+
+                if (result.activity && result.activity.length > 0) {
+                    result.activity.forEach(item => {
+                        const li = document.createElement('li');
+                        li.className = 'activity-item';
+                        li.innerHTML = `
+                            <div class="activity-text"><strong>${item.user}</strong> edited <strong>${item.page}</strong></div>
+                            <div class="activity-time">${formatTime(item.timestamp)}</div>
+                        `;
+                        list.appendChild(li);
+                    });
+                } else {
+                    list.innerHTML = '<p style="color: #999;">No activity yet</p>';
+                }
+            } catch (error) {
+                console.log('Activity not available:', error.message);
+            }
+        }
+
+        function formatTime(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diff = now - date;
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+
+            if (hours < 1) return 'Just now';
+            if (hours < 24) return `${hours}h ago`;
+            if (days < 7) return `${days}d ago`;
+            return date.toLocaleDateString();
+        }
+
+        // Users Management
+        async function loadUsers() {
+            try {
+                const result = await apiCall('GET', '/users');
+                const tbody = document.getElementById('usersList');
+                tbody.innerHTML = '';
+
+                result.users.forEach(user => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.role === 'super_admin' ? 'Super Admin' : 'Editor'}</td>
+                        <td><span class="status-badge ${user.locked ? 'status-locked' : 'status-active'}">${user.locked ? 'Locked' : 'Active'}</span></td>
+                        <td>
+                            <button class="btn btn-sm" onclick="toggleUserLock('${user.id}', ${user.locked})">${user.locked ? 'Unlock' : 'Lock'}</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteUser('${user.id}', '${user.name}')">Delete</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                showToast('Failed to load users', 'error');
+            }
+        }
+
+        async function handleAddUser(event) {
+            event.preventDefault();
+            const name = document.getElementById('newUserName').value;
+            const email = document.getElementById('newUserEmail').value;
+            const password = document.getElementById('newUserPassword').value;
+            const role = document.getElementById('newUserRole').value;
+
+            try {
+                await apiCall('POST', '/users', { name, email, password, role });
+                showToast('User created successfully!', 'success');
+                document.getElementById('addUserForm').reset();
+                loadUsers();
+            } catch (error) {
+                showToast('Failed to create user', 'error');
+            }
+        }
+
+        async function toggleUserLock(userId, isLocked) {
+            try {
+                await apiCall('PUT', `/users/${userId}`, { locked: !isLocked });
+                showToast('User status updated', 'success');
+                loadUsers();
+            } catch (error) {
+                showToast('Failed to update user', 'error');
+            }
+        }
+
+        function deleteUser(userId, userName) {
+            showConfirm('Delete User', `Are you sure you want to delete ${userName}?`, async () => {
+                try {
+                    await apiCall('DELETE', `/users/${userId}`);
+                    showToast('User deleted', 'success');
+                    loadUsers();
+                } catch (error) {
+                    showToast('Failed to delete user', 'error');
+                }
+            });
+        }
+
+        // Modal
+        function showConfirm(title, message, callback) {
+            document.getElementById('confirmTitle').textContent = title;
+            document.getElementById('confirmMessage').textContent = message;
+            document.getElementById('confirmButton').onclick = () => {
+                callback();
+                closeModal();
+            };
+            document.getElementById('confirmModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+        }
+
+        // Navigation
+        document.querySelectorAll('[data-nav]').forEach(item => {
+            item.addEventListener('click', function() {
+                const nav = this.getAttribute('data-nav');
+                document.querySelectorAll('[data-nav]').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
+                document.getElementById('dashboardContent').style.display = 'none';
+                document.getElementById('activityContent').style.display = 'none';
+                document.getElementById('usersContent').style.display = 'none';
+
+                if (nav === 'dashboard') {
+                    document.getElementById('dashboardContent').style.display = 'block';
+                } else if (nav === 'activity') {
+                    document.getElementById('activityContent').style.display = 'block';
+                    loadActivity();
+                } else if (nav === 'users') {
+                    document.getElementById('usersContent').style.display = 'block';
+                    loadUsers();
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            const token = sessionStorage.getItem('token');
+            if (token) {
+                currentUser = JSON.parse(sessionStorage.getItem('user') || '{}');
+                switchScreen('dashboardScreen');
+                loadDashboard();
+            } else {
+                switchScreen('loginScreen');
+            }
+        });
+
+        // Warn on unsaved changes
+        window.addEventListener('beforeunload', (e) => {
+            if (hasUnsavedChanges) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+</body>
+</html>
