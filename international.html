@@ -135,10 +135,7 @@
     .reveal.vis{opacity:1;transform:translateY(0)}
     .no-js .reveal{opacity:1;transform:none}
 
-    /* NUMBER COUNTER for feature cards */
-    .feature-grid{counter-reset:fc}
-    .feature-card{counter-increment:fc}
-    .feature-card::after{content:counter(fc,decimal-leading-zero);position:absolute;top:1.5rem;right:1.5rem;font-size:2.2rem;font-weight:200;color:var(--teal);opacity:.3;letter-spacing:-.5px;font-family:var(--font-heading)}
+    /* Numbering handled by site-wide CSS (appears above h3, no overlap) */
 
     @media(max-width:1024px){
       .feature-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
