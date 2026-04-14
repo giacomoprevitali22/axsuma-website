@@ -249,7 +249,12 @@
       .lawfirms-grid{grid-template-columns:1fr;gap:2rem}
       .footer-grid{grid-template-columns:1fr}
       .cookie-banner{flex-direction:column;text-align:center}
+      /* Mobile main menu alignment */
+      .nav-links li{width:100%;text-align:left}
+      .nav-links li a{display:block;padding:.5rem 0}
+      .nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}
       /* Mobile mega menu: show as nested accordion under parent link */
+      .nav-drop{width:100%}
       .nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}
       .nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}
       .nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}
@@ -587,20 +592,28 @@ try{
     });
   }
 
-  // Mobile: tap-to-toggle nav-drop (About/Services accordion)
+  // Mobile: tap-to-toggle nav-drop (About/Services accordion). Tap again to close.
   document.querySelectorAll('.nav-drop>a').forEach(function(a){
     a.addEventListener('click',function(e){
       if(window.innerWidth<=768){
+        e.preventDefault();
         var parent=a.parentElement;
-        if(!parent.classList.contains('open')){
-          e.preventDefault();
-          document.querySelectorAll('.nav-drop.open').forEach(function(p){p.classList.remove('open')});
-          parent.classList.add('open');
-        }
-        // Second tap = follow link (parent already open)
+        var wasOpen=parent.classList.contains('open');
+        document.querySelectorAll('.nav-drop.open').forEach(function(p){p.classList.remove('open')});
+        if(!wasOpen) parent.classList.add('open');
       }
     });
   });
+  // Reset accordions when hamburger menu is closed
+  if(toggleBtn){
+    toggleBtn.addEventListener('click',function(){
+      setTimeout(function(){
+        if(!menuOpen){
+          document.querySelectorAll('.nav-drop.open').forEach(function(p){p.classList.remove('open')});
+        }
+      },10);
+    });
+  }
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
