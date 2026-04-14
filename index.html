@@ -52,7 +52,7 @@
     /* ===== NAV ===== */
     .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
-    .nav-logo{height:44px}
+    .nav-logo{height:68px}
     .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
     .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
     .nav-links a:hover{color:var(--dark)}
@@ -156,7 +156,11 @@
     .about-text .btn-outline:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
 
     /* ===== SECTORS ===== */
-    .sectors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    /* 5-card asymmetric layout: 3 on top row, 2 centered on bottom row */
+    .sectors-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;margin-top:3rem}
+    .sectors-grid>.sector-card{grid-column:span 2}
+    .sectors-grid>.sector-card:nth-last-child(2){grid-column:2 / span 2}
+    .sectors-grid>.sector-card:nth-last-child(1){grid-column:span 2}
     .sector-card{text-align:center;padding:2.5rem 1.5rem;border-radius:8px;background:var(--white);border:1px solid var(--border);transition:all var(--ease)}
     .sector-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06)}
     .sector-icon{width:60px;height:60px;border-radius:50%;background:rgba(0,89,74,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
@@ -208,7 +212,10 @@
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:1024px){
-      .why-grid,.sectors-grid,.insights-grid{grid-template-columns:repeat(2,1fr)}
+      .why-grid,.insights-grid{grid-template-columns:repeat(2,1fr)}
+      .sectors-grid{grid-template-columns:repeat(2,1fr)}
+      .sectors-grid>.sector-card,.sectors-grid>.sector-card:nth-last-child(2),.sectors-grid>.sector-card:nth-last-child(1){grid-column:auto}
+      .sectors-grid>.sector-card:last-child{grid-column:1 / -1;max-width:50%;justify-self:center}
       .sol-grid,.sol-3{grid-template-columns:1fr}
       .about-grid,.lawfirms-grid{grid-template-columns:1fr;gap:2rem}
       .footer-grid{grid-template-columns:1fr 1fr}
@@ -219,7 +226,7 @@
     @media(max-width:768px){
       .nav-links{display:none}
       .nav-toggle{display:block}
-      .nav-logo{height:36px}
+      .nav-logo{height:52px}
       .hero{padding:6rem 0 2.5rem}
       .hero h1{font-size:2.2rem}
       .section{padding:3.5rem 0}
@@ -257,7 +264,7 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="container">
-    <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
+    <a href="index.html"><img src="axsuma-brand.svg" alt="Axsuma" class="nav-logo"></a>
     <ul class="nav-links">
       <li class="nav-drop">
         <a href="about.html">About <i class="fas fa-chevron-down"></i></a>

@@ -34,7 +34,7 @@
     /* NAV */
     .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
-    .nav-logo{height:44px}
+    .nav-logo{height:68px}
     .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
     .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
     .nav-links a:hover{color:var(--dark)}
@@ -126,7 +126,7 @@
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:768px){
-      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}
+      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:52px}
       .page-hero{padding:6rem 0 2rem}
       .page-hero h1{font-size:1.8rem}
       .section{padding:3.5rem 0}
@@ -142,7 +142,7 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="container">
-    <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
+    <a href="index.html"><img src="axsuma-brand.svg" alt="Axsuma" class="nav-logo"></a>
     <ul class="nav-links">
       <li class="nav-drop">
         <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
@@ -213,30 +213,59 @@
     <div class="content-block reveal">
       <p data-content="overview.paragraphs.0">Our founders and senior team bring decades of experience from Magic Circle law firms, Big 4 accountancy practices and leading corporate service providers. They combine institutional expertise with a relationship-first approach, so you get technically robust, regulator-ready advice delivered with commercial sense and personal accountability.</p>
 
-      <!-- TEAM GRID -->
-      <div class="team-grid" style="margin-top:3rem">
-        <!-- Team Member 1: Gurpreet -->
-        <div class="team-card reveal">
-          <div class="avatar">GJ</div>
-          <h3 data-content="team.0.name">Gurpreet Jagdev</h3>
-          <p class="role" data-content="team.0.title">Director of People &amp; Culture</p>
-          <p data-content="team.0.bio">Gurpreet is a strategic HR leader and trusted advisor who works closely with founders, executives, and leadership teams across high-growth and international businesses. With experience spanning enterprise technology, SaaS, and private equity-backed environments, she focuses on building practical, scalable people strategies that drive performance, engagement, and long-term growth. She brings a strong balance of strategic thinking and hands-on delivery, with a commercial and pragmatic approach. Gurpreet has led global People functions, built HR operating models from the ground up, and supported organisations through periods of rapid growth and change, including M&A, organisational design, and international expansion.</p>
-        </div>
-
-        <!-- Team Member 2: Jason -->
+      <!-- FOUNDERS & MANAGING DIRECTORS -->
+      <h2 class="s-title" style="font-size:1.4rem;margin:3rem 0 1.5rem;font-weight:500;text-align:center">Founders &amp; Managing Directors</h2>
+      <div class="team-grid" style="grid-template-columns:repeat(2,1fr);margin-top:2.5rem">
+        <!-- Founder 1: Jason Reader -->
         <div class="team-card reveal">
           <div class="avatar">JR</div>
-          <h3 data-content="team.1.name">Jason Reader</h3>
-          <p class="role" data-content="team.1.title">Director</p>
-          <p data-content="team.1.bio">Bio coming soon. Jason brings extensive experience in corporate administration and transactional support.</p>
+          <h3 data-content="team.members.0.name">Jason Reader</h3>
+          <p class="role" data-content="team.members.0.role">Managing Director - Operations</p>
+          <p data-content="team.members.0.bio.0">Jason is the founder and Managing Director – Operations, with over 30 years' experience in the Corporate Services sector.</p>
+          <p data-content="team.members.0.bio.1">Jason has led UK operational entities, overseeing company formations, secretariat functions, legal process agent services, registers of overseas entities, and client acceptance and onboarding for regulated services.</p>
+          <p data-content="team.members.0.bio.2">He supports complex global business structures and drives client outcomes, including supporting UK directorships for both short-term transactional objectives and longer-term non-executive or fractional roles.</p>
         </div>
 
-        <!-- Team Member 3: Charlotte -->
+        <!-- Founder 2: Charlotte Phipps-Hornby -->
         <div class="team-card reveal">
           <div class="avatar">CP</div>
-          <h3 data-content="team.2.name">Charlotte Phipps-Hornby</h3>
-          <p class="role" data-content="team.2.title">Director</p>
-          <p data-content="team.2.bio">Bio coming soon. Charlotte leads client engagement and operational delivery across governance and compliance mandates.</p>
+          <h3 data-content="team.members.1.name">Charlotte Phipps-Hornby</h3>
+          <p class="role" data-content="team.members.1.role">Managing Director - Clients</p>
+          <p data-content="team.members.1.bio.0">Charlotte is the founder and Managing Director – Clients, with over 20 years' experience in international professional services.</p>
+          <p data-content="team.members.1.bio.1">Charlotte advises VC- and PE-backed growth companies, multinationals, and investment funds on cross-border expansion, governance, compliance, and complex transactions.</p>
+          <p data-content="team.members.1.bio.2">She combines commercial leadership with deep technical expertise to deliver scalable, high-quality solutions for international clients.</p>
+        </div>
+      </div>
+
+      <!-- LEADERSHIP TEAM -->
+      <h2 class="s-title" style="font-size:1.4rem;margin:3rem 0 1.5rem;font-weight:500;text-align:center">Leadership Team</h2>
+      <div class="team-grid" style="margin-top:2.5rem">
+        <!-- Team Member 3: Joanne Reader -->
+        <div class="team-card reveal">
+          <div class="avatar">JoR</div>
+          <h3 data-content="team.members.2.name">Joanne Reader</h3>
+          <p class="role" data-content="team.members.2.role">Finance Manager</p>
+          <p data-content="team.members.2.bio.0">Joanne is a qualified accountant who has operated in client accounting roles and in-house finance management roles. Joanne has a wealth of experience in Payroll, bookkeeping and VAT gained through her previous roles, including previous corporate services experience with Jordans.</p>
+          <p data-content="team.members.2.bio.1">Joanne is a dedicated member of the team and always on hand to support clients in respect of their finance, payroll, bookkeeping and VAT queries.</p>
+        </div>
+
+        <!-- Team Member 4: Sarah Youll -->
+        <div class="team-card reveal">
+          <div class="avatar">SY</div>
+          <h3 data-content="team.members.3.name">Sarah Youll</h3>
+          <p class="role" data-content="team.members.3.role">Accounting &amp; Tax Advisory</p>
+          <p data-content="team.members.3.bio.0">Sarah is a Chartered Accountant and Tax Advisor who trained as a Chartered Accountant with big 4 firm, PwC. She then went on to be a Director for an accounting firm with over 500 clients in the hospitality industry. Sarah has gained substantial corporate service experience whilst working for Vistra.</p>
+          <p data-content="team.members.3.bio.1">Sarah is passionate about working with business owners and their management teams providing financial and operational advice that supports their business to succeed on every level.</p>
+        </div>
+
+        <!-- Team Member 5: Martin Palmer -->
+        <div class="team-card reveal">
+          <div class="avatar">MP</div>
+          <h3 data-content="team.members.4.name">Martin Palmer</h3>
+          <p class="role" data-content="team.members.4.role">Consultant</p>
+          <p data-content="team.members.4.bio.0">Martin has worked in the UK and international trust and corporate services sector for nearly 40 years.</p>
+          <p data-content="team.members.4.bio.1">He has a law degree from Nottingham University, and in 2012 was awarded the Advanced Diploma in International Taxation from the UK Chartered Institute of Taxation.</p>
+          <p data-content="team.members.4.bio.2">He has spoken and written widely on corporate law and international tax matters since the mid 1990's. His written output includes articles for the Journal of International Tax Trust &amp; Corporate Planning and a number of the Special Supplements of the well known legal textbook Gore Browne on Companies. He has written a book entitled 'UK Companies: Tax Advantages for International Business' now in its 5th Edition, published by Lexis Nexis.</p>
         </div>
       </div>
 

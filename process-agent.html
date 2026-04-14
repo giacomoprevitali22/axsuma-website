@@ -34,7 +34,7 @@
     /* NAV */
     .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
-    .nav-logo{height:44px}
+    .nav-logo{height:68px}
     .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
     .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
     .nav-links a:hover{color:var(--dark)}
@@ -101,6 +101,13 @@
     .svc-detail .svc-body ul{margin:1rem 0 1.5rem 1.2rem}
     .svc-detail .svc-body ul li{font-size:.92rem;color:var(--dark-soft)}
 
+    /* FEE TABLE */
+    .fee-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.88rem}
+    .fee-table th,.fee-table td{padding:.7rem .9rem;border:1px solid var(--border);text-align:center}
+    .fee-table th{background:var(--off-white);color:var(--teal);font-weight:600;font-size:.82rem;letter-spacing:.3px;text-transform:uppercase}
+    .fee-table tr:nth-child(even) td{background:var(--off-white)}
+    .fee-table td:first-child{font-weight:500;color:var(--dark)}
+
     /* BTN */
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
     .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
@@ -139,7 +146,7 @@
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:768px){
-      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}
+      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:52px}
       .page-hero,.page-hero-dark{padding:6rem 0 2rem}
       .page-hero h1{font-size:1.8rem}
       .section{padding:3.5rem 0}
@@ -155,7 +162,7 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="container">
-    <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
+    <a href="index.html"><img src="axsuma-brand.svg" alt="Axsuma" class="nav-logo"></a>
     <ul class="nav-links">
       <li class="nav-drop">
         <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
@@ -224,10 +231,10 @@
 <section class="section">
   <div class="container">
     <div class="content-block reveal">
-      <h2 data-content="overview.title">Legal Process Representation in UK Courts</h2>
-      <p data-content="overview.paragraphs.0">Overseas companies operating in the UK, selling goods or services, or subject to legal proceedings must appoint a process agent—a UK representative authorized to accept legal documents and court proceedings on their behalf. UK courts cannot serve legal documents directly on overseas entities; instead, documents are served on their appointed UK process agent, who then forwards them to the company.</p>
-      <p data-content="overview.paragraphs.1">The Civil Procedure Rules (CPR) require overseas companies involved in UK litigation to have a process agent appointed. Without a process agent, overseas companies face default judgments, inability to defend claims, and exposure to unlimited liability. Additionally, overseas companies registering branches with Companies House are required to appoint a process agent as part of their UK regulatory compliance.</p>
-      <p data-content="overview.paragraphs.2">We provide professional process agent services, acting as your authorized UK representative for legal service and court proceedings. Our service ensures that all court documents, legal notices, and litigation correspondence are received promptly, secured confidentially, and forwarded immediately to your company's decision-makers. We maintain secure document handling, provide proof of service, and coordinate with your legal advisors throughout litigation processes.</p>
+      <h2 data-content="overview.title">Legal Process Representation for Overseas Companies</h2>
+      <p data-content="overview.paragraphs.0">A UK Process Agent (also known as ASP or sometimes ASLP) is required when a party to a transaction does not have a physical presence in the UK where the transaction is taking place. A UK Process Agent can act for a company and/or individuals acting as the agent for court actions and/or arbitration proceedings, receiving notices where a UK presence is necessary for contracts under the laws of England and Wales.</p>
+      <p data-content="overview.paragraphs.1">The Process Agent's criteria are to accept delivery of any documents referring to court proceedings issued out of the courts of England and ensure that they are forwarded quickly to the client, to minimise delays allowing the client sufficient time to respond. We provide professional process agent services, acting as your authorized UK representative for legal service and court proceedings.</p>
+      <p data-content="overview.paragraphs.2">Our service ensures that all court documents, legal notices, and litigation correspondence are received promptly, secured confidentially, and forwarded immediately to your company's decision-makers. We maintain secure document handling, provide proof of service, and coordinate with your legal advisors throughout litigation processes.</p>
     </div>
   </div>
 </section>
@@ -236,14 +243,15 @@
 <section class="svc-detail">
   <div class="container">
     <aside class="svc-aside">
-      <div class="icon"><i class="fas fa-envelope-open"></i></div>
-      <h2 data-content="services.0.title">What is a Process Agent & Why You Need One</h2>
+      <div class="icon"><i class="fas fa-question-circle"></i></div>
+      <h2>What is the application process?</h2>
     </aside>
     <div class="svc-body">
-      <p data-content="services.0.paragraphs.0">A process agent is a UK-based representative appointed by an overseas company to accept legal documents, court proceedings, and formal notices on its behalf. When a company is sued in UK courts, legal documents must be properly "served" (delivered) according to the Civil Procedure Rules (CPR). UK courts cannot serve documents directly on foreign addresses; instead, documents are served on the company's appointed UK process agent.</p>
-      <p data-content="services.0.paragraphs.1">The process agent acts as a conduit between UK courts and the overseas company. Once documents are served on the process agent, the agent must forward them immediately to the company and confirm to the court that service has been completed. The process agent is not a legal representative (that's your solicitor's role); the agent is simply the person authorized to receive legal service and ensure the company is notified of proceedings.</p>
-      <p data-content="services.0.paragraphs.2">Process agents are mandatory for: (1) overseas companies with UK branches required to register at Companies House, (2) overseas companies subject to litigation in UK courts (the court will require you to appoint a process agent as a condition of defending the claim), (3) overseas companies bound by cross-border contracts specifying UK jurisdiction or legal proceedings, and (4) overseas companies engaged in significant UK commercial activity that might trigger litigation exposure.</p>
-      <p data-content="services.0.paragraphs.3">Without a process agent, overseas companies cannot properly defend UK legal claims. Courts will serve documents by other means (international service), but if the overseas company fails to respond, courts may issue default judgments against the unrepresented company. A company facing litigation without a process agent risks losing the case by default and facing enforcement of judgments without ever knowing proceedings were brought against them.</p>
+      <ol style="margin:1rem 0 1.5rem 1.2rem">
+        <li style="margin-bottom:.5rem">Either complete the online order form using the fee matrix to calculate our charges or contact us to discuss your requirements.</li>
+        <li style="margin-bottom:.5rem">Upon receipt of the completed instructions, Axsuma will set up the new facility, and email a confirmation letter and our invoice</li>
+        <li>Depending on complexity, the process takes 2-3 working days</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -252,14 +260,11 @@
 <section class="svc-detail">
   <div class="container">
     <aside class="svc-aside">
-      <div class="icon"><i class="fas fa-briefcase"></i></div>
-      <h2 data-content="services.1.title">When You Need a Process Agent</h2>
+      <div class="icon"><i class="fas fa-lightning-bolt"></i></div>
+      <h2>Is your client in a hurry?</h2>
     </aside>
     <div class="svc-body">
-      <p data-content="services.1.paragraphs.0">Process agent requirements arise in several common situations. First, overseas companies establishing UK branches must appoint a process agent under Companies House regulations. This is mandatory—UK branch registration cannot be completed without a process agent appointment. Companies registering branches include overseas subsidiaries of international groups, foreign parent companies expanding into the UK, and overseas private equity funds establishing UK operating entities.</p>
-      <p data-content="services.1.paragraphs.1">Second, overseas companies entering UK litigation must have a process agent. This may occur defensively (someone sues you in UK courts) or proactively (you sue someone in the UK and need a process agent to manage the proceedings). If you're defending a claim in UK courts, you must appoint a process agent as part of your defense. The court will not allow you to proceed without proper UK legal representation and a process agent for document service.</p>
-      <p data-content="services.1.paragraphs.2">Third, overseas companies with UK business exposure benefit from process agent appointment even before litigation arises. Many UK commercial contracts specify English law and UK jurisdiction, meaning any dispute will be litigated in UK courts. Having a process agent already appointed streamlines dispute resolution if a contract dispute arises. You can transition immediately to litigation without the delays of appointing a process agent mid-dispute.</p>
-      <p data-content="services.1.paragraphs.3">Fourth, overseas companies exposed to regulatory action may need a process agent. If UK regulatory bodies (such as the Financial Conduct Authority, Competition and Markets Authority, or sector-specific regulators) take enforcement action against an overseas company, service of regulatory notices on a process agent ensures the company is properly notified.</p>
+      <p>We provide a same-day service option for our valued clients who are pressed for time. This service incurs an additional fee, and online orders must be placed before 2pm UK time. Clients will receive their confirmation letter by the close of business on the same working day.</p>
     </div>
   </div>
 </section>
@@ -268,37 +273,109 @@
 <section class="svc-detail">
   <div class="container">
     <aside class="svc-aside">
-      <div class="icon"><i class="fas fa-clock"></i></div>
-      <h2 data-content="services.2.title">The Appointment Process & Our Service</h2>
+      <div class="icon"><i class="fas fa-info-circle"></i></div>
+      <h2>Any KYC requirements?</h2>
     </aside>
     <div class="svc-body">
-      <p data-content="services.2.paragraphs.0">Appointing Axsuma as your process agent is straightforward. We provide you with a process agent appointment letter that you sign and countersign, confirming your appointment of Axsuma as your authorized UK process agent. This letter is kept on file and produced to courts, regulators, or other parties requiring evidence of your process agent appointment.</p>
-      <p data-content="services.2.paragraphs.1">For overseas companies registering branches with Companies House, the process agent appointment is disclosed on the branch registration form (BR01). Companies House registers the process agent's details (our address, contact information) and lists us as the company's authorized service representative. If someone needs to serve legal documents, they contact us; our details are publicly registered with Companies House.</p>
-      <p data-content="services.2.paragraphs.2">We provide comprehensive process agent services: documents are received at our address, properly logged, scanned and emailed to you electronically, and secured in our client vault. We provide proof of service confirming when documents were received and forwarded, advise you of any urgent deadlines or action required, and coordinate with your legal advisors. We maintain confidentiality—all documents received are kept confidential and only disclosed to authorized company representatives or legal advisors.</p>
+      <p>No, there are currently no AML requirements when Axsuma agrees to act as your process agent.</p>
     </div>
   </div>
 </section>
 
-<!-- WHY AXSUMA -->
-<section class="section section-alt">
+<!-- WHAT DO WE CHARGE -->
+<section class="section">
   <div class="container">
-    <h2 class="s-title">Why Axsuma for Process Agent Services</h2>
-    <div class="feature-grid">
-      <div class="feature-card reveal">
-        <div class="icon"><i class="fas fa-balance-scale"></i></div>
-        <h3 data-content="why_cards.0.title">CPR Compliance Expertise</h3>
-        <p data-content="why_cards.0.description">We understand Civil Procedure Rules requirements, service standards, and court procedures. Your appointment with us ensures full compliance with UK litigation requirements and Companies House regulations.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="icon"><i class="fas fa-flash"></i></div>
-        <h3 data-content="why_cards.1.title">Immediate Document Notification</h3>
-        <p data-content="why_cards.1.description">Zero delays in document receipt and notification. We receive legal service instantly and forward documents to you electronically within hours, ensuring critical deadlines are never missed due to slow communication.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="icon"><i class="fas fa-lock"></i></div>
-        <h3 data-content="why_cards.2.title">Secure & Confidential Handling</h3>
-        <p data-content="why_cards.2.description">Documents are received securely, stored in our client vault, and disclosed only to authorized representatives. Your litigation matters remain confidential and properly protected throughout our process agent relationship.</p>
-      </div>
+    <div class="content-block reveal">
+      <h2>What do we charge?</h2>
+      <p>All fees in GBP (£) exclusive of VAT.</p>
+      <table class="fee-table">
+        <thead>
+          <tr>
+            <th>Documents</th>
+            <th>1Y</th>
+            <th>2Y</th>
+            <th>3Y</th>
+            <th>4Y</th>
+            <th>5Y</th>
+            <th>6Y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1-3</td>
+            <td>450</td>
+            <td>500</td>
+            <td>550</td>
+            <td>600</td>
+            <td>650</td>
+            <td>700</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>500</td>
+            <td>550</td>
+            <td>600</td>
+            <td>650</td>
+            <td>700</td>
+            <td>750</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>550</td>
+            <td>600</td>
+            <td>650</td>
+            <td>700</td>
+            <td>750</td>
+            <td>800</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>600</td>
+            <td>650</td>
+            <td>700</td>
+            <td>750</td>
+            <td>800</td>
+            <td>850</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>650</td>
+            <td>700</td>
+            <td>750</td>
+            <td>800</td>
+            <td>850</td>
+            <td>900</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>700</td>
+            <td>750</td>
+            <td>800</td>
+            <td>850</td>
+            <td>900</td>
+            <td>950</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>750</td>
+            <td>800</td>
+            <td>850</td>
+            <td>900</td>
+            <td>950</td>
+            <td>1000</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>800</td>
+            <td>850</td>
+            <td>900</td>
+            <td>950</td>
+            <td>1000</td>
+            <td>1050</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For any combinations not covered by this matrix, please ask us for a quote.</p>
     </div>
   </div>
 </section>
@@ -307,8 +384,8 @@
 <section class="cta">
   <div class="container reveal">
     <p class="s-label">Get in Touch</p>
-    <h2 data-content="cta.title">Talk to Our Team</h2>
-    <p data-content="cta.body">Our experts are always happy to talk. We will connect you with the appropriate specialist and reply within two working days.</p>
+    <h2>UK Process Agent Enquiries</h2>
+    <p>Discuss your transaction structure, completion timelines, and any other bespoke requirements. We'll connect you with the right specialist and reply within two working days.</p>
     <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
       <a href="contact.html" class="btn btn-teal">Contact Us <i class="fas fa-arrow-right"></i></a>
     </div>
