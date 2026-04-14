@@ -7,11 +7,11 @@ compatibility_date = "2024-01-01"
 #   wrangler kv namespace create CMS_USERS
 [[kv_namespaces]]
 binding = "CMS_CONTENT"
-id = "REPLACE_WITH_CMS_CONTENT_NAMESPACE_ID"
+id = "3c15a60c562f495c8839ea1f251dfc6b"
 
 [[kv_namespaces]]
 binding = "CMS_USERS"
-id = "REPLACE_WITH_CMS_USERS_NAMESPACE_ID"
+id = "63d89d5ce0cb49acbc7430b2d4ba5b92"
 
 # Environment variables (optional — defaults are hardcoded in the Worker)
 # To override, use:
