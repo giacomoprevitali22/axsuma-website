@@ -75,7 +75,7 @@
 
     /* ===== HERO ===== */
     /* Image uses its natural aspect ratio; hero grows to match. 1536×1024 source → aspect ~3:2 */
-    .hero{position:relative;background:var(--dark);overflow:hidden;padding:6rem 0 0;display:flex;align-items:center;min-height:calc(100vw * 1024 / 1536)}
+    .hero{position:relative;background:var(--dark);overflow:hidden;padding:8rem 0 4rem;display:flex;align-items:flex-start;min-height:calc(100vw * 1024 / 1536)}
     .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
     .hero-bg img{width:100%;height:auto;display:block;opacity:.65}
     .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(42,47,54,.85) 0%,rgba(42,47,54,.55) 35%,rgba(42,47,54,.1) 65%,transparent 100%);z-index:1}
@@ -234,8 +234,9 @@
       .nav-links{display:none}
       .nav-toggle{display:block}
       .nav-logo{height:52px}
-      .hero{padding:6rem 0 2.5rem}
+      .hero{padding:6rem 0 2.5rem;min-height:70vh;align-items:center}
       .hero h1{font-size:2.2rem}
+      .hero-bg img{width:auto;height:100%;min-height:70vh;object-fit:cover;object-position:center}
       .section{padding:3.5rem 0}
       .s-title{font-size:1.8rem}
       .why-grid,.sectors-grid,.insights-grid,.sol-3{grid-template-columns:1fr}
@@ -248,7 +249,14 @@
       .lawfirms-grid{grid-template-columns:1fr;gap:2rem}
       .footer-grid{grid-template-columns:1fr}
       .cookie-banner{flex-direction:column;text-align:center}
-      .mega{display:none!important}
+      /* Mobile mega menu: show as nested accordion under parent link */
+      .nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}
+      .nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}
+      .nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}
+      .nav-drop .mega ul{margin-bottom:.4rem}
+      .nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}
+      .nav-drop>a i{transition:transform .25s}
+      .nav-drop.open>a i{transform:rotate(180deg)}
     }
     @media(max-width:480px){
       .services-strip,.services-section .services-strip{grid-template-columns:repeat(2,1fr)}
@@ -578,6 +586,21 @@ try{
       }
     });
   }
+
+  // Mobile: tap-to-toggle nav-drop (About/Services accordion)
+  document.querySelectorAll('.nav-drop>a').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(window.innerWidth<=768){
+        var parent=a.parentElement;
+        if(!parent.classList.contains('open')){
+          e.preventDefault();
+          document.querySelectorAll('.nav-drop.open').forEach(function(p){p.classList.remove('open')});
+          parent.classList.add('open');
+        }
+        // Second tap = follow link (parent already open)
+      }
+    });
+  });
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(function(a){

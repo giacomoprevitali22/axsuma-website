@@ -135,7 +135,7 @@
       .s-title{font-size:1.7rem}
       .team-grid{grid-template-columns:1fr}
       .footer-grid{grid-template-columns:1fr}
-      .mega{display:none!important}
+      .mega{display:none!important}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
     }
   /*icon-kill*/.feature-card .icon,.svc-detail .svc-aside .icon,.svc-detail .icon,.sector-icon,.pillar-icon,.team-card .icon{display:none!important}.feature-grid{counter-reset:fc}.feature-card{counter-increment:fc;padding-top:2rem;position:relative}.feature-card>h3::before{content:counter(fc,decimal-leading-zero);display:block;font-size:1.6rem;font-weight:200;color:var(--teal);opacity:.45;margin-bottom:.5rem;letter-spacing:-.5px;font-family:var(--font-heading);line-height:1}.svc-detail .svc-aside h2{padding-top:.5rem;border-top:2px solid var(--teal);display:inline-block}/*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
 </head>
@@ -324,5 +324,5 @@ try{
 }catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
 </script>
 <script src="content-loader.js" data-page="meet-the-team"></script>
-</body>
+<script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){var parent=a.parentElement;if(!parent.classList.contains("open")){e.preventDefault();document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});parent.classList.add("open");}}})})}catch(e){}</script></body>
 </html>

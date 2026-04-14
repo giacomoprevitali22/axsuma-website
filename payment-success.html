@@ -56,5 +56,5 @@
       document.getElementById('refId').textContent = 'TEST-' + Date.now().toString(36).toUpperCase();
     }
   </script>
-</body>
+<script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){var parent=a.parentElement;if(!parent.classList.contains("open")){e.preventDefault();document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});parent.classList.add("open");}}})})}catch(e){}</script></body>
 </html>
