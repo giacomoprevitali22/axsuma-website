@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDPR &amp; Data Protection — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#222831">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --summit:#00594a;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
+      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
+      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
+      --border:rgba(208,220,227,.1);--font:'DM Sans','Helvetica Neue',Arial,sans-serif;--font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
+      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
+    h1,h2,h3,h4,h5,h6{font-family:var(--font-heading)}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+        /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white,#fff);border-bottom:1px solid rgba(226,229,233,.8);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem;max-width:1140px}
+    .nav-logo{height:44px}
+    .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#6b7280;transition:color .3s;font-family:'Inter',sans-serif}
+    .nav-links a:hover{color:#2a2f36}
+    .nav-cta{background:#00594a;color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:#007a66;color:#fff!important}
+    .nav-drop{position:relative}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform .3s}
+    .nav-drop:hover>a i{transform:rotate(180deg)}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:#fff;border:1px solid #e2e5e9;border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
+    .nav-drop:hover .mega{opacity:1;visibility:visible}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#00594a;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid #f0f1f3}
+    .mega ul{list-style:none;margin-bottom:1rem}
+    .mega li{margin-bottom:.2rem}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:#6b7280!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:#2a2f36!important}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer}
+    .nav-toggle span{display:block;width:22px;height:2px;background:#2a2f36;margin:5px 0;transition:.3s}
+    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}.mega{display:none!important}}
+
+
+    /* PAGE */
+    .page-header{padding:6rem 0 2rem;text-align:center}
+    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
+    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
+    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+
+    /* HERO IMAGE */
+    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .hero-image img{width:100%;height:auto;display:block}
+
+    /* OVERVIEW */
+    .overview-section{margin-bottom:3rem}
+    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+
+    /* SERVICE DETAIL SECTION */
+    .service-detail{margin-bottom:3rem}
+    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
+    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
+    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
+    .service-detail p:last-of-type{margin-bottom:0}
+    .service-detail ul{margin:1rem 0 .8rem 1.5rem;color:var(--text-mid);font-size:.9rem}
+    .service-detail li{margin-bottom:.6rem;line-height:1.6}
+
+    /* DETAIL IMAGE */
+    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+    .detail-image img{width:100%;height:auto;display:block}
+
+    /* WHY AXSUMA */
+    .why-section{margin-bottom:3rem}
+    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
+    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
+
+    /* CTA SECTION */
+    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
+    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
+    .btn-cta:hover{background:var(--slate-blue)}
+
+    /* FOOTER */
+    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+
+    @media(max-width:768px){
+      .why-grid{grid-template-columns:1fr}
+      .page-header h1{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+        <div class="mega" style="grid-template-columns:1fr;width:280px">
+          <div>
+            <h5>About Axsuma</h5>
+            <ul>
+              <li><a href="about.html">About Axsuma</a></li>
+              <li><a href="our-approach.html">Our Approach</a></li>
+              <li><a href="meet-the-team.html">Meet the Team</a></li>
+              <li><a href="sectors.html">Sectors We Serve</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav-drop">
+        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="mega">
+          <div>
+            <h5>Formation & Structure</h5>
+            <ul>
+              <li><a href="company-formations.html">Company Formations</a></li>
+              <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
+              <li><a href="directorships.html">Professional Directorships</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Corporate Services</h5>
+            <ul>
+              <li><a href="governance.html">Company Secretarial</a></li>
+              <li><a href="ma-transactions.html">M&amp;A Support</a></li>
+              <li><a href="accounting.html">Accounting &amp; Tax</a></li>
+              <li><a href="payroll-hr.html">Payroll &amp; HR</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Compliance &amp; Governance</h5>
+            <ul>
+              <li><a href="compliance-governance.html">Overview</a></li>
+              <li><a href="overseas-entities.html">Register of Overseas Entities</a></li>
+              <li><a href="process-agent.html">Process Agent</a></li>
+              <li><a href="id-verification.html">ID Verification</a></li>
+              <li><a href="uk-afs.html">UK Address for Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="international.html">International</a></li>
+      <li><a href="insights.html">News &amp; Insights</a></li>
+      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / GDPR &amp; Data Protection</p>
+    <h1>GDPR &amp; Data Protection Statement</h1>
+    <p>Last updated: 14 April 2026</p>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="container">
+  <div class="overview-section">
+    <h2>Our GDPR Compliance Commitment</h2>
+    <p>Axsuma is committed to compliance with the UK General Data Protection Regulation (GDPR) and Data Protection Act 2018. This statement summarises how we protect personal data, your rights as a data subject, and how to contact us regarding data protection matters.</p>
+  </div>
+</div>
+
+<!-- GDPR OVERVIEW -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-shield-alt service-detail-icon"></i>
+      <div>
+        <h3>What is GDPR?</h3>
+      </div>
+    </div>
+    <p>The General Data Protection Regulation (GDPR) is a comprehensive EU legal framework on data protection that applies in the UK. GDPR sets out strict rules for how organisations must handle personal data and provides individuals with significant rights to control their information. Axsuma processes personal data in accordance with GDPR at all times.</p>
+    <p>GDPR applies to the processing of personal data of individuals (data subjects) regardless of whether the processing occurs in the UK, EU, or elsewhere. Organisations handling UK or EU residents' data are required to comply with GDPR or face significant penalties.</p>
+  </div>
+</div>
+
+<!-- DATA PROTECTION OFFICER -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-user-shield service-detail-icon"></i>
+      <div>
+        <h3>Data Protection Officer</h3>
+      </div>
+    </div>
+    <p>Axsuma has appointed a Data Protection Officer (DPO) to oversee our GDPR compliance and serve as your first point of contact for data protection matters.</p>
+    <p><strong>Data Protection Officer Contact:</strong></p>
+    <p>Email: <a href="mailto:dpo@axsuma.co.uk">dpo@axsuma.co.uk</a><br>Address: Axsuma Ltd, [Office Address], England</p>
+    <p>You may contact our DPO with any questions about our data protection practices, to exercise your data subject rights, or to report a data protection concern. Our DPO will respond to all inquiries promptly and will assist you with any data protection matter.</p>
+  </div>
+</div>
+
+<!-- DATA SUBJECT RIGHTS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-user-lock service-detail-icon"></i>
+      <div>
+        <h3>Your Data Subject Rights Under GDPR</h3>
+      </div>
+    </div>
+    <p>GDPR provides individuals with the following rights regarding their personal data:</p>
+    <ul>
+      <li><strong>Right of Access (Article 15):</strong> You have the right to request and receive a copy of all personal data Axsuma holds about you, including how it is used and who it is shared with.</li>
+      <li><strong>Right to Rectification (Article 16):</strong> If personal data held about you is inaccurate or incomplete, you have the right to request correction or completion.</li>
+      <li><strong>Right to Erasure (Article 17):</strong> Under certain circumstances, you have the right to request that we delete your personal data. This does not apply where we have a legal obligation to retain data.</li>
+      <li><strong>Right to Restrict Processing (Article 18):</strong> You can request that we limit how we process your data, such as restricting to storage only while we verify disputed information.</li>
+      <li><strong>Right to Data Portability (Article 20):</strong> You have the right to obtain your personal data in a structured, commonly-used format and have it transferred to another organisation.</li>
+      <li><strong>Right to Object (Article 21):</strong> You have the right to object to processing of your data for certain purposes, particularly direct marketing.</li>
+      <li><strong>Rights Related to Automated Decision-Making (Article 22):</strong> You have rights regarding decisions made solely through automated processing affecting you.</li>
+      <li><strong>Right to Withdraw Consent (Article 7):</strong> Where processing is based on your consent, you have the right to withdraw consent at any time.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact our Data Protection Officer. We will verify your identity and respond to requests within 30 days (or 90 days for complex requests).</p>
+  </div>
+</div>
+
+<!-- LAWFUL PROCESSING -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-gavel service-detail-icon"></i>
+      <div>
+        <h3>Lawful Basis for Processing</h3>
+      </div>
+    </div>
+    <p>GDPR requires that all personal data processing is based on one of six lawful bases. Axsuma processes personal data on the following bases:</p>
+    <ul>
+      <li><strong>Contract Performance (Article 6(1)(b)):</strong> Processing necessary to perform our contractual obligations to you as a client.</li>
+      <li><strong>Legal Obligation (Article 6(1)(c)):</strong> Processing required by UK law, company law, taxation law, anti-money laundering regulations, and regulatory requirements.</li>
+      <li><strong>Vital Interests (Article 6(1)(d)):</strong> Processing necessary to protect vital interests (rare, such as health/safety emergencies).</li>
+      <li><strong>Public Task (Article 6(1)(e)):</strong> Processing necessary for a task in the public interest or official authority (limited application for Axsuma).</li>
+      <li><strong>Legitimate Interests (Article 6(1)(f)):</strong> Processing pursued where our legitimate business interests outweigh your rights. These include improving services, preventing fraud, maintaining security, and client administration.</li>
+      <li><strong>Consent (Article 6(1)(a)):</strong> Processing based on your explicit, freely-given, informed consent (primarily for marketing communications).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SENSITIVE DATA (SPECIAL CATEGORIES) -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-lock service-detail-icon"></i>
+      <div>
+        <h3>Sensitive Data and Special Categories</h3>
+      </div>
+    </div>
+    <p>GDPR recognises that certain categories of personal data require additional protection (Article 9 special categories). These include data relating to racial or ethnic origin, political opinions, religious beliefs, trade union membership, genetic data, biometric data, health data, and data about criminal convictions and offences.</p>
+    <p>Axsuma processes special category data only where:</p>
+    <ul>
+      <li>Processing is necessary to comply with legal obligations (such as beneficial ownership or sanction check requirements)</li>
+      <li>Processing is necessary for the exercise or defence of legal claims</li>
+      <li>You have explicitly consented to processing</li>
+      <li>Processing is necessary for employment or social protection purposes</li>
+    </ul>
+    <p>We apply strict safeguards to special category data, including enhanced access controls, encryption, and confidentiality measures.</p>
+  </div>
+</div>
+
+<!-- INTERNATIONAL TRANSFERS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-globe service-detail-icon"></i>
+      <div>
+        <h3>International Data Transfers</h3>
+      </div>
+    </div>
+    <p>GDPR restricts transfer of personal data outside the UK/EEA to countries with an adequate level of data protection. Axsuma operates in the UK and processes most personal data within the UK. However, where international transfers are necessary:</p>
+    <ul>
+      <li>We only transfer data to countries recognised by the UK Government or having adequate safeguards</li>
+      <li>We use standard contractual clauses (SCCs) to ensure appropriate data protection for transfers outside adequate jurisdictions</li>
+      <li>We obtain your explicit consent for transfers where required</li>
+      <li>We implement additional technical and organisational measures to protect transferred data</li>
+    </ul>
+    <p>If you have concerns about international data transfers, please contact our Data Protection Officer for details of the safeguards applied.</p>
+  </div>
+</div>
+
+<!-- DATA BREACH NOTIFICATION -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-exclamation-triangle service-detail-icon"></i>
+      <div>
+        <h3>Data Breach Notification and Response</h3>
+      </div>
+    </div>
+    <p>Axsuma maintains procedures to detect, assess, and respond to personal data breaches. In the event of a breach that poses a risk to individuals' rights and freedoms:</p>
+    <ul>
+      <li>We will notify the Information Commissioner's Office (ICO) within 72 hours of discovery</li>
+      <li>We will notify affected individuals without undue delay where there is a high risk to their rights</li>
+      <li>We will provide information about the breach, our response, and steps individuals can take to protect themselves</li>
+      <li>We will conduct a thorough investigation and implement additional safeguards to prevent recurrence</li>
+    </ul>
+    <p>If you believe we have experienced a data breach, please contact our Data Protection Officer immediately at <a href="mailto:dpo@axsuma.co.uk">dpo@axsuma.co.uk</a>.</p>
+  </div>
+</div>
+
+<!-- PRIVACY BY DESIGN -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-cogs service-detail-icon"></i>
+      <div>
+        <h3>Privacy by Design and Data Protection Impact Assessments</h3>
+      </div>
+    </div>
+    <p>Axsuma is committed to Privacy by Design principles, which means data protection is incorporated into all aspects of our operations:</p>
+    <ul>
+      <li>Systems and processes are designed with data protection as a core consideration, not an afterthought</li>
+      <li>We minimise collection and processing of personal data (data minimisation)</li>
+      <li>We limit retention of personal data to periods necessary for legal or business purposes</li>
+      <li>We implement default privacy protections that protect individuals automatically</li>
+      <li>We conduct Data Protection Impact Assessments (DPIAs) for high-risk processing</li>
+    </ul>
+  </div>
+</div>
+
+<!-- GDPR TRAINING AND ACCOUNTABILITY -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-graduation-cap service-detail-icon"></i>
+      <div>
+        <h3>GDPR Training and Staff Accountability</h3>
+      </div>
+    </div>
+    <p>All Axsuma staff involved in processing personal data receive training on GDPR and our data protection procedures. Staff are required to:</p>
+    <ul>
+      <li>Understand GDPR principles and their obligations</li>
+      <li>Follow our Data Protection Policy and information security procedures</li>
+      <li>Treat personal data confidentially and securely</li>
+      <li>Report any suspected data protection breaches or misuse of data</li>
+      <li>Undergo regular refresher training on data protection requirements</li>
+    </ul>
+    <p>Axsuma maintains records of staff training and compliance to demonstrate accountability (GDPR Article 5 accountability principle).</p>
+  </div>
+</div>
+
+<!-- CONTACT AND COMPLAINTS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-envelope service-detail-icon"></i>
+      <div>
+        <h3>Contact Us and Lodge a Complaint</h3>
+      </div>
+    </div>
+    <p>If you have questions about our GDPR compliance, wish to exercise your data subject rights, or have concerns about how we process your personal data:</p>
+    <p><strong>Contact our Data Protection Officer:</strong><br>Email: <a href="mailto:dpo@axsuma.co.uk">dpo@axsuma.co.uk</a><br>Phone: [Phone Number]<br>Address: Axsuma Ltd, [Office Address], England</p>
+    <p>If you believe we have breached your data protection rights and you are not satisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO):</p>
+    <p><strong>Information Commissioner's Office</strong><br>Website: <a href="https://ico.org.uk">www.ico.org.uk</a><br>Phone: 0303 123 1113 (local rate)<br>Email: <a href="mailto:casework@ico.org.uk">casework@ico.org.uk</a></p>
+  </div>
+</div>
+
+<!-- FURTHER INFORMATION -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-book service-detail-icon"></i>
+      <div>
+        <h3>Further Information and Guidance</h3>
+      </div>
+    </div>
+    <p>For detailed information about our data protection practices, please refer to our <a href="privacy-policy.html">Privacy Policy</a>, which provides comprehensive information about:</p>
+    <ul>
+      <li>What personal data we collect and why</li>
+      <li>How long we retain data</li>
+      <li>Who we share data with</li>
+      <li>Your data protection rights</li>
+      <li>Data security measures</li>
+      <li>Cookies and tracking technologies</li>
+    </ul>
+    <p>For information about GDPR and your rights, visit the <a href="https://ico.org.uk">Information Commissioner's Office website</a> or the <a href="https://www.gov.uk">UK Government website</a>.</p>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="container">
+  <div class="cta-section">
+    <h2>Questions About GDPR Compliance?</h2>
+    <p>Our Data Protection Officer is here to answer any questions about how we protect your personal data.</p>
+    <a href="mailto:dpo@axsuma.co.uk?subject=GDPR%20Inquiry" class="btn-cta">
+      <i class="fas fa-envelope"></i> Contact DPO
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini">
+  <div class="container">
+    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
+    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="standard-terms.html">Terms</a> &nbsp;|&nbsp;
+    <a href="gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>

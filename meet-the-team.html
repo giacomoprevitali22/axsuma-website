@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cookie Policy — Axsuma</title>
+  <title>Meet the Team — Axsuma Leadership</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <meta name="theme-color" content="#222831">
@@ -65,6 +65,13 @@
     .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
     .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
 
+    /* TEAM GRID */
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
+    .team-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+    .team-card h3{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.4rem}
+    .team-card .role{font-size:.85rem;font-weight:500;color:var(--summit);margin-bottom:.8rem;display:block}
+    .team-card p{font-size:.85rem;color:var(--text-mid);margin:0;line-height:1.6}
+
     /* SERVICE DETAIL SECTION */
     .service-detail{margin-bottom:3rem}
     .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
@@ -72,21 +79,10 @@
     .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
     .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
     .service-detail p:last-of-type{margin-bottom:0}
-    .service-detail ul{margin:1rem 0 .8rem 1.5rem;color:var(--text-mid);font-size:.9rem}
-    .service-detail li{margin-bottom:.6rem;line-height:1.6}
 
     /* DETAIL IMAGE */
     .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
     .detail-image img{width:100%;height:auto;display:block}
-
-    /* WHY AXSUMA */
-    .why-section{margin-bottom:3rem}
-    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
-    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
 
     /* CTA SECTION */
     .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
@@ -100,7 +96,7 @@
     .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
 
     @media(max-width:768px){
-      .why-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:1fr}
       .page-header h1{font-size:1.5rem}
     }
   </style>
@@ -108,9 +104,11 @@
 <body>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="container">
-    <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
+    <a href="index.html">
+      <img class="nav-logo" src="logo.svg" alt="Axsuma">
+    </a>
     <ul class="nav-links">
       <li class="nav-drop">
         <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
@@ -162,115 +160,54 @@
       <li><a href="insights.html">News &amp; Insights</a></li>
       <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
     </ul>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- HEADER -->
 <div class="page-header">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> / Cookie Policy</p>
-    <h1>Cookie Policy</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="about.html">About</a> / Meet the Team</p>
+    <h1 data-content="header.title">Meet the Team</h1>
+    <p data-content="header.subtitle">Our founders and senior team bring decades of experience from Magic Circle law firms, Big 4 accountancy practices and leading corporate service providers. They combine institutional expertise with a relationship-first approach, so you get technically robust, regulator-ready advice delivered with commercial sense and personal accountability.</p>
   </div>
 </div>
 
-<!-- OVERVIEW -->
+<!-- HERO IMAGE -->
 <div class="container">
-  <div class="overview-section">
-    <h2>Axsuma Cookie Policy</h2>
-    <p>This Cookie Policy explains how Axsuma uses cookies and similar tracking technologies on our website. Cookies are small text files stored on your device when you visit our website. They help us improve your experience by remembering your preferences, analysing website usage, and ensuring core functionality.</p>
+  <div class="hero-image">
+    <img src="img-man-office.png" alt="Meet the Team">
   </div>
 </div>
 
-<!-- WHAT ARE COOKIES -->
+<!-- TEAM CARDS -->
 <div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-info-circle service-detail-icon"></i>
-      <div>
-        <h3>What Are Cookies?</h3>
-      </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <h3 data-content="team.0.name">Gurpreet Jagdev</h3>
+      <span class="role" data-content="team.0.role">Director of People & Culture</span>
+      <p data-content="team.0.bio">Gurpreet is a strategic HR leader and trusted advisor who works closely with founders, executives, and leadership teams across high-growth and international businesses. With experience spanning enterprise technology, SaaS, and private equity-backed environments, she focuses on building practical, scalable people strategies that drive performance, engagement, and long-term growth. She brings a strong balance of strategic thinking and hands-on delivery, with a commercial and pragmatic approach. Gurpreet has led global People functions, built HR operating models from the ground up, and supported organisations through periods of rapid growth and change, including M&A, organisational design, and international expansion.</p>
     </div>
-    <p>Cookies are small text files stored on your device (computer, tablet, or mobile phone) when you visit a website. Each time you visit, your browser sends these cookies back to the website, allowing it to recognize you and remember information about your previous visits.</p>
-    <p>Cookies serve various purposes depending on their type. Some are essential for website functionality, while others help us understand how you use our site, remember your preferences, or deliver targeted content. Cookies can be temporary (session cookies, deleted when you close your browser) or persistent (stored on your device for a set period).</p>
-  </div>
-</div>
-
-<!-- HOW WE USE COOKIES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-cogs service-detail-icon"></i>
-      <div>
-        <h3>How We Use Cookies</h3>
-      </div>
+    <div class="team-card">
+      <h3 data-content="team.1.name">Jason Reader</h3>
+      <span class="role" data-content="team.1.role">Director</span>
+      <p data-content="team.1.bio">Bio coming soon</p>
     </div>
-    <p>We use the following types of cookies on our website:</p>
-    <ul>
-      <li><strong>Strictly Necessary Cookies:</strong> These are essential for the website to function properly. They enable core functionality such as page navigation, access to secure areas, and form submission. These cookies are required for our website to work and cannot be disabled without affecting functionality.</li>
-      <li><strong>Performance and Analytics Cookies:</strong> These cookies help us understand how visitors use our website. We use analytics tools to track page views, user interactions, and website performance. This information helps us improve our website's speed, content, and user experience. Data collected is anonymous and aggregated.</li>
-      <li><strong>Functional Cookies:</strong> These cookies remember your choices and preferences to provide a more personalised experience. They might remember language preferences, search history, or other settings you've selected during your visit.</li>
-      <li><strong>Advertising/Targeting Cookies:</strong> We do not use third-party advertising or targeting cookies to track your behaviour across the internet or deliver personalized advertisements based on your browsing history.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- THIRD-PARTY COOKIES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-globe service-detail-icon"></i>
-      <div>
-        <h3>Third-Party Cookies</h3>
-      </div>
+    <div class="team-card">
+      <h3 data-content="team.2.name">Charlotte Phipps-Hornby</h3>
+      <span class="role" data-content="team.2.role">Director</span>
+      <p data-content="team.2.bio">Bio coming soon</p>
     </div>
-    <p>Some cookies may be set by third-party service providers, such as analytics platforms, content delivery networks, or other service partners we work with. These third-party cookies are used in accordance with their own privacy policies and terms of service. We encourage you to review their privacy policies to understand how they use cookies and your personal data.</p>
-    <p>While we minimize reliance on third-party cookies, some non-intrusive analytics services may be enabled to help us improve our website. We do not share personal data with third parties for their own marketing purposes.</p>
-  </div>
-</div>
-
-<!-- YOUR CHOICES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-user-cog service-detail-icon"></i>
-      <div>
-        <h3>Your Cookie Choices</h3>
-      </div>
-    </div>
-    <p>You have full control over cookies on your device. Most web browsers allow you to manage cookie settings through their preferences or settings menu. You can choose to:</p>
-    <ul>
-      <li>Accept all cookies</li>
-      <li>Block all cookies (which may affect website functionality)</li>
-      <li>Delete cookies already stored on your device</li>
-      <li>Be notified when websites try to set cookies</li>
-      <li>Block cookies from specific websites</li>
-    </ul>
-    <p>Please note that disabling certain cookies, particularly strictly necessary cookies, may affect the functionality of our website and your ability to access certain features. If you disable performance and analytics cookies, we won't be able to gather information about how you use our site to improve it.</p>
-  </div>
-</div>
-
-<!-- MORE INFORMATION -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-envelope service-detail-icon"></i>
-      <div>
-        <h3>More Information & Contact</h3>
-      </div>
-    </div>
-    <p>For further information about how we use cookies and your data privacy rights, please refer to our <a href="privacy-policy.html">Privacy Policy</a>. This cookie policy was last updated in 2026 and may be updated periodically to reflect changes in our cookie usage.</p>
-    <p>If you have questions about our cookie practices or would like to discuss your cookie preferences, please contact us at <a href="mailto:enquiries@axsuma.co.uk">enquiries@axsuma.co.uk</a>. We're happy to clarify how we use cookies and address any concerns you may have about your privacy and data protection.</p>
   </div>
 </div>
 
 <!-- CTA SECTION -->
 <div class="container">
   <div class="cta-section">
-    <h2>Questions About Our Cookie Policy?</h2>
-    <p>If you'd like to discuss our privacy practices or have concerns about how we use cookies, our team is here to help.</p>
-    <a href="mailto:enquiries@axsuma.co.uk?subject=Cookie%20Policy%20Inquiry" class="btn-cta">
-      <i class="fas fa-envelope"></i> Contact Us
+    <h2 data-content="cta.title">Connect with Our Team</h2>
+    <p data-content="cta.body">Get to know the Axsuma team and discover how our expertise can support your organisation's needs.</p>
+    <a href="contact.html" class="btn-cta">
+      <i class="fas fa-envelope"></i> Get in Touch
     </a>
   </div>
 </div>
@@ -285,5 +222,6 @@
   </div>
 </div>
 
+<script src="content-loader.js" data-page="meet-the-team"></script>
 </body>
 </html>

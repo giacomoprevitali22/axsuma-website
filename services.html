@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cookie Policy — Axsuma</title>
+  <title>Our Services — Axsuma</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <meta name="theme-color" content="#222831">
@@ -25,7 +25,7 @@
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
 
-        /* NAV */
+    /* NAV */
     .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white,#fff);border-bottom:1px solid rgba(226,229,233,.8);box-shadow:0 1px 4px rgba(0,0,0,.04)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem;max-width:1140px}
     .nav-logo{height:44px}
@@ -48,7 +48,6 @@
     .nav-toggle span{display:block;width:22px;height:2px;background:#2a2f36;margin:5px 0;transition:.3s}
     @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}.mega{display:none!important}}
 
-
     /* PAGE */
     .page-header{padding:6rem 0 2rem;text-align:center}
     .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
@@ -65,28 +64,15 @@
     .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
     .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
 
-    /* SERVICE DETAIL SECTION */
-    .service-detail{margin-bottom:3rem}
-    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
-    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
-    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
-    .service-detail p:last-of-type{margin-bottom:0}
-    .service-detail ul{margin:1rem 0 .8rem 1.5rem;color:var(--text-mid);font-size:.9rem}
-    .service-detail li{margin-bottom:.6rem;line-height:1.6}
-
-    /* DETAIL IMAGE */
-    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
-    .detail-image img{width:100%;height:auto;display:block}
-
-    /* WHY AXSUMA */
-    .why-section{margin-bottom:3rem}
-    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
-    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
+    /* SERVICE GRID */
+    .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:3rem}
+    .service-card{padding:2rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border);transition:all var(--ease)}
+    .service-card:hover{background:rgba(15,76,58,.1);border-color:var(--summit)}
+    .service-card-icon{font-size:2rem;color:var(--summit);margin-bottom:1rem}
+    .service-card h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.6rem}
+    .service-card p{font-size:.9rem;color:var(--text-mid);margin-bottom:1.2rem;line-height:1.6}
+    .service-card-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--summit);font-weight:600;font-size:.9rem}
+    .service-card-link:hover{color:var(--white)}
 
     /* CTA SECTION */
     .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
@@ -100,7 +86,7 @@
     .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
 
     @media(max-width:768px){
-      .why-grid{grid-template-columns:1fr}
+      .service-grid{grid-template-columns:1fr}
       .page-header h1{font-size:1.5rem}
     }
   </style>
@@ -169,108 +155,96 @@
 <!-- HEADER -->
 <div class="page-header">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> / Cookie Policy</p>
-    <h1>Cookie Policy</h1>
+    <p class="breadcrumb"><a href="index.html">Home</a> / Services</p>
+    <h1 data-content="header.title">Our Services</h1>
+    <p data-content="header.subtitle">End-to-end corporate support for formations, governance, transactions, and compliance. Trusted by entrepreneurs, investors, and advisers.</p>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="container">
+  <div class="hero-image">
+    <img src="img-polygon-abstract.png" alt="Corporate services overview">
   </div>
 </div>
 
 <!-- OVERVIEW -->
 <div class="container">
   <div class="overview-section">
-    <h2>Axsuma Cookie Policy</h2>
-    <p>This Cookie Policy explains how Axsuma uses cookies and similar tracking technologies on our website. Cookies are small text files stored on your device when you visit our website. They help us improve your experience by remembering your preferences, analysing website usage, and ensuring core functionality.</p>
+    <h2 data-content="overview.title">Corporate Services Built for Growth</h2>
+    <p data-content="overview.paragraphs.0">Axsuma supports businesses at every stage—from initial formation through scaling, transactions, and ongoing compliance. We combine precision, expertise, and practical understanding of how UK corporates operate, delivering services that are reliable, compliant, and aligned to your business.</p>
+    <p data-content="overview.paragraphs.1">Whether you need company formation, governance and secretarial support, transaction structuring, professional directorships, or specialist compliance services, we design solutions that integrate seamlessly with your teams and scale with your ambitions.</p>
   </div>
 </div>
 
-<!-- WHAT ARE COOKIES -->
+<!-- SERVICE CARDS -->
 <div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-info-circle service-detail-icon"></i>
-      <div>
-        <h3>What Are Cookies?</h3>
-      </div>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-briefcase"></i></div>
+      <h3 data-content="services.0.title">Company Formations</h3>
+      <p data-content="services.0.description">Fast, efficient incorporation of private companies, LLPs, and ready-made entities. Full governance setup from company formation through director appointment.</p>
+      <a href="company-formations.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
     </div>
-    <p>Cookies are small text files stored on your device (computer, tablet, or mobile phone) when you visit a website. Each time you visit, your browser sends these cookies back to the website, allowing it to recognize you and remember information about your previous visits.</p>
-    <p>Cookies serve various purposes depending on their type. Some are essential for website functionality, while others help us understand how you use our site, remember your preferences, or deliver targeted content. Cookies can be temporary (session cookies, deleted when you close your browser) or persistent (stored on your device for a set period).</p>
-  </div>
-</div>
 
-<!-- HOW WE USE COOKIES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-cogs service-detail-icon"></i>
-      <div>
-        <h3>How We Use Cookies</h3>
-      </div>
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-sitemap"></i></div>
+      <h3 data-content="services.1.title">SPV &amp; Holding Companies</h3>
+      <p data-content="services.1.description">Specialist structuring for acquisition vehicles, holding companies, and SPVs. Designed for M&amp;A, private equity, and complex group structures.</p>
+      <a href="spv-holding.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
     </div>
-    <p>We use the following types of cookies on our website:</p>
-    <ul>
-      <li><strong>Strictly Necessary Cookies:</strong> These are essential for the website to function properly. They enable core functionality such as page navigation, access to secure areas, and form submission. These cookies are required for our website to work and cannot be disabled without affecting functionality.</li>
-      <li><strong>Performance and Analytics Cookies:</strong> These cookies help us understand how visitors use our website. We use analytics tools to track page views, user interactions, and website performance. This information helps us improve our website's speed, content, and user experience. Data collected is anonymous and aggregated.</li>
-      <li><strong>Functional Cookies:</strong> These cookies remember your choices and preferences to provide a more personalised experience. They might remember language preferences, search history, or other settings you've selected during your visit.</li>
-      <li><strong>Advertising/Targeting Cookies:</strong> We do not use third-party advertising or targeting cookies to track your behaviour across the internet or deliver personalized advertisements based on your browsing history.</li>
-    </ul>
-  </div>
-</div>
 
-<!-- THIRD-PARTY COOKIES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-globe service-detail-icon"></i>
-      <div>
-        <h3>Third-Party Cookies</h3>
-      </div>
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-user-tie"></i></div>
+      <h3 data-content="services.2.title">Professional Directorships</h3>
+      <p data-content="services.2.description">Independent and corporate directors for SPVs, holding companies, and funds. Governance credibility for acquisitions and investor-backed structures.</p>
+      <a href="directorships.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
     </div>
-    <p>Some cookies may be set by third-party service providers, such as analytics platforms, content delivery networks, or other service partners we work with. These third-party cookies are used in accordance with their own privacy policies and terms of service. We encourage you to review their privacy policies to understand how they use cookies and your personal data.</p>
-    <p>While we minimize reliance on third-party cookies, some non-intrusive analytics services may be enabled to help us improve our website. We do not share personal data with third parties for their own marketing purposes.</p>
-  </div>
-</div>
 
-<!-- YOUR CHOICES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-user-cog service-detail-icon"></i>
-      <div>
-        <h3>Your Cookie Choices</h3>
-      </div>
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-file-signature"></i></div>
+      <h3 data-content="services.3.title">Company Secretarial</h3>
+      <p data-content="services.3.description">Full governance support including statutory filing, registered office, PSC management, and confirmation statements. Compliance confidence, delivered with precision.</p>
+      <a href="governance.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
     </div>
-    <p>You have full control over cookies on your device. Most web browsers allow you to manage cookie settings through their preferences or settings menu. You can choose to:</p>
-    <ul>
-      <li>Accept all cookies</li>
-      <li>Block all cookies (which may affect website functionality)</li>
-      <li>Delete cookies already stored on your device</li>
-      <li>Be notified when websites try to set cookies</li>
-      <li>Block cookies from specific websites</li>
-    </ul>
-    <p>Please note that disabling certain cookies, particularly strictly necessary cookies, may affect the functionality of our website and your ability to access certain features. If you disable performance and analytics cookies, we won't be able to gather information about how you use our site to improve it.</p>
-  </div>
-</div>
 
-<!-- MORE INFORMATION -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-envelope service-detail-icon"></i>
-      <div>
-        <h3>More Information & Contact</h3>
-      </div>
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-handshake"></i></div>
+      <h3 data-content="services.4.title">M&amp;A &amp; Transactions</h3>
+      <p data-content="services.4.description">Transaction-ready corporate stacks, deal completion support, post-acquisition integration, and governance through the entire transaction lifecycle.</p>
+      <a href="ma-transactions.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
     </div>
-    <p>For further information about how we use cookies and your data privacy rights, please refer to our <a href="privacy-policy.html">Privacy Policy</a>. This cookie policy was last updated in 2026 and may be updated periodically to reflect changes in our cookie usage.</p>
-    <p>If you have questions about our cookie practices or would like to discuss your cookie preferences, please contact us at <a href="mailto:enquiries@axsuma.co.uk">enquiries@axsuma.co.uk</a>. We're happy to clarify how we use cookies and address any concerns you may have about your privacy and data protection.</p>
+
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-balance-scale"></i></div>
+      <h3 data-content="services.5.title">Payroll &amp; HR</h3>
+      <p data-content="services.5.description">End-to-end payroll processing, HMRC compliance, auto-enrolment, and HR administration for growing UK workforces. Coordinated and fully compliant.</p>
+      <a href="payroll-hr.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-shield-alt"></i></div>
+      <h3 data-content="services.6.title">Compliance &amp; Governance</h3>
+      <p data-content="services.6.description">Specialist regulatory services including overseas entity registration, process agent services, ID verification, and UK address for service for IP.</p>
+      <a href="compliance-governance.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-card-icon"><i class="fas fa-calculator"></i></div>
+      <h3 data-content="services.7.title">Accounting &amp; Tax</h3>
+      <p data-content="services.7.description">Bookkeeping, accounts preparation, tax compliance, VAT administration, and ATED management for UK and international entities.</p>
+      <a href="accounting.html" class="service-card-link">Explore <i class="fas fa-arrow-right"></i></a>
+    </div>
   </div>
 </div>
 
 <!-- CTA SECTION -->
 <div class="container">
   <div class="cta-section">
-    <h2>Questions About Our Cookie Policy?</h2>
-    <p>If you'd like to discuss our privacy practices or have concerns about how we use cookies, our team is here to help.</p>
-    <a href="mailto:enquiries@axsuma.co.uk?subject=Cookie%20Policy%20Inquiry" class="btn-cta">
-      <i class="fas fa-envelope"></i> Contact Us
+    <h2 data-content="cta.title">Ready to Get Started?</h2>
+    <p data-content="cta.body">Discuss your requirements with our team. We'll help you select the right services and establish a support structure that scales with your business.</p>
+    <a href="mailto:enquiries@axsuma.co.uk?subject=Services%20Inquiry" class="btn-cta">
+      <i class="fas fa-envelope"></i> Get in Touch
     </a>
   </div>
 </div>
@@ -285,5 +259,6 @@
   </div>
 </div>
 
+<script src="content-loader.js" data-page="services"></script>
 </body>
 </html>

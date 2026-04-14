@@ -1,2 +1,35 @@
-# Custom 404
+# Clean URLs for Axsuma
+/about                                         /about.html                              200
+/about/our-approach                            /our-approach.html                       200
+/about/meet-the-team                           /meet-the-team.html                      200
+/about/sectors-we-serve                        /sectors.html                            200
+
+/services                                      /services.html                           200
+/services/company-formations                   /company-formations.html                 200
+/services/company-secretarial                  /governance.html                         200
+/services/ma                                   /ma-transactions.html                    200
+/services/spv-holding-companies                /spv-holding.html                        200
+/services/directorships                        /directorships.html                      200
+/services/accounting-tax                       /accounting.html                         200
+/services/payroll-hr                           /payroll-hr.html                         200
+/services/compliance-governance                /compliance-governance.html              200
+/services/compliance-governance/roe            /overseas-entities.html                  200
+/services/compliance-governance/process-agent  /process-agent.html                      200
+/services/compliance-governance/id-verification /id-verification.html                   200
+/services/compliance-governance/uk-afs         /uk-afs.html                             200
+
+/insights                                      /insights.html                           200
+/international                                  /international.html                      200
+/contact                                       /contact.html                            200
+/advisor-portal                                /advisor-portal.html                     200
+
+/privacy-policy                                /privacy-policy.html                     200
+/cookie-policy                                 /cookie-policy.html                      200
+/standard-terms                                /standard-terms.html                     200
+/process-agent-terms                           /process-agent-terms.html                200
+/roe-terms                                     /roe-terms.html                          200
+/idv-terms                                     /idv-terms.html                          200
+/gdpr                                          /gdpr.html                               200
+
+# Custom 404 fallback
 /*  /index.html  404

@@ -93,7 +93,8 @@ async function verifyJWT(token, secret) {
     );
 
     const signatureArray = Uint8Array.from(
-      atob(base64UrlDecode(signatureEncoded).split('').map((c) => c.charCodeAt(0)))
+      base64UrlDecode(signatureEncoded),
+      (c) => c.charCodeAt(0)
     );
     const message = encoder.encode(`${headerEncoded}.${payloadEncoded}`);
 

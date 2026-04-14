@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll &amp; HR Services — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#222831">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --summit:#00594a;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
+      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
+      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
+      --border:rgba(208,220,227,.1);--font:'DM Sans','Helvetica Neue',Arial,sans-serif;--font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
+      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
+    h1,h2,h3,h4,h5,h6{font-family:var(--font-heading)}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+    /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white,#fff);border-bottom:1px solid rgba(226,229,233,.8);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem;max-width:1140px}
+    .nav-logo{height:44px}
+    .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#6b7280;transition:color .3s;font-family:'Inter',sans-serif}
+    .nav-links a:hover{color:#2a2f36}
+    .nav-cta{background:#00594a;color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:#007a66;color:#fff!important}
+    .nav-drop{position:relative}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform .3s}
+    .nav-drop:hover>a i{transform:rotate(180deg)}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:#fff;border:1px solid #e2e5e9;border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
+    .nav-drop:hover .mega{opacity:1;visibility:visible}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#00594a;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid #f0f1f3}
+    .mega ul{list-style:none;margin-bottom:1rem}
+    .mega li{margin-bottom:.2rem}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:#6b7280!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:#2a2f36!important}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer}
+    .nav-toggle span{display:block;width:22px;height:2px;background:#2a2f36;margin:5px 0;transition:.3s}
+    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}.mega{display:none!important}}
+
+    /* PAGE */
+    .page-header{padding:6rem 0 2rem;text-align:center}
+    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
+    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
+    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+
+    /* HERO IMAGE */
+    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .hero-image img{width:100%;height:auto;display:block}
+
+    /* OVERVIEW */
+    .overview-section{margin-bottom:3rem}
+    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+
+    /* SERVICE DETAIL SECTION */
+    .service-detail{margin-bottom:3rem}
+    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
+    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
+    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
+    .service-detail p:last-of-type{margin-bottom:0}
+
+    /* DETAIL IMAGE */
+    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+    .detail-image img{width:100%;height:auto;display:block}
+
+    /* WHY AXSUMA */
+    .why-section{margin-bottom:3rem}
+    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
+    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
+
+    /* CTA SECTION */
+    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
+    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
+    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
+    .btn-cta:hover{background:var(--slate-blue)}
+
+    /* FOOTER */
+    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+
+    @media(max-width:768px){
+      .why-grid{grid-template-columns:1fr}
+      .page-header h1{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+        <div class="mega" style="grid-template-columns:1fr;width:280px">
+          <div>
+            <h5>About Axsuma</h5>
+            <ul>
+              <li><a href="about.html">About Axsuma</a></li>
+              <li><a href="our-approach.html">Our Approach</a></li>
+              <li><a href="meet-the-team.html">Meet the Team</a></li>
+              <li><a href="sectors.html">Sectors We Serve</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav-drop">
+        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="mega">
+          <div>
+            <h5>Formation & Structure</h5>
+            <ul>
+              <li><a href="company-formations.html">Company Formations</a></li>
+              <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
+              <li><a href="directorships.html">Professional Directorships</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Corporate Services</h5>
+            <ul>
+              <li><a href="governance.html">Company Secretarial</a></li>
+              <li><a href="ma-transactions.html">M&amp;A Support</a></li>
+              <li><a href="accounting.html">Accounting &amp; Tax</a></li>
+              <li><a href="payroll-hr.html">Payroll &amp; HR</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Compliance &amp; Governance</h5>
+            <ul>
+              <li><a href="compliance-governance.html">Overview</a></li>
+              <li><a href="overseas-entities.html">Register of Overseas Entities</a></li>
+              <li><a href="process-agent.html">Process Agent</a></li>
+              <li><a href="id-verification.html">ID Verification</a></li>
+              <li><a href="uk-afs.html">UK Address for Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="international.html">International</a></li>
+      <li><a href="insights.html">News &amp; Insights</a></li>
+      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="services.html">Services</a> / Payroll &amp; HR</p>
+    <h1 data-content="header.title">Payroll &amp; HR Services</h1>
+    <p data-content="header.subtitle">Streamlined payroll processing and HR administration that ensures compliance and supports your growing UK workforce.</p>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="container">
+  <div class="hero-image">
+    <img src="img-cog.png" alt="Payroll and HR operations">
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="container">
+  <div class="overview-section">
+    <h2 data-content="overview.title">Compliant, Coordinated People Operations</h2>
+    <p data-content="overview.paragraphs.0">Payroll and HR management is increasingly complex, driven by evolving legislation, real-time reporting requirements, and heightened expectations around accuracy and employee experience. We provide a streamlined solution that reduces administrative burden while ensuring full compliance with HMRC and employment regulations.</p>
+    <p data-content="overview.paragraphs.1">Our approach combines precise payroll delivery with practical HR support, giving you a single, coordinated service that integrates seamlessly with your wider operations. Whether you are managing a growing UK workforce or supporting inbound entities, we deliver consistency, control, and clear visibility into your people operations.</p>
+  </div>
+</div>
+
+<!-- SERVICE 1: PAYROLL PROCESSING & ADMINISTRATION -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-calculator service-detail-icon"></i>
+      <div>
+        <h3 data-content="services.0.title">Payroll Processing &amp; Administration</h3>
+      </div>
+    </div>
+    <p data-content="services.0.paragraphs.0">We provide end-to-end payroll delivery, including calculations, payslips, and payment coordination. From employee onboarding through to final settlement, we manage all elements of the payroll cycle with precision and compliance. Our systems integrate with modern HR platforms, allowing you to maintain full visibility into your payroll processing.</p>
+    <p data-content="services.0.paragraphs.1">Our payroll service includes: accurate calculation of gross pay, statutory deductions, and voluntary contributions; preparation and distribution of payslips to employees; processing of variation to payroll (pay changes, arrears, adjustments); management of statutory payments and allowances; and coordination of payment runs to employees, HMRC, and pension providers.</p>
+    <p data-content="services.0.paragraphs.2">We manage payroll reconciliation and reporting, including year-end final settlement procedures, tax code changes, and statutory reporting to HMRC. We also coordinate with external payroll providers where you maintain in-house payroll resources, ensuring consistency and reducing duplicate processing.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="img-book-key.png" alt="Payroll compliance and administration">
+  </div>
+</div>
+
+<!-- SERVICE 2: HMRC COMPLIANCE & RTI REPORTING -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-shield-alt service-detail-icon"></i>
+      <div>
+        <h3 data-content="services.1.title">HMRC Compliance &amp; Real Time Information (RTI) Reporting</h3>
+      </div>
+    </div>
+    <p data-content="services.1.paragraphs.0">Management of PAYE, National Insurance, and all Real Time Information (RTI) submissions is critical to payroll compliance. We manage the complete HMRC reporting cycle: calculation and payment of PAYE tax deductions; management of National Insurance contributions (employee and employer contributions); submission of Full Payment Submission (FPS) files to HMRC on or before each pay day; and reconciliation of year-end tax and National Insurance returns.</p>
+    <p data-content="services.1.paragraphs.1">RTI reporting requires submission of payroll data to HMRC each payday, with HMRC matching reported income against employees' tax coding notices. We manage FPS submissions, ensure timely payment of PAYE and National Insurance to HMRC, handle Employment Allowance claims where eligible, and coordinate with HMRC for any formal inquiries or adjustments.</p>
+    <p data-content="services.1.paragraphs.2">We also manage year-end RTI reconciliation, including submission of year-end adjustments if payroll figures require amendment following year-end closure. For companies in multiple jurisdictions, we coordinate payroll reporting across different HMRC requirements and tax authority processes.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-image">
+    <img src="img-gyroscope.png" alt="HMRC compliance management">
+  </div>
+</div>
+
+<!-- SERVICE 3: AUTO-ENROLMENT & PENSIONS -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-piggy-bank service-detail-icon"></i>
+      <div>
+        <h3 data-content="services.2.title">Auto-Enrolment &amp; Workplace Pensions</h3>
+      </div>
+    </div>
+    <p data-content="services.2.paragraphs.0">Administration of workplace pension schemes, including enrolment, contributions and compliance. Employers with payroll are automatically subject to auto-enrolment obligations, requiring the establishment of a suitable workplace pension scheme and auto-enrolment of eligible employees. We manage all elements of auto-enrolment compliance.</p>
+    <p data-content="services.2.paragraphs.1">We coordinate establishment of qualifying pension schemes, manage the auto-enrolment process including identification of eligible employees (aged 22 and above, earning £12,570 or above annually), processing of enrolment election notices, and coordination of employee communications. We maintain compliance with the Pensions Regulator's requirements, including keeping enrolment records and managing opt-in/opt-out requests.</p>
+    <p data-content="services.2.paragraphs.2">We also process pension contributions from payroll, ensuring employer contributions (minimum 8% of qualifying earnings) and employee contributions are correctly deducted and remitted to pension providers. We manage employee communications regarding pension scheme benefits, provide guidance on pension planning, and coordinate with pension scheme trustees on ongoing compliance matters.</p>
+  </div>
+</div>
+
+<!-- SERVICE 4: HR ADMINISTRATION SUPPORT -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-users service-detail-icon"></i>
+      <div>
+        <h3 data-content="services.3.title">HR Administration Support</h3>
+      </div>
+    </div>
+    <p data-content="services.3.paragraphs.0">Employee onboarding and offboarding, contracts of employment, and maintenance of personnel records. We provide HR administration support coordinated with payroll processing, ensuring new employees are correctly set up on payroll systems and departing employees are properly processed for final settlement.</p>
+    <p data-content="services.3.paragraphs.1">We prepare employment contracts reflecting company policy, statutory requirements, and role-specific terms. We manage the onboarding process including right-to-work verification, NI number registration, tax code confirmation, and setup on payroll systems. For departing employees, we process exit procedures, final payroll settlement, and coordination of final tax documentation (P45, holiday pay settlement).</p>
+    <p data-content="services.3.paragraphs.2">We maintain personnel records including employment contracts, payroll history, tax documentation, and statutory information. We manage employee changes (salary increases, promotions, department changes) and ensure payroll systems remain aligned with current employee status. We also provide guidance on HR processes, employment law compliance, and best practice employment policies.</p>
+  </div>
+</div>
+
+<!-- SERVICE 5: STATUTORY PAYMENTS & LEAVE -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-calendar-check service-detail-icon"></i>
+      <div>
+        <h3 data-content="services.4.title">Statutory Payments &amp; Employee Leave Management</h3>
+      </div>
+    </div>
+    <p data-content="services.4.paragraphs.0">Management of statutory sick pay (SSP), maternity/paternity pay and associated entitlements. When employees are absent due to sickness or family circumstances, statutory payments ensure employees receive continuity of income while complying with employment law requirements.</p>
+    <p data-content="services.4.paragraphs.1">We manage statutory sick pay administration, including certification of employee absence, calculation of SSP at the statutory rate (currently £111.35 per week), and coordination with occupational sick pay schemes where companies supplement statutory minimums. For maternity, paternity, and parental leave, we manage statutory maternity pay (SMP) and paternity pay (SPP) calculations, ensuring eligible employees receive statutory payments at the required rates.</p>
+    <p data-content="services.4.paragraphs.2">We also manage holiday pay calculations and accrual, ensure compliance with working time regulations (minimum 28 days paid holiday), and coordinate holiday pay settlement for departing employees. We provide guidance on managing employee leave requests, statutory payment entitlements, and employment policies around absence management.</p>
+  </div>
+</div>
+
+<!-- SERVICE 6: ADVISORY & BEST PRACTICE -->
+<div class="container">
+  <div class="service-detail">
+    <div class="service-detail-header">
+      <i class="fas fa-lightbulb service-detail-icon"></i>
+      <div>
+        <h3 data-content="services.5.title">Advisory &amp; Best Practice Guidance</h3>
+      </div>
+    </div>
+    <p data-content="services.5.paragraphs.0">Guidance on UK employment processes, policies and operational efficiency. Employment law is complex and constantly evolving. We provide practical advice on compliance with employment law, best practice HR policies, and operational efficiency improvements.</p>
+    <p data-content="services.5.paragraphs.1">We advise on employment contract drafting, disciplinary and grievance procedures, redundancy management, flexible working requests, and discrimination and harassment policies. We coordinate with employment law specialists where formal legal advice is required, and we support employees and managers through complex employment situations.</p>
+    <p data-content="services.5.paragraphs.2">We also advise on payroll efficiency improvements, integration of payroll systems with HR processes, and coordination with accounting and tax compliance. Our advisory service is designed to support your business as you grow and evolve your people operations.</p>
+  </div>
+</div>
+
+<!-- WHY AXSUMA -->
+<div class="container">
+  <div class="why-section">
+    <h2>Why Axsuma for Payroll &amp; HR</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="fas fa-check-circle"></i>
+        <h4 data-content="why_cards.0.title">Compliance Certainty</h4>
+        <p data-content="why_cards.0.description">HMRC compliance, RTI reporting, auto-enrolment, statutory payments—we manage the complete regulatory framework so you can focus on your business.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-sync-alt"></i>
+        <h4 data-content="why_cards.1.title">Integrated Services</h4>
+        <p data-content="why_cards.1.description">Payroll, HR, and accounting work together. Our coordinated approach ensures consistency across people operations and financial reporting.</p>
+      </div>
+      <div class="why-card">
+        <i class="fas fa-users-cog"></i>
+        <h4 data-content="why_cards.2.title">Scalable Support</h4>
+        <p data-content="why_cards.2.description">From first hire through growing workforce, we scale our support with your business. Transparent pricing, no hidden costs.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="container">
+  <div class="cta-section">
+    <h2 data-content="cta.title">Streamline Your Payroll &amp; HR Operations</h2>
+    <p data-content="cta.body">Discuss your people operations with our team. We'll design a coordinated payroll and HR support structure that fits your business and scales with growth.</p>
+    <a href="mailto:enquiries@axsuma.co.uk?subject=Payroll%20HR%20Inquiry" class="btn-cta">
+      <i class="fas fa-envelope"></i> Get in Touch
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini">
+  <div class="container">
+    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
+    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="terms.html">Terms</a> &nbsp;|&nbsp;
+    <a href="gdpr.html">GDPR</a>
+  </div>
+</div>
+
+<script src="content-loader.js" data-page="payroll-hr"></script>
+</body>
+</html>
