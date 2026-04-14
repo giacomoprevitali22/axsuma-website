@@ -1,35 +1,23 @@
-# Clean URLs for Axsuma
-/about                                         /about.html                              200
-/about/our-approach                            /our-approach.html                       200
-/about/meet-the-team                           /meet-the-team.html                      200
-/about/sectors-we-serve                        /sectors.html                            200
+# Cloudflare Pages auto-routes /about → /about.html, so we only need:
+# 1) 301 redirects for nested URLs that the planner used
 
-/services                                      /services.html                           200
-/services/company-formations                   /company-formations.html                 200
-/services/company-secretarial                  /governance.html                         200
-/services/ma                                   /ma-transactions.html                    200
-/services/spv-holding-companies                /spv-holding.html                        200
-/services/directorships                        /directorships.html                      200
-/services/accounting-tax                       /accounting.html                         200
-/services/payroll-hr                           /payroll-hr.html                         200
-/services/compliance-governance                /compliance-governance.html              200
-/services/compliance-governance/roe            /overseas-entities.html                  200
-/services/compliance-governance/process-agent  /process-agent.html                      200
-/services/compliance-governance/id-verification /id-verification.html                   200
-/services/compliance-governance/uk-afs         /uk-afs.html                             200
+# Nested "clean URL" paths → flat pages (301 redirect)
+/about/our-approach                             /our-approach                   301
+/about/meet-the-team                            /meet-the-team                  301
+/about/sectors-we-serve                         /sectors                        301
 
-/insights                                      /insights.html                           200
-/international                                  /international.html                      200
-/contact                                       /contact.html                            200
-/advisor-portal                                /advisor-portal.html                     200
-
-/privacy-policy                                /privacy-policy.html                     200
-/cookie-policy                                 /cookie-policy.html                      200
-/standard-terms                                /standard-terms.html                     200
-/process-agent-terms                           /process-agent-terms.html                200
-/roe-terms                                     /roe-terms.html                          200
-/idv-terms                                     /idv-terms.html                          200
-/gdpr                                          /gdpr.html                               200
+/services/company-formations                    /company-formations             301
+/services/company-secretarial                   /governance                     301
+/services/ma                                    /ma-transactions                301
+/services/spv-holding-companies                 /spv-holding                    301
+/services/directorships                         /directorships                  301
+/services/accounting-tax                        /accounting                     301
+/services/payroll-hr                            /payroll-hr                     301
+/services/compliance-governance                 /compliance-governance          301
+/services/compliance-governance/roe             /overseas-entities              301
+/services/compliance-governance/process-agent   /process-agent                  301
+/services/compliance-governance/id-verification /id-verification                301
+/services/compliance-governance/uk-afs          /uk-afs                         301
 
 # Custom 404 fallback
 /*  /index.html  404
