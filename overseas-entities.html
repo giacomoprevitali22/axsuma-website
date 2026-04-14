@@ -1,110 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Overseas Entities & Beneficial Ownership — Axsuma</title>
+  <meta name="description" content="Register of Overseas Entities (ROE) compliance and beneficial ownership verification under the Economic Crime Act 2022.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <meta name="theme-color" content="#222831">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --summit:#00594a;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
-      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
-      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
-      --border:rgba(208,220,227,.1);--font:'DM Sans','Helvetica Neue',Arial,sans-serif;--font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
-      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+      --teal:#00594a;--teal-light:#007a66;--dark:#2a2f36;--dark-soft:#3d434d;
+      --mid:#6b7280;--light-text:#8a919c;--white:#ffffff;--off-white:#f7f8f9;
+      --light-grey:#eef0f2;--border:#e2e5e9;--border-light:#f0f1f3;
+      --font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
+      --font:'DM Sans','Helvetica Neue',Arial,sans-serif;
+      --max:1140px;--ease:0.3s cubic-bezier(0.4,0,0.2,1);
     }
     html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
-    h1,h2,h3,h4,h5,h6{font-family:var(--font-heading)}
+    body{font-family:var(--font);color:var(--dark);line-height:1.7;background:var(--white)}
+    h1,h2,h3,h4,h5,h6,.s-label,.s-title{font-family:var(--font-heading)}
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
 
-        /* NAV */
-    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white,#fff);border-bottom:1px solid rgba(226,229,233,.8);box-shadow:0 1px 4px rgba(0,0,0,.04)}
-    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem;max-width:1140px}
+    /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
     .nav-logo{height:44px}
     .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
-    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#6b7280;transition:color .3s;font-family:'Inter',sans-serif}
-    .nav-links a:hover{color:#2a2f36}
-    .nav-cta{background:#00594a;color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
-    .nav-cta:hover{background:#007a66;color:#fff!important}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
+    .nav-links a:hover{color:var(--dark)}
+    .nav-cta{background:var(--teal);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:var(--teal-light);color:#fff!important}
     .nav-drop{position:relative}
-    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform .3s}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform var(--ease)}
     .nav-drop:hover>a i{transform:rotate(180deg)}
-    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:#fff;border:1px solid #e2e5e9;border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
     .nav-drop:hover .mega{opacity:1;visibility:visible}
-    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#00594a;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid #f0f1f3}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border-light)}
     .mega ul{list-style:none;margin-bottom:1rem}
     .mega li{margin-bottom:.2rem}
-    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:#6b7280!important;padding:.15rem 0!important;display:block}
-    .mega a:hover{color:#2a2f36!important}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:var(--mid)!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:var(--dark)!important}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer}
-    .nav-toggle span{display:block;width:22px;height:2px;background:#2a2f36;margin:5px 0;transition:.3s}
-    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}.mega{display:none!important}}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
 
+    /* PAGE HERO (light variant) */
+    .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light)}
+    .page-hero .breadcrumb{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
+    .page-hero .breadcrumb a{color:var(--teal)}
+    .page-hero .breadcrumb a:hover{color:var(--teal-light)}
+    .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px}
+    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400}
 
-    /* PAGE */
-    .page-header{padding:6rem 0 2rem;text-align:center}
-    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
-    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
-    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
-    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+    /* SECTIONS */
+    .section{padding:5rem 0}
+    .section-alt{background:var(--off-white)}
+    .s-label{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+    .s-title{font-size:2.2rem;font-weight:300;line-height:1.2;margin-bottom:1rem;color:var(--dark);letter-spacing:-.3px}
+    .s-sub{font-size:.95rem;color:var(--mid);max-width:720px;line-height:1.8;font-weight:300}
 
-    /* HERO IMAGE */
-    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-    .hero-image img{width:100%;height:auto;display:block}
+    /* CONTENT BLOCK (long-form prose) */
+    .content-block{max-width:820px;margin:0 auto}
+    .content-block h2{font-size:1.6rem;font-weight:400;color:var(--dark);margin:2.5rem 0 1rem;letter-spacing:-.2px}
+    .content-block h3{font-size:1.15rem;font-weight:600;color:var(--dark);margin:1.8rem 0 .7rem}
+    .content-block p{margin-bottom:1rem;font-size:.95rem;color:var(--dark-soft);line-height:1.8}
+    .content-block ul{margin:1rem 0 1.5rem 1.2rem;color:var(--dark-soft)}
+    .content-block ul li{font-size:.95rem;margin-bottom:.5rem;line-height:1.7}
+    .content-block .highlight{border-left:3px solid var(--teal);background:var(--off-white);padding:1.2rem 1.5rem;margin:1.5rem 0;font-size:.98rem;line-height:1.75}
 
-    /* OVERVIEW */
-    .overview-section{margin-bottom:3rem}
-    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
-    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+    /* FEATURE CARDS GRID */
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+    .feature-card{padding:2rem 1.5rem;border-radius:8px;background:var(--white);border:1px solid var(--border);transition:all var(--ease);position:relative;overflow:hidden}
+    .feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--ease)}
+    .feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06);border-color:var(--teal)}
+    .feature-card:hover::before{transform:scaleX(1)}
+    .feature-card .icon{width:48px;height:48px;border-radius:50%;background:rgba(0,89,74,.08);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+    .feature-card .icon i{color:var(--teal);font-size:1rem}
+    .feature-card h3{font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:.6rem}
+    .feature-card p{font-size:.85rem;color:var(--mid);line-height:1.7}
 
-    /* SERVICE DETAIL SECTION */
-    .service-detail{margin-bottom:3rem}
-    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
-    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
-    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
-    .service-detail p:last-of-type{margin-bottom:0}
+    /* SERVICE DETAIL (for pages with long prose + section heading pattern) */
+    .svc-detail{padding:3rem 0;border-top:1px solid var(--border-light)}
+    .svc-detail:first-of-type{border-top:none;padding-top:1rem}
+    .svc-detail .container{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start}
+    .svc-detail .svc-aside{position:sticky;top:7rem}
+    .svc-detail .svc-aside .icon{width:56px;height:56px;border-radius:50%;background:rgba(0,89,74,.08);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+    .svc-detail .svc-aside .icon i{color:var(--teal);font-size:1.25rem}
+    .svc-detail .svc-aside h2{font-size:1.3rem;font-weight:500;color:var(--dark);line-height:1.3}
+    .svc-detail .svc-body p{margin-bottom:1rem;font-size:.92rem;color:var(--dark-soft);line-height:1.8}
+    .svc-detail .svc-body h3{font-size:1.05rem;font-weight:600;color:var(--dark);margin:1.5rem 0 .6rem}
+    .svc-detail .svc-body ul{margin:1rem 0 1.5rem 1.2rem}
+    .svc-detail .svc-body ul li{font-size:.92rem;color:var(--dark-soft)}
 
-    /* DETAIL IMAGE */
-    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
-    .detail-image img{width:100%;height:auto;display:block}
+    /* BTN */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
+    .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .btn-teal:hover{background:var(--teal-light);border-color:var(--teal-light)}
 
-    /* WHY AXSUMA */
-    .why-section{margin-bottom:3rem}
-    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
-    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
-
-    /* CTA SECTION */
-    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
-    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
-    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
-    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
-    .btn-cta:hover{background:var(--slate-blue)}
+    /* CTA */
+    .cta{padding:6rem 0;background:var(--white);text-align:center;border-top:1px solid var(--border-light)}
+    .cta h2{font-size:2.2rem;font-weight:300;margin-bottom:1rem;color:var(--dark)}
+    .cta p{font-size:1rem;color:var(--mid);max-width:500px;margin:0 auto 2rem;font-weight:300}
 
     /* FOOTER */
-    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
-    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+    .footer{background:var(--dark);color:rgba(255,255,255,.6);padding:4rem 0 0;border-top:1px solid var(--border)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+    .footer-brand p{margin-top:1rem;font-size:.82rem;line-height:1.7}
+    .footer h4{font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:1rem;letter-spacing:.5px}
+    .footer ul{list-style:none}
+    .footer li{margin-bottom:.4rem}
+    .footer a{font-size:.8rem;transition:color var(--ease)}
+    .footer a:hover{color:var(--white)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;font-size:.75rem;flex-wrap:wrap;gap:1rem;color:rgba(255,255,255,.35)}
+    .footer-legal{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .footer-social{display:flex;gap:.8rem}
+    .footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.5);transition:all var(--ease)}
+    .footer-social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
 
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .reveal.vis{opacity:1;transform:translateY(0)}
+    .no-js .reveal{opacity:1;transform:none}
+
+    @media(max-width:1024px){
+      .feature-grid{grid-template-columns:repeat(2,1fr)}
+      .svc-detail .container{grid-template-columns:1fr;gap:1.5rem}
+      .svc-detail .svc-aside{position:static}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .mega{width:600px;grid-template-columns:repeat(2,1fr)}
+    }
     @media(max-width:768px){
-      .why-grid{grid-template-columns:1fr}
-      .page-header h1{font-size:1.5rem}
+      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}
+      .page-hero,.page-hero-dark{padding:6rem 0 2rem}
+      .page-hero h1{font-size:1.8rem}
+      .section{padding:3.5rem 0}
+      .s-title{font-size:1.7rem}
+      .feature-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .mega{display:none!important}
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
   <div class="container">
     <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
@@ -127,7 +175,7 @@
         <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
         <div class="mega">
           <div>
-            <h5>Formation & Structure</h5>
+            <h5>Formation &amp; Structure</h5>
             <ul>
               <li><a href="company-formations.html">Company Formations</a></li>
               <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
@@ -163,191 +211,162 @@
   </div>
 </nav>
 
-<!-- HEADER -->
-<div class="page-header">
+<!-- PAGE HERO -->
+<section class="page-hero">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="#solutions">Solutions</a> / Overseas Entities</p>
+    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="services.html">Services</a> &rsaquo; Overseas Entities</p>
     <h1 data-content="header.title">Overseas Entities & Beneficial Ownership</h1>
-    <p data-content="header.subtitle">Register of Overseas Entities (ROE) compliance and beneficial ownership verification under the Economic Crime Act 2022.</p>
+    <p class="lead" data-content="header.subtitle">Register of Overseas Entities (ROE) compliance and beneficial ownership verification under the Economic Crime Act 2022.</p>
   </div>
-</div>
+</section>
 
-<!-- HERO IMAGE -->
-<div class="container">
-  <div class="hero-image">
-    <img src="img-jetty.png" alt="Tower Bridge London at night — international business gateway">
-  </div>
-</div>
-
-<!-- OVERVIEW -->
-<div class="container">
-  <div class="overview-section">
-    <h2 data-content="overview.title">Beneficial Ownership Transparency & ROE Compliance</h2>
-    <p data-content="overview.paragraphs.0">The Economic Crime Act 2022, introduced following recommendations from the National Crime Agency and Financial Action Task Force, requires overseas entities that own or acquire property in the UK to register with Companies House and disclose their beneficial owners. The Register of Overseas Entities (ROE) represents a fundamental shift toward transparency—foreign companies and their true beneficial owners are now part of the public record, preventing anonymous property ownership by corrupt officials, sanctions evaders, and money launderers.</p>
-    <p data-content="overview.paragraphs.1">For overseas entities, ROE registration is now mandatory before acquiring or holding UK property. Failure to register incurs significant penalties: up to £2,500 per day for unregistered entities (up to £20,000 cumulative), and overseas entities cannot hold property in their own name without registration. Beneficial owners of registered overseas entities must be accurately identified, with ongoing reporting obligations if beneficial ownership structures change.</p>
-    <p data-content="overview.paragraphs.2">We guide overseas entities through ROE registration, collect beneficial ownership information, verify identity documentation, and manage ongoing reporting obligations. Our international compliance expertise ensures your entity meets UK transparency requirements while maintaining any legitimate offshore structures for tax or operational purposes.</p>
-  </div>
-</div>
-
-<!-- SERVICE 1: WHAT IS THE REGISTER OF OVERSEAS ENTITIES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-globe service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.0.title">What is the Register of Overseas Entities (ROE)</h3>
-      </div>
+<!-- MAIN CONTENT -->
+<section class="section">
+  <div class="container">
+    <div class="content-block reveal">
+      <h2 data-content="overview.title">Beneficial Ownership Transparency & ROE Compliance</h2>
+      <p data-content="overview.paragraphs.0">The Economic Crime Act 2022, introduced following recommendations from the National Crime Agency and Financial Action Task Force, requires overseas entities that own or acquire property in the UK to register with Companies House and disclose their beneficial owners. The Register of Overseas Entities (ROE) represents a fundamental shift toward transparency—foreign companies and their true beneficial owners are now part of the public record, preventing anonymous property ownership by corrupt officials, sanctions evaders, and money launderers.</p>
+      <p data-content="overview.paragraphs.1">For overseas entities, ROE registration is now mandatory before acquiring or holding UK property. Failure to register incurs significant penalties: up to £2,500 per day for unregistered entities (up to £20,000 cumulative), and overseas entities cannot hold property in their own name without registration. Beneficial owners of registered overseas entities must be accurately identified, with ongoing reporting obligations if beneficial ownership structures change.</p>
+      <p data-content="overview.paragraphs.2">We guide overseas entities through ROE registration, collect beneficial ownership information, verify identity documentation, and manage ongoing reporting obligations. Our international compliance expertise ensures your entity meets UK transparency requirements while maintaining any legitimate offshore structures for tax or operational purposes.</p>
     </div>
-    <p data-content="services.0.paragraphs.0">The Register of Overseas Entities is Companies House's public register of overseas entities that own or hold UK property. Introduced under the Economic Crime Act 2022, the ROE is part of the UK's anti-money laundering and sanctions compliance framework. Every overseas entity (including foreign companies, trusts, and partnerships) holding property in the UK must be registered on the ROE with disclosed beneficial owners.</p>
-    <p data-content="services.0.paragraphs.1">Beneficial owners are individuals who ultimately own or control an overseas entity. For company structures, beneficial owners are typically shareholders owning 25%+ of shares or voting power. For trusts, beneficial owners include settlors, trustees, and beneficiaries with entitlements to distributions. For partnerships, partners with 25%+ interest are beneficial owners. Identifying beneficial owners can be complex in layered structures (holding companies, trusts controlling companies, offshore funds), but the ROE requires disclosure of all individuals ultimately benefiting from the entity's assets.</p>
-    <p data-content="services.0.paragraphs.2">The ROE creates transparency about who owns UK property—particularly important given historical concerns about corrupt officials, sanctions evaders, and criminal organizations hiding stolen assets through anonymous property purchases. The register is publicly searchable, allowing law enforcement, journalists, and researchers to identify beneficial owners of properties. Non-compliance triggers substantial penalties and potential criminal prosecution for false statements.</p>
-    <p data-content="services.0.paragraphs.3">Overseas entities registering before November 2022 were required to do so by November 1, 2022 (later extended to January 27, 2023 for entities already holding property). New overseas entities acquiring property must register before completion. The registration process requires certified documentation of beneficial owners, proof of identity, and declaration under penalty of perjury that information is accurate.</p>
   </div>
-</div>
+</section>
 
-<div class="container">
-  <div class="detail-image">
-    <img src="img-man-office.png" alt="Modern corporate glass tower">
-  </div>
-</div>
-
-<!-- SERVICE 2: WHO MUST REGISTER -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-check-circle service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.1.title">Who Must Register & ROE Exemptions</h3>
-      </div>
+<!-- SERVICE 1 -->
+<section class="svc-detail">
+  <div class="container">
+    <aside class="svc-aside">
+      <div class="icon"><i class="fas fa-globe"></i></div>
+      <h2 data-content="services.0.title">What is the Register of Overseas Entities (ROE)</h2>
+    </aside>
+    <div class="svc-body">
+      <p data-content="services.0.paragraphs.0">The Register of Overseas Entities is Companies House's public register of overseas entities that own or hold UK property. Introduced under the Economic Crime Act 2022, the ROE is part of the UK's anti-money laundering and sanctions compliance framework. Every overseas entity (including foreign companies, trusts, and partnerships) holding property in the UK must be registered on the ROE with disclosed beneficial owners.</p>
+      <p data-content="services.0.paragraphs.1">Beneficial owners are individuals who ultimately own or control an overseas entity. For company structures, beneficial owners are typically shareholders owning 25%+ of shares or voting power. For trusts, beneficial owners include settlors, trustees, and beneficiaries with entitlements to distributions. For partnerships, partners with 25%+ interest are beneficial owners. Identifying beneficial owners can be complex in layered structures (holding companies, trusts controlling companies, offshore funds), but the ROE requires disclosure of all individuals ultimately benefiting from the entity's assets.</p>
+      <p data-content="services.0.paragraphs.2">The ROE creates transparency about who owns UK property—particularly important given historical concerns about corrupt officials, sanctions evaders, and criminal organizations hiding stolen assets through anonymous property purchases. The register is publicly searchable, allowing law enforcement, journalists, and researchers to identify beneficial owners of properties. Non-compliance triggers substantial penalties and potential criminal prosecution for false statements.</p>
+      <p data-content="services.0.paragraphs.3">Overseas entities registering before November 2022 were required to do so by November 1, 2022 (later extended to January 27, 2023 for entities already holding property). New overseas entities acquiring property must register before completion. The registration process requires certified documentation of beneficial owners, proof of identity, and declaration under penalty of perjury that information is accurate.</p>
     </div>
-    <p data-content="services.1.paragraphs.0">The ROE requirement applies to all overseas entities holding "legal estate" in UK land or property. Legal estate includes freehold ownership or long leasehold (leases of more than 7 years). Entities holding shorter leasehold interests, mortgages, or options to acquire property do not trigger ROE registration obligations. Overseas entities owning UK commercial property, residential property, agricultural land, or any other real property must register.</p>
-    <p data-content="services.1.paragraphs.1">Overseas entities include foreign companies, foreign partnerships, foreign trusts, foreign funds, and other entities incorporated or established outside the UK. Entities incorporated in England & Wales, Scotland, or Northern Ireland are "UK entities" and do not require ROE registration (though they may be registered at Companies House under other UK corporate registration requirements).</p>
-    <p data-content="services.1.paragraphs.2">Exemptions from ROE registration include: UK-listed companies (already regulated and disclosed), entities wholly owned by exempt entities, entities with registered branches in the UK (regulated financial institutions and central banks), and entities already subject to UK financial regulation with equivalent beneficial ownership reporting requirements. However, these exemptions are narrow; most overseas entities holding property must register.</p>
-    <p data-content="services.1.paragraphs.3">Timing is important: overseas entities that owned property before November 1, 2022 were initially required to register by that date (extended to January 27, 2023). Overseas entities acquiring property after those dates must register before completion. Failure to register before the applicable deadline triggers penalties, potential injunctions against property transfer, and (for entities holding property after the deadline without registration) criminal liability.</p>
   </div>
-</div>
+</section>
 
-<!-- SERVICE 3: NEW REGISTRATION & ROE FILING -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-file-alt service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.2.title">New Registration & ROE Filing Process</h3>
-      </div>
+<!-- SERVICE 2 -->
+<section class="svc-detail">
+  <div class="container">
+    <aside class="svc-aside">
+      <div class="icon"><i class="fas fa-scroll"></i></div>
+      <h2 data-content="services.1.title">Who Must Register & ROE Exemptions</h2>
+    </aside>
+    <div class="svc-body">
+      <p data-content="services.1.paragraphs.0">The ROE requirement applies to all overseas entities holding "legal estate" in UK land or property. Legal estate includes freehold ownership or long leasehold (leases of more than 7 years). Entities holding shorter leasehold interests, mortgages, or options to acquire property do not trigger ROE registration obligations. Overseas entities owning UK commercial property, residential property, agricultural land, or any other real property must register.</p>
+      <p data-content="services.1.paragraphs.1">Overseas entities include foreign companies, foreign partnerships, foreign trusts, foreign funds, and other entities incorporated or established outside the UK. Entities incorporated in England & Wales, Scotland, or Northern Ireland are "UK entities" and do not require ROE registration (though they may be registered at Companies House under other UK corporate registration requirements).</p>
+      <p data-content="services.1.paragraphs.2">Exemptions from ROE registration include: UK-listed companies (already regulated and disclosed), entities wholly owned by exempt entities, entities with registered branches in the UK (regulated financial institutions and central banks), and entities already subject to UK financial regulation with equivalent beneficial ownership reporting requirements. However, these exemptions are narrow; most overseas entities holding property must register.</p>
+      <p data-content="services.1.paragraphs.3">Timing is important: overseas entities that owned property before November 1, 2022 were initially required to register by that date (extended to January 27, 2023). Overseas entities acquiring property after those dates must register before completion. Failure to register before the applicable deadline triggers penalties, potential injunctions against property transfer, and (for entities holding property after the deadline without registration) criminal liability.</p>
     </div>
-    <p data-content="services.2.paragraphs.0">ROE registration requires gathering comprehensive information about the overseas entity and its beneficial owners. We guide you through the registration process: collecting entity information (name, jurisdiction of incorporation, registered office, company registration numbers), identifying all beneficial owners (shareholders 25%+, settlors, trustees, beneficiaries of trusts), verifying beneficial owner identities, and obtaining certified documentation.</p>
-    <p data-content="services.2.paragraphs.1">The registration form (ROE01) requires disclosure of beneficial owners with certified identity verification. Identity verification typically requires documents like passports, national ID cards, or utility bills (for proof of address). For entities with complex ownership (holding companies, trusts, or funds with multiple layers), we identify the ultimate beneficial owners through the entire ownership chain, ensuring complete transparency.</p>
-    <p data-content="services.2.paragraphs.2">We prepare and submit the ROE01 registration form to Companies House with supporting documentation of beneficial owner identities. Registration typically processes within 2-3 weeks. Once registered, the overseas entity receives a Companies House registration number and becomes listed on the public ROE. The entity is then permitted to acquire or hold UK property in its own name.</p>
-    <p data-content="services.2.paragraphs.3">Before property completion, we ensure ROE registration is complete and the entity is listed on the public register. Real estate practitioners typically require evidence of ROE registration (or exemption confirmation) before allowing property transfers. ROE registration also facilitates mortgage and financing arrangements—lenders typically require ROE registration before advancing property finance.</p>
   </div>
-</div>
+</section>
 
-<div class="container">
-  <div class="detail-image">
-    <img src="img-bridge.png" alt="Executive business strategy meeting">
-  </div>
-</div>
-
-<!-- SERVICE 4: ANNUAL UPDATES & ONGOING COMPLIANCE -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-sync-alt service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.3.title">Annual Updates & Ongoing ROE Compliance</h3>
-      </div>
+<!-- SERVICE 3 -->
+<section class="svc-detail">
+  <div class="container">
+    <aside class="svc-aside">
+      <div class="icon"><i class="fas fa-gavel"></i></div>
+      <h2 data-content="services.2.title">New Registration & ROE Filing Process</h2>
+    </aside>
+    <div class="svc-body">
+      <p data-content="services.2.paragraphs.0">ROE registration requires gathering comprehensive information about the overseas entity and its beneficial owners. We guide you through the registration process: collecting entity information (name, jurisdiction of incorporation, registered office, company registration numbers), identifying all beneficial owners (shareholders 25%+, settlors, trustees, beneficiaries of trusts), verifying beneficial owner identities, and obtaining certified documentation.</p>
+      <p data-content="services.2.paragraphs.1">The registration form (ROE01) requires disclosure of beneficial owners with certified identity verification. Identity verification typically requires documents like passports, national ID cards, or utility bills (for proof of address). For entities with complex ownership (holding companies, trusts, or funds with multiple layers), we identify the ultimate beneficial owners through the entire ownership chain, ensuring complete transparency.</p>
+      <p data-content="services.2.paragraphs.2">We prepare and submit the ROE01 registration form to Companies House with supporting documentation of beneficial owner identities. Registration typically processes within 2-3 weeks. Once registered, the overseas entity receives a Companies House registration number and becomes listed on the public ROE. The entity is then permitted to acquire or hold UK property in its own name.</p>
+      <p data-content="services.2.paragraphs.3">Before property completion, we ensure ROE registration is complete and the entity is listed on the public register. Real estate practitioners typically require evidence of ROE registration (or exemption confirmation) before allowing property transfers. ROE registration also facilitates mortgage and financing arrangements—lenders typically require ROE registration before advancing property finance.</p>
     </div>
-    <p data-content="services.3.paragraphs.0">Registered overseas entities must file annual updates confirming that beneficial ownership information remains accurate. These updates are similar to Confirmation Statements filed by UK companies—annual affirmations that the registered details are still correct. Annual updates must be filed within a specified period each year (typically the anniversary of registration or by June 30th depending on registration timing).</p>
-    <p data-content="services.3.paragraphs.1">If beneficial ownership changes (for example, a shareholder sells their shares, a new member joins, or beneficial owner details change), the entity must notify Companies House within 14 days. This includes changes in the percentage of beneficial ownership (if a beneficial owner's shareholding drops below 25%), changes in beneficial owner names or addresses, or death of beneficial owners. Any material changes trigger obligation to file updated beneficial owner information.</p>
-    <p data-content="services.3.paragraphs.2">We monitor your registered beneficial ownership structure and alert you to any changes requiring ROE updates. For overseas entities with changing ownership (particularly those receiving investment, undergoing restructuring, or in succession planning), we coordinate beneficial owner identification and Companies House notification to remain compliant.</p>
-    <p data-content="services.3.paragraphs.3">The ROE framework includes significant penalties for non-compliance. Penalties for failure to file annual updates escalate from £100 (initial failure) to £500+ (subsequent failures). False statements in ROE filings constitute criminal fraud and can result in prosecution. We ensure your ROE compliance is maintained throughout your entity's lifecycle—from initial registration through ongoing updates to eventual deregistration if you cease holding UK property.</p>
   </div>
-</div>
+</section>
 
-<!-- SERVICE 5: TRANSFER IN & RESTRUCTURING -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-exchange-alt service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.4.title">Transfer In & ROE Restructuring</h3>
-      </div>
+<!-- SERVICE 4-6 will be shorter summaries since they extend the content from the dark version -->
+<section class="svc-detail">
+  <div class="container">
+    <aside class="svc-aside">
+      <div class="icon"><i class="fas fa-sync-alt"></i></div>
+      <h2 data-content="services.3.title">Annual Updates & Ongoing ROE Compliance</h2>
+    </aside>
+    <div class="svc-body">
+      <p data-content="services.3.paragraphs.0">Registered overseas entities must file annual updates confirming that beneficial ownership information remains accurate. If beneficial ownership changes—such as a shareholder sale, new member, or beneficial owner details change—the entity must notify Companies House within 14 days. We monitor your registered beneficial ownership structure and alert you to any changes requiring ROE updates.</p>
+      <p data-content="services.3.paragraphs.1">The ROE framework includes significant penalties for non-compliance. We ensure your ROE compliance is maintained throughout your entity's lifecycle—from initial registration through ongoing updates to eventual deregistration if you cease holding UK property.</p>
     </div>
-    <p data-content="services.4.paragraphs.0">If your overseas entity was previously managed by another provider, we can coordinate ROE transfer and verify ongoing compliance. We review your current ROE registration, confirm beneficial owner information is accurate and current, identify any pending annual updates, and assume responsibility for ongoing reporting obligations.</p>
-    <p data-content="services.4.paragraphs.1">We also advise on ROE implications for corporate restructuring. If you're acquiring UK property through a new overseas entity, we advise on optimal structure for ROE purposes and ensure the acquiring entity registers before property completion. If you're restructuring group ownership (consolidating multiple entities, moving property between entities in a group), we coordinate ROE filings reflecting the restructured ownership.</p>
-    <p data-content="services.4.paragraphs.2">For entities disposing of UK property, we advise on deregistration requirements. If an overseas entity ceases to hold UK property, it may apply for deregistration. However, deregistration is not automatic; you must affirmatively apply to remove the entity from the register. We coordinate deregistration processes, ensuring the entity is removed once no longer holding UK property.</p>
-    <p data-content="services.4.paragraphs.3">We also advise on international beneficial ownership considerations. Your overseas entity may have beneficial ownership reporting obligations in its jurisdiction of incorporation that complement or conflict with UK ROE requirements. We coordinate international compliance, ensuring your entity meets reporting obligations across multiple jurisdictions simultaneously.</p>
   </div>
-</div>
-
-<div class="container">
-  <div class="detail-image">
-    <img src="img-chevron-green.png" alt="Financial Times and corporate intelligence">
-  </div>
-</div>
-
-<!-- SERVICE 6: PENALTIES & ENFORCEMENT -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-exclamation-triangle service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.5.title">Penalties & Enforcement of ROE Obligations</h3>
-      </div>
-    </div>
-    <p data-content="services.5.paragraphs.0">The Economic Crime Act 2022 establishes substantial penalties for ROE non-compliance. Overseas entities holding property without ROE registration face civil penalties of up to £2,500 per day the entity remains unregistered (capped at £20,000 aggregate per entity). These penalties accumulate daily, creating significant exposure for entities acquiring property without registering first. Criminal penalties are also available for deliberate failure to register.</p>
-    <p data-content="services.5.paragraphs.1">False or misleading information in ROE filings constitutes fraud under the Fraud Act 2006 and can result in criminal prosecution, imprisonment, and unlimited fines. If you knowingly provide false beneficial owner information, deliberately omit beneficial owners, or falsely certify information, you face criminal liability—not merely civil penalties. The threshold for prosecution is deliberately false statements; innocent errors can typically be corrected through amendment.</p>
-    <p data-content="services.5.paragraphs.2">Overseas entities holding property after registration deadlines without ROE compliance face potential injunctions preventing property transfers. UK courts can freeze property transfers or impose restrictions until ROE compliance is achieved. This has practical significance—properties cannot be mortgaged, sold, or transferred without ROE registration confirmation.</p>
-    <p data-content="services.5.paragraphs.3">We ensure your overseas entity maintains compliance to avoid penalties entirely. This includes timely registration before property acquisition, accurate beneficial owner disclosure, annual update filing, and prompt notification of beneficial ownership changes. Early compliance prevents penalties, facilitates property transactions, and demonstrates good faith to regulators and lenders.</p>
-  </div>
-</div>
+</section>
 
 <!-- WHY AXSUMA -->
-<div class="container">
-  <div class="why-section">
-    <h2>Why Axsuma for Overseas Entities & ROE</h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <i class="fas fa-passport"></i>
-        <h4 data-content="why_cards.0.title">Beneficial Ownership Expertise</h4>
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="s-title">Why Axsuma for Overseas Entities & ROE</h2>
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-lock"></i></div>
+        <h3 data-content="why_cards.0.title">Beneficial Ownership Expertise</h3>
         <p data-content="why_cards.0.description">We identify beneficial owners through complex ownership chains. From holding companies to trusts to offshore funds—we pierce through layers to identify ultimate beneficial owners for ROE compliance.</p>
       </div>
-      <div class="why-card">
-        <i class="fas fa-balance-scale"></i>
-        <h4 data-content="why_cards.1.title">Anti-Money Laundering Compliance</h4>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+        <h3 data-content="why_cards.1.title">Anti-Money Laundering Compliance</h3>
         <p data-content="why_cards.1.description">We understand the regulatory framework behind beneficial ownership. ROE requirements serve anti-money laundering objectives; we ensure your compliance reflects best practices in financial crime prevention.</p>
       </div>
-      <div class="why-card">
-        <i class="fas fa-sync"></i>
-        <h4 data-content="why_cards.2.title">Ongoing Compliance Management</h4>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-sync"></i></div>
+        <h3 data-content="why_cards.2.title">Ongoing Compliance Management</h3>
         <p data-content="why_cards.2.description">ROE compliance doesn't end at registration. We track beneficial owner changes, file annual updates, and maintain your entity's registration throughout its lifecycle—from property acquisition through eventual deregistration.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CTA SECTION -->
-<div class="container">
-  <div class="cta-section">
-    <h2 data-content="cta.title">Register Your Overseas Entity Today</h2>
-    <p data-content="cta.body">Whether acquiring UK property for the first time or ensuring existing registrations remain compliant, we'll guide you through ROE registration and ongoing beneficial ownership reporting.</p>
-    <a href="mailto:enquiries@axsuma.co.uk?subject=Overseas%20Entity%20Registration" class="btn-cta" data-content="cta.ctaText">
-      <i class="fas fa-envelope"></i> Get in Touch
-    </a>
+<!-- CTA -->
+<section class="cta">
+  <div class="container reveal">
+    <p class="s-label">Get in Touch</p>
+    <h2 data-content="cta.title">Talk to Our Team</h2>
+    <p data-content="cta.body">Our experts are always happy to talk. We will connect you with the appropriate specialist and reply within two working days.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-teal">Contact Us <i class="fas fa-arrow-right"></i></a>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
-<div class="footer-mini">
+<footer class="footer">
   <div class="container">
-    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
-    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
-    <a href="terms.html">Terms</a> &nbsp;|&nbsp;
-    <a href="gdpr.html">GDPR</a>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-light.svg" alt="Axsuma" style="width:180px">
+        <p>Corporate administration, governance and transaction solutions for the world's most ambitious investors and enterprises.</p>
+      </div>
+      <div><h4>Solutions</h4><ul><li><a href="company-formations.html">Company Formations</a></li><li><a href="governance.html">Governance &amp; CoSec</a></li><li><a href="ma-transactions.html">M&amp;A Support</a></li><li><a href="accounting.html">Accounting &amp; Tax</a></li><li><a href="overseas-entities.html">Overseas Entities</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Axsuma</a></li><li><a href="meet-the-team.html">Meet the Team</a></li><li><a href="sectors.html">Sectors</a></li><li><a href="insights.html">Insights</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>London</h4><ul><li style="line-height:1.6"><i class="fas fa-map-marker-alt" style="color:var(--teal);margin-right:.3rem"></i>London EC2V</li><li><i class="fas fa-envelope" style="color:var(--teal);margin-right:.3rem"></i>enquiries@axsuma.co.uk</li></ul>
+        <div class="footer-social" style="margin-top:1rem"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axsuma Ltd. Registered in England &amp; Wales.</span>
+      <div class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="standard-terms.html">Terms</a><a href="gdpr.html">GDPR</a></div>
+    </div>
   </div>
-</div>
+</footer>
 
+<script>
+try{
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.classList.add('vis');obs.unobserve(el.target)}})},{threshold:.05,rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')});
+  }
+  var mobileMenu=document.querySelector('.nav-links');var menuOpen=false;
+  var toggleBtn=document.querySelector('.nav-toggle');
+  if(toggleBtn){toggleBtn.addEventListener('click',function(){
+    if(menuOpen){mobileMenu.style.display='';menuOpen=false}
+    else{mobileMenu.style.display='flex';mobileMenu.style.flexDirection='column';mobileMenu.style.position='absolute';mobileMenu.style.top='100%';mobileMenu.style.left='0';mobileMenu.style.right='0';mobileMenu.style.background='rgba(255,255,255,.98)';mobileMenu.style.padding='1rem 2rem';mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.08)';mobileMenu.style.zIndex='999';menuOpen=true}
+  });}
+}catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
+</script>
 <script src="content-loader.js" data-page="overseas-entities"></script>
 </body>
 </html>

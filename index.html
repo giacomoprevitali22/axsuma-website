@@ -85,7 +85,7 @@
 
     /* ===== SERVICES TILES — Tahoe ===== */
     .services-section{padding:2.5rem 0 3rem;background:var(--white)}
-    .services-section .services-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:.65rem}
+    .services-section .services-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem}
     .svc-tile{position:relative;text-align:center;padding:1.6rem .8rem;border-radius:14px;background:var(--off-white);border:none;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;min-height:72px}
     .svc-tile:hover{background:var(--teal);transform:scale(1.03)}
     .svc-tile:active{transform:scale(.98);background:var(--teal-light)}
@@ -335,11 +335,13 @@
   <div class="container">
     <div class="services-strip">
       <a href="company-formations.html" class="svc-tile"><h4>Company<br>Formations</h4></a>
+      <a href="spv-holding.html" class="svc-tile"><h4>SPV &amp;<br>Holding</h4></a>
+      <a href="directorships.html" class="svc-tile"><h4>Directorships</h4></a>
+      <a href="governance.html" class="svc-tile"><h4>Company<br>Secretarial</h4></a>
       <a href="ma-transactions.html" class="svc-tile"><h4>M&amp;A<br>Support</h4></a>
       <a href="accounting.html" class="svc-tile"><h4>Accounting<br>&amp; Tax</h4></a>
-      <a href="governance.html" class="svc-tile"><h4>Governance<br>&amp; CoSec</h4></a>
-      <a href="overseas-entities.html" class="svc-tile"><h4>Overseas<br>Entities</h4></a>
-      <a href="process-agent.html" class="svc-tile"><h4>Process<br>Agent</h4></a>
+      <a href="payroll-hr.html" class="svc-tile"><h4>Payroll<br>&amp; HR</h4></a>
+      <a href="compliance-governance.html" class="svc-tile"><h4>Compliance &amp;<br>Governance</h4></a>
     </div>
   </div>
 </section>
@@ -371,7 +373,7 @@
         <div class="sol-body"><h3>M&amp;A &amp; Transaction Support</h3><p>Deal-stack management, SPV structuring, professional directorships, acquisition vehicles — LOI to post-completion.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
       </a>
       <a href="governance.html" class="sol-card reveal">
-        <div class="sol-body"><h3>Governance &amp; Company Secretarial</h3><p>CoSec support, registered office, mail forwarding, service address and statutory compliance.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+        <div class="sol-body"><h3>Company Secretarial</h3><p>CoSec support, registered office, mail forwarding, service address and statutory compliance.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
       </a>
       <a href="accounting.html" class="sol-card reveal">
         <div class="sol-body"><h3>Accounting &amp; Tax</h3><p>Bookkeeping, tax compliance, management accounts, VAT, ATED returns, PAYE and payroll.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
@@ -387,6 +389,12 @@
       <a href="id-verification.html" class="sol-card reveal">
         <div class="sol-body"><h3>ID Verification</h3><p>Digital AML/KYC verification — fast, secure, with integrated payments.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
       </a>
+      <a href="uk-address-service.html" class="sol-card reveal">
+        <div class="sol-body"><h3>UK Address for Service</h3><p>Registered address and service of documents, supporting cross-border operations and compliance.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="services.html" class="btn btn-outline reveal">View All Services <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -407,7 +415,11 @@
         <p data-content="about.paragraphs.0">Axsuma is a UK-based provider of corporate administration and governance services. We support businesses, family offices, funds, and their advisors with their administration needs at every stage of the company lifecycle, from entity formation through company secretarial, M&amp;A deal support, accounting and tax compliance, and payroll in the United Kingdom.</p>
         <div class="highlight-box" data-content="about.paragraphs.1">Accountability drives everything we do. We combine institutional-grade technical expertise with pragmatic, hands-on delivery. Each assignment has a named owner, decisions are shaped by commercial realities, and work is executed thoroughly and on schedule.</div>
         <p data-content="about.paragraphs.2">We do not provide legal advice or structuring. Instead, we work closely with clients' lawyers and accountants to ensure decisions are implemented cleanly, accurately and without friction. Our role is to take ownership of execution — translating professional advice into precise, dependable delivery.</p>
-        <a href="contact.html" class="btn btn-outline" style="margin-top:1rem">Get in Touch <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap">
+          <a href="about.html" class="btn btn-outline">Learn More About Us <i class="fas fa-arrow-right"></i></a>
+          <a href="our-approach.html" class="btn btn-outline">Our Approach <i class="fas fa-arrow-right"></i></a>
+          <a href="meet-the-team.html" class="btn btn-outline">Meet the Team <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
       <div class="reveal" style="display:flex;align-items:center;justify-content:center;padding:3rem">
         <svg viewBox="0 0 190 210" width="200" xmlns="http://www.w3.org/2000/svg" style="opacity:.18">
@@ -416,6 +428,15 @@
           <path d="M81.83,204.9l4.45-69.63,7.83-126.13c.22-3.51.5-6.12,1.24-9.14l.9,12.84,11.89,191.9-26.3.16Z" fill="#00594a"/>
         </svg>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNATIONAL EXPANSION -->
+<section class="section section-alt" id="international">
+  <div class="container">
+    <div class="reveal"><p class="s-label">International Expansion</p><h2 class="s-title">Cross-Border Corporate Infrastructure</h2><p class="s-sub">Navigating UK compliance as part of a multi-jurisdictional operation? We help international investors, funds, and enterprises structure their UK presence with clarity and confidence.</p>
+      <a href="international.html" class="btn btn-outline" style="margin-top:1.5rem">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -460,6 +481,18 @@
   </div>
 </section>
 
+<!-- ADVISOR PORTAL -->
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <p class="s-label">Professional Intermediaries</p>
+      <h2 style="font-size:2rem;font-weight:300;line-height:1.2;margin-bottom:1.2rem;color:var(--dark)">Advisor Client Portal</h2>
+      <p style="color:var(--mid);font-size:.92rem;margin-bottom:1.5rem">For lawyers, accountants, and other professional advisors: secure, real-time access to client entities under management. Monitor compliance calendars, retrieve documents, and coordinate with our team seamlessly.</p>
+      <a href="advisor-portal.html" class="btn btn-teal">Request Access <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
 <!-- INSIGHTS -->
 <section class="section" id="insights">
   <div class="container">
@@ -482,7 +515,7 @@
     <h2 data-content="contact.title">Let's Talk</h2>
     <p data-content="contact.body">Our experts are always happy to talk. Please get in touch and we will connect you with the appropriate specialist and reply within two working days.</p>
     <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
-      <a href="#" class="btn btn-teal" data-content="contact.ctaText">Contact Us</a>
+      <a href="contact.html" class="btn btn-teal" data-content="contact.ctaText">Contact Us</a>
       <a href="#" class="btn btn-outline">Download Brochure</a>
     </div>
     <p style="margin-top:2rem;font-size:.82rem;color:var(--light-text)">London &bull; enquiries@axsuma.co.uk</p>
@@ -497,8 +530,8 @@
         <img src="logo-light.svg" alt="Axsuma" style="width:180px">
         <p>Corporate administration, governance and transaction solutions for the world's most ambitious investors and enterprises.</p>
       </div>
-      <div><h4>Solutions</h4><ul><li><a href="company-formations.html">Company Formations</a></li><li><a href="governance.html">Governance &amp; CoSec</a></li><li><a href="ma-transactions.html">M&amp;A Support</a></li><li><a href="accounting.html">Accounting &amp; Tax</a></li><li><a href="overseas-entities.html">Overseas Entities</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About Axsuma</a></li><li><a href="#">Leadership</a></li><li><a href="sectors.html">Sectors</a></li><li><a href="insights.html">Insights</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Solutions</h4><ul><li><a href="company-formations.html">Company Formations</a></li><li><a href="spv-holding.html">SPV &amp; Holding</a></li><li><a href="directorships.html">Directorships</a></li><li><a href="governance.html">Company Secretarial</a></li><li><a href="ma-transactions.html">M&amp;A Support</a></li><li><a href="accounting.html">Accounting &amp; Tax</a></li><li><a href="payroll-hr.html">Payroll &amp; HR</a></li><li><a href="compliance-governance.html">Compliance &amp; Governance</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Axsuma</a></li><li><a href="our-approach.html">Our Approach</a></li><li><a href="meet-the-team.html">Meet the Team</a></li><li><a href="sectors.html">Sectors</a></li><li><a href="insights.html">Insights</a></li><li><a href="contact.html">Contact</a></li></ul></div>
       <div><h4>London</h4><ul><li style="line-height:1.6"><i class="fas fa-map-marker-alt" style="color:var(--teal);margin-right:.3rem"></i>London EC2V</li><li><i class="fas fa-envelope" style="color:var(--teal);margin-right:.3rem"></i>enquiries@axsuma.co.uk</li></ul>
         <div class="footer-social" style="margin-top:1rem"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div>
       </div>

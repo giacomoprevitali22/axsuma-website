@@ -1,114 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Engagement — Axsuma</title>
+  <title>Standard Terms — Axsuma</title>
+  <meta name="description" content="Review Axsuma's standard terms of engagement for corporate services.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <meta name="theme-color" content="#222831">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --summit:#00594a;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
-      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
-      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
-      --border:rgba(208,220,227,.1);--font:'DM Sans','Helvetica Neue',Arial,sans-serif;--font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
-      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+      --teal:#00594a;--teal-light:#007a66;--dark:#2a2f36;--dark-soft:#3d434d;
+      --mid:#6b7280;--light-text:#8a919c;--white:#ffffff;--off-white:#f7f8f9;
+      --light-grey:#eef0f2;--border:#e2e5e9;--border-light:#f0f1f3;
+      --font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
+      --font:'DM Sans','Helvetica Neue',Arial,sans-serif;
+      --max:1140px;--ease:0.3s cubic-bezier(0.4,0,0.2,1);
     }
     html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
-    h1,h2,h3,h4,h5,h6{font-family:var(--font-heading)}
+    body{font-family:var(--font);color:var(--dark);line-height:1.7;background:var(--white)}
+    h1,h2,h3,h4,h5,h6,.s-label,.s-title{font-family:var(--font-heading)}
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
 
-        /* NAV */
-    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white,#fff);border-bottom:1px solid rgba(226,229,233,.8);box-shadow:0 1px 4px rgba(0,0,0,.04)}
-    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem;max-width:1140px}
+    /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
     .nav-logo{height:44px}
     .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
-    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#6b7280;transition:color .3s;font-family:'Inter',sans-serif}
-    .nav-links a:hover{color:#2a2f36}
-    .nav-cta{background:#00594a;color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
-    .nav-cta:hover{background:#007a66;color:#fff!important}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
+    .nav-links a:hover{color:var(--dark)}
+    .nav-cta{background:var(--teal);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:var(--teal-light);color:#fff!important}
     .nav-drop{position:relative}
-    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform .3s}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform var(--ease)}
     .nav-drop:hover>a i{transform:rotate(180deg)}
-    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:#fff;border:1px solid #e2e5e9;border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
     .nav-drop:hover .mega{opacity:1;visibility:visible}
-    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#00594a;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid #f0f1f3}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border-light)}
     .mega ul{list-style:none;margin-bottom:1rem}
     .mega li{margin-bottom:.2rem}
-    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:#6b7280!important;padding:.15rem 0!important;display:block}
-    .mega a:hover{color:#2a2f36!important}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:var(--mid)!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:var(--dark)!important}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer}
-    .nav-toggle span{display:block;width:22px;height:2px;background:#2a2f36;margin:5px 0;transition:.3s}
-    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}.mega{display:none!important}}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
 
+    /* PAGE HERO (light variant) */
+    .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light)}
+    .page-hero .breadcrumb{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
+    .page-hero .breadcrumb a{color:var(--teal)}
+    .page-hero .breadcrumb a:hover{color:var(--teal-light)}
+    .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px}
+    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400}
 
-    /* PAGE */
-    .page-header{padding:6rem 0 2rem;text-align:center}
-    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
-    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
-    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
-    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+    /* SECTIONS */
+    .section{padding:5rem 0}
+    .section-alt{background:var(--off-white)}
+    .s-label{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+    .s-title{font-size:2.2rem;font-weight:300;line-height:1.2;margin-bottom:1rem;color:var(--dark);letter-spacing:-.3px}
+    .s-sub{font-size:.95rem;color:var(--mid);max-width:720px;line-height:1.8;font-weight:300}
 
-    /* HERO IMAGE */
-    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-    .hero-image img{width:100%;height:auto;display:block}
+    /* CONTENT BLOCK (long-form prose) */
+    .content-block{max-width:820px;margin:0 auto}
+    .content-block h2{font-size:1.6rem;font-weight:400;color:var(--dark);margin:2.5rem 0 1rem;letter-spacing:-.2px}
+    .content-block h3{font-size:1.15rem;font-weight:600;color:var(--dark);margin:1.8rem 0 .7rem}
+    .content-block p{margin-bottom:1rem;font-size:.95rem;color:var(--dark-soft);line-height:1.8}
+    .content-block ul{margin:1rem 0 1.5rem 1.2rem;color:var(--dark-soft)}
+    .content-block ul li{font-size:.95rem;margin-bottom:.5rem;line-height:1.7}
+    .content-block .highlight{border-left:3px solid var(--teal);background:var(--off-white);padding:1.2rem 1.5rem;margin:1.5rem 0;font-size:.98rem;line-height:1.75}
 
-    /* OVERVIEW */
-    .overview-section{margin-bottom:3rem}
-    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
-    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+    /* BTN */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
+    .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .btn-teal:hover{background:var(--teal-light);border-color:var(--teal-light)}
 
-    /* SERVICE DETAIL SECTION */
-    .service-detail{margin-bottom:3rem}
-    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
-    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
-    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
-    .service-detail p:last-of-type{margin-bottom:0}
-    .service-detail ul{margin:1rem 0 .8rem 1.5rem;color:var(--text-mid);font-size:.9rem}
-    .service-detail li{margin-bottom:.6rem;line-height:1.6}
-
-    /* DETAIL IMAGE */
-    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
-    .detail-image img{width:100%;height:auto;display:block}
-
-    /* WHY AXSUMA */
-    .why-section{margin-bottom:3rem}
-    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
-    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
-
-    /* CTA SECTION */
-    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
-    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
-    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
-    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
-    .btn-cta:hover{background:var(--slate-blue)}
+    /* CTA */
+    .cta{padding:6rem 0;background:var(--white);text-align:center;border-top:1px solid var(--border-light)}
+    .cta h2{font-size:2.2rem;font-weight:300;margin-bottom:1rem;color:var(--dark)}
+    .cta p{font-size:1rem;color:var(--mid);max-width:500px;margin:0 auto 2rem;font-weight:300}
 
     /* FOOTER */
-    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
-    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+    .footer{background:var(--dark);color:rgba(255,255,255,.6);padding:4rem 0 0;border-top:1px solid var(--border)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+    .footer-brand p{margin-top:1rem;font-size:.82rem;line-height:1.7}
+    .footer h4{font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:1rem;letter-spacing:.5px}
+    .footer ul{list-style:none}
+    .footer li{margin-bottom:.4rem}
+    .footer a{font-size:.8rem;transition:color var(--ease)}
+    .footer a:hover{color:var(--white)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;font-size:.75rem;flex-wrap:wrap;gap:1rem;color:rgba(255,255,255,.35)}
+    .footer-legal{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .footer-social{display:flex;gap:.8rem}
+    .footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.5);transition:all var(--ease)}
+    .footer-social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
 
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .reveal.vis{opacity:1;transform:translateY(0)}
+    .no-js .reveal{opacity:1;transform:none}
+
+    @media(max-width:1024px){
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
     @media(max-width:768px){
-      .why-grid{grid-template-columns:1fr}
-      .page-header h1{font-size:1.5rem}
+      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}
+      .page-hero{padding:6rem 0 2rem}
+      .page-hero h1{font-size:1.8rem}
+      .section{padding:3.5rem 0}
+      .footer-grid{grid-template-columns:1fr}
+      .mega{display:none!important}
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
+<!-- NAV: same as homepage -->
+<nav class="nav">
   <div class="container">
     <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
     <ul class="nav-links">
@@ -130,7 +145,7 @@
         <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
         <div class="mega">
           <div>
-            <h5>Formation & Structure</h5>
+            <h5>Formation &amp; Structure</h5>
             <ul>
               <li><a href="company-formations.html">Company Formations</a></li>
               <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
@@ -166,198 +181,137 @@
   </div>
 </nav>
 
-<!-- HEADER -->
-<div class="page-header">
+<!-- PAGE HERO -->
+<section class="page-hero">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> / Terms of Engagement</p>
+    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Legal &rsaquo; Standard Terms</p>
     <h1>Terms of Engagement</h1>
-    <p>Last updated: 14 April 2026</p>
+    <p class="lead">Last updated: 14 April 2026</p>
   </div>
-</div>
+</section>
 
-<!-- OVERVIEW -->
-<div class="container">
-  <div class="overview-section">
-    <h2>Standard Terms for Corporate Services</h2>
-    <p>These Terms of Engagement set out the basis on which Axsuma Ltd provides corporate services to clients. By engaging Axsuma, you agree to be bound by these terms. If you require service-specific terms, please refer to the relevant service terms document.</p>
-  </div>
-</div>
+<!-- MAIN CONTENT -->
+<section class="section">
+  <div class="container">
+    <div class="content-block reveal">
+      <h2>Standard Terms for Corporate Services</h2>
+      <p>These Terms of Engagement set out the basis on which Axsuma Ltd provides corporate services to clients. By engaging Axsuma, you agree to be bound by these terms. If you require service-specific terms, please refer to the relevant service terms document.</p>
 
-<!-- SCOPE OF SERVICES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-briefcase service-detail-icon"></i>
-      <div>
-        <h3>Scope of Services</h3>
-      </div>
+      <h3>Scope of Services</h3>
+      <p>Axsuma provides a range of corporate services including company formations, governance support, M&amp;A transaction management, accounting services, and specialist compliance services. The specific services to be provided will be detailed in an engagement letter or service proposal signed by both parties. Services are provided on the basis that you have obtained all necessary internal approvals and authorisations before instructing us.</p>
+      <p>Our services are limited to the specific scope agreed in writing. Any services beyond the agreed scope will be considered separately and will require additional instruction and fee agreement. We reserve the right to decline any instruction that falls outside our area of expertise or where we have conflicts of interest.</p>
+
+      <h3>Client Responsibilities</h3>
+      <p>Your cooperation is essential to our ability to deliver services effectively. You agree to:</p>
+      <ul>
+        <li>Provide accurate, complete, and timely information and documents required for service delivery</li>
+        <li>Ensure that information provided is truthful and not misleading</li>
+        <li>Maintain confidentiality of our advice and communications</li>
+        <li>Notify us promptly of any changes to circumstances that may affect our services</li>
+        <li>Comply with all applicable laws and regulations</li>
+        <li>Make decisions on matters that are your responsibility and not defer these to us</li>
+      </ul>
+      <p>We cannot be held responsible for delays or errors arising from incomplete, inaccurate, or late information provided by you or failure to meet these responsibilities.</p>
+
+      <h3>Fees and Payment Terms</h3>
+      <p>Our fees are set out in the engagement letter or proposal and are based on the scope and complexity of the services required. Fees may be calculated on the basis of:</p>
+      <ul>
+        <li><strong>Fixed fees:</strong> A predetermined fixed amount for the complete service</li>
+        <li><strong>Time-based fees:</strong> Calculated at agreed hourly rates, with estimates provided where possible</li>
+        <li><strong>Transactional fees:</strong> Based on the nature or value of the transaction</li>
+        <li><strong>Retainer fees:</strong> For ongoing corporate services covering a defined scope</li>
+      </ul>
+      <p>Invoices are payable within 30 days of issue unless otherwise agreed. Payment should be made to the bank details provided on the invoice. If fees are not paid within 30 days, we reserve the right to suspend services and charge interest on overdue amounts in accordance with the Late Payment of Commercial Debts (Interest) Act 1998. Costs of recovery (including legal fees) will be charged to the client.</p>
+      <p>Expenses and disbursements (such as Companies House filing fees, professional adviser costs, or third-party fees) will be recharged to you in addition to our professional fees. We will keep expenses to a reasonable level and will inform you in advance of any significant costs.</p>
+
+      <h3>Confidentiality and Professional Privilege</h3>
+      <p>Axsuma treats all client information as confidential and will not disclose it to third parties except as required by law, regulation, or where we have your express consent. Information provided to us is protected by professional privilege to the extent permitted by law.</p>
+      <p>We may disclose information to regulatory bodies (such as Companies House, HMRC, or the FCA), law enforcement, or courts where required by law or legal process. We are required to comply with anti-money laundering regulations and may conduct due diligence checks, including verification of identity and beneficial ownership.</p>
+      <p>You acknowledge that we may share limited information with our insurers, auditors, and service providers solely for legitimate business purposes and subject to strict confidentiality obligations. Information relating to your company that is registered at Companies House or other public registers is not confidential.</p>
+
+      <h3>Limitation of Liability</h3>
+      <p>While we are committed to providing professional services of the highest standard, our liability is limited as follows:</p>
+      <ul>
+        <li>Our total liability to you for losses arising from our provision of services is limited to the fees paid by you in the preceding 12 months, or GBP 250,000, whichever is lower.</li>
+        <li>We are not liable for any indirect, consequential, special, or punitive damages, including loss of profits, revenue, business opportunity, or goodwill, even if we have been advised of the possibility of such loss.</li>
+        <li>We are not liable for losses arising from errors, omissions, or delays caused by circumstances beyond our reasonable control, including failures in third-party systems, government action, or natural disaster.</li>
+        <li>We are not responsible for the consequences of your failure to follow our advice or recommendations, or for decisions you make as a result of our advice.</li>
+        <li>Our liability is subject to you mitigating your loss and taking all reasonable steps to minimise any damage.</li>
+      </ul>
+      <p>These limitations do not apply to our liability for death or personal injury, fraud, or where liability cannot be limited by law. Nothing in these terms excludes or limits our liability for breach of the Data Protection Act 2018 or GDPR.</p>
+
+      <h3>Termination and Suspension of Services</h3>
+      <p>Either party may terminate the engagement by written notice. Termination does not relieve you of the obligation to pay for services rendered prior to termination. We may terminate or suspend services immediately if:</p>
+      <ul>
+        <li>Payment of fees is more than 30 days overdue</li>
+        <li>You breach a material term of these Terms of Engagement</li>
+        <li>We have a conflict of interest or suspect money laundering or financial crime</li>
+        <li>We reasonably believe you are using our services for unlawful purposes</li>
+        <li>You provide false or misleading information</li>
+        <li>Continuing to act would breach professional conduct requirements</li>
+      </ul>
+      <p>Upon termination, we will provide reasonable assistance to transition your services to another adviser, subject to payment of outstanding fees and expenses. We may retain your files for the period required by law.</p>
+
+      <h3>Governing Law and Jurisdiction</h3>
+      <p>These Terms of Engagement are governed by the laws of England and Wales. Any disputes arising from the engagement or these terms are subject to the exclusive jurisdiction of the courts of England and Wales. Both parties irrevocably submit to the jurisdiction of the courts.</p>
+      <p>Where appropriate, we may refer disputes to alternative dispute resolution mechanisms before proceeding to litigation. This may include mediation, arbitration, or expert determination depending on the nature of the dispute.</p>
+
+      <h3>Professional Indemnity Insurance</h3>
+      <p>Axsuma maintains professional indemnity insurance in accordance with regulatory requirements. Details of our insurance cover and claims procedures are available on request. Any claim against us arising from our provision of services must be notified within 6 years of the date on which the claim arose.</p>
+
+      <h3>Changes to These Terms</h3>
+      <p>We may update these Terms of Engagement from time to time to reflect changes in law, regulation, or our business practices. We will provide you with notice of any material changes. Continued engagement of our services after changes are notified constitutes your acceptance of the updated terms.</p>
     </div>
-    <p>Axsuma provides a range of corporate services including company formations, governance support, M&amp;A transaction management, accounting services, and specialist compliance services. The specific services to be provided will be detailed in an engagement letter or service proposal signed by both parties. Services are provided on the basis that you have obtained all necessary internal approvals and authorisations before instructing us.</p>
-    <p>Our services are limited to the specific scope agreed in writing. Any services beyond the agreed scope will be considered separately and will require additional instruction and fee agreement. We reserve the right to decline any instruction that falls outside our area of expertise or where we have conflicts of interest.</p>
   </div>
-</div>
+</section>
 
-<!-- CLIENT RESPONSIBILITIES -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-user-check service-detail-icon"></i>
-      <div>
-        <h3>Client Responsibilities</h3>
-      </div>
-    </div>
-    <p>Your cooperation is essential to our ability to deliver services effectively. You agree to:</p>
-    <ul>
-      <li>Provide accurate, complete, and timely information and documents required for service delivery</li>
-      <li>Ensure that information provided is truthful and not misleading</li>
-      <li>Maintain confidentiality of our advice and communications</li>
-      <li>Notify us promptly of any changes to circumstances that may affect our services</li>
-      <li>Comply with all applicable laws and regulations</li>
-      <li>Make decisions on matters that are your responsibility and not defer these to us</li>
-    </ul>
-    <p>We cannot be held responsible for delays or errors arising from incomplete, inaccurate, or late information provided by you or failure to meet these responsibilities.</p>
-  </div>
-</div>
-
-<!-- FEES AND PAYMENT -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-credit-card service-detail-icon"></i>
-      <div>
-        <h3>Fees and Payment Terms</h3>
-      </div>
-    </div>
-    <p>Our fees are set out in the engagement letter or proposal and are based on the scope and complexity of the services required. Fees may be calculated on the basis of:</p>
-    <ul>
-      <li><strong>Fixed fees:</strong> A predetermined fixed amount for the complete service</li>
-      <li><strong>Time-based fees:</strong> Calculated at agreed hourly rates, with estimates provided where possible</li>
-      <li><strong>Transactional fees:</strong> Based on the nature or value of the transaction</li>
-      <li><strong>Retainer fees:</strong> For ongoing corporate services covering a defined scope</li>
-    </ul>
-    <p>Invoices are payable within 30 days of issue unless otherwise agreed. Payment should be made to the bank details provided on the invoice. If fees are not paid within 30 days, we reserve the right to suspend services and charge interest on overdue amounts in accordance with the Late Payment of Commercial Debts (Interest) Act 1998. Costs of recovery (including legal fees) will be charged to the client.</p>
-    <p>Expenses and disbursements (such as Companies House filing fees, professional adviser costs, or third-party fees) will be recharged to you in addition to our professional fees. We will keep expenses to a reasonable level and will inform you in advance of any significant costs.</p>
-  </div>
-</div>
-
-<!-- CONFIDENTIALITY -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-lock service-detail-icon"></i>
-      <div>
-        <h3>Confidentiality and Professional Privilege</h3>
-      </div>
-    </div>
-    <p>Axsuma treats all client information as confidential and will not disclose it to third parties except as required by law, regulation, or where we have your express consent. Information provided to us is protected by professional privilege to the extent permitted by law.</p>
-    <p>We may disclose information to regulatory bodies (such as Companies House, HMRC, or the FCA), law enforcement, or courts where required by law or legal process. We are required to comply with anti-money laundering regulations and may conduct due diligence checks, including verification of identity and beneficial ownership.</p>
-    <p>You acknowledge that we may share limited information with our insurers, auditors, and service providers solely for legitimate business purposes and subject to strict confidentiality obligations. Information relating to your company that is registered at Companies House or other public registers is not confidential.</p>
-  </div>
-</div>
-
-<!-- LIABILITY LIMITATIONS -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-exclamation-circle service-detail-icon"></i>
-      <div>
-        <h3>Limitation of Liability</h3>
-      </div>
-    </div>
-    <p>While we are committed to providing professional services of the highest standard, our liability is limited as follows:</p>
-    <ul>
-      <li>Our total liability to you for losses arising from our provision of services is limited to the fees paid by you in the preceding 12 months, or GBP 250,000, whichever is lower.</li>
-      <li>We are not liable for any indirect, consequential, special, or punitive damages, including loss of profits, revenue, business opportunity, or goodwill, even if we have been advised of the possibility of such loss.</li>
-      <li>We are not liable for losses arising from errors, omissions, or delays caused by circumstances beyond our reasonable control, including failures in third-party systems, government action, or natural disaster.</li>
-      <li>We are not responsible for the consequences of your failure to follow our advice or recommendations, or for decisions you make as a result of our advice.</li>
-      <li>Our liability is subject to you mitigating your loss and taking all reasonable steps to minimise any damage.</li>
-    </ul>
-    <p>These limitations do not apply to our liability for death or personal injury, fraud, or where liability cannot be limited by law. Nothing in these terms excludes or limits our liability for breach of the Data Protection Act 2018 or GDPR.</p>
-  </div>
-</div>
-
-<!-- TERMINATION -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-sign-out-alt service-detail-icon"></i>
-      <div>
-        <h3>Termination and Suspension of Services</h3>
-      </div>
-    </div>
-    <p>Either party may terminate the engagement by written notice. Termination does not relieve you of the obligation to pay for services rendered prior to termination. We may terminate or suspend services immediately if:</p>
-    <ul>
-      <li>Payment of fees is more than 30 days overdue</li>
-      <li>You breach a material term of these Terms of Engagement</li>
-      <li>We have a conflict of interest or suspect money laundering or financial crime</li>
-      <li>We reasonably believe you are using our services for unlawful purposes</li>
-      <li>You provide false or misleading information</li>
-      <li>Continuing to act would breach professional conduct requirements</li>
-    </ul>
-    <p>Upon termination, we will provide reasonable assistance to transition your services to another adviser, subject to payment of outstanding fees and expenses. We may retain your files for the period required by law.</p>
-  </div>
-</div>
-
-<!-- GOVERNING LAW -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-gavel service-detail-icon"></i>
-      <div>
-        <h3>Governing Law and Jurisdiction</h3>
-      </div>
-    </div>
-    <p>These Terms of Engagement are governed by the laws of England and Wales. Any disputes arising from the engagement or these terms are subject to the exclusive jurisdiction of the courts of England and Wales. Both parties irrevocably submit to the jurisdiction of the courts.</p>
-    <p>Where appropriate, we may refer disputes to alternative dispute resolution mechanisms before proceeding to litigation. This may include mediation, arbitration, or expert determination depending on the nature of the dispute.</p>
-  </div>
-</div>
-
-<!-- INSURANCE AND PROFESSIONAL INDEMNITY -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-shield-alt service-detail-icon"></i>
-      <div>
-        <h3>Professional Indemnity Insurance</h3>
-      </div>
-    </div>
-    <p>Axsuma maintains professional indemnity insurance in accordance with regulatory requirements. Details of our insurance cover and claims procedures are available on request. Any claim against us arising from our provision of services must be notified within 6 years of the date on which the claim arose.</p>
-  </div>
-</div>
-
-<!-- CHANGES TO TERMS -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-edit service-detail-icon"></i>
-      <div>
-        <h3>Changes to These Terms</h3>
-      </div>
-    </div>
-    <p>We may update these Terms of Engagement from time to time to reflect changes in law, regulation, or our business practices. We will provide you with notice of any material changes. Continued engagement of our services after changes are notified constitutes your acceptance of the updated terms.</p>
-  </div>
-</div>
-
-<!-- CTA SECTION -->
-<div class="container">
-  <div class="cta-section">
+<!-- CTA -->
+<section class="cta">
+  <div class="container reveal">
     <h2>Ready to Engage Our Services?</h2>
     <p>Contact us to discuss your corporate services needs and receive a tailored engagement proposal.</p>
-    <a href="mailto:enquiries@axsuma.co.uk?subject=Engagement%20Inquiry" class="btn-cta">
-      <i class="fas fa-envelope"></i> Get in Touch
-    </a>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-teal">Contact Us <i class="fas fa-arrow-right"></i></a>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
-<div class="footer-mini">
+<!-- FOOTER: same as homepage -->
+<footer class="footer">
   <div class="container">
-    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
-    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
-    <a href="standard-terms.html">Terms</a> &nbsp;|&nbsp;
-    <a href="gdpr.html">GDPR</a>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-light.svg" alt="Axsuma" style="width:180px">
+        <p>Corporate administration, governance and transaction solutions for the world's most ambitious investors and enterprises.</p>
+      </div>
+      <div><h4>Solutions</h4><ul><li><a href="company-formations.html">Company Formations</a></li><li><a href="governance.html">Governance &amp; CoSec</a></li><li><a href="ma-transactions.html">M&amp;A Support</a></li><li><a href="accounting.html">Accounting &amp; Tax</a></li><li><a href="overseas-entities.html">Overseas Entities</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Axsuma</a></li><li><a href="meet-the-team.html">Meet the Team</a></li><li><a href="sectors.html">Sectors</a></li><li><a href="insights.html">Insights</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>London</h4><ul><li style="line-height:1.6"><i class="fas fa-map-marker-alt" style="color:var(--teal);margin-right:.3rem"></i>London EC2V</li><li><i class="fas fa-envelope" style="color:var(--teal);margin-right:.3rem"></i>enquiries@axsuma.co.uk</li></ul>
+        <div class="footer-social" style="margin-top:1rem"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axsuma Ltd. Registered in England &amp; Wales.</span>
+      <div class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="standard-terms.html">Terms</a><a href="gdpr.html">GDPR</a></div>
+    </div>
   </div>
-</div>
+</footer>
 
+<script>
+try{
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.classList.add('vis');obs.unobserve(el.target)}})},{threshold:.05,rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')});
+  }
+  var mobileMenu=document.querySelector('.nav-links');var menuOpen=false;
+  var toggleBtn=document.querySelector('.nav-toggle');
+  if(toggleBtn){toggleBtn.addEventListener('click',function(){
+    if(menuOpen){mobileMenu.style.display='';menuOpen=false}
+    else{mobileMenu.style.display='flex';mobileMenu.style.flexDirection='column';mobileMenu.style.position='absolute';mobileMenu.style.top='100%';mobileMenu.style.left='0';mobileMenu.style.right='0';mobileMenu.style.background='rgba(255,255,255,.98)';mobileMenu.style.padding='1rem 2rem';mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.08)';mobileMenu.style.zIndex='999';menuOpen=true}
+  });}
+}catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
+</script>
 </body>
 </html>

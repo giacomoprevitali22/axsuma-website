@@ -1,110 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Process Agent Services — Axsuma</title>
+  <meta name="description" content="Legal process representation for overseas companies operating in the UK. CPR compliance and court document service.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <meta name="theme-color" content="#222831">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --summit:#00594a;--onyx:#222831;--silver:#A1A6B4;--white:#FFFFFF;
-      --olive:#7F8C5A;--slate-blue:#536878;--bronze:#C08B5C;--frost:#D0DCE3;
-      --text:#D0DCE3;--text-mid:#A1A6B4;--text-dim:rgba(208,220,227,.5);
-      --border:rgba(208,220,227,.1);--font:'DM Sans','Helvetica Neue',Arial,sans-serif;--font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
-      --max:800px;--ease:0.35s cubic-bezier(0.4,0,0.2,1);
+      --teal:#00594a;--teal-light:#007a66;--dark:#2a2f36;--dark-soft:#3d434d;
+      --mid:#6b7280;--light-text:#8a919c;--white:#ffffff;--off-white:#f7f8f9;
+      --light-grey:#eef0f2;--border:#e2e5e9;--border-light:#f0f1f3;
+      --font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
+      --font:'DM Sans','Helvetica Neue',Arial,sans-serif;
+      --max:1140px;--ease:0.3s cubic-bezier(0.4,0,0.2,1);
     }
     html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:var(--font);color:var(--text);line-height:1.7;background:var(--onyx);min-height:100vh}
-    h1,h2,h3,h4,h5,h6{font-family:var(--font-heading)}
+    body{font-family:var(--font);color:var(--dark);line-height:1.7;background:var(--white)}
+    h1,h2,h3,h4,h5,h6,.s-label,.s-title{font-family:var(--font-heading)}
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
 
-        /* NAV */
-    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white,#fff);border-bottom:1px solid rgba(226,229,233,.8);box-shadow:0 1px 4px rgba(0,0,0,.04)}
-    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem;max-width:1140px}
+    /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
     .nav-logo{height:44px}
     .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
-    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#6b7280;transition:color .3s;font-family:'Inter',sans-serif}
-    .nav-links a:hover{color:#2a2f36}
-    .nav-cta{background:#00594a;color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
-    .nav-cta:hover{background:#007a66;color:#fff!important}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
+    .nav-links a:hover{color:var(--dark)}
+    .nav-cta{background:var(--teal);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:var(--teal-light);color:#fff!important}
     .nav-drop{position:relative}
-    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform .3s}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform var(--ease)}
     .nav-drop:hover>a i{transform:rotate(180deg)}
-    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:#fff;border:1px solid #e2e5e9;border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
     .nav-drop:hover .mega{opacity:1;visibility:visible}
-    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#00594a;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid #f0f1f3}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border-light)}
     .mega ul{list-style:none;margin-bottom:1rem}
     .mega li{margin-bottom:.2rem}
-    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:#6b7280!important;padding:.15rem 0!important;display:block}
-    .mega a:hover{color:#2a2f36!important}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:var(--mid)!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:var(--dark)!important}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer}
-    .nav-toggle span{display:block;width:22px;height:2px;background:#2a2f36;margin:5px 0;transition:.3s}
-    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}.mega{display:none!important}}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
 
+    /* PAGE HERO (light variant) */
+    .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light)}
+    .page-hero .breadcrumb{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
+    .page-hero .breadcrumb a{color:var(--teal)}
+    .page-hero .breadcrumb a:hover{color:var(--teal-light)}
+    .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px}
+    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400}
 
-    /* PAGE */
-    .page-header{padding:6rem 0 2rem;text-align:center}
-    .page-header h1{font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem}
-    .page-header p{color:var(--text-mid);font-size:.95rem;max-width:550px;margin:0 auto}
-    .breadcrumb{font-size:.75rem;color:var(--text-dim);margin-bottom:1.5rem}
-    .breadcrumb a{color:var(--text-mid)}.breadcrumb a:hover{color:var(--white)}
+    /* SECTIONS */
+    .section{padding:5rem 0}
+    .section-alt{background:var(--off-white)}
+    .s-label{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+    .s-title{font-size:2.2rem;font-weight:300;line-height:1.2;margin-bottom:1rem;color:var(--dark);letter-spacing:-.3px}
+    .s-sub{font-size:.95rem;color:var(--mid);max-width:720px;line-height:1.8;font-weight:300}
 
-    /* HERO IMAGE */
-    .hero-image{margin:2rem 0 3rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-    .hero-image img{width:100%;height:auto;display:block}
+    /* CONTENT BLOCK (long-form prose) */
+    .content-block{max-width:820px;margin:0 auto}
+    .content-block h2{font-size:1.6rem;font-weight:400;color:var(--dark);margin:2.5rem 0 1rem;letter-spacing:-.2px}
+    .content-block h3{font-size:1.15rem;font-weight:600;color:var(--dark);margin:1.8rem 0 .7rem}
+    .content-block p{margin-bottom:1rem;font-size:.95rem;color:var(--dark-soft);line-height:1.8}
+    .content-block ul{margin:1rem 0 1.5rem 1.2rem;color:var(--dark-soft)}
+    .content-block ul li{font-size:.95rem;margin-bottom:.5rem;line-height:1.7}
+    .content-block .highlight{border-left:3px solid var(--teal);background:var(--off-white);padding:1.2rem 1.5rem;margin:1.5rem 0;font-size:.98rem;line-height:1.75}
 
-    /* OVERVIEW */
-    .overview-section{margin-bottom:3rem}
-    .overview-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
-    .overview-section p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+    /* FEATURE CARDS GRID */
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+    .feature-card{padding:2rem 1.5rem;border-radius:8px;background:var(--white);border:1px solid var(--border);transition:all var(--ease);position:relative;overflow:hidden}
+    .feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--ease)}
+    .feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06);border-color:var(--teal)}
+    .feature-card:hover::before{transform:scaleX(1)}
+    .feature-card .icon{width:48px;height:48px;border-radius:50%;background:rgba(0,89,74,.08);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+    .feature-card .icon i{color:var(--teal);font-size:1rem}
+    .feature-card h3{font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:.6rem}
+    .feature-card p{font-size:.85rem;color:var(--mid);line-height:1.7}
 
-    /* SERVICE DETAIL SECTION */
-    .service-detail{margin-bottom:3rem}
-    .service-detail-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1.5rem}
-    .service-detail-icon{font-size:2rem;color:var(--summit);flex-shrink:0}
-    .service-detail h3{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .service-detail p{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem;line-height:1.7}
-    .service-detail p:last-of-type{margin-bottom:0}
+    /* SERVICE DETAIL (for pages with long prose + section heading pattern) */
+    .svc-detail{padding:3rem 0;border-top:1px solid var(--border-light)}
+    .svc-detail:first-of-type{border-top:none;padding-top:1rem}
+    .svc-detail .container{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start}
+    .svc-detail .svc-aside{position:sticky;top:7rem}
+    .svc-detail .svc-aside .icon{width:56px;height:56px;border-radius:50%;background:rgba(0,89,74,.08);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+    .svc-detail .svc-aside .icon i{color:var(--teal);font-size:1.25rem}
+    .svc-detail .svc-aside h2{font-size:1.3rem;font-weight:500;color:var(--dark);line-height:1.3}
+    .svc-detail .svc-body p{margin-bottom:1rem;font-size:.92rem;color:var(--dark-soft);line-height:1.8}
+    .svc-detail .svc-body h3{font-size:1.05rem;font-weight:600;color:var(--dark);margin:1.5rem 0 .6rem}
+    .svc-detail .svc-body ul{margin:1rem 0 1.5rem 1.2rem}
+    .svc-detail .svc-body ul li{font-size:.92rem;color:var(--dark-soft)}
 
-    /* DETAIL IMAGE */
-    .detail-image{margin:2rem 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
-    .detail-image img{width:100%;height:auto;display:block}
+    /* BTN */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
+    .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .btn-teal:hover{background:var(--teal-light);border-color:var(--teal-light)}
 
-    /* WHY AXSUMA */
-    .why-section{margin-bottom:3rem}
-    .why-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1.5rem}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .why-card{padding:1.5rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-    .why-card i{color:var(--summit);font-size:1.5rem;margin-bottom:.8rem}
-    .why-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-    .why-card p{font-size:.8rem;color:var(--text-mid);margin:0;line-height:1.5}
-
-    /* CTA SECTION */
-    .cta-section{background:rgba(15,76,58,.1);border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-bottom:3rem;text-align:center}
-    .cta-section h2{font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:1rem}
-    .cta-section p{color:var(--text-mid);margin-bottom:1.5rem;font-size:.9rem}
-    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;border-radius:6px;font-family:var(--font);font-size:.9rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:none;transition:all var(--ease);background:var(--summit);color:#fff}
-    .btn-cta:hover{background:var(--slate-blue)}
+    /* CTA */
+    .cta{padding:6rem 0;background:var(--white);text-align:center;border-top:1px solid var(--border-light)}
+    .cta h2{font-size:2.2rem;font-weight:300;margin-bottom:1rem;color:var(--dark)}
+    .cta p{font-size:1rem;color:var(--mid);max-width:500px;margin:0 auto 2rem;font-weight:300}
 
     /* FOOTER */
-    .footer-mini{border-top:1px solid var(--border);padding:1.5rem 0;text-align:center;font-size:.75rem;color:var(--text-dim)}
-    .footer-mini a{color:var(--text-mid)}.footer-mini a:hover{color:var(--summit)}
+    .footer{background:var(--dark);color:rgba(255,255,255,.6);padding:4rem 0 0;border-top:1px solid var(--border)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+    .footer-brand p{margin-top:1rem;font-size:.82rem;line-height:1.7}
+    .footer h4{font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:1rem;letter-spacing:.5px}
+    .footer ul{list-style:none}
+    .footer li{margin-bottom:.4rem}
+    .footer a{font-size:.8rem;transition:color var(--ease)}
+    .footer a:hover{color:var(--white)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;font-size:.75rem;flex-wrap:wrap;gap:1rem;color:rgba(255,255,255,.35)}
+    .footer-legal{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .footer-social{display:flex;gap:.8rem}
+    .footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.5);transition:all var(--ease)}
+    .footer-social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
 
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .reveal.vis{opacity:1;transform:translateY(0)}
+    .no-js .reveal{opacity:1;transform:none}
+
+    @media(max-width:1024px){
+      .feature-grid{grid-template-columns:repeat(2,1fr)}
+      .svc-detail .container{grid-template-columns:1fr;gap:1.5rem}
+      .svc-detail .svc-aside{position:static}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .mega{width:600px;grid-template-columns:repeat(2,1fr)}
+    }
     @media(max-width:768px){
-      .why-grid{grid-template-columns:1fr}
-      .page-header h1{font-size:1.5rem}
+      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:36px}
+      .page-hero,.page-hero-dark{padding:6rem 0 2rem}
+      .page-hero h1{font-size:1.8rem}
+      .section{padding:3.5rem 0}
+      .s-title{font-size:1.7rem}
+      .feature-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .mega{display:none!important}
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
   <div class="container">
     <a href="index.html"><img src="axsuma-logo.svg" alt="Axsuma" class="nav-logo"></a>
@@ -127,7 +175,7 @@
         <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
         <div class="mega">
           <div>
-            <h5>Formation & Structure</h5>
+            <h5>Formation &amp; Structure</h5>
             <ul>
               <li><a href="company-formations.html">Company Formations</a></li>
               <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
@@ -163,159 +211,147 @@
   </div>
 </nav>
 
-<!-- HEADER -->
-<div class="page-header">
+<!-- PAGE HERO -->
+<section class="page-hero">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="#solutions">Solutions</a> / Process Agent</p>
+    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="services.html">Services</a> &rsaquo; Process Agent</p>
     <h1 data-content="header.title">Process Agent Services</h1>
-    <p data-content="header.subtitle">Legal process representation for overseas companies operating in the UK. CPR compliance and court document service.</p>
+    <p class="lead" data-content="header.subtitle">Legal process representation for overseas companies operating in the UK. CPR compliance and court document service.</p>
   </div>
-</div>
+</section>
 
-<!-- HERO IMAGE -->
-<div class="container">
-  <div class="hero-image">
-    <img src="img-bridge.png" alt="Legal documentation and professional services">
-  </div>
-</div>
-
-<!-- OVERVIEW -->
-<div class="container">
-  <div class="overview-section">
-    <h2 data-content="overview.title">Legal Process Representation in UK Courts</h2>
-    <p data-content="overview.paragraphs.0">Overseas companies operating in the UK, selling goods or services, or subject to legal proceedings must appoint a process agent—a UK representative authorized to accept legal documents and court proceedings on their behalf. UK courts cannot serve legal documents directly on overseas entities; instead, documents are served on their appointed UK process agent, who then forwards them to the company.</p>
-    <p data-content="overview.paragraphs.1">The Civil Procedure Rules (CPR) require overseas companies involved in UK litigation to have a process agent appointed. Without a process agent, overseas companies face default judgments, inability to defend claims, and exposure to unlimited liability. Additionally, overseas companies registering branches with Companies House are required to appoint a process agent as part of their UK regulatory compliance.</p>
-    <p data-content="overview.paragraphs.2">We provide professional process agent services, acting as your authorized UK representative for legal service and court proceedings. Our service ensures that all court documents, legal notices, and litigation correspondence are received promptly, secured confidentially, and forwarded immediately to your company's decision-makers. We maintain secure document handling, provide proof of service, and coordinate with your legal advisors throughout litigation processes.</p>
-  </div>
-</div>
-
-<!-- SERVICE 1: WHAT IS A PROCESS AGENT -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-gavel service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.0.title">What is a Process Agent & Why You Need One</h3>
-      </div>
+<!-- MAIN CONTENT -->
+<section class="section">
+  <div class="container">
+    <div class="content-block reveal">
+      <h2 data-content="overview.title">Legal Process Representation in UK Courts</h2>
+      <p data-content="overview.paragraphs.0">Overseas companies operating in the UK, selling goods or services, or subject to legal proceedings must appoint a process agent—a UK representative authorized to accept legal documents and court proceedings on their behalf. UK courts cannot serve legal documents directly on overseas entities; instead, documents are served on their appointed UK process agent, who then forwards them to the company.</p>
+      <p data-content="overview.paragraphs.1">The Civil Procedure Rules (CPR) require overseas companies involved in UK litigation to have a process agent appointed. Without a process agent, overseas companies face default judgments, inability to defend claims, and exposure to unlimited liability. Additionally, overseas companies registering branches with Companies House are required to appoint a process agent as part of their UK regulatory compliance.</p>
+      <p data-content="overview.paragraphs.2">We provide professional process agent services, acting as your authorized UK representative for legal service and court proceedings. Our service ensures that all court documents, legal notices, and litigation correspondence are received promptly, secured confidentially, and forwarded immediately to your company's decision-makers. We maintain secure document handling, provide proof of service, and coordinate with your legal advisors throughout litigation processes.</p>
     </div>
-    <p data-content="services.0.paragraphs.0">A process agent is a UK-based representative appointed by an overseas company to accept legal documents, court proceedings, and formal notices on its behalf. When a company is sued in UK courts, legal documents must be properly "served" (delivered) according to the Civil Procedure Rules (CPR). UK courts cannot serve documents directly on foreign addresses; instead, documents are served on the company's appointed UK process agent.</p>
-    <p data-content="services.0.paragraphs.1">The process agent acts as a conduit between UK courts and the overseas company. Once documents are served on the process agent, the agent must forward them immediately to the company and confirm to the court that service has been completed. The process agent is not a legal representative (that's your solicitor's role); the agent is simply the person authorized to receive legal service and ensure the company is notified of proceedings.</p>
-    <p data-content="services.0.paragraphs.2">Process agents are mandatory for: (1) overseas companies with UK branches required to register at Companies House, (2) overseas companies subject to litigation in UK courts (the court will require you to appoint a process agent as a condition of defending the claim), (3) overseas companies bound by cross-border contracts specifying UK jurisdiction or legal proceedings, and (4) overseas companies engaged in significant UK commercial activity that might trigger litigation exposure.</p>
-    <p data-content="services.0.paragraphs.3">Without a process agent, overseas companies cannot properly defend UK legal claims. Courts will serve documents by other means (international service), but if the overseas company fails to respond, courts may issue default judgments against the unrepresented company. A company facing litigation without a process agent risks losing the case by default and facing enforcement of judgments without ever knowing proceedings were brought against them.</p>
   </div>
-</div>
+</section>
 
-<div class="container">
-  <div class="detail-image">
-    <img src="img-book-key.png" alt="Professional business meeting">
-  </div>
-</div>
-
-<!-- SERVICE 2: WHEN YOU NEED A PROCESS AGENT -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-check-circle service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.1.title">When You Need a Process Agent</h3>
-      </div>
+<!-- SERVICE 1 -->
+<section class="svc-detail">
+  <div class="container">
+    <aside class="svc-aside">
+      <div class="icon"><i class="fas fa-envelope-open"></i></div>
+      <h2 data-content="services.0.title">What is a Process Agent & Why You Need One</h2>
+    </aside>
+    <div class="svc-body">
+      <p data-content="services.0.paragraphs.0">A process agent is a UK-based representative appointed by an overseas company to accept legal documents, court proceedings, and formal notices on its behalf. When a company is sued in UK courts, legal documents must be properly "served" (delivered) according to the Civil Procedure Rules (CPR). UK courts cannot serve documents directly on foreign addresses; instead, documents are served on the company's appointed UK process agent.</p>
+      <p data-content="services.0.paragraphs.1">The process agent acts as a conduit between UK courts and the overseas company. Once documents are served on the process agent, the agent must forward them immediately to the company and confirm to the court that service has been completed. The process agent is not a legal representative (that's your solicitor's role); the agent is simply the person authorized to receive legal service and ensure the company is notified of proceedings.</p>
+      <p data-content="services.0.paragraphs.2">Process agents are mandatory for: (1) overseas companies with UK branches required to register at Companies House, (2) overseas companies subject to litigation in UK courts (the court will require you to appoint a process agent as a condition of defending the claim), (3) overseas companies bound by cross-border contracts specifying UK jurisdiction or legal proceedings, and (4) overseas companies engaged in significant UK commercial activity that might trigger litigation exposure.</p>
+      <p data-content="services.0.paragraphs.3">Without a process agent, overseas companies cannot properly defend UK legal claims. Courts will serve documents by other means (international service), but if the overseas company fails to respond, courts may issue default judgments against the unrepresented company. A company facing litigation without a process agent risks losing the case by default and facing enforcement of judgments without ever knowing proceedings were brought against them.</p>
     </div>
-    <p data-content="services.1.paragraphs.0">Process agent requirements arise in several common situations. First, overseas companies establishing UK branches must appoint a process agent under Companies House regulations. This is mandatory—UK branch registration cannot be completed without a process agent appointment. Companies registering branches include overseas subsidiaries of international groups, foreign parent companies expanding into the UK, and overseas private equity funds establishing UK operating entities.</p>
-    <p data-content="services.1.paragraphs.1">Second, overseas companies entering UK litigation must have a process agent. This may occur defensively (someone sues you in UK courts) or proactively (you sue someone in the UK and need a process agent to manage the proceedings). If you're defending a claim in UK courts, you must appoint a process agent as part of your defense. The court will not allow you to proceed without proper UK legal representation and a process agent for document service.</p>
-    <p data-content="services.1.paragraphs.2">Third, overseas companies with UK business exposure benefit from process agent appointment even before litigation arises. Many UK commercial contracts specify English law and UK jurisdiction, meaning any dispute will be litigated in UK courts. Having a process agent already appointed streamlines dispute resolution if a contract dispute arises. You can transition immediately to litigation without the delays of appointing a process agent mid-dispute.</p>
-    <p data-content="services.1.paragraphs.3">Fourth, overseas companies exposed to regulatory action may need a process agent. If UK regulatory bodies (such as the Financial Conduct Authority, Competition and Markets Authority, or sector-specific regulators) take enforcement action against an overseas company, service of regulatory notices on a process agent ensures the company is properly notified. Similarly, HMRC enforcement or insolvency proceedings may require process agent service.</p>
   </div>
-</div>
+</section>
 
-<!-- SERVICE 3: THE APPOINTMENT PROCESS -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-file-contract service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.2.title">The Appointment Process & Compliance Requirements</h3>
-      </div>
+<!-- SERVICE 2 -->
+<section class="svc-detail">
+  <div class="container">
+    <aside class="svc-aside">
+      <div class="icon"><i class="fas fa-briefcase"></i></div>
+      <h2 data-content="services.1.title">When You Need a Process Agent</h2>
+    </aside>
+    <div class="svc-body">
+      <p data-content="services.1.paragraphs.0">Process agent requirements arise in several common situations. First, overseas companies establishing UK branches must appoint a process agent under Companies House regulations. This is mandatory—UK branch registration cannot be completed without a process agent appointment. Companies registering branches include overseas subsidiaries of international groups, foreign parent companies expanding into the UK, and overseas private equity funds establishing UK operating entities.</p>
+      <p data-content="services.1.paragraphs.1">Second, overseas companies entering UK litigation must have a process agent. This may occur defensively (someone sues you in UK courts) or proactively (you sue someone in the UK and need a process agent to manage the proceedings). If you're defending a claim in UK courts, you must appoint a process agent as part of your defense. The court will not allow you to proceed without proper UK legal representation and a process agent for document service.</p>
+      <p data-content="services.1.paragraphs.2">Third, overseas companies with UK business exposure benefit from process agent appointment even before litigation arises. Many UK commercial contracts specify English law and UK jurisdiction, meaning any dispute will be litigated in UK courts. Having a process agent already appointed streamlines dispute resolution if a contract dispute arises. You can transition immediately to litigation without the delays of appointing a process agent mid-dispute.</p>
+      <p data-content="services.1.paragraphs.3">Fourth, overseas companies exposed to regulatory action may need a process agent. If UK regulatory bodies (such as the Financial Conduct Authority, Competition and Markets Authority, or sector-specific regulators) take enforcement action against an overseas company, service of regulatory notices on a process agent ensures the company is properly notified.</p>
     </div>
-    <p data-content="services.2.paragraphs.0">Appointing Axsuma as your process agent is straightforward. We provide you with a process agent appointment letter that you sign and countersign, confirming your appointment of Axsuma as your authorized UK process agent. This letter is kept on file and produced to courts, regulators, or other parties requiring evidence of your process agent appointment.</p>
-    <p data-content="services.2.paragraphs.1">For overseas companies registering branches with Companies House, the process agent appointment is disclosed on the branch registration form (BR01). Companies House registers the process agent's details (our address, contact information) and lists us as the company's authorized service representative. If someone needs to serve legal documents, they contact us; our details are publicly registered with Companies House.</p>
-    <p data-content="services.2.paragraphs.2">For overseas companies without UK branch registration, the process agent appointment is contractual between you and Axsuma. If you're involved in UK litigation or regulatory proceedings, you produce the appointment letter as evidence that we're authorized to receive service. UK courts and regulatory authorities recognize process agent appointments and will serve documents on us accordingly.</p>
-    <p data-content="services.2.paragraphs.3">Process agent appointment requires our authority—we must be willing to act in the role. We confirm our willingness to act, our UK address for service, and our commitment to forwarding documents immediately upon receipt. Once appointed, we are bound by the Civil Procedure Rules to accept service and immediately notify you of any proceedings. If circumstances change (for example, you dissolve the company, cease UK operations, or need to change process agents), you notify us and we step down from the role.</p>
   </div>
-</div>
+</section>
 
-<div class="container">
-  <div class="detail-image">
-    <img src="img-book-pen.png" alt="Legal documentation">
-  </div>
-</div>
-
-<!-- SERVICE 4: OUR PROCESS AGENT SERVICE -->
-<div class="container">
-  <div class="service-detail">
-    <div class="service-detail-header">
-      <i class="fas fa-shield-alt service-detail-icon"></i>
-      <div>
-        <h3 data-content="services.3.title">Our Professional Process Agent Service</h3>
-      </div>
+<!-- SERVICE 3 -->
+<section class="svc-detail">
+  <div class="container">
+    <aside class="svc-aside">
+      <div class="icon"><i class="fas fa-clock"></i></div>
+      <h2 data-content="services.2.title">The Appointment Process & Our Service</h2>
+    </aside>
+    <div class="svc-body">
+      <p data-content="services.2.paragraphs.0">Appointing Axsuma as your process agent is straightforward. We provide you with a process agent appointment letter that you sign and countersign, confirming your appointment of Axsuma as your authorized UK process agent. This letter is kept on file and produced to courts, regulators, or other parties requiring evidence of your process agent appointment.</p>
+      <p data-content="services.2.paragraphs.1">For overseas companies registering branches with Companies House, the process agent appointment is disclosed on the branch registration form (BR01). Companies House registers the process agent's details (our address, contact information) and lists us as the company's authorized service representative. If someone needs to serve legal documents, they contact us; our details are publicly registered with Companies House.</p>
+      <p data-content="services.2.paragraphs.2">We provide comprehensive process agent services: documents are received at our address, properly logged, scanned and emailed to you electronically, and secured in our client vault. We provide proof of service confirming when documents were received and forwarded, advise you of any urgent deadlines or action required, and coordinate with your legal advisors. We maintain confidentiality—all documents received are kept confidential and only disclosed to authorized company representatives or legal advisors.</p>
     </div>
-    <p data-content="services.3.paragraphs.0">We provide comprehensive process agent services ensuring seamless document receipt, secure handling, and immediate company notification. Our UK address is registered as your process agent address with Companies House (for branch registrations) or made available to courts and parties as required. All service of documents is received at our address, properly logged, and immediately forwarded to you.</p>
-    <p data-content="services.3.paragraphs.1">When documents are received, we: (1) immediately note receipt, (2) scan documents and email them to you electronically, (3) secure original documents in our client vault, (4) provide proof of service confirming when documents were received and forwarded, and (5) advise you of any urgent deadlines or action required. For litigation documents, timing is critical—court-imposed deadlines for responding to claims, filing defenses, or producing evidence require immediate notification to enable legal action.</p>
-    <p data-content="services.3.paragraphs.2">We coordinate with your legal advisors, providing them with service proof and documentation, and facilitating their involvement in any proceedings. We also maintain confidentiality—all documents received are kept confidential and only disclosed to authorized company representatives or legal advisors. We never disclose document contents publicly unless you authorize it.</p>
-    <p data-content="services.3.paragraphs.3">Our process agent service includes maintaining contact information, forwarding address, and document receipt procedures throughout your appointment. We're available to respond to inquiries from courts, regulators, or other parties regarding your process agent status. We also provide written confirmation of appointment status, which you can produce to third parties confirming your compliance with process agent requirements.</p>
   </div>
-</div>
-
-<div class="container">
-  <div class="detail-image">
-    <img src="img-chevron-green.png" alt="Professional service and trust">
-  </div>
-</div>
+</section>
 
 <!-- WHY AXSUMA -->
-<div class="container">
-  <div class="why-section">
-    <h2>Why Axsuma for Process Agent Services</h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <i class="fas fa-balance-scale"></i>
-        <h4 data-content="why_cards.0.title">CPR Compliance Expertise</h4>
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="s-title">Why Axsuma for Process Agent Services</h2>
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-balance-scale"></i></div>
+        <h3 data-content="why_cards.0.title">CPR Compliance Expertise</h3>
         <p data-content="why_cards.0.description">We understand Civil Procedure Rules requirements, service standards, and court procedures. Your appointment with us ensures full compliance with UK litigation requirements and Companies House regulations.</p>
       </div>
-      <div class="why-card">
-        <i class="fas fa-flash"></i>
-        <h4 data-content="why_cards.1.title">Immediate Document Notification</h4>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-flash"></i></div>
+        <h3 data-content="why_cards.1.title">Immediate Document Notification</h3>
         <p data-content="why_cards.1.description">Zero delays in document receipt and notification. We receive legal service instantly and forward documents to you electronically within hours, ensuring critical deadlines are never missed due to slow communication.</p>
       </div>
-      <div class="why-card">
-        <i class="fas fa-lock"></i>
-        <h4 data-content="why_cards.2.title">Secure & Confidential Handling</h4>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-lock"></i></div>
+        <h3 data-content="why_cards.2.title">Secure & Confidential Handling</h3>
         <p data-content="why_cards.2.description">Documents are received securely, stored in our client vault, and disclosed only to authorized representatives. Your litigation matters remain confidential and properly protected throughout our process agent relationship.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CTA SECTION -->
-<div class="container">
-  <div class="cta-section">
-    <h2 data-content="cta.title">Appoint Your UK Process Agent Today</h2>
-    <p data-content="cta.body">Whether establishing a UK branch, entering UK litigation, or protecting against regulatory exposure, appointing a reliable process agent ensures you remain fully informed of all legal proceedings.</p>
-    <a href="mailto:enquiries@axsuma.co.uk?subject=Process%20Agent%20Appointment" class="btn-cta" data-content="cta.ctaText">
-      <i class="fas fa-envelope"></i> Discuss Process Agent Services
-    </a>
+<!-- CTA -->
+<section class="cta">
+  <div class="container reveal">
+    <p class="s-label">Get in Touch</p>
+    <h2 data-content="cta.title">Talk to Our Team</h2>
+    <p data-content="cta.body">Our experts are always happy to talk. We will connect you with the appropriate specialist and reply within two working days.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-teal">Contact Us <i class="fas fa-arrow-right"></i></a>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
-<div class="footer-mini">
+<footer class="footer">
   <div class="container">
-    &copy; 2026 Axsuma Ltd. Registered in England & Wales. &nbsp;|&nbsp;
-    <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp;
-    <a href="terms.html">Terms</a> &nbsp;|&nbsp;
-    <a href="gdpr.html">GDPR</a>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-light.svg" alt="Axsuma" style="width:180px">
+        <p>Corporate administration, governance and transaction solutions for the world's most ambitious investors and enterprises.</p>
+      </div>
+      <div><h4>Solutions</h4><ul><li><a href="company-formations.html">Company Formations</a></li><li><a href="governance.html">Governance &amp; CoSec</a></li><li><a href="ma-transactions.html">M&amp;A Support</a></li><li><a href="accounting.html">Accounting &amp; Tax</a></li><li><a href="overseas-entities.html">Overseas Entities</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Axsuma</a></li><li><a href="meet-the-team.html">Meet the Team</a></li><li><a href="sectors.html">Sectors</a></li><li><a href="insights.html">Insights</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>London</h4><ul><li style="line-height:1.6"><i class="fas fa-map-marker-alt" style="color:var(--teal);margin-right:.3rem"></i>London EC2V</li><li><i class="fas fa-envelope" style="color:var(--teal);margin-right:.3rem"></i>enquiries@axsuma.co.uk</li></ul>
+        <div class="footer-social" style="margin-top:1rem"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Axsuma Ltd. Registered in England &amp; Wales.</span>
+      <div class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="standard-terms.html">Terms</a><a href="gdpr.html">GDPR</a></div>
+    </div>
   </div>
-</div>
+</footer>
 
+<script>
+try{
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.classList.add('vis');obs.unobserve(el.target)}})},{threshold:.05,rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')});
+  }
+  var mobileMenu=document.querySelector('.nav-links');var menuOpen=false;
+  var toggleBtn=document.querySelector('.nav-toggle');
+  if(toggleBtn){toggleBtn.addEventListener('click',function(){
+    if(menuOpen){mobileMenu.style.display='';menuOpen=false}
+    else{mobileMenu.style.display='flex';mobileMenu.style.flexDirection='column';mobileMenu.style.position='absolute';mobileMenu.style.top='100%';mobileMenu.style.left='0';mobileMenu.style.right='0';mobileMenu.style.background='rgba(255,255,255,.98)';mobileMenu.style.padding='1rem 2rem';mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.08)';mobileMenu.style.zIndex='999';menuOpen=true}
+  });}
+}catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
+</script>
 <script src="content-loader.js" data-page="process-agent"></script>
 </body>
 </html>
