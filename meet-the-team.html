@@ -81,7 +81,8 @@
     .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
     .team-card{padding:2rem;border-radius:8px;background:var(--white);border:1px solid var(--border);transition:all var(--ease)}
     .team-card:hover{box-shadow:0 12px 35px rgba(0,0,0,.06);border-color:var(--teal)}
-    .team-card .avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;font-weight:500;margin-bottom:1rem;font-family:var(--font-heading)}
+    .team-card .avatar{width:120px;height:120px;border-radius:50%;overflow:hidden;margin-bottom:1.2rem}
+    .team-card .avatar img{width:100%;height:100%;object-fit:cover}
     .team-card h3{font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:.2rem}
     .team-card .role{font-size:.78rem;color:var(--teal);font-weight:500;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1rem}
     .team-card p{font-size:.85rem;color:var(--mid);line-height:1.7}
@@ -135,7 +136,7 @@
       .footer-grid{grid-template-columns:1fr}
       .mega{display:none!important}
     }
-  </style>
+  /*icon-kill*/.feature-card .icon,.svc-detail .svc-aside .icon,.svc-detail .icon,.sector-icon,.pillar-icon,.team-card .icon{display:none!important}.feature-grid{counter-reset:fc}.feature-card{counter-increment:fc;padding-top:2rem;position:relative}.feature-card>h3::before{content:counter(fc,decimal-leading-zero);display:block;font-size:1.6rem;font-weight:200;color:var(--teal);opacity:.45;margin-bottom:.5rem;letter-spacing:-.5px;font-family:var(--font-heading);line-height:1}.svc-detail .svc-aside h2{padding-top:.5rem;border-top:2px solid var(--teal);display:inline-block}</style>
 </head>
 <body>
 
@@ -218,7 +219,7 @@
       <div class="team-grid" style="grid-template-columns:repeat(2,1fr);margin-top:2.5rem">
         <!-- Founder 1: Jason Reader -->
         <div class="team-card reveal">
-          <div class="avatar">JR</div>
+          <div class="avatar"><img src="team-jason.jpg" alt="Jason Reader"></div>
           <h3 data-content="team.members.0.name">Jason Reader</h3>
           <p class="role" data-content="team.members.0.role">Managing Director - Operations</p>
           <p data-content="team.members.0.bio.0">Jason is the founder and Managing Director – Operations, with over 30 years' experience in the Corporate Services sector.</p>
@@ -228,7 +229,7 @@
 
         <!-- Founder 2: Charlotte Phipps-Hornby -->
         <div class="team-card reveal">
-          <div class="avatar">CP</div>
+          <div class="avatar"><img src="team-charlotte.jpg" alt="Charlotte Phipps-Hornby"></div>
           <h3 data-content="team.members.1.name">Charlotte Phipps-Hornby</h3>
           <p class="role" data-content="team.members.1.role">Managing Director - Clients</p>
           <p data-content="team.members.1.bio.0">Charlotte is the founder and Managing Director – Clients, with over 20 years' experience in international professional services.</p>
@@ -242,7 +243,7 @@
       <div class="team-grid" style="margin-top:2.5rem">
         <!-- Team Member 3: Joanne Reader -->
         <div class="team-card reveal">
-          <div class="avatar">JoR</div>
+          <div class="avatar"><img src="team-joanne.png" alt="Joanne Reader"></div>
           <h3 data-content="team.members.2.name">Joanne Reader</h3>
           <p class="role" data-content="team.members.2.role">Finance Manager</p>
           <p data-content="team.members.2.bio.0">Joanne is a qualified accountant who has operated in client accounting roles and in-house finance management roles. Joanne has a wealth of experience in Payroll, bookkeeping and VAT gained through her previous roles, including previous corporate services experience with Jordans.</p>
@@ -251,7 +252,7 @@
 
         <!-- Team Member 4: Sarah Youll -->
         <div class="team-card reveal">
-          <div class="avatar">SY</div>
+          <div class="avatar"><img src="team-sarah.png" alt="Sarah Youll"></div>
           <h3 data-content="team.members.3.name">Sarah Youll</h3>
           <p class="role" data-content="team.members.3.role">Accounting &amp; Tax Advisory</p>
           <p data-content="team.members.3.bio.0">Sarah is a Chartered Accountant and Tax Advisor who trained as a Chartered Accountant with big 4 firm, PwC. She then went on to be a Director for an accounting firm with over 500 clients in the hospitality industry. Sarah has gained substantial corporate service experience whilst working for Vistra.</p>
@@ -260,7 +261,7 @@
 
         <!-- Team Member 5: Martin Palmer -->
         <div class="team-card reveal">
-          <div class="avatar">MP</div>
+          <div class="avatar"><img src="team-martin.png" alt="Martin Palmer"></div>
           <h3 data-content="team.members.4.name">Martin Palmer</h3>
           <p class="role" data-content="team.members.4.role">Consultant</p>
           <p data-content="team.members.4.bio.0">Martin has worked in the UK and international trust and corporate services sector for nearly 40 years.</p>

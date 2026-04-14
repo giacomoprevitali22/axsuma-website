@@ -132,6 +132,11 @@
 
     /* ===== SOLUTIONS ===== */
     .sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:2.5rem}
+    .sol-uniform{grid-template-columns:repeat(4,1fr);gap:1rem}
+    .sol-uniform .sol-card{min-height:200px}
+    .sol-uniform .sol-body{padding:1.5rem}
+    .sol-uniform .sol-body h3{font-size:1rem;margin-bottom:.5rem}
+    .sol-uniform .sol-body p{font-size:.8rem;margin-bottom:.8rem}
     .sol-card{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--border);background:var(--white);transition:all var(--ease);display:flex;flex-direction:column}
     .sol-card:hover{box-shadow:0 12px 35px rgba(0,0,0,.06);transform:translateY(-2px);border-color:var(--teal)}
     .sol-body{padding:2rem;flex:1}
@@ -212,7 +217,7 @@
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:1024px){
-      .why-grid,.insights-grid{grid-template-columns:repeat(2,1fr)}
+      .why-grid,.insights-grid,.sol-uniform{grid-template-columns:repeat(2,1fr)}
       .sectors-grid{grid-template-columns:repeat(2,1fr)}
       .sectors-grid>.sector-card,.sectors-grid>.sector-card:nth-last-child(2),.sectors-grid>.sector-card:nth-last-child(1){grid-column:auto}
       .sectors-grid>.sector-card:last-child{grid-column:1 / -1;max-width:50%;justify-self:center}
@@ -372,35 +377,33 @@
 <section class="section" id="solutions">
   <div class="container">
     <div class="reveal"><p class="s-label">Our Solutions</p><h2 class="s-title">End-to-End Corporate Infrastructure</h2><p class="s-sub">From incorporation to exit, we architect and manage the corporate frameworks that power your investments and transactions.</p></div>
-    <div class="sol-grid">
+    <div class="sol-grid sol-uniform">
       <a href="company-formations.html" class="sol-card reveal">
         <div class="sol-body"><h3>Company Formations</h3><p>UK Ltd, LLP and ready-made companies. Same-day filings, live and compliant within hours.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
       </a>
+      <a href="spv-holding.html" class="sol-card reveal">
+        <div class="sol-body"><h3>SPV &amp; Holding Companies</h3><p>UK SPVs and holding structures for investment, financing and cross-border transactions.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+      </a>
       <a href="ma-transactions.html" class="sol-card reveal">
-        <div class="sol-body"><h3>M&amp;A &amp; Transaction Support</h3><p>Deal-stack management, SPV structuring, professional directorships, acquisition vehicles — LOI to post-completion.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+        <div class="sol-body"><h3>M&amp;A &amp; Transaction Support</h3><p>Deal-stack management, acquisition vehicles, pre- and post-completion governance.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+      </a>
+      <a href="directorships.html" class="sol-card reveal">
+        <div class="sol-body"><h3>Professional Directorships</h3><p>UK-resident statutory directors, independent oversight, governance credibility.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
       </a>
       <a href="governance.html" class="sol-card reveal">
-        <div class="sol-body"><h3>Company Secretarial</h3><p>CoSec support, registered office, mail forwarding, service address and statutory compliance.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+        <div class="sol-body"><h3>Company Secretarial</h3><p>CoSec support, registered office, statutory compliance and board administration.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
       </a>
       <a href="accounting.html" class="sol-card reveal">
-        <div class="sol-body"><h3>Accounting &amp; Tax</h3><p>Bookkeeping, tax compliance, management accounts, VAT, ATED returns, PAYE and payroll.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+        <div class="sol-body"><h3>Accounting &amp; Tax</h3><p>Bookkeeping, tax compliance, management accounts, VAT and ATED returns.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+      </a>
+      <a href="payroll-hr.html" class="sol-card reveal">
+        <div class="sol-body"><h3>Payroll &amp; HR</h3><p>HMRC-compliant payroll delivery, RTI reporting and practical HR support.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
+      </a>
+      <a href="compliance-governance.html" class="sol-card reveal">
+        <div class="sol-body"><h3>Compliance &amp; Governance</h3><p>ROE, Process Agent, ID Verification and UK Address for Service.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
       </a>
     </div>
-    <div class="sol-3">
-      <a href="overseas-entities.html" class="sol-card reveal">
-        <div class="sol-body"><h3>Overseas Entities (ROE)</h3><p>Registration, annual updates and Economic Crime Act compliance.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
-      </a>
-      <a href="process-agent.html" class="sol-card reveal">
-        <div class="sol-body"><h3>Process Agent</h3><p>UK-based appointments for cross-border contracts and finance documents.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
-      </a>
-      <a href="id-verification.html" class="sol-card reveal">
-        <div class="sol-body"><h3>ID Verification</h3><p>Digital AML/KYC verification — fast, secure, with integrated payments.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
-      </a>
-      <a href="uk-address-service.html" class="sol-card reveal">
-        <div class="sol-body"><h3>UK Address for Service</h3><p>Registered address and service of documents, supporting cross-border operations and compliance.</p><span class="sol-link">Learn more <i class="fas fa-arrow-right"></i></span></div>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:2rem">
+    <div style="text-align:center;margin-top:2.5rem">
       <a href="services.html" class="btn btn-outline reveal">View All Services <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
