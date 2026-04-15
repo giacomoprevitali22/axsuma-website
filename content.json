@@ -205,6 +205,49 @@
     "header": {
       "title": "Services",
       "subtitle": "Complete solutions for corporate administration, governance, and complex transactions"
+    },
+    "overview": {
+      "paragraphs": [
+        "We deliver tailored solutions across formation, corporate services, and compliance—each designed to integrate with your operations and scale with your business."
+      ]
+    },
+    "hub_cards": [
+      {
+        "title": "Company Formations",
+        "description": "Fast, efficient setup of UK companies with end-to-end support for compliance and governance"
+      },
+      {
+        "title": "Company Secretarial",
+        "description": "Governance support, statutory compliance, board administration, and registered office services"
+      },
+      {
+        "title": "M&A Support",
+        "description": "Transaction-ready corporate structures and administrative support for complex deals"
+      },
+      {
+        "title": "Accounting & Tax",
+        "description": "Statutory accounts, tax compliance, financial reporting across multiple jurisdictions"
+      },
+      {
+        "title": "Payroll & HR",
+        "description": "End-to-end payroll processing, HMRC compliance, and HR administration support"
+      },
+      {
+        "title": "Compliance & Governance",
+        "description": "Regulatory compliance, governance frameworks, and specialized verification services"
+      },
+      {
+        "title": "SPV & Holding Companies",
+        "description": "Specialized structuring for SPVs, holding companies, and complex investment vehicles"
+      },
+      {
+        "title": "Professional Directorships",
+        "description": "Professional director appointments and governance leadership for diverse structures"
+      }
+    ],
+    "cta": {
+      "title": "Talk to Our Team",
+      "body": "Our experts are always happy to discuss how we can support your business. We'll connect you with the appropriate specialist and reply within two working days."
     }
   },
   "company-formations": {
@@ -258,18 +301,157 @@
     "header": {
       "title": "SPV & Holding Company Services",
       "subtitle": "Specialized structuring for SPVs, holding companies, and complex investment vehicles"
+    },
+    "overview": {
+      "paragraphs": [
+        "We provide end-to-end support for the creation and administration of UK Special Purpose Vehicles (SPVs) and UK holding companies. Whether you are structuring an investment, executing a transaction, acquiring UK assets, or establishing a long-term corporate presence, we deliver compliant, efficient, and professionally managed corporate structures tailored to your objectives.",
+        "Our services ensure that your UK entity is properly formed, fully compliant with local statutory obligations, and supported by experienced Axsuma directors who understand the demands of cross-border investments and regulated transactions."
+      ]
+    },
+    "services": [
+      {
+        "title": "UK SPVs",
+        "paragraphs": [
+          "UK SPVs are widely used for asset ownership, financing structures, securitisations, joint ventures, and risk-isolation strategies. We establish SPVs quickly and in line with UK regulatory and commercial requirements."
+        ],
+        "subheadings": [
+          "We specialise in SPVs for:"
+        ]
+      },
+      {
+        "title": "UK Holding Companies",
+        "paragraphs": [
+          "A UK holding company offers a stable legal environment, access to a comprehensive double tax treaty network, and clear corporate governance standards. We assist domestic and international clients in establishing holding companies for investment, consolidation, or strategic ownership purposes.",
+          "The use of UK companies as holding companies is an attractive proposition given the extensive double tax treaties available can significantly reduce any impact to dividend withholding tax and further strengthened with the introduction of the Substantial Shareholder Exemption rules."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Speed & Efficiency",
+        "description": "Rapid formation and onboarding. Pre-formed entities available on held-to-order basis for immediate deployment."
+      },
+      {
+        "title": "Global Investor Focus",
+        "description": "Tailored to cross-border transaction requirements. Extensive experience with international investor structures and regulatory requirements."
+      },
+      {
+        "title": "Experienced Directors",
+        "description": "Seasoned professionals supporting complex structures. Full compliance with UK corporate standards and governance requirements."
+      },
+      {
+        "title": "Robust Governance",
+        "description": "Full compliance with UK corporate standards. Expert guidance on structure design ensuring alignment with your objectives."
+      },
+      {
+        "title": "Confidentiality",
+        "description": "Secure handling of all corporate records and sensitive documents. Professional discretion throughout the process."
+      },
+      {
+        "title": "Customised Solutions",
+        "description": "SPVs and holding companies aligned with your transaction or investment strategy. Tailored structures for your specific needs."
+      }
+    ],
+    "cta": {
+      "title": "UK SPV and Holding Company Enquiries",
+      "body": "Discuss your UK SPV or UK Holding company structure requirements with one of our experts. We'll connect you with the right specialist and reply within two working days."
     }
   },
   "directorships": {
     "header": {
       "title": "Professional Directorships",
       "subtitle": "Professional director appointments and governance leadership for diverse structures"
+    },
+    "services": [
+      {
+        "subheadings": [
+          "Independent UK Board Representation",
+          "Our service is designed for structures requiring:",
+          "Typical Structures"
+        ],
+        "paragraphs": [
+          "We provide professional UK resident director services to support leading law firms, private client advisers, fiduciary intermediaries supporting international families, entrepreneurs, and substantial corporate groups.",
+          "We regularly support:",
+          "Each appointment is assessed individually, with a focus on commercial rationale, governance clarity, and long-term sustainability."
+        ]
+      },
+      {
+        "title": "Appointment as UK Statutory Director"
+      },
+      {
+        "title": "Governance & Decision Oversight"
+      },
+      {
+        "title": "Management & Control Support",
+        "paragraphs": [
+          "Where appropriate, our involvement assists with:"
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Governance Expertise",
+        "description": "Deep knowledge of UK corporate governance standards, Companies House requirements, and sector-specific regulations."
+      },
+      {
+        "title": "Professional Integrity",
+        "description": "Experienced directors with traceable regulatory compliance and professional standing verification."
+      },
+      {
+        "title": "Active Support",
+        "description": "Directors who actively engage with your governance needs. Seamless integration with Axsuma's admin and compliance support."
+      }
+    ],
+    "cta": {
+      "title": "UK Professional Director Service Enquiries",
+      "body": "Discuss your transaction structure, completion timelines, and any other bespoke requirements. We'll connect you with the right specialist and reply within two working days."
     }
   },
   "governance": {
     "header": {
       "title": "Company Secretarial & Governance",
       "subtitle": "Governance support, statutory compliance, board administration, and registered office services"
+    },
+    "overview": {
+      "paragraphs": [
+        "The role of company secretaries, in-house legal teams, and compliance teams is becoming increasingly complex. We support our clients as an extension of their team, whenever and however they need us. This could be interim support during busy periods, specialist project assistance, a fully outsourced company secretarial function, or tailored support to suit your specific needs.",
+        "Our company secretarial services ensure your company remains compliant with the Companies Act 2006, Companies House filing obligations, and corporate governance best practices. Our team manages the complete framework of statutory obligations, including maintaining registers, filing annual confirmations, managing director changes, handling persons with significant control (PSC) notifications, and keeping corporate records current and compliant.",
+        "We can be formally appointed as your corporate Company Secretary or provide flexible company secretarial support. Whether you are a small private company or a larger corporate structure, our services adapt to meet your needs.",
+        "Every company must have a registered office for statutory notices and legal correspondence. Axsuma provides a prestigious London address that appears on all Companies House filings, public documents, and statutory notices. We receive all statutory correspondence, including documents from Companies House (such as confirmation statement reminders and annual filing notices) and HMRC communications (tax assessments, penalties, enquiries).",
+        "Our mail forwarding service includes email notifications with scanned copies of all mail received, ensuring you stay fully informed without the need for a physical office presence.",
+        "If your company is currently managed by another provider, Axsuma can seamlessly take over company secretarial support. We coordinate the transition, retrieve all statutory information, verify register accuracy, identify pending filings, and assume responsibility for ongoing governance and compliance. During the transfer-in process, we conduct a comprehensive compliance review: ensuring confirmation statements are up to date, verifying accounts are properly filed, checking director and PSC details for accuracy, and confirming charges are correctly registered. Any gaps or regulatory exposure are addressed with a remediation plan to bring your company fully into compliance."
+      ],
+      "subheadings": [
+        "Our Core Company Secretarial Services Include:",
+        "Registered Office and Mail Forwarding Services",
+        "Transfer-In and Migration from Other Providers"
+      ],
+      "bullets": [
+        "Maintaining and updating statutory registers for shareholders, directors, and PSCs",
+        "Preparing and filing Confirmation Statements",
+        "Providing a prestigious London registered office and, optionally, acting as your appointed corporate secretary",
+        "Managing governance changes such as officer appointments, share transfers, and restructures",
+        "Drafting legal documents, including resolutions, minutes, powers of attorney, and filings"
+      ]
+    },
+    "why_cards": [
+      {
+        "title": "Compliance Expertise",
+        "description": "Deep knowledge of Companies House requirements, Companies Act 2006, and corporate governance best practices."
+      },
+      {
+        "title": "Seamless Integration",
+        "description": "Flexible support that integrates with your existing team and processes without disruption."
+      },
+      {
+        "title": "Proactive Management",
+        "description": "Proactive compliance monitoring and filing management to ensure you never miss statutory deadlines."
+      }
+    ],
+    "cta": {
+      "title": "Talk to Our Team",
+      "body": "Our company secretarial specialists can discuss your specific governance needs. We'll reply within two working days.",
+      "ctaText": "Contact Us"
     }
   },
   "ma-transactions": {
@@ -387,12 +569,133 @@
     "header": {
       "title": "Payroll & HR Services",
       "subtitle": "End-to-end payroll processing, HMRC compliance, and HR administration support"
+    },
+    "overview": {
+      "paragraphs": [
+        "Payroll and HR management is increasingly complex, driven by evolving legislation, real-time reporting requirements, and heightened expectations around accuracy and employee experience. We provide a streamlined solution that reduces administrative burden while ensuring full compliance with HMRC and employment regulations.",
+        "Our approach combines precise payroll delivery with practical HR support, giving you a single, coordinated service that integrates seamlessly with your wider operations. Whether you are managing a growing UK workforce or supporting inbound entities, we deliver consistency, control, and clear visibility."
+      ]
+    },
+    "services": [
+      {
+        "title": "Payroll Processing",
+        "subheadings": [
+          "End-to-end payroll delivery, including calculations, payslips, and payment coordination"
+        ],
+        "paragraphs": [
+          "We handle complete payroll processing, from employee data management through to payment execution and payslip distribution. Our systems integrate with your banking and provide full visibility into payroll costs and execution."
+        ]
+      },
+      {
+        "title": "HMRC Compliance & RTI",
+        "subheadings": [
+          "Management of PAYE, National Insurance, and all Real Time Information (RTI) submissions"
+        ],
+        "paragraphs": [
+          "We ensure full compliance with HMRC requirements, including Real Time Information (RTI) submissions, PAYE tax withholding, National Insurance calculations, and all statutory reporting. Our team monitors legislative changes to keep your payroll compliant."
+        ]
+      },
+      {
+        "title": "Pensions & Auto-Enrolment",
+        "subheadings": [
+          "Administration of workplace pension schemes, including enrolment, contributions and compliance"
+        ],
+        "paragraphs": [
+          "We manage workplace pension scheme administration, including employee auto-enrolment, contribution calculations, and ongoing compliance. We coordinate with pension providers and maintain required records and reporting."
+        ]
+      },
+      {
+        "title": "HR Administration",
+        "subheadings": [
+          "Employee onboarding and offboarding, contracts of employment, and maintenance of personnel records"
+        ],
+        "paragraphs": [
+          "We provide practical HR support, including employee onboarding/offboarding workflows, employment contract management, and maintenance of statutory personnel records."
+        ]
+      },
+      {
+        "title": "Statutory Payments & Leave",
+        "subheadings": [
+          "Management of statutory sick pay (SSP), maternity/paternity pay and associated entitlements"
+        ],
+        "paragraphs": [
+          "We calculate and process statutory payments, including SSP, maternity/paternity pay, and associated leave entitlements, ensuring compliance with employment law."
+        ]
+      },
+      {
+        "title": "Advisory & Best Practice",
+        "subheadings": [
+          "Guidance on UK employment processes, policies and operational efficiency"
+        ],
+        "paragraphs": [
+          "We offer advisory support on employment policy development, compliance best practice, and payroll process optimization to support your operational efficiency."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Accuracy & Compliance",
+        "description": "Expert handling of complex payroll calculations, HMRC compliance, and statutory obligations with full audit trails and documentation."
+      },
+      {
+        "title": "Integrated Service",
+        "description": "Payroll and HR support coordinated with our company secretarial, accounting, and governance services for seamless business administration."
+      },
+      {
+        "title": "Visibility & Control",
+        "description": "Clear reporting and dashboard access to payroll costs, compliance status, and employee data, integrated with your financial records."
+      }
+    ],
+    "cta": {
+      "title": "Talk to Our Team",
+      "body": "Our payroll and HR specialists can discuss your specific requirements and design a solution tailored to your business. We'll reply within two working days."
     }
   },
   "compliance-governance": {
     "header": {
       "title": "Compliance & Governance",
       "subtitle": "Regulatory compliance, governance frameworks, and specialized verification services"
+    },
+    "overview": {
+      "paragraphs": [
+        "We support organizations in establishing and operating robust, proportionate governance frameworks that stand up to regulatory scrutiny and scale with growth. Our focus is practical delivery—ensuring governance is not only compliant, but embedded, efficient, and aligned to the realities of how your business operates. We work with companies, funds, family offices and their advisers across a range of jurisdictions, often in complex or fast-moving environments."
+      ]
+    },
+    "hub_cards": [
+      {
+        "title": "Register of Overseas Entities",
+        "description": "Support for overseas entity registration, beneficial ownership reporting, and ongoing compliance with UK transparency requirements."
+      },
+      {
+        "title": "Process Agent Services",
+        "description": "Process agent appointment and service for overseas companies and entities required to maintain UK representation."
+      },
+      {
+        "title": "ID Verification",
+        "description": "Companies House identity verification services as an Authorised Corporate Service Provider (ACSP)."
+      },
+      {
+        "title": "UK Address for Service",
+        "description": "UK address services for intellectual property rights and IP proceedings with document receipt and forwarding."
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "Governance Framework Design",
+        "description": "Review, design and implementation of governance structures, policies and supporting documentation tailored to your organization."
+      },
+      {
+        "title": "Company Secretarial",
+        "description": "End-to-end support including statutory filings, annual compliance and provision of named Company Secretary where required."
+      },
+      {
+        "title": "Board & Meeting Support",
+        "description": "Coordination and delivery of board, committee and shareholder meetings, including agendas, papers and minutes."
+      }
+    ],
+    "cta": {
+      "title": "Talk to Our Team",
+      "body": "Our compliance and governance specialists can help you navigate regulatory requirements and build robust frameworks. We'll reply within two working days."
     }
   },
   "overseas-entities": {
@@ -407,6 +710,96 @@
         "For overseas entities, ROE registration is mandatory before acquiring or holding UK property. Failure to register incurs significant penalties, and overseas entities cannot hold property in their own name without registration. Beneficial owners of registered overseas entities must be accurately identified, with ongoing reporting obligations if beneficial ownership structures change.",
         "We guide overseas entities through ROE registration, collect beneficial ownership information, verify identity documentation, and manage ongoing reporting obligations. Our team provides a full end-to-end service for new registrations, annual update filings, and transfers of existing ROE cases from other ACSPs to support ongoing filings."
       ]
+    },
+    "services": [
+      {
+        "title": "Why Choose Axsuma?",
+        "bullets": [
+          "UK-regulated verification agent",
+          "Fast turnaround with dedicated case handlers",
+          "Transparent fixed pricing",
+          "Secure identity verification processes",
+          "Experience with global clients across all jurisdictions"
+        ]
+      },
+      {
+        "title": "Complete registration support for overseas owners of UK property",
+        "paragraphs": [
+          "We assist overseas entities in obtaining an Overseas Entity ID (OE ID) and meeting all statutory requirements under the Economic Crime and Corporate Transparency Act (ECCTA)."
+        ],
+        "subheadings": [
+          "Our new ROE application service includes:"
+        ],
+        "bullets": [
+          "Client onboarding",
+          "Verification review to identify beneficial owner(s) or Managing officers",
+          "Verifying and complying identity checks on all registrable persons",
+          "Preparation and submission of the ROE application to Companies House and obtaining the Overseas Entity ID",
+          "Liaison with Companies House until approval",
+          "Guidance on ongoing obligations"
+        ]
+      },
+      {
+        "title": "Who needs to register?",
+        "paragraphs": [
+          "You must register if your overseas entity:"
+        ],
+        "bullets": [
+          "Owns or acquires UK freehold property",
+          "Has a long leasehold (more than 7 years)",
+          "Plans to purchase or dispose of UK property or land"
+        ]
+      },
+      {
+        "title": "What you receive",
+        "bullets": [
+          "Your official Overseas Entity ID",
+          "Compliance confirmation for property transactions",
+          "Ongoing support as required"
+        ]
+      },
+      {
+        "title": "Transfer-in service",
+        "paragraphs": [
+          "If your overseas entity is already on the register but you want a new UK ACSP to manage filings or verification, we provide a smooth transfer process. Perfect if you have lost contact with your previous agent, changed ownership structure, or need a more responsive service."
+        ],
+        "subheadings": [
+          "Our transfer-in service includes:"
+        ],
+        "bullets": [
+          "Reviewing your existing ROE submission",
+          "Identifying any compliance gaps",
+          "Managing the transition from your current agent",
+          "Completing your next verification and update",
+          "Providing ongoing support and reminders before deadlines"
+        ]
+      },
+      {
+        "title": "Annual Updating Statement",
+        "paragraphs": [
+          "Every overseas entity must file an Annual Updating Statement every 12 months, even if nothing has changed. Failure to update can lead to financial penalties, prosecution, and restrictions on selling or leasing UK property.",
+          "Our annual update service includes reviewing all previously submitted information, refreshing identity verification where required, preparing and filing the update with Companies House, and confirmation of acceptance for your records. We help you keep your OE ID active and compliant year after year."
+        ]
+      }
+    ],
+    "why_cards": [
+      {
+        "title": "UK-Regulated Verification Agent",
+        "description": "We are a UK-regulated verification agent with extensive experience in ROE compliance and beneficial ownership verification across all jurisdictions."
+      },
+      {
+        "title": "Fast Turnaround",
+        "description": "Fast turnaround with dedicated case handlers. Transparent fixed pricing and secure identity verification processes built into every submission."
+      },
+      {
+        "title": "Global Experience",
+        "description": "Experience with global clients across all jurisdictions. We understand international ownership structures, cross-border regulations, and complex beneficial ownership hierarchies."
+      }
+    ],
+    "cta": {
+      "title": "Switch to us for faster, clearer, compliant management",
+      "body": "Whether you need a new application, annual report, or want to transfer your existing ROE registration, our team is ready to help. We'll connect you with the right specialist and reply within two working days.",
+      "ctaText": "Contact Us"
     }
   },
   "process-agent": {
@@ -421,6 +814,40 @@
         "The Process Agent's criteria are to accept delivery of any documents referring to court proceedings issued out of the courts of England and ensure that they are forwarded quickly to the client, to minimise delays allowing the client sufficient time to respond. We provide professional process agent services, acting as your authorized UK representative for legal service and court proceedings.",
         "Our service ensures that all court documents, legal notices, and litigation correspondence are received promptly, secured confidentially, and forwarded immediately to your company's decision-makers. We maintain secure document handling, provide proof of service, and coordinate with your legal advisors throughout litigation processes."
       ]
+    },
+    "services": [
+      {
+        "title": "What is the application process?",
+        "bullets": [
+          "Either complete the online order form using the fee matrix to calculate our charges or contact us to discuss your requirements.",
+          "Upon receipt of the completed instructions, Axsuma will set up the new facility, and email a confirmation letter and our invoice",
+          "Depending on complexity, the process takes 2-3 working days"
+        ]
+      },
+      {
+        "title": "Is your client in a hurry?",
+        "paragraphs": [
+          "We provide a same-day service option for our valued clients who are pressed for time. This service incurs an additional fee, and online orders must be placed before 2pm UK time. Clients will receive their confirmation letter by the close of business on the same working day."
+        ]
+      },
+      {
+        "title": "Any KYC requirements?",
+        "paragraphs": [
+          "No, there are currently no AML requirements when Axsuma agrees to act as your process agent."
+        ]
+      },
+      {
+        "title": "What do we charge?",
+        "paragraphs": [
+          "All fees in GBP (£) exclusive of VAT.",
+          "For any combinations not covered by this matrix, please ask us for a quote."
+        ]
+      }
+    ],
+    "cta": {
+      "title": "UK Process Agent Enquiries",
+      "body": "Discuss your transaction structure, completion timelines, and any other bespoke requirements. We'll connect you with the right specialist and reply within two working days.",
+      "ctaText": "Contact Us"
     }
   },
   "id-verification": {
@@ -464,6 +891,36 @@
     "header": {
       "title": "UK Address for Service",
       "subtitle": "Address for Service for Intellectual Property Rights"
+    },
+    "overview": {
+      "paragraphs": [
+        "We provide a UK Address for Service (UK AFS) for intellectual property matters, supporting compliance with the requirements of the UK Intellectual Property Office and use in UK IP proceedings, ensuring the effective receipt of formal notices and correspondence.",
+        "An address for service is the UK address to which the IPO or third parties may send correspondence relating to an application or registered right, and where documents in IP proceedings may be delivered.",
+        "Share your requirements via the contact form and we will connect you with the appropriate specialist."
+      ],
+      "subheadings": [
+        "What it is",
+        "What we do",
+        "Get Started"
+      ]
+    },
+    "why_cards": [
+      {
+        "title": "Professional Service",
+        "description": "Dedicated handling of IP correspondence with documented receipt and secure forwarding protocols."
+      },
+      {
+        "title": "Secure Handling",
+        "description": "Secure storage and transmission of IP documents with confidentiality safeguards and audit trails."
+      },
+      {
+        "title": "Responsive Support",
+        "description": "Timely processing and coordination with your legal advisers to ensure no deadlines are missed."
+      }
+    ],
+    "cta": {
+      "title": "Talk to Our Team",
+      "body": "Our compliance specialists can help you establish UK Address for Service. We'll reply within two working days."
     }
   },
   "international": {
