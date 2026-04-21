@@ -56,10 +56,8 @@
       },
       {
         "title": "How we are different",
-        "content": [
-          null,
-          "We do not provide legal advice or structuring. Instead, we work closely with clients' lawyers and accountants to ensure decisions are implemented cleanly, accurately and without friction. Our role is to take ownership of execution. Translating professional advice into precise, dependable delivery."
-        ]
+        "content": "Accountability drives everything we do. We combine institutional-grade technical expertise with pragmatic, hands-on delivery. Each assignment has a named owner, decisions are shaped by commercial realities, and work is executed thoroughly and on schedule. We prioritise clarity, control and consistent follow-through, the factors that make a tangible difference to our clients.",
+        "content_2": "We do not provide legal advice or structuring. Instead, we work closely with clients' lawyers and accountants to ensure decisions are implemented cleanly, accurately and without friction. Our role is to take ownership of execution. Translating professional advice into precise, dependable delivery."
       },
       {
         "title": "Why Choose Axsuma?",
@@ -1007,10 +1005,10 @@
     "form": {
       "title": "Send us a Message",
       "fields": [
-        null,
-        null,
-        null,
-        null,
+        "Full Name",
+        "Email Address",
+        "Company Name",
+        "Phone Number",
         "Select a service...General EnquiryCompany FormationsSPV & HoldingDirectorshipsCompany SecretarialM&A SupportAccounting & TaxPayroll & HRCompliance & GovernanceInternational ExpansionAdvisor Portal"
       ]
     },
