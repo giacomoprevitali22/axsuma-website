@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Formation — Client Portal — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portal.css">
+  <style>
+    .type-selector{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+    .type-card{border:2px solid var(--border);border-radius:10px;padding:1.5rem;text-align:center;cursor:pointer;transition:all var(--ease)}
+    .type-card:hover{border-color:var(--teal);background:rgba(0,89,74,.02)}
+    .type-card.active{border-color:var(--teal);background:rgba(0,89,74,.04);box-shadow:0 0 0 3px rgba(0,89,74,.1)}
+    .type-card h3{font-size:1rem;margin-bottom:.3rem;color:var(--dark)}
+    .type-card p{font-size:.8rem;color:var(--mid)}
+    .type-card i{font-size:1.5rem;color:var(--teal);margin-bottom:.6rem}
+    .form-panel{display:none}.form-panel.active{display:block}
+    @media(max-width:768px){.type-selector{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav class="portal-nav">
+  <div class="container">
+    <a href="../index.html"><img src="../axsuma-brand.svg" alt="Axsuma" class="portal-nav-logo"></a>
+    <div class="portal-nav-right">
+      <a href="index.html" class="portal-nav-link"><i class="fas fa-th-large"></i> Portal</a>
+      <a href="../index.html" class="portal-nav-link"><i class="fas fa-arrow-left"></i> Site</a>
+    </div>
+  </div>
+</nav>
+
+<header class="portal-header">
+  <div class="container">
+    <p class="portal-breadcrumb"><a href="index.html">Portal</a> &rsaquo; Company Formation</p>
+    <h1>Company Formation Order</h1>
+    <p>Select your entity type and complete the order form below.</p>
+  </div>
+</header>
+
+<main class="form-page">
+  <div class="container">
+
+    <!-- TYPE SELECTOR -->
+    <div class="type-selector">
+      <div class="type-card active" onclick="switchType('ltd',this)">
+        <i class="fas fa-building"></i>
+        <h3>Private Limited Company</h3>
+        <p>Company limited by shares under the Companies Act 2006</p>
+      </div>
+      <div class="type-card" onclick="switchType('llp',this)">
+        <i class="fas fa-handshake"></i>
+        <h3>Limited Liability Partnership</h3>
+        <p>LLP with separate legal personality and limited liability</p>
+      </div>
+    </div>
+
+    <!-- ==================== LIMITED COMPANY FORM ==================== -->
+    <div id="panel-ltd" class="form-panel active">
+      <form id="formLtd" class="form-card" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'company-formation-ltd')">
+
+        <!-- YOUR DETAILS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-user"></i> Your Details</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Contact Name <span class="req">*</span></label><input type="text" name="contact_name" required></div>
+            <div class="form-group"><label>Practice or Company Name <span class="req">*</span></label><input type="text" name="practice_name" required></div>
+          </div>
+        </div>
+
+        <!-- COMPANY DETAILS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-file-contract"></i> Company Details</h3>
+          <div class="form-row full">
+            <div class="form-group"><label>Proposed Company Name <span class="req">*</span></label><input type="text" name="company_name" required></div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group"><label>Registered Office <label class="hint">Leave blank to use Axsuma's London address</label></label><input type="text" name="registered_office"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>SIC Code <span class="hint">Or describe the principal business activity</span></label><input type="text" name="sic_code"></div>
+            <div class="form-group"><label>Registered Email Address <span class="req">*</span> <span class="hint">Required by Companies House since 4 March 2024</span></label><input type="email" name="registered_email" required></div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="lawful_ltd" name="lawful_purpose" value="yes" required>
+            <label for="lawful_ltd">The subscribers wish to form the company for lawful purposes <span class="req">*</span></label>
+          </div>
+        </div>
+
+        <!-- SHARE STRUCTURE -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-chart-pie"></i> Share Structure</h3>
+          <p class="form-section-desc">Standard ordinary shares are &pound;1.00, full voting, full equity with dividend rights. Leave blank for standard shares.</p>
+          <div class="form-row">
+            <div class="form-group"><label>Nominal Value <span class="hint">If not &pound;1.00 or GBP</span></label><input type="text" name="nominal_value"></div>
+            <div class="form-group"><label>Share Classes <span class="hint">E.g. Ordinary A, Ordinary B (additional &pound;50 fee)</span></label><input type="text" name="share_classes"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Limits on Each Share Class (&pound;) <span class="hint">Recommended at least 10,000 for multiple classes</span></label><input type="text" name="share_limits"></div>
+            <div class="form-group"><label>Share Rights <span class="hint">Voting, equity, dividend rights &amp; any special shares</span></label><textarea name="share_rights" rows="2"></textarea></div>
+          </div>
+        </div>
+
+        <!-- COMPANY SECRETARY (Optional) -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-user-shield"></i> Company Secretary <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
+          <p class="form-section-desc">A company secretary is not required but can be appointed if you wish.</p>
+          <div class="form-row triple">
+            <div class="form-group"><label>Title</label><select name="secretary_title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+            <div class="form-group"><label>First Forename(s)</label><input type="text" name="secretary_forenames"></div>
+            <div class="form-group"><label>Surname</label><input type="text" name="secretary_surname"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Middle Name(s)</label><input type="text" name="secretary_middle"></div>
+            <div class="form-group"><label>Nationality</label><input type="text" name="secretary_nationality"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Service Address <span class="hint">Shown on the public record</span></label><input type="text" name="secretary_service_address"></div></div>
+          <div class="form-row triple">
+            <div class="form-group"><label>Town</label><input type="text" name="secretary_town"></div>
+            <div class="form-group"><label>County</label><input type="text" name="secretary_county"></div>
+            <div class="form-group"><label>Post Code</label><input type="text" name="secretary_postcode"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Country (if not UK)</label><input type="text" name="secretary_country"></div>
+            <div class="form-group">
+              <label>Is the Secretary also a Subscriber/Shareholder?</label>
+              <select name="secretary_is_shareholder"><option value="no">No</option><option value="yes">Yes</option></select>
+            </div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>If yes, total shares allotted and class</label><input type="text" name="secretary_shares"></div></div>
+        </div>
+
+        <!-- DIRECTORS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-users"></i> Directors</h3>
+          <p class="form-section-desc">A minimum of one natural director must be appointed. Add additional directors as needed.</p>
+
+          <div id="directors-container">
+            <!-- Director 1 (built-in) -->
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Director #1</h4></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Title <span class="req">*</span></label><select name="dir_0_title" required><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+                <div class="form-group"><label>First Forename(s) <span class="req">*</span></label><input type="text" name="dir_0_forenames" required></div>
+                <div class="form-group"><label>Surname <span class="req">*</span></label><input type="text" name="dir_0_surname" required></div>
+              </div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Middle Name(s)</label><input type="text" name="dir_0_middle"></div>
+                <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="dir_0_dob" required></div>
+                <div class="form-group"><label>Nationality <span class="req">*</span></label><input type="text" name="dir_0_nationality" required></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Occupation</label><input type="text" name="dir_0_occupation"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Service Address <span class="hint">Shown on public record. Leave blank if same as residential.</span></label><input type="text" name="dir_0_service_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Residential Address <span class="req">*</span></label><input type="text" name="dir_0_residential_address" required></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Town <span class="req">*</span></label><input type="text" name="dir_0_town" required></div>
+                <div class="form-group"><label>Post Code <span class="req">*</span></label><input type="text" name="dir_0_postcode" required></div>
+                <div class="form-group"><label>Country (if not UK)</label><input type="text" name="dir_0_country"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Is the Director also a Subscriber/Shareholder?</label><select name="dir_0_is_shareholder"><option value="no">No</option><option value="yes">Yes</option></select></div>
+                <div class="form-group"><label>If yes, total shares allotted and class</label><input type="text" name="dir_0_shares"></div>
+              </div>
+              <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(provide 3 of the following 6)</span></p>
+              <div class="auth-grid">
+                <div class="form-group"><label>Town of Birth <span class="hint">First 3 letters</span></label><input type="text" name="dir_0_auth_town" maxlength="3"></div>
+                <div class="form-group"><label>Telephone Number <span class="hint">Last 3 digits</span></label><input type="text" name="dir_0_auth_phone" maxlength="3"></div>
+                <div class="form-group"><label>National Insurance No. <span class="hint">Last 3 characters</span></label><input type="text" name="dir_0_auth_ni" maxlength="3"></div>
+                <div class="form-group"><label>Passport Number <span class="hint">Last 3 digits</span></label><input type="text" name="dir_0_auth_passport" maxlength="3"></div>
+                <div class="form-group"><label>Mother's Maiden Name <span class="hint">First 3 letters</span></label><input type="text" name="dir_0_auth_mother" maxlength="3"></div>
+                <div class="form-group"><label>Father's First Forename <span class="hint">First 3 letters</span></label><input type="text" name="dir_0_auth_father" maxlength="3"></div>
+              </div>
+            </div>
+          </div>
+
+          <template id="tpl-director">
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Director #N</h4><button type="button" class="btn-remove" onclick="removeRepeatable(this)"><i class="fas fa-times"></i> Remove</button></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Title</label><select name="dir___IDX___title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+                <div class="form-group"><label>First Forename(s)</label><input type="text" name="dir___IDX___forenames"></div>
+                <div class="form-group"><label>Surname</label><input type="text" name="dir___IDX___surname"></div>
+              </div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Middle Name(s)</label><input type="text" name="dir___IDX___middle"></div>
+                <div class="form-group"><label>Date of Birth</label><input type="date" name="dir___IDX___dob"></div>
+                <div class="form-group"><label>Nationality</label><input type="text" name="dir___IDX___nationality"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Occupation</label><input type="text" name="dir___IDX___occupation"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Service Address</label><input type="text" name="dir___IDX___service_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Residential Address</label><input type="text" name="dir___IDX___residential_address"></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Town</label><input type="text" name="dir___IDX___town"></div>
+                <div class="form-group"><label>Post Code</label><input type="text" name="dir___IDX___postcode"></div>
+                <div class="form-group"><label>Country (if not UK)</label><input type="text" name="dir___IDX___country"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Shareholder?</label><select name="dir___IDX___is_shareholder"><option value="no">No</option><option value="yes">Yes</option></select></div>
+                <div class="form-group"><label>Shares allotted &amp; class</label><input type="text" name="dir___IDX___shares"></div>
+              </div>
+              <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+              <div class="auth-grid">
+                <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="dir___IDX___auth_town" maxlength="3"></div>
+                <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="dir___IDX___auth_phone" maxlength="3"></div>
+                <div class="form-group"><label>NI No. <span class="hint">Last 3</span></label><input type="text" name="dir___IDX___auth_ni" maxlength="3"></div>
+                <div class="form-group"><label>Passport <span class="hint">Last 3</span></label><input type="text" name="dir___IDX___auth_passport" maxlength="3"></div>
+                <div class="form-group"><label>Mother's Name <span class="hint">First 3</span></label><input type="text" name="dir___IDX___auth_mother" maxlength="3"></div>
+                <div class="form-group"><label>Father's Name <span class="hint">First 3</span></label><input type="text" name="dir___IDX___auth_father" maxlength="3"></div>
+              </div>
+            </div>
+          </template>
+
+          <button type="button" class="btn-add" onclick="addRepeatable(this,'tpl-director','directors-container')"><i class="fas fa-plus"></i> Add Another Director</button>
+        </div>
+
+        <!-- CORPORATE SHAREHOLDER (Optional) -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-landmark"></i> Corporate Shareholder <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
+          <p class="form-section-desc">Complete only if a corporate entity is a shareholder but not a director or secretary.</p>
+          <div class="form-row">
+            <div class="form-group"><label>Company Name</label><input type="text" name="corp_sh_name"></div>
+            <div class="form-group"><label>Company Number</label><input type="text" name="corp_sh_number"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Registered Office Address</label><input type="text" name="corp_sh_address"></div></div>
+          <div class="form-row triple">
+            <div class="form-group"><label>Town</label><input type="text" name="corp_sh_town"></div>
+            <div class="form-group"><label>Post Code</label><input type="text" name="corp_sh_postcode"></div>
+            <div class="form-group"><label>Country</label><input type="text" name="corp_sh_country"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Total Shares Allotted &amp; Class</label><input type="text" name="corp_sh_shares"></div></div>
+          <div class="notice notice--info"><i class="fas fa-info-circle"></i> For foreign corporate shareholders, please also provide the Registry Name, Legal Form, and Governing Law. PSC rules may apply.</div>
+          <div class="form-row triple">
+            <div class="form-group"><label>Registry Name</label><input type="text" name="corp_sh_registry"></div>
+            <div class="form-group"><label>Legal Form</label><input type="text" name="corp_sh_legal_form"></div>
+            <div class="form-group"><label>Governing Law</label><input type="text" name="corp_sh_governing_law"></div>
+          </div>
+        </div>
+
+        <!-- HMRC REGISTRATION -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-receipt"></i> HMRC Registration</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Accounting Period Start Date</label><input type="date" name="hmrc_period_start"></div>
+            <div class="form-group"><label>First Accounts Prepared To</label><input type="date" name="hmrc_accounts_date"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Principal Place of Business Address</label><input type="text" name="hmrc_business_address"></div></div>
+          <div class="form-row triple">
+            <div class="form-group"><label>Post Town</label><input type="text" name="hmrc_town"></div>
+            <div class="form-group"><label>County</label><input type="text" name="hmrc_county"></div>
+            <div class="form-group"><label>Postcode</label><input type="text" name="hmrc_postcode"></div>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL PRODUCTS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-plus-circle"></i> Additional Products <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
+          <p class="form-section-desc">Formation includes emailed certificate of incorporation, Articles of Association and draft minutes. Prices exclude VAT.</p>
+          <div class="form-check"><input type="checkbox" id="opt_articles" name="opt_hard_articles" value="yes"><label for="opt_articles">Hard Bound Copies of Articles (&pound;5.00 each)</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_binder_slip" name="opt_binder_slipcover" value="yes"><label for="opt_binder_slip">Loose-Leaf Ring Binder Register with Slipcover (&pound;40.00)</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_binder" name="opt_binder" value="yes"><label for="opt_binder">Loose-Leaf Ring Binder Register (&pound;30.00)</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_soft" name="opt_soft_register" value="yes"><label for="opt_soft">Soft Bound Register (&pound;25.00)</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_stat_print" name="opt_stat_registers_print" value="yes"><label for="opt_stat_print">Completion of Statutory Registers &mdash; Printed Copy (&pound;30.00)</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_stat_pdf" name="opt_stat_registers_pdf" value="yes"><label for="opt_stat_pdf">Completion of Statutory Registers &mdash; PDF Copy (&pound;20.00)</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_cert" name="opt_printed_certificate" value="yes" checked><label for="opt_cert">Printed Certificate &mdash; Free</label></div>
+        </div>
+
+        <!-- AML -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-shield-alt"></i> Money Laundering Regulations</h3>
+          <div class="notice notice--info"><i class="fas fa-info-circle"></i> Under Money Laundering Regulations, we are required to maintain due diligence on all customers. Regulated practices can rely on third-party reliance. Unregulated parties will require SmartSearch AML checks.</div>
+          <div class="form-check">
+            <input type="checkbox" id="aml_regulated_ltd" name="aml_regulated" value="yes">
+            <label for="aml_regulated_ltd">Our practice is regulated under the Money Laundering Regulations</label>
+          </div>
+        </div>
+
+        <!-- NOTES -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-comment-alt"></i> Additional Notes</h3>
+          <div class="form-row full"><div class="form-group"><textarea name="notes" rows="3" placeholder="Any special instructions or requirements..."></textarea></div></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit Order</button>
+          <a href="index.html" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- ==================== LLP FORM ==================== -->
+    <div id="panel-llp" class="form-panel">
+      <form id="formLlp" class="form-card" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'company-formation-llp')">
+
+        <!-- YOUR DETAILS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-user"></i> Your Details</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Contact Name <span class="req">*</span></label><input type="text" name="contact_name" required></div>
+            <div class="form-group"><label>Practice or Company Name <span class="req">*</span></label><input type="text" name="practice_name" required></div>
+          </div>
+        </div>
+
+        <!-- LLP DETAILS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-file-contract"></i> LLP Details</h3>
+          <div class="form-row full"><div class="form-group"><label>Proposed LLP Name <span class="req">*</span></label><input type="text" name="company_name" required></div></div>
+          <div class="form-row full"><div class="form-group"><label>Registered Office <span class="hint">Leave blank to use Axsuma's London address</span></label><input type="text" name="registered_office"></div></div>
+          <div class="form-row full"><div class="form-group"><label>Registered Email Address <span class="req">*</span></label><input type="email" name="registered_email" required></div></div>
+          <div class="form-check">
+            <input type="checkbox" id="lawful_llp" name="lawful_purpose" value="yes" required>
+            <label for="lawful_llp">The subscribers wish to form the LLP for lawful purposes <span class="req">*</span></label>
+          </div>
+        </div>
+
+        <!-- DESIGNATED MEMBERS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-users"></i> Designated Members</h3>
+          <p class="form-section-desc">A minimum of two designated members must be appointed.</p>
+          <div id="llp-members-container">
+            <!-- Member 1 -->
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Designated Member #1</h4></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Title <span class="req">*</span></label><select name="mem_0_title" required><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+                <div class="form-group"><label>First Forename(s) <span class="req">*</span></label><input type="text" name="mem_0_forenames" required></div>
+                <div class="form-group"><label>Surname <span class="req">*</span></label><input type="text" name="mem_0_surname" required></div>
+              </div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="mem_0_dob" required></div>
+                <div class="form-group"><label>Nationality <span class="req">*</span></label><input type="text" name="mem_0_nationality" required></div>
+                <div class="form-group"><label>Occupation</label><input type="text" name="mem_0_occupation"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Service Address <span class="hint">Shown on public record</span></label><input type="text" name="mem_0_service_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Residential Address <span class="req">*</span></label><input type="text" name="mem_0_residential_address" required></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Town <span class="req">*</span></label><input type="text" name="mem_0_town" required></div>
+                <div class="form-group"><label>Post Code <span class="req">*</span></label><input type="text" name="mem_0_postcode" required></div>
+                <div class="form-group"><label>Country (if not UK)</label><input type="text" name="mem_0_country"></div>
+              </div>
+              <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication</p>
+              <div class="auth-grid">
+                <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="mem_0_auth_town" maxlength="3"></div>
+                <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="mem_0_auth_phone" maxlength="3"></div>
+                <div class="form-group"><label>NI No. <span class="hint">Last 3</span></label><input type="text" name="mem_0_auth_ni" maxlength="3"></div>
+                <div class="form-group"><label>Passport <span class="hint">Last 3</span></label><input type="text" name="mem_0_auth_passport" maxlength="3"></div>
+                <div class="form-group"><label>Mother's Name <span class="hint">First 3</span></label><input type="text" name="mem_0_auth_mother" maxlength="3"></div>
+                <div class="form-group"><label>Father's Name <span class="hint">First 3</span></label><input type="text" name="mem_0_auth_father" maxlength="3"></div>
+              </div>
+            </div>
+            <!-- Member 2 -->
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Designated Member #2</h4></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Title <span class="req">*</span></label><select name="mem_1_title" required><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+                <div class="form-group"><label>First Forename(s) <span class="req">*</span></label><input type="text" name="mem_1_forenames" required></div>
+                <div class="form-group"><label>Surname <span class="req">*</span></label><input type="text" name="mem_1_surname" required></div>
+              </div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="mem_1_dob" required></div>
+                <div class="form-group"><label>Nationality <span class="req">*</span></label><input type="text" name="mem_1_nationality" required></div>
+                <div class="form-group"><label>Occupation</label><input type="text" name="mem_1_occupation"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Service Address</label><input type="text" name="mem_1_service_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Residential Address <span class="req">*</span></label><input type="text" name="mem_1_residential_address" required></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Town <span class="req">*</span></label><input type="text" name="mem_1_town" required></div>
+                <div class="form-group"><label>Post Code <span class="req">*</span></label><input type="text" name="mem_1_postcode" required></div>
+                <div class="form-group"><label>Country (if not UK)</label><input type="text" name="mem_1_country"></div>
+              </div>
+              <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication</p>
+              <div class="auth-grid">
+                <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="mem_1_auth_town" maxlength="3"></div>
+                <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="mem_1_auth_phone" maxlength="3"></div>
+                <div class="form-group"><label>NI No. <span class="hint">Last 3</span></label><input type="text" name="mem_1_auth_ni" maxlength="3"></div>
+                <div class="form-group"><label>Passport <span class="hint">Last 3</span></label><input type="text" name="mem_1_auth_passport" maxlength="3"></div>
+                <div class="form-group"><label>Mother's Name <span class="hint">First 3</span></label><input type="text" name="mem_1_auth_mother" maxlength="3"></div>
+                <div class="form-group"><label>Father's Name <span class="hint">First 3</span></label><input type="text" name="mem_1_auth_father" maxlength="3"></div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-add" onclick="addRepeatable(this,'tpl-llp-member','llp-members-container')"><i class="fas fa-plus"></i> Add Another Member</button>
+          <template id="tpl-llp-member">
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Member #N</h4><button type="button" class="btn-remove" onclick="removeRepeatable(this)"><i class="fas fa-times"></i> Remove</button></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Title</label><select name="mem___IDX___title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+                <div class="form-group"><label>First Forename(s)</label><input type="text" name="mem___IDX___forenames"></div>
+                <div class="form-group"><label>Surname</label><input type="text" name="mem___IDX___surname"></div>
+              </div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Date of Birth</label><input type="date" name="mem___IDX___dob"></div>
+                <div class="form-group"><label>Nationality</label><input type="text" name="mem___IDX___nationality"></div>
+                <div class="form-group"><label>Occupation</label><input type="text" name="mem___IDX___occupation"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Service Address</label><input type="text" name="mem___IDX___service_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Residential Address</label><input type="text" name="mem___IDX___residential_address"></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Town</label><input type="text" name="mem___IDX___town"></div>
+                <div class="form-group"><label>Post Code</label><input type="text" name="mem___IDX___postcode"></div>
+                <div class="form-group"><label>Country</label><input type="text" name="mem___IDX___country"></div>
+              </div>
+              <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+              <div class="auth-grid">
+                <div class="form-group"><label>Town of Birth</label><input type="text" name="mem___IDX___auth_town" maxlength="3"></div>
+                <div class="form-group"><label>Tel</label><input type="text" name="mem___IDX___auth_phone" maxlength="3"></div>
+                <div class="form-group"><label>NI No.</label><input type="text" name="mem___IDX___auth_ni" maxlength="3"></div>
+                <div class="form-group"><label>Passport</label><input type="text" name="mem___IDX___auth_passport" maxlength="3"></div>
+                <div class="form-group"><label>Mother's Name</label><input type="text" name="mem___IDX___auth_mother" maxlength="3"></div>
+                <div class="form-group"><label>Father's Name</label><input type="text" name="mem___IDX___auth_father" maxlength="3"></div>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- AML -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-shield-alt"></i> Money Laundering Regulations</h3>
+          <div class="notice notice--info"><i class="fas fa-info-circle"></i> Under Money Laundering Regulations, we maintain due diligence on all customers. Regulated practices can rely on third-party reliance.</div>
+          <div class="form-check"><input type="checkbox" id="aml_regulated_llp" name="aml_regulated" value="yes"><label for="aml_regulated_llp">Our practice is regulated under the Money Laundering Regulations</label></div>
+        </div>
+
+        <!-- NOTES -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-comment-alt"></i> Additional Notes</h3>
+          <div class="form-row full"><div class="form-group"><textarea name="notes" rows="3" placeholder="Any special instructions or requirements..."></textarea></div></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit Order</button>
+          <a href="index.html" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- SUCCESS OVERLAY -->
+<div id="successOverlay" class="success-overlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="success-card">
+    <div class="icon"><i class="fas fa-check"></i></div>
+    <h2>Order Submitted Successfully</h2>
+    <p>Your company formation order has been received. A PDF confirmation will be sent to your email and to our team. We will be in touch shortly.</p>
+    <a href="index.html" class="btn btn-teal">Back to Portal</a>
+  </div>
+</div>
+
+<footer class="portal-footer">
+  <div class="container"><p>&copy; 2026 Axsuma Ltd. <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../standard-terms.html">Terms</a></p></div>
+</footer>
+
+<script src="portal.js"></script>
+<script>
+function switchType(type, el) {
+  document.querySelectorAll('.type-card').forEach(function(c){c.classList.remove('active')});
+  document.querySelectorAll('.form-panel').forEach(function(p){p.classList.remove('active')});
+  el.classList.add('active');
+  document.getElementById('panel-'+type).classList.add('active');
+}
+</script>
+</body>
+</html>

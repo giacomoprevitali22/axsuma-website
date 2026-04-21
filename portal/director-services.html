@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Director Services — Client Portal — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body>
+
+<nav class="portal-nav">
+  <div class="container">
+    <a href="../index.html"><img src="../axsuma-brand.svg" alt="Axsuma" class="portal-nav-logo"></a>
+    <div class="portal-nav-right">
+      <a href="index.html" class="portal-nav-link"><i class="fas fa-th-large"></i> Portal</a>
+      <a href="../index.html" class="portal-nav-link"><i class="fas fa-arrow-left"></i> Site</a>
+    </div>
+  </div>
+</nav>
+
+<header class="portal-header">
+  <div class="container">
+    <p class="portal-breadcrumb"><a href="index.html">Portal</a> &rsaquo; Professional Director Services</p>
+    <h1>UK Professional Director Services</h1>
+    <p>Enquire about our UK resident professional director service.</p>
+  </div>
+</header>
+
+<main class="form-page">
+  <div class="container">
+    <form id="formDir" class="form-card" style="max-width:720px" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'director-enquiry')">
+
+      <div class="notice notice--warn" style="margin-bottom:1.5rem">
+        <i class="fas fa-user-tie"></i>
+        <div>
+          <p><strong>Professional Directorship Enquiry</strong></p>
+          <p>Each appointment is assessed individually, with a focus on commercial rationale, governance clarity, and long-term sustainability. Please provide your requirements below.</p>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3 class="form-section-title"><i class="fas fa-user"></i> Your Details</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name <span class="req">*</span></label><input type="text" name="contact_name" required></div>
+          <div class="form-group"><label>Firm / Organisation <span class="req">*</span></label><input type="text" name="organisation" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
+          <div class="form-group"><label>Telephone</label><input type="tel" name="telephone"></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3 class="form-section-title"><i class="fas fa-file-alt"></i> Appointment Details</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Type of Structure <span class="req">*</span></label>
+            <select name="structure_type" required>
+              <option value="">Select...</option>
+              <option value="spv">SPV / Special Purpose Vehicle</option>
+              <option value="holdco">Holding Company</option>
+              <option value="subsidiary">UK Subsidiary</option>
+              <option value="joint_venture">Joint Venture</option>
+              <option value="fund">Fund Vehicle</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Duration of Appointment</label>
+            <select name="duration">
+              <option value="">Select...</option>
+              <option value="short_term">Short-term / Transactional</option>
+              <option value="ongoing">Ongoing / Non-Executive</option>
+              <option value="fractional">Fractional</option>
+              <option value="to_discuss">To Be Discussed</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group"><label>Brief Description of Requirements <span class="req">*</span></label><textarea name="details" rows="5" required placeholder="Please describe the entity, the role required, any governance or compliance considerations, and your expected timeline..."></textarea></div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit Enquiry</button>
+        <a href="index.html" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<div id="successOverlay" class="success-overlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="success-card">
+    <div class="icon"><i class="fas fa-check"></i></div>
+    <h2>Enquiry Submitted</h2>
+    <p>Your professional director service enquiry has been received. Our team will assess your requirements and be in touch within two working days.</p>
+    <a href="index.html" class="btn btn-teal">Back to Portal</a>
+  </div>
+</div>
+
+<footer class="portal-footer"><div class="container"><p>&copy; 2026 Axsuma Ltd. <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../standard-terms.html">Terms</a></p></div></footer>
+<script src="portal.js"></script>
+</body>
+</html>

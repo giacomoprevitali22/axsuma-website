@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register of Overseas Entities — Client Portal — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portal.css">
+  <style>
+    .type-selector{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+    .type-card{border:2px solid var(--border);border-radius:10px;padding:1.5rem;text-align:center;cursor:pointer;transition:all var(--ease)}
+    .type-card:hover{border-color:var(--teal);background:rgba(0,89,74,.02)}
+    .type-card.active{border-color:var(--teal);background:rgba(0,89,74,.04);box-shadow:0 0 0 3px rgba(0,89,74,.1)}
+    .type-card h3{font-size:1rem;margin-bottom:.3rem;color:var(--dark)}
+    .type-card p{font-size:.8rem;color:var(--mid)}
+    .type-card i{font-size:1.5rem;color:var(--teal);margin-bottom:.6rem}
+    .form-panel{display:none}.form-panel.active{display:block}
+    @media(max-width:768px){.type-selector{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav class="portal-nav">
+  <div class="container">
+    <a href="../index.html"><img src="../axsuma-brand.svg" alt="Axsuma" class="portal-nav-logo"></a>
+    <div class="portal-nav-right">
+      <a href="index.html" class="portal-nav-link"><i class="fas fa-th-large"></i> Portal</a>
+      <a href="../index.html" class="portal-nav-link"><i class="fas fa-arrow-left"></i> Site</a>
+    </div>
+  </div>
+</nav>
+
+<header class="portal-header">
+  <div class="container">
+    <p class="portal-breadcrumb"><a href="index.html">Portal</a> &rsaquo; Register of Overseas Entities</p>
+    <h1>Register of Overseas Entities</h1>
+    <p>New registration or transfer-in from another ACSP.</p>
+  </div>
+</header>
+
+<main class="form-page">
+  <div class="container">
+
+    <div class="type-selector">
+      <div class="type-card active" onclick="switchType('new',this)">
+        <i class="fas fa-file-circle-plus"></i>
+        <h3>New ROE Registration</h3>
+        <p>First-time registration for overseas entities owning UK property</p>
+      </div>
+      <div class="type-card" onclick="switchType('transfer',this)">
+        <i class="fas fa-exchange-alt"></i>
+        <h3>Transfer-In</h3>
+        <p>Transfer existing ROE registration from another ACSP</p>
+      </div>
+    </div>
+
+    <!-- ==================== NEW REGISTRATION ==================== -->
+    <div id="panel-new" class="form-panel active">
+      <form id="formROE" class="form-card" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'roe-new')">
+
+        <!-- CONTACT -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-user"></i> Contact Details</h3>
+          <p class="form-section-desc">Used for invoicing unless instructed otherwise.</p>
+          <div class="form-row">
+            <div class="form-group"><label>Contact Name <span class="req">*</span></label><input type="text" name="contact_name" required></div>
+            <div class="form-group"><label>Company Name <span class="req">*</span></label><input type="text" name="company_name" required></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Full Address <span class="req">*</span></label><input type="text" name="full_address" required></div></div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address <span class="req">*</span></label><input type="email" name="email" required></div>
+            <div class="form-group"><label>Telephone Number</label><input type="tel" name="telephone"></div>
+          </div>
+        </div>
+
+        <!-- PROPERTY -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-home"></i> Part 1 &mdash; Property Details</h3>
+          <div class="form-row full"><div class="form-group"><label>Address(es) of UK Property or Land <span class="req">*</span></label><textarea name="property_addresses" rows="3" required></textarea></div></div>
+          <div class="form-row full"><div class="form-group"><label>Title Number(s)</label><input type="text" name="title_numbers"></div></div>
+          <div class="form-row">
+            <div class="form-group"><label>Disposed of property since 2022?</label><select name="disposed"><option value="no">No</option><option value="yes">Yes</option></select></div>
+            <div class="form-group"><label>Disposition date &amp; title number (if applicable)</label><input type="text" name="disposition_details"></div>
+          </div>
+        </div>
+
+        <!-- OVERSEAS ENTITY -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-globe"></i> Part 2 &mdash; Overseas Entity Details</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Name of Overseas Entity <span class="req">*</span></label><input type="text" name="entity_name" required></div>
+            <div class="form-group"><label>Already on ROE? (OE ID if yes)</label><input type="text" name="oe_id" placeholder="OE..."></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Country of Incorporation <span class="req">*</span></label><input type="text" name="entity_country" required></div>
+            <div class="form-group"><label>Legal Form <span class="req">*</span></label><input type="text" name="entity_legal_form" required></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Principal Office Address <span class="req">*</span></label><input type="text" name="entity_principal_address" required></div></div>
+          <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="entity_correspondence_address"></div></div>
+          <div class="form-row">
+            <div class="form-group"><label>Email for the Overseas Entity</label><input type="email" name="entity_email"></div>
+            <div class="form-group"><label>Governing Law</label><input type="text" name="entity_governing_law"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Registered on a public register?</label><select name="entity_public_register"><option value="no">No</option><option value="yes">Yes</option></select></div>
+            <div class="form-group"><label>Register Name (incl. jurisdiction)</label><input type="text" name="entity_register_name"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Entity Registration Number</label><input type="text" name="entity_reg_number"></div></div>
+        </div>
+
+        <!-- BENEFICIAL OWNERS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-users"></i> Part 3 &mdash; Registrable Beneficial Owners</h3>
+          <p class="form-section-desc">Provide details of registrable beneficial owners. If the entity has no registrable beneficial owners, provide Managing Officer details instead.</p>
+          <div class="notice notice--info"><i class="fas fa-info-circle"></i> For complex structures with multiple beneficial owners (individuals, corporates, or trusts), our team will contact you to collect the complete details after this initial submission.</div>
+
+          <div class="form-row">
+            <div class="form-group"><label>Beneficial Owner Type <span class="req">*</span></label>
+              <select name="bo_type" required>
+                <option value="">Select...</option>
+                <option value="individual">Individual</option>
+                <option value="corporate">Corporate Entity</option>
+                <option value="trust">Trustee of a Trust</option>
+                <option value="government">Government/Public Authority</option>
+                <option value="none">No Registrable Beneficial Owner</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Number of Beneficial Owners</label><input type="number" name="bo_count" min="0" value="1"></div>
+          </div>
+
+          <p style="font-size:.82rem;font-weight:600;color:var(--dark);margin:.8rem 0 .4rem">Primary Beneficial Owner Details</p>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name / Company Name <span class="req">*</span></label><input type="text" name="bo_name" required></div>
+            <div class="form-group"><label>Date of Birth / Date became BO</label><input type="date" name="bo_dob"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Nationality / Country of Incorporation</label><input type="text" name="bo_nationality"></div>
+            <div class="form-group"><label>Residential / Registered Office Address</label><input type="text" name="bo_address"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="bo_correspondence"></div></div>
+          <p style="font-size:.82rem;font-weight:600;color:var(--dark);margin:.8rem 0 .4rem">Nature of Control</p>
+          <div class="form-check"><input type="checkbox" id="nc1" name="nature_of_control" value="shares_25"><label for="nc1">Holds directly/indirectly &gt;25% of shares</label></div>
+          <div class="form-check"><input type="checkbox" id="nc2" name="nature_of_control" value="voting_25"><label for="nc2">Holds directly/indirectly &gt;25% of voting rights</label></div>
+          <div class="form-check"><input type="checkbox" id="nc3" name="nature_of_control" value="appoint_directors"><label for="nc3">Right to appoint/remove majority of board of directors</label></div>
+          <div class="form-check"><input type="checkbox" id="nc4" name="nature_of_control" value="significant_influence"><label for="nc4">Right to exercise significant influence or control</label></div>
+
+          <div class="form-row full" style="margin-top:1rem"><div class="form-group"><label>Protected information? <span class="hint">Names of any BOs/MOs with protected information at Companies House</span></label><textarea name="protected_info" rows="2"></textarea></div></div>
+        </div>
+
+        <!-- DECLARATION -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-pen-fancy"></i> Declaration</h3>
+          <div class="form-check">
+            <input type="checkbox" id="decl_roe" name="declaration" value="yes" required>
+            <label for="decl_roe">I confirm the information supplied is accurate and complete, given with the authority of all named parties. Axsuma is authorised to make all necessary reviews, verification and filings under ECTEA. <span class="req">*</span></label>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name <span class="req">*</span></label><input type="text" name="declaration_name" required></div>
+            <div class="form-group"><label>Role / Position <span class="req">*</span></label><input type="text" name="declaration_role" required></div>
+          </div>
+        </div>
+
+        <div class="form-row full"><div class="form-group"><label>Additional Notes</label><textarea name="notes" rows="3" placeholder="Any additional information..."></textarea></div></div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit Application</button>
+          <a href="index.html" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- ==================== TRANSFER-IN ==================== -->
+    <div id="panel-transfer" class="form-panel">
+      <form id="formROETransfer" class="form-card" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'roe-transfer')">
+
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-user"></i> Contact Details</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Contact Name <span class="req">*</span></label><input type="text" name="contact_name" required></div>
+            <div class="form-group"><label>Company Name <span class="req">*</span></label><input type="text" name="company_name" required></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Full Address <span class="req">*</span></label><input type="text" name="full_address" required></div></div>
+          <div class="form-row">
+            <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
+            <div class="form-group"><label>Telephone</label><input type="tel" name="telephone"></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-home"></i> Property Details</h3>
+          <div class="form-row full"><div class="form-group"><label>Address(es) of UK Property or Land <span class="req">*</span></label><textarea name="property_addresses" rows="2" required></textarea></div></div>
+          <div class="form-row full"><div class="form-group"><label>Title Number(s)</label><input type="text" name="title_numbers"></div></div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-globe"></i> Overseas Entity Details</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Name of Overseas Entity <span class="req">*</span></label><input type="text" name="entity_name" required></div>
+            <div class="form-group"><label>OE ID Number <span class="req">*</span></label><input type="text" name="oe_id" required placeholder="OE..."></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Country of Incorporation <span class="req">*</span></label><input type="text" name="entity_country" required></div>
+            <div class="form-group"><label>Entity Registration Number</label><input type="text" name="entity_reg_number"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Principal Office Address</label><input type="text" name="entity_principal_address"></div></div>
+          <div class="form-row">
+            <div class="form-group"><label>Correspondence Address</label><input type="text" name="entity_correspondence_address"></div>
+            <div class="form-group"><label>Email for Entity</label><input type="email" name="entity_email"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Register Name (incl. jurisdiction)</label><input type="text" name="entity_register_name"></div></div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-user-slash"></i> Previous Agent</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Contact Name</label><input type="text" name="prev_agent_name"></div>
+            <div class="form-group"><label>Company Name</label><input type="text" name="prev_agent_company"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Address</label><input type="text" name="prev_agent_address"></div></div>
+          <div class="form-row">
+            <div class="form-group"><label>Email</label><input type="email" name="prev_agent_email"></div>
+            <div class="form-group"><label>Telephone</label><input type="tel" name="prev_agent_tel"></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-clipboard-check"></i> Current Filings</h3>
+          <p class="form-section-desc">Indicate what filings have been made by the previous ACSP.</p>
+          <div class="form-check"><input type="checkbox" id="tf1" name="filed" value="individual_shares"><label for="tf1">Individual UBO(s) verified — &gt;25% shares</label></div>
+          <div class="form-check"><input type="checkbox" id="tf2" name="filed" value="individual_voting"><label for="tf2">Individual UBO(s) verified — &gt;25% voting rights</label></div>
+          <div class="form-check"><input type="checkbox" id="tf3" name="filed" value="corporate_shares"><label for="tf3">Corporate UBO(s) verified — &gt;25% shares</label></div>
+          <div class="form-check"><input type="checkbox" id="tf4" name="filed" value="corporate_voting"><label for="tf4">Corporate UBO(s) verified — &gt;25% voting rights</label></div>
+          <div class="form-check"><input type="checkbox" id="tf5" name="filed" value="appoint_directors"><label for="tf5">Right to appoint/remove majority of directors</label></div>
+          <div class="form-check"><input type="checkbox" id="tf6" name="filed" value="significant_influence"><label for="tf6">Significant influence or control</label></div>
+          <div class="form-check"><input type="checkbox" id="tf7" name="filed" value="trust"><label for="tf7">Trustee(s) of a trust</label></div>
+          <div class="form-check"><input type="checkbox" id="tf8" name="filed" value="government"><label for="tf8">Government or public authority</label></div>
+          <div class="form-check"><input type="checkbox" id="tf9" name="filed" value="no_ubo"><label for="tf9">No UBO identified — managing officers filed</label></div>
+          <div class="form-row full" style="margin-top:1rem"><div class="form-group"><label>Protected information? <span class="hint">Names of any BOs/MOs with protected info</span></label><textarea name="protected_info" rows="2"></textarea></div></div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-pen-fancy"></i> Declaration</h3>
+          <div class="form-check">
+            <input type="checkbox" id="decl_transfer" name="declaration" value="yes" required>
+            <label for="decl_transfer">I confirm the information is accurate and complete. Axsuma is authorised to make all necessary reviews, verification and filings under ECTEA. <span class="req">*</span></label>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name <span class="req">*</span></label><input type="text" name="declaration_name" required></div>
+            <div class="form-group"><label>Role / Position <span class="req">*</span></label><input type="text" name="declaration_role" required></div>
+          </div>
+        </div>
+
+        <div class="form-row full"><div class="form-group"><label>Additional Notes</label><textarea name="notes" rows="3"></textarea></div></div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit Transfer Request</button>
+          <a href="index.html" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<div id="successOverlay" class="success-overlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="success-card">
+    <div class="icon"><i class="fas fa-check"></i></div>
+    <h2>Application Submitted</h2>
+    <p>Your ROE application has been received. A PDF confirmation will be sent to your email. Our team will be in touch shortly.</p>
+    <a href="index.html" class="btn btn-teal">Back to Portal</a>
+  </div>
+</div>
+
+<footer class="portal-footer"><div class="container"><p>&copy; 2026 Axsuma Ltd. <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../standard-terms.html">Terms</a></p></div></footer>
+<script src="portal.js"></script>
+<script>
+function switchType(type, el) {
+  document.querySelectorAll('.type-card').forEach(function(c){c.classList.remove('active')});
+  document.querySelectorAll('.form-panel').forEach(function(p){p.classList.remove('active')});
+  el.classList.add('active');
+  document.getElementById('panel-'+type).classList.add('active');
+}
+</script>
+</body>
+</html>

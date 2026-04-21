@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Address for Service — Client Portal — Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body>
+
+<nav class="portal-nav">
+  <div class="container">
+    <a href="../index.html"><img src="../axsuma-brand.svg" alt="Axsuma" class="portal-nav-logo"></a>
+    <div class="portal-nav-right">
+      <a href="index.html" class="portal-nav-link"><i class="fas fa-th-large"></i> Portal</a>
+      <a href="../index.html" class="portal-nav-link"><i class="fas fa-arrow-left"></i> Site</a>
+    </div>
+  </div>
+</nav>
+
+<header class="portal-header">
+  <div class="container">
+    <p class="portal-breadcrumb"><a href="index.html">Portal</a> &rsaquo; UK Address for Service</p>
+    <h1>UK Address for Service (IP)</h1>
+    <p>Address for service for intellectual property rights and IP proceedings.</p>
+  </div>
+</header>
+
+<main class="form-page">
+  <div class="container">
+    <form id="formAFS" class="form-card" style="max-width:720px" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'address-for-service')">
+
+      <div class="form-section">
+        <h3 class="form-section-title"><i class="fas fa-user"></i> Your Details</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Contact Name <span class="req">*</span></label><input type="text" name="contact_name" required></div>
+          <div class="form-group"><label>Organisation <span class="req">*</span></label><input type="text" name="organisation" required></div>
+        </div>
+        <div class="form-row full"><div class="form-group"><label>Full Address <span class="req">*</span></label><input type="text" name="full_address" required></div></div>
+        <div class="form-row">
+          <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
+          <div class="form-group"><label>Telephone</label><input type="tel" name="telephone"></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3 class="form-section-title"><i class="fas fa-map-marker-alt"></i> Service Requirements</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>IP Right Type <span class="req">*</span></label>
+            <select name="ip_type" required>
+              <option value="">Select...</option>
+              <option value="trademark">Trade Mark</option>
+              <option value="patent">Patent</option>
+              <option value="design">Registered Design</option>
+              <option value="copyright">Copyright</option>
+              <option value="multiple">Multiple IP Rights</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>IP Application / Registration Number(s)</label><input type="text" name="ip_numbers"></div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group"><label>Name of IP Right Holder <span class="req">*</span></label><input type="text" name="ip_holder_name" required></div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group"><label>IP Holder Country of Incorporation / Residence</label><input type="text" name="ip_holder_country"></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3 class="form-section-title"><i class="fas fa-forward"></i> Forwarding Instructions</h3>
+        <p class="form-section-desc">Where should correspondence be forwarded?</p>
+        <div class="form-row full"><div class="form-group"><label>Forwarding Contact Name <span class="req">*</span></label><input type="text" name="fwd_name" required></div></div>
+        <div class="form-row full"><div class="form-group"><label>Forwarding Email <span class="req">*</span></label><input type="email" name="fwd_email" required></div></div>
+        <div class="form-row full"><div class="form-group"><label>Forwarding Address (if different)</label><input type="text" name="fwd_address"></div></div>
+      </div>
+
+      <div class="form-row full"><div class="form-group"><label>Additional Notes</label><textarea name="notes" rows="3" placeholder="Any special instructions..."></textarea></div></div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit Order</button>
+        <a href="index.html" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<div id="successOverlay" class="success-overlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="success-card">
+    <div class="icon"><i class="fas fa-check"></i></div>
+    <h2>Order Submitted</h2>
+    <p>Your Address for Service order has been received. A confirmation will be sent to your email. We will be in touch shortly.</p>
+    <a href="index.html" class="btn btn-teal">Back to Portal</a>
+  </div>
+</div>
+
+<footer class="portal-footer"><div class="container"><p>&copy; 2026 Axsuma Ltd. <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../standard-terms.html">Terms</a></p></div></footer>
+<script src="portal.js"></script>
+</body>
+</html>
