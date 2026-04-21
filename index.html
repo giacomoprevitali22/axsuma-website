@@ -58,6 +58,8 @@
     .nav-links a:hover{color:var(--dark)}
     .nav-cta{background:var(--teal);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
     .nav-cta:hover{background:var(--teal-light);color:#fff!important}
+    .nav-portal{background:transparent!important;color:#00594a!important;border:1.5px solid #00594a;padding:.5rem 1.3rem;border-radius:4px;font-weight:600;font-size:.85rem}
+    .nav-portal:hover{background:rgba(0,89,74,.06)!important;color:#007a66!important;border-color:#007a66}
 
     /* Mega Menu */
     .nav-drop{position:relative}
@@ -255,6 +257,7 @@
       .nav-links li{width:100%;text-align:left}
       .nav-links li a{display:block;padding:.5rem 0}
       .nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}
+      .nav-links .nav-portal{display:inline-block;margin-top:.3rem;padding:.4rem 1rem}
       /* Mobile mega menu: show as nested accordion under parent link */
       .nav-drop{width:100%}
       .nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}
@@ -335,7 +338,7 @@
         </div>
       </li>
       <li><a href="insights.html">Insights</a></li>
-      <li><a href="portal/index.html" class="nav-cta" style="background:transparent;color:var(--teal);border:1.5px solid var(--teal)"><i class="fas fa-lock" style="font-size:.65rem;margin-right:.3rem"></i>Client Portal</a></li>
+      <li><a href="portal/index.html" class="nav-portal"><i class="fas fa-lock" style="font-size:.65rem;margin-right:.3rem"></i>Client Portal</a></li>
       <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>

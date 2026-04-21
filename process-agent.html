@@ -40,6 +40,8 @@
     .nav-links a:hover{color:var(--dark)}
     .nav-cta{background:var(--teal);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
     .nav-cta:hover{background:var(--teal-light);color:#fff!important}
+    .nav-portal{background:transparent!important;color:#00594a!important;border:1.5px solid #00594a;padding:.5rem 1.3rem;border-radius:4px;font-weight:600;font-size:.85rem}
+    .nav-portal:hover{background:rgba(0,89,74,.06)!important;color:#007a66!important;border-color:#007a66}
     .nav-drop{position:relative}
     .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform var(--ease)}
     .nav-drop:hover>a i{transform:rotate(180deg)}
@@ -153,7 +155,8 @@
       .s-title{font-size:1.7rem}
       .feature-grid{grid-template-columns:1fr}
       .footer-grid{grid-template-columns:1fr}
-      .nav-links li{width:100%;text-align:left}.nav-links li a{display:block;padding:.5rem 0}.nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}.nav-drop{width:100%}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
+      .nav-links li{width:100%;text-align:left}.nav-links li a{display:block;padding:.5rem 0}.nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}
+      .nav-links .nav-portal{display:inline-block;margin-top:.3rem;padding:.4rem 1rem}.nav-drop{width:100%}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
     }
   /*icon-kill*/.feature-card .icon,.svc-detail .svc-aside .icon,.svc-detail .icon,.sector-icon,.pillar-icon,.team-card .icon{display:none!important}.feature-grid{counter-reset:fc}.feature-card{counter-increment:fc;padding-top:2rem;position:relative}.feature-card>h3::before{content:counter(fc,decimal-leading-zero);display:block;font-size:1.6rem;font-weight:200;color:var(--teal);opacity:.45;margin-bottom:.5rem;letter-spacing:-.5px;font-family:var(--font-heading);line-height:1}.svc-detail .svc-aside h2{padding-top:.5rem;border-top:2px solid var(--teal);display:inline-block}/*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
 </head>
@@ -212,7 +215,7 @@
         </div>
       </li>
       <li><a href="insights.html">Insights</a></li>
-      <li><a href="portal/index.html" class="nav-cta" style="background:transparent;color:var(--teal);border:1.5px solid var(--teal)"><i class="fas fa-lock" style="font-size:.65rem;margin-right:.3rem"></i>Client Portal</a></li>
+      <li><a href="portal/index.html" class="nav-portal"><i class="fas fa-lock" style="font-size:.65rem;margin-right:.3rem"></i>Client Portal</a></li>
       <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
