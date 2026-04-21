@@ -454,8 +454,8 @@
   },
   "ma-transactions": {
     "header": {
-      "title": "M&A Support & Transaction Readiness",
-      "subtitle": "Ready-made corporate structures for fast-moving M&A, restructuring, and joint ventures. Infrastructure support that keeps deals on track."
+      "title": "UK Ready-Made Packages for M&A, Restructuring, and Joint Ventures",
+      "subtitle": "Readiness Solutions for Complex Corporate Transactions"
     },
     "overview": {
       "paragraphs": [
@@ -467,42 +467,66 @@
       {
         "title": "Transaction-Ready Corporate Stacks",
         "paragraphs": [
-          "Accelerate deal execution with pre-established structures. Delays in entity formation, governance setup, or appointing directors can create unnecessary friction during sensitive deal phases. Our solution eliminates these risks.",
+          "Delays in entity formation, governance setup, or appointing directors can create unnecessary friction during sensitive deal phases. Our solution eliminates these risks.",
           "We offer ready-made HoldCo, MidCo, and BidCo entities available for immediate reservation. These structures are securely held to order exclusively for law firms and advisors, allowing you to focus on deal structuring and negotiation without administrative bottlenecks.",
           "Our fully aligned three-tier acquisition structure is configurable to specific transaction requirements. All entities are established with clean corporate records, dormant status, and are maintained in good standing."
+        ],
+        "stack_cards": [
+          {
+            "label": "HoldCo",
+            "description": "Ultimate parent entity; structured to support ownership, financing, and long-term governance."
+          },
+          {
+            "label": "MidCo",
+            "description": "Intermediary holding entity; designed for structural flexibility and risk segregation."
+          },
+          {
+            "label": "BidCo",
+            "description": "Acquisition vehicle; purpose-built to execute the purchase and receive assets or shares at closing."
+          }
         ]
       },
       {
         "title": "How It Works: Reservation & Hold-to-Order",
+        "subheadings": [
+          "Immediate Reservation",
+          "Held to Order for Up to 6 Months (extendable by agreement)",
+          "Activation on Demand"
+        ],
         "paragraphs": [
           "Entities can be reserved instantly upon instruction, securing exclusivity for your transaction.",
-          "We maintain the corporate stack on your behalf - dormant, compliant, and ready - while deal negotiations progress.",
+          "We maintain the corporate stack on your behalf — dormant, compliant, and ready — while deal negotiations progress.",
           "Upon confirmation, entities are fully activated and transferred in accordance with your instructions and transaction timeline."
         ]
       },
       {
         "title": "Designed for Lawyers & Transaction Advisors",
         "paragraphs": [
-          "We operate as an infrastructure partner, not a legal decision-maker – supporting your work with speed and precision. Our offering is purpose-built for:",
+          "We operate as an infrastructure partner, not a legal decision-maker — supporting your work with speed and precision. Our offering is purpose-built for:",
           "If you are seeking a sole SPV for an upcoming transaction, we also retain standalone entities for immediate reservation on the same held to order basis.",
           "Whether preparing for a competitive bid, conditional signing, or regulatory approval phase, our ready-made HoldCo–MidCo–BidCo stacks give you the structural certainty to move decisively. It will be necessary to conduct some compliance checks in accordance with the UK Money Laundering Regulations upon transfer of ownership at completion."
+        ],
+        "bullets": [
+          "Lawyers managing complex and time-sensitive M&A transactions",
+          "Private equity and investment advisors",
+          "Corporate development and in-house legal teams",
+          "Cross-border and multi-jurisdictional deal structures"
+        ],
+        "key_benefits": [
+          "Reduced time to signing and closing",
+          "Predictable transaction readiness",
+          "Clean, pre-established corporate records",
+          "Flexible holding period aligned with deal timelines",
+          "Confidential and controlled reservation process"
         ]
       }
     ],
-    "why_cards": [
-      {
-        "title": "Speed & Certainty",
-        "description": "Pre-established entities ready for immediate deployment. No delays waiting for Companies House. Structures are clean, dormant, and fully compliant—ready to activate when your deal timeline demands."
-      },
-      {
-        "title": "Structured Flexibility",
-        "description": "HoldCo–MidCo–BidCo stacks adaptable to your transaction architecture. Whether multi-tier acquisitions, debt financing, or complex group restructuring, structures align with your deal design."
-      },
-      {
-        "title": "Ongoing Compliance",
-        "description": "Beyond transaction completion, we manage regulatory, tax, payroll, and accounting obligations. Your deal team closes; we keep entities compliant through every phase of ownership."
-      }
-    ],
+    "disclaimer": {
+      "paragraphs": [
+        "The contents of this document are for general guidance only and do not constitute definitive advice. The information provided is intended to offer a broad overview of the subject matter and should not be relied upon as a substitute for specialist advice tailored to your specific circumstances.",
+        "This document must be read in conjunction with our Legal and Regulatory Notice available at www.axsuma.co.uk."
+      ]
+    },
     "cta": {
       "title": "Talk to Our Team",
       "body": "Our experts are always happy to talk. We will connect you with the appropriate specialist and reply within two working days."
