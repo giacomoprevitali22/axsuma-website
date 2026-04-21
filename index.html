@@ -85,15 +85,17 @@
     .hero p.lead{font-size:1.15rem;line-height:1.8;font-weight:400;margin-bottom:0;color:rgba(255,255,255,.85);max-width:600px;opacity:0;animation:fadeIn .8s .5s forwards;text-shadow:0 1px 4px rgba(0,0,0,.3)}
     /* hero-btns removed per Charlotte's feedback */
 
-    /* ===== SERVICES TILES ===== */
-    .services-section{padding:3rem 0 3.5rem;background:var(--white)}
-    .services-section .services-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
-    .svc-tile{position:relative;text-align:left;padding:1.4rem 1.2rem;border-radius:10px;background:var(--off-white);border:1px solid var(--border-light);transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-start;min-height:110px}
-    .svc-tile:hover{background:var(--teal);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,89,74,.12);border-color:var(--teal)}
-    .svc-tile:active{transform:scale(.98);background:var(--teal-light)}
-    .svc-tile h4{font-size:.82rem;font-weight:600;color:var(--dark);line-height:1.35;letter-spacing:.1px;transition:color .3s;margin-bottom:.35rem}
-    .svc-tile p{font-size:.72rem;color:var(--mid);line-height:1.5;transition:color .3s;margin:0}
-    .svc-tile:hover h4,.svc-tile:hover p{color:#fff}
+    /* ===== THREE PILLAR BOXES ===== */
+    .services-section{padding:3.5rem 0 4rem;background:var(--white)}
+    .pillars-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .pillar-box{text-align:center;padding:2.5rem 2rem;border-radius:10px;background:var(--off-white);border:1px solid var(--border);transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;text-decoration:none;display:flex;flex-direction:column;align-items:center}
+    .pillar-box:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,89,74,.1)}
+    .pillar-box-icon{width:56px;height:56px;border-radius:50%;background:rgba(0,89,74,.08);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+    .pillar-box-icon i{font-size:1.2rem;color:var(--teal)}
+    .pillar-box h3{font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:.6rem}
+    .pillar-box p{font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1.2rem}
+    .pillar-box-link{font-size:.82rem;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:.4rem;margin-top:auto}
+    .pillar-box:hover .pillar-box-link{color:var(--teal-light)}
     .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)}
     .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
     @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
@@ -228,7 +230,7 @@
       .about-grid,.lawfirms-grid{grid-template-columns:1fr;gap:2rem}
       .footer-grid{grid-template-columns:1fr 1fr}
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
-      .services-strip,.services-section .services-strip{grid-template-columns:repeat(2,1fr)}
+      .pillars-row{grid-template-columns:repeat(3,1fr)}
       .pillars-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:768px){
@@ -241,8 +243,7 @@
       .section{padding:3.5rem 0}
       .s-title{font-size:1.8rem}
       .why-grid,.sectors-grid,.insights-grid,.sol-3{grid-template-columns:1fr}
-      .services-strip,.services-section .services-strip{grid-template-columns:repeat(2,1fr)}
-      .svc-tile{min-height:auto;padding:1.2rem .6rem}
+      .pillars-row{grid-template-columns:1fr}
       .pillars-grid{grid-template-columns:1fr}
       .about-grid{grid-template-columns:1fr;gap:2rem}
       .about-video video{display:none}
@@ -265,7 +266,6 @@
       .nav-drop.open>a i{transform:rotate(180deg)}
     }
     @media(max-width:480px){
-      .services-strip,.services-section .services-strip{grid-template-columns:repeat(2,1fr)}
       .hero h1{font-size:1.8rem}
       .container{padding:0 1.2rem}
     }
@@ -354,76 +354,28 @@
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- THREE PILLARS -->
 <section class="services-section">
   <div class="container">
-    <div class="services-strip">
-      <a href="company-formations.html" class="svc-tile"><h4>Company Formations</h4><p>UK Ltd, LLP and ready-made companies — live within hours.</p></a>
-      <a href="spv-holding.html" class="svc-tile"><h4>SPV &amp; Holding</h4><p>Investment vehicles and holding structures for cross-border transactions.</p></a>
-      <a href="directorships.html" class="svc-tile"><h4>Directorships</h4><p>UK-resident statutory directors and independent oversight.</p></a>
-      <a href="governance.html" class="svc-tile"><h4>Company Secretarial</h4><p>Registered office, statutory compliance and board administration.</p></a>
-      <a href="ma-transactions.html" class="svc-tile"><h4>M&amp;A Support</h4><p>Deal-stack management, acquisition vehicles and post-completion governance.</p></a>
-      <a href="accounting.html" class="svc-tile"><h4>Accounting &amp; Tax</h4><p>Bookkeeping, management accounts, VAT and ATED returns.</p></a>
-      <a href="payroll-hr.html" class="svc-tile"><h4>Payroll &amp; HR</h4><p>HMRC-compliant payroll, RTI reporting and practical HR support.</p></a>
-      <a href="compliance-governance.html" class="svc-tile"><h4>Compliance &amp; Governance</h4><p>ROE, Process Agent, ID Verification and UK Address for Service.</p></a>
-    </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section class="section section-alt" id="why">
-  <div class="container">
-    <div class="reveal"><p class="s-label">Why Axsuma</p><h2 class="s-title">A Different Kind of Corporate Partner</h2><p class="s-sub">Senior-led, accountable, and built around the way ambitious businesses actually work.</p></div>
-    <div class="why-grid" style="grid-template-columns:repeat(4,1fr)">
-      <div class="why-card reveal"><div class="why-num">01</div><h3>Speed</h3><p>Same-day incorporations and rapid turnarounds — no bureaucracy, no delays.</p></div>
-      <div class="why-card reveal"><div class="why-num">02</div><h3>Partnership</h3><p>Named senior contacts who know your business and treat your deadlines as their own.</p></div>
-      <div class="why-card reveal"><div class="why-num">03</div><h3>Compliance</h3><p>Every structure designed for regulatory resilience, from Companies House to HMRC.</p></div>
-      <div class="why-card reveal"><div class="why-num">04</div><h3>Cross-Border</h3><p>UK corporate infrastructure for international investors, funds, and enterprises.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section about-section" id="about">
-  <div class="about-video">
-    <video autoplay muted loop playsinline>
-      <source src="https://videos.pexels.com/video-files/4763824/4763824-hd_1920_1080_24fps.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="about-overlay"></div>
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p class="s-label">About Axsuma</p>
-        <h2 data-content="about.title">Corporate Administration &amp; Governance</h2>
-        <p data-content="about.paragraphs.0">We support businesses, family offices, funds, and their advisors at every stage of the company lifecycle — from entity formation through company secretarial, M&amp;A deal support, accounting, tax compliance and payroll in the United Kingdom.</p>
-        <div class="highlight-box" data-content="about.paragraphs.1">Accountability drives everything we do. Each assignment has a named owner, decisions are shaped by commercial realities, and work is executed thoroughly and on schedule.</div>
-        <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap">
-          <a href="about.html" class="btn btn-outline">About Us <i class="fas fa-arrow-right"></i></a>
-          <a href="meet-the-team.html" class="btn btn-outline">Meet the Team <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="reveal" style="display:flex;align-items:center;justify-content:center;padding:3rem">
-        <svg viewBox="0 0 190 210" width="200" xmlns="http://www.w3.org/2000/svg" style="opacity:.18">
-          <polygon points="31.77,204.72 0,204.67 74.22,35.59 81.8,90.94" fill="rgba(255,255,255,.5)"/>
-          <polygon points="158.57,204.98 108.35,90.9 115.66,35.67 190.15,204.75" fill="rgba(255,255,255,.5)"/>
-          <path d="M81.83,204.9l4.45-69.63,7.83-126.13c.22-3.51.5-6.12,1.24-9.14l.9,12.84,11.89,191.9-26.3.16Z" fill="#00594a"/>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTORS -->
-<section class="section" id="sectors">
-  <div class="container" style="text-align:center">
-    <div class="reveal"><p class="s-label">Sectors We Serve</p><h2 class="s-title">Who We Work With</h2><p class="s-sub" style="margin:0 auto">Operational clarity and governance frameworks for businesses, investors, and their advisors.</p></div>
-    <div class="sectors-grid">
-      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-building"></i></div><h3 data-content="sectors.0.title">Businesses &amp; Corporates</h3><p data-content="sectors.0.description">We support companies of all sizes, from start-ups to multinational corporations, ensuring statutory and regulatory obligations are met efficiently while management teams focus on growth and strategy.</p></div>
-      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-gem"></i></div><h3 data-content="sectors.1.title">Family Offices</h3><p data-content="sectors.1.description">We provide family offices with bespoke governance, entity management, and reporting solutions. Simplifying administrative complexity to help families protect wealth and maintain control over their affairs.</p></div>
-      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-landmark"></i></div><h3 data-content="sectors.2.title">Funds &amp; Investment Vehicles</h3><p data-content="sectors.2.description">We help investment funds and special purpose vehicles navigate corporate administration and compliance with confidence, from entity formation to ongoing reporting.</p></div>
-      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-handshake"></i></div><h3 data-content="sectors.3.title">Advisors &amp; Professional Partners</h3><p data-content="sectors.3.description">We work closely with lawyers, accountants, and other advisors to deliver a seamless service to their clients, taking responsibility for operational execution while ensuring excellence is maintained.</p></div>
-      <div class="sector-card reveal"><div class="sector-icon"><i class="fas fa-globe"></i></div><h3 data-content="sectors.4.title">International Law Firms</h3><p data-content="sectors.4.description">When your clients need complex cross-border structures delivered compliantly and at pace, we become an extension of your team.</p></div>
+    <div class="pillars-row">
+      <a href="about.html" class="pillar-box reveal">
+        <div class="pillar-box-icon"><i class="fas fa-building-columns"></i></div>
+        <h3>About</h3>
+        <p>Who we are, how we work, and the senior team behind every engagement.</p>
+        <span class="pillar-box-link">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="services.html" class="pillar-box reveal">
+        <div class="pillar-box-icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Services</h3>
+        <p>Company formations, M&amp;A support, accounting, governance and compliance — end to end.</p>
+        <span class="pillar-box-link">Explore services <i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="insights.html" class="pillar-box reveal">
+        <div class="pillar-box-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Insights</h3>
+        <p>Expert perspectives on UK corporate administration, regulation and compliance.</p>
+        <span class="pillar-box-link">Read insights <i class="fas fa-arrow-right"></i></span>
+      </a>
     </div>
   </div>
 </section>
