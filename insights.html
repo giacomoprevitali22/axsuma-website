@@ -1,851 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insights | Axsuma</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Insights — Axsuma</title>
+  <meta name="description" content="Expert perspectives on UK corporate administration, governance, and compliance from the Axsuma team.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    :root {
-      --teal: #00594a;
-      --teal-light: #007a66;
-      --dark: #2a2f36;
-      --mid: #6b7280;
-      --white: #ffffff;
-      --off-white: #f7f8f9;
-      --border: #e2e5e9;
-      --font-heading: 'Inter';
-      --font: 'DM Sans';
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--font), sans-serif;
-      color: var(--dark);
-      background-color: var(--white);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Navigation */
-    nav.nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav.nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2rem;
-    }
-
-    .nav-logo {
-      height: 40px;
-      margin-right: 3rem;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      flex: 1;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--dark);
-      font-size: 0.95rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--teal);
-    }
-
-    .nav-links a.nav-cta {
-      background: var(--teal);
-      color: var(--white);
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      font-weight: 600;
-    }
-
-    .nav-links a.nav-cta:hover {
-      background: var(--teal-light);
-      color: var(--white);
-    }
-
-    .nav-drop {
-      position: relative;
-    }
-
-    .nav-drop > a i {
-      font-size: 0.7rem;
-      transition: transform 0.3s;
-    }
-
-    .nav-drop:hover > a i {
-      transform: rotate(180deg);
-    }
-
-    .mega {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      display: none;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-      min-width: 800px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-drop:hover .mega {
-      display: grid;
-    }
-
-    .mega h5 {
-      font-family: var(--font-heading);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--dark);
-      margin-bottom: 1rem;
-      letter-spacing: 0.5px;
-    }
-
-    .mega ul {
-      list-style: none;
-    }
-
-    .mega ul li {
-      margin-bottom: 0.75rem;
-    }
-
-    .mega ul li a {
-      color: var(--mid);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .mega ul li a:hover {
-      color: var(--teal);
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      background: none;
-      border: none;
-      cursor: pointer;
-      gap: 5px;
-    }
-
-    .nav-toggle span {
-      width: 25px;
-      height: 3px;
-      background: var(--dark);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    /* Hero Banner */
-    .hero {
-      background: linear-gradient(135deg, #f7f8f9 0%, #e8f0ed 100%);
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-family: var(--font-heading);
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 1rem;
-    }
-
-    .hero .subtitle {
-      font-size: 1.1rem;
-      color: var(--mid);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Insights Grid */
-    .insights-section {
-      padding: 4rem 2rem;
-    }
-
-    .insights-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .insight-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .insight-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 89, 74, 0.1);
-      border-color: var(--teal);
-    }
-
-    .insight-card-content {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .insight-card-category {
-      display: inline-block;
-      background: var(--teal);
-      color: var(--white);
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1rem;
-      width: fit-content;
-    }
-
-    .insight-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      color: var(--dark);
-      margin-bottom: 1rem;
-      line-height: 1.4;
-      font-weight: 600;
-    }
-
-    .insight-card-summary {
-      color: var(--mid);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-
-    .insight-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .insight-card-date {
-      color: var(--mid);
-      font-size: 0.85rem;
-    }
-
-    .insight-card-link {
-      color: var(--teal);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-
-    .insight-card-link:hover {
-      color: var(--teal-light);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: var(--white);
-      padding: 3rem 2rem;
-      margin-top: 4rem;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      margin-bottom: 3rem;
-    }
-
-    .footer-col h4 {
-      font-family: var(--font-heading);
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.5px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-col ul li a {
-      color: #a0aec0;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .footer-col ul li a:hover {
-      color: var(--teal);
-    }
-
-    .footer-brand img {
-      height: 35px;
-      margin-bottom: 1rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.9rem;
-      color: #a0aec0;
-      line-height: 1.6;
-    }
-
-    .footer-address {
-      font-size: 0.9rem;
-      color: #a0aec0;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .footer-social a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: var(--white);
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .footer-social a:hover {
-      background: var(--teal);
-      color: var(--white);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 2rem;
-      text-align: center;
-      color: #a0aec0;
-      font-size: 0.85rem;
-    }
-
-    /* Cookie Banner */
-    .cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--dark);
-      color: var(--white);
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-      z-index: 999;
-      transform: translateY(100%);
-      transition: transform 0.3s;
-    }
-
-    .cookie-banner.show {
-      transform: translateY(0);
-    }
-
-    .cookie-banner-text {
-      font-size: 0.9rem;
-      flex: 1;
-    }
-
-    .cookie-banner-text a {
-      color: var(--teal);
-      text-decoration: none;
-    }
-
-    .cookie-banner-buttons {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .cookie-banner button {
-      padding: 0.6rem 1.5rem;
-      border: none;
-      border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.3s;
-    }
-
-    .cookie-banner .cookie-accept {
-      background: var(--teal);
-      color: var(--white);
-    }
-
-    .cookie-banner .cookie-accept:hover {
-      background: var(--teal-light);
-    }
-
-    .cookie-banner .cookie-decline {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid var(--white);
-    }
-
-    .cookie-banner .cookie-decline:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Reveal Fallback Animation */
-    /*reveal-fallback*/
-    @keyframes revealFallback {
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    .reveal {
-      animation: revealFallback 0s 1.5s forwards;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-
-      .nav-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(10px, 10px);
-      }
-
-      .nav-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .nav-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-      }
-
-      .nav-links.mobile-open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        border-bottom: 1px solid var(--border);
-        padding: 1rem;
-        gap: 0.5rem;
-      }
-
-      .nav-links.mobile-open .nav-cta {
-        padding: 0.75rem 1.5rem;
-        margin-top: 1rem;
-      }
-
-      .mega {
-        position: static;
-        display: none;
-        min-width: 100%;
-        box-shadow: none;
-        border: none;
-        background: var(--off-white);
-        margin-top: 0.5rem;
-      }
-
-      .nav-drop.mobile-active .mega {
-        display: grid;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero .subtitle {
-        font-size: 1rem;
-      }
-
-      .insights-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-
-      .cookie-banner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .cookie-banner-buttons {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .cookie-banner button {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .insights-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-  </style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --teal:#00594a;--teal-light:#007a66;--dark:#2a2f36;--dark-soft:#3d434d;
+      --mid:#6b7280;--light-text:#8a919c;--white:#ffffff;--off-white:#f7f8f9;
+      --light-grey:#eef0f2;--border:#e2e5e9;--border-light:#f0f1f3;
+      --font-heading:'Inter','Helvetica Neue',Arial,sans-serif;
+      --font:'DM Sans','Helvetica Neue',Arial,sans-serif;
+      --max:1140px;--ease:0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--dark);line-height:1.7;background:var(--white)}
+    h1,h2,h3,h4,h5,h6,.s-label,.s-title{font-family:var(--font-heading)}
+    a{text-decoration:none;color:inherit;transition:color var(--ease)}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+    /* NAV */
+    .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
+    .nav-logo{height:68px}
+    .nav-links{display:flex;align-items:center;gap:1.4rem;list-style:none;margin-left:auto}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--mid);transition:color var(--ease)}
+    .nav-links a:hover{color:var(--dark)}
+    .nav-cta{background:var(--teal);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-weight:600}
+    .nav-cta:hover{background:var(--teal-light);color:#fff!important}
+    .nav-drop{position:relative}
+    .nav-drop>a i{font-size:.55rem;margin-left:.25rem;transition:transform var(--ease)}
+    .nav-drop:hover>a i{transform:rotate(180deg)}
+    .mega{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);width:780px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem 2rem;opacity:0;visibility:hidden;transition:all .2s;box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:100}
+    .nav-drop:hover .mega{opacity:1;visibility:visible}
+    .mega h5{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border-light)}
+    .mega ul{list-style:none;margin-bottom:1rem}
+    .mega li{margin-bottom:.2rem}
+    .mega a{font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important;color:var(--mid)!important;padding:.15rem 0!important;display:block}
+    .mega a:hover{color:var(--dark)!important}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
+
+    /* PAGE HERO */
+    .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light)}
+    .page-hero .breadcrumb{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
+    .page-hero .breadcrumb a{color:var(--teal)}
+    .page-hero .breadcrumb a:hover{color:var(--teal-light)}
+    .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px}
+    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400}
+
+    /* SECTIONS */
+    .section{padding:5rem 0}
+    .section-alt{background:var(--off-white)}
+    .s-label{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+    .s-title{font-size:2.2rem;font-weight:300;line-height:1.2;margin-bottom:1rem;color:var(--dark);letter-spacing:-.3px}
+    .s-sub{font-size:.95rem;color:var(--mid);max-width:720px;line-height:1.8;font-weight:300}
+
+    /* INSIGHTS GRID */
+    .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+    .ins-card{border-radius:8px;overflow:hidden;background:var(--white);border:1px solid var(--border);transition:all var(--ease);display:flex;flex-direction:column}
+    .ins-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06);border-color:var(--teal)}
+    .ins-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+    .ins-tag{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:.6rem}
+    .ins-body h3{font-size:1.05rem;font-weight:600;line-height:1.35;margin-bottom:.6rem;color:var(--dark)}
+    .ins-body p{font-size:.82rem;color:var(--mid);line-height:1.6;flex:1}
+    .ins-foot{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;border-top:1px solid var(--border-light)}
+    .ins-foot span{font-size:.72rem;color:var(--light-text)}
+    .ins-foot a{font-size:.78rem;font-weight:600;color:var(--teal)}
+    .ins-foot a:hover{color:var(--dark)}
+
+    /* BTN */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
+    .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .btn-teal:hover{background:var(--teal-light);border-color:var(--teal-light)}
+
+    /* CTA */
+    .cta{padding:6rem 0;background:var(--white);text-align:center;border-top:1px solid var(--border-light)}
+    .cta h2{font-size:2.2rem;font-weight:300;margin-bottom:1rem;color:var(--dark)}
+    .cta p{font-size:1rem;color:var(--mid);max-width:500px;margin:0 auto 2rem;font-weight:300}
+
+    /* COOKIE */
+    .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:var(--white);color:var(--dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;font-size:.82rem;border-top:1px solid var(--border);transform:translateY(100%);animation:slideUp .5s 2s forwards;box-shadow:0 -4px 20px rgba(0,0,0,.06)}
+    .cookie-banner.hidden{display:none}
+    @keyframes slideUp{to{transform:translateY(0)}}
+    .cookie-banner a{color:var(--teal);text-decoration:underline}
+    .cookie-btn{background:var(--teal);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:4px;cursor:pointer;font-family:var(--font);font-weight:600;font-size:.82rem;transition:background var(--ease)}
+    .cookie-btn:hover{background:var(--teal-light)}
+    .cookie-btn.sec{background:transparent;border:1px solid var(--border);color:var(--mid)}
+
+    /* FOOTER */
+    .footer{background:var(--dark);color:rgba(255,255,255,.6);padding:4rem 0 0;border-top:1px solid var(--border)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+    .footer-brand p{margin-top:1rem;font-size:.82rem;line-height:1.7}
+    .footer h4{font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:1rem;letter-spacing:.5px}
+    .footer ul{list-style:none}
+    .footer li{margin-bottom:.4rem}
+    .footer a{font-size:.8rem;transition:color var(--ease)}
+    .footer a:hover{color:var(--white)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;font-size:.75rem;flex-wrap:wrap;gap:1rem;color:rgba(255,255,255,.35)}
+    .footer-legal{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .footer-social{display:flex;gap:.8rem}
+    .footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.5);transition:all var(--ease)}
+    .footer-social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .reveal.vis{opacity:1;transform:translateY(0)}
+    .no-js .reveal{opacity:1;transform:none}
+
+    @media(max-width:1024px){
+      .insights-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .mega{width:600px;grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:52px}
+      .page-hero{padding:6rem 0 2rem}
+      .page-hero h1{font-size:1.8rem}
+      .section{padding:3.5rem 0}
+      .s-title{font-size:1.7rem}
+      .insights-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .cookie-banner{flex-direction:column;text-align:center}
+      .nav-links li{width:100%;text-align:left}.nav-links li a{display:block;padding:.5rem 0}.nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}.nav-drop{width:100%}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
+    }
+  /*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="container">
-      <a href="index.html"><img src="axsuma-brand.svg" alt="Axsuma" class="nav-logo"></a>
-      <ul class="nav-links">
-        <li class="nav-drop">
-          <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
-          <div class="mega" style="grid-template-columns:1fr;width:280px">
-            <div>
-              <h5>About Axsuma</h5>
-              <ul>
-                <li><a href="about.html">About Axsuma</a></li>
-                <li><a href="our-approach.html">Our Approach</a></li>
-                <li><a href="meet-the-team.html">Meet the Team</a></li>
-                <li><a href="sectors.html">Sectors We Serve</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
-        <li class="nav-drop">
-          <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
-          <div class="mega">
-            <div>
-              <h5>Formation &amp; Structure</h5>
-              <ul>
-                <li><a href="company-formations.html">Company Formations</a></li>
-                <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
-                <li><a href="directorships.html">Professional Directorships</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5>Corporate Services</h5>
-              <ul>
-                <li><a href="governance.html">Company Secretarial</a></li>
-                <li><a href="ma-transactions.html">M&amp;A Support</a></li>
-                <li><a href="accounting.html">Accounting &amp; Tax</a></li>
-                <li><a href="payroll-hr.html">Payroll &amp; HR</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5>Compliance &amp; Governance</h5>
-              <ul>
-                <li><a href="compliance-governance.html">Overview</a></li>
-                <li><a href="overseas-entities.html">Register of Overseas Entities</a></li>
-                <li><a href="process-agent.html">Process Agent</a></li>
-                <li><a href="id-verification.html">ID Verification</a></li>
-                <li><a href="uk-afs.html">UK Address for Service</a></li>
-                <li><a href="international.html">International Expansion</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
-        <li><a href="insights.html">Insights</a></li>
-        <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
 
-  <!-- Hero Banner -->
-  <section class="hero reveal">
-    <div class="container">
-      <h1>Insights</h1>
-      <p class="subtitle">Expert perspectives on UK corporate administration, governance, and compliance.</p>
-    </div>
-  </section>
+<!-- COOKIE -->
+<div class="cookie-banner" id="cb">
+  <p>We use cookies to enhance your experience. By continuing, you agree to our <a href="cookie-policy.html">Cookie Policy</a>.</p>
+  <div style="display:flex;gap:.4rem;flex-shrink:0">
+    <button class="cookie-btn sec" onclick="this.closest('.cookie-banner').classList.add('hidden')">Reject</button>
+    <button class="cookie-btn" onclick="this.closest('.cookie-banner').classList.add('hidden')">Accept</button>
+  </div>
+</div>
 
-  <!-- Insights Grid -->
-  <section class="insights-section">
-    <div class="container">
-      <div class="insights-grid">
-        <!-- Article 1 -->
-        <article class="insight-card reveal">
-          <div class="insight-card-content">
-            <span class="insight-card-category">Regulatory Update</span>
-            <h3>UK Companies House Reform: What Changes Mean for Your Business in 2026</h3>
-            <p class="insight-card-summary">The Economic Crime and Corporate Transparency Act continues to reshape the corporate landscape. We outline the key filing and verification changes taking effect this year.</p>
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="index.html"><img src="axsuma-brand.svg" alt="Axsuma" class="nav-logo"></a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+        <div class="mega" style="grid-template-columns:1fr;width:280px">
+          <div>
+            <h5>About Axsuma</h5>
+            <ul>
+              <li><a href="about.html">About Axsuma</a></li>
+              <li><a href="our-approach.html">Our Approach</a></li>
+              <li><a href="meet-the-team.html">Meet the Team</a></li>
+              <li><a href="sectors.html">Sectors We Serve</a></li>
+            </ul>
           </div>
-          <div class="insight-card-footer">
-            <span class="insight-card-date">15 April 2026</span>
-            <a href="#" class="insight-card-link">Read more →</a>
-          </div>
-        </article>
-
-        <!-- Article 2 -->
-        <article class="insight-card reveal">
-          <div class="insight-card-content">
-            <span class="insight-card-category">Compliance</span>
-            <h3>Register of Overseas Entities: Annual Update Filing Requirements</h3>
-            <p class="insight-card-summary">Overseas entities owning UK land must file annual updates. We explain the process, deadlines, and common pitfalls to avoid penalties.</p>
-          </div>
-          <div class="insight-card-footer">
-            <span class="insight-card-date">28 March 2026</span>
-            <a href="#" class="insight-card-link">Read more →</a>
-          </div>
-        </article>
-
-        <!-- Article 3 -->
-        <article class="insight-card reveal">
-          <div class="insight-card-content">
-            <span class="insight-card-category">Corporate Structure</span>
-            <h3>SPV Structures for Cross-Border Investment: A Practical Guide</h3>
-            <p class="insight-card-summary">How to structure UK SPVs for international investment transactions, including tax considerations, governance requirements, and ongoing compliance obligations.</p>
-          </div>
-          <div class="insight-card-footer">
-            <span class="insight-card-date">12 March 2026</span>
-            <a href="#" class="insight-card-link">Read more →</a>
-          </div>
-        </article>
-
-        <!-- Article 4 -->
-        <article class="insight-card reveal">
-          <div class="insight-card-content">
-            <span class="insight-card-category">Governance</span>
-            <h3>The Role of the Professional Director in Modern Governance</h3>
-            <p class="insight-card-summary">Independent professional directors bring credibility, compliance oversight, and local substance to corporate structures. We explore when and why they matter.</p>
-          </div>
-          <div class="insight-card-footer">
-            <span class="insight-card-date">25 February 2026</span>
-            <a href="#" class="insight-card-link">Read more →</a>
-          </div>
-        </article>
-
-        <!-- Article 5 -->
-        <article class="insight-card reveal">
-          <div class="insight-card-content">
-            <span class="insight-card-category">Tax &amp; Compliance</span>
-            <h3>ATED Returns 2026/27: Key Dates and Thresholds</h3>
-            <p class="insight-card-summary">Annual Tax on Enveloped Dwellings returns are due by 30 April. Here is what property-holding companies need to know about valuations, reliefs, and filing deadlines.</p>
-          </div>
-          <div class="insight-card-footer">
-            <span class="insight-card-date">10 February 2026</span>
-            <a href="#" class="insight-card-link">Read more →</a>
-          </div>
-        </article>
-
-        <!-- Article 6 -->
-        <article class="insight-card reveal">
-          <div class="insight-card-content">
-            <span class="insight-card-category">M&amp;A</span>
-            <h3>Post-Completion Governance: What Happens After the Deal Closes</h3>
-            <p class="insight-card-summary">Acquisition vehicles require immediate attention after completion — board appointments, statutory filings, bank mandates, and compliance onboarding. We outline the critical first 30 days.</p>
-          </div>
-          <div class="insight-card-footer">
-            <span class="insight-card-date">28 January 2026</span>
-            <a href="#" class="insight-card-link">Read more →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-col footer-brand">
-        <img src="axsuma-brand.svg" alt="Axsuma">
-        <p>UK corporate administration and governance for international businesses.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Solutions</h4>
-        <ul>
-          <li><a href="company-formations.html">Company Formations</a></li>
-          <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
-          <li><a href="directorships.html">Professional Directorships</a></li>
-          <li><a href="governance.html">Company Secretarial</a></li>
-          <li><a href="overseas-entities.html">Overseas Entities</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="insights.html">Insights</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>London</h4>
-        <div class="footer-address">
-          167-169 Great Portland Street<br>
-          London W1W 5PF<br>
-          United Kingdom
         </div>
-        <div class="footer-social">
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </li>
+      <li class="nav-drop">
+        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="mega">
+          <div>
+            <h5>Formation &amp; Structure</h5>
+            <ul>
+              <li><a href="company-formations.html">Company Formations</a></li>
+              <li><a href="spv-holding.html">SPV &amp; Holding Companies</a></li>
+              <li><a href="directorships.html">Professional Directorships</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Corporate Services</h5>
+            <ul>
+              <li><a href="governance.html">Company Secretarial</a></li>
+              <li><a href="ma-transactions.html">M&amp;A Support</a></li>
+              <li><a href="accounting.html">Accounting &amp; Tax</a></li>
+              <li><a href="payroll-hr.html">Payroll &amp; HR</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Compliance &amp; Governance</h5>
+            <ul>
+              <li><a href="compliance-governance.html">Overview</a></li>
+              <li><a href="overseas-entities.html">Register of Overseas Entities</a></li>
+              <li><a href="process-agent.html">Process Agent</a></li>
+              <li><a href="id-verification.html">ID Verification</a></li>
+              <li><a href="uk-afs.html">UK Address for Service</a></li>
+              <li><a href="international.html">International Expansion</a></li>
+            </ul>
+          </div>
         </div>
+      </li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Insights</p>
+    <h1>Insights</h1>
+    <p class="lead">Expert perspectives on UK corporate administration, governance, and compliance.</p>
+  </div>
+</section>
+
+<!-- INSIGHTS GRID -->
+<section class="section">
+  <div class="container">
+    <div class="insights-grid">
+      <!-- Article 1 -->
+      <div class="ins-card reveal">
+        <div class="ins-body">
+          <p class="ins-tag">Regulatory Update</p>
+          <h3>UK Companies House Reform: What Changes Mean for Your Business in 2026</h3>
+          <p>The Economic Crime and Corporate Transparency Act continues to reshape the corporate landscape. We outline the key filing and verification changes taking effect this year.</p>
+        </div>
+        <div class="ins-foot">
+          <span>15 April 2026</span>
+          <a href="#">Read more &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="ins-card reveal">
+        <div class="ins-body">
+          <p class="ins-tag">Compliance</p>
+          <h3>Register of Overseas Entities: Annual Update Filing Requirements</h3>
+          <p>Overseas entities owning UK land must file annual updates. We explain the process, deadlines, and common pitfalls to avoid penalties.</p>
+        </div>
+        <div class="ins-foot">
+          <span>28 March 2026</span>
+          <a href="#">Read more &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="ins-card reveal">
+        <div class="ins-body">
+          <p class="ins-tag">Corporate Structure</p>
+          <h3>SPV Structures for Cross-Border Investment: A Practical Guide</h3>
+          <p>How to structure UK SPVs for international investment transactions, including tax considerations, governance requirements, and ongoing compliance obligations.</p>
+        </div>
+        <div class="ins-foot">
+          <span>12 March 2026</span>
+          <a href="#">Read more &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Article 4 -->
+      <div class="ins-card reveal">
+        <div class="ins-body">
+          <p class="ins-tag">Governance</p>
+          <h3>The Role of the Professional Director in Modern Governance</h3>
+          <p>Independent professional directors bring credibility, compliance oversight, and local substance to corporate structures. We explore when and why they matter.</p>
+        </div>
+        <div class="ins-foot">
+          <span>25 February 2026</span>
+          <a href="#">Read more &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Article 5 -->
+      <div class="ins-card reveal">
+        <div class="ins-body">
+          <p class="ins-tag">Tax &amp; Compliance</p>
+          <h3>ATED Returns 2026/27: Key Dates and Thresholds</h3>
+          <p>Annual Tax on Enveloped Dwellings returns are due by 30 April. Here is what property-holding companies need to know about valuations, reliefs, and filing deadlines.</p>
+        </div>
+        <div class="ins-foot">
+          <span>10 February 2026</span>
+          <a href="#">Read more &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Article 6 -->
+      <div class="ins-card reveal">
+        <div class="ins-body">
+          <p class="ins-tag">M&amp;A</p>
+          <h3>Post-Completion Governance: What Happens After the Deal Closes</h3>
+          <p>Acquisition vehicles require immediate attention after completion — board appointments, statutory filings, bank mandates, and compliance onboarding. We outline the critical first 30 days.</p>
+        </div>
+        <div class="ins-foot">
+          <span>28 January 2026</span>
+          <a href="#">Read more &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container reveal">
+    <p class="s-label">Get in Touch</p>
+    <h2>Talk to Our Team</h2>
+    <p>Our experts are always happy to talk. We will connect you with the appropriate specialist and reply within two working days.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-teal">Contact Us <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-light.svg" alt="Axsuma" style="width:180px">
+        <p>Corporate administration, governance and transaction solutions for the world's most ambitious investors and enterprises.</p>
+      </div>
+      <div><h4>Solutions</h4><ul><li><a href="company-formations.html">Company Formations</a></li><li><a href="spv-holding.html">SPV &amp; Holding</a></li><li><a href="directorships.html">Directorships</a></li><li><a href="governance.html">Company Secretarial</a></li><li><a href="ma-transactions.html">M&amp;A Support</a></li><li><a href="accounting.html">Accounting &amp; Tax</a></li><li><a href="payroll-hr.html">Payroll &amp; HR</a></li><li><a href="compliance-governance.html">Compliance &amp; Governance</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Axsuma</a></li><li><a href="our-approach.html">Our Approach</a></li><li><a href="meet-the-team.html">Meet the Team</a></li><li><a href="sectors.html">Sectors</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>London</h4><ul><li style="line-height:1.5;display:flex;gap:.5rem;align-items:flex-start"><i class="fas fa-map-marker-alt" style="color:var(--teal);margin-top:.25rem;flex-shrink:0"></i><span>167-169 Great Portland Street<br>London W1W 5PF</span></li><li style="display:flex;gap:.5rem;align-items:center"><i class="fas fa-envelope" style="color:var(--teal);flex-shrink:0"></i><span>enquiries@axsuma.co.uk</span></li></ul>
+        <div class="footer-social" style="margin-top:1rem"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Axsuma Limited. Company No. 17002438. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Cookie Banner -->
-  <div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-banner-text">
-      We use cookies to enhance your experience. By continuing to browse, you consent to our use of cookies. <a href="#">Learn more</a>
-    </div>
-    <div class="cookie-banner-buttons">
-      <button class="cookie-accept" id="cookieAccept">Accept</button>
-      <button class="cookie-decline" id="cookieDecline">Decline</button>
+      <span>&copy; 2026 Axsuma Ltd. Registered in England &amp; Wales. Company No. 17002438. Registered office: 167-169 Great Portland Street, London W1W 5PF.</span>
+      <div class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="standard-terms.html">Terms</a><a href="gdpr.html">GDPR</a></div>
     </div>
   </div>
+</footer>
 
-  <script src="content-loader.js" data-page="insights"></script>
-  <script>
-    // Mobile Navigation Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const navDrops = document.querySelectorAll('.nav-drop');
-
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('active');
-      navLinks.classList.toggle('mobile-open');
-    });
-
-    navDrops.forEach(drop => {
-      const link = drop.querySelector('a');
-      link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          drop.classList.toggle('mobile-active');
-        }
-      });
-    });
-
-    // Reveal Animation Observer
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'revealFallback 0.8s ease-out forwards';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // Cookie Banner
-    const cookieBanner = document.getElementById('cookieBanner');
-    const cookieAccept = document.getElementById('cookieAccept');
-    const cookieDecline = document.getElementById('cookieDecline');
-
-    const isCookieAccepted = localStorage.getItem('cookieConsent');
-    if (!isCookieAccepted) {
-      setTimeout(() => {
-        cookieBanner.classList.add('show');
-      }, 1000);
-    }
-
-    cookieAccept.addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'accepted');
-      cookieBanner.classList.remove('show');
-    });
-
-    cookieDecline.addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'declined');
-      cookieBanner.classList.remove('show');
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      });
-    });
-  </script>
-</body>
+<script>
+try{
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.classList.add('vis');obs.unobserve(el.target)}})},{threshold:.05,rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')});
+  }
+  var mobileMenu=document.querySelector('.nav-links');var menuOpen=false;
+  var toggleBtn=document.querySelector('.nav-toggle');
+  if(toggleBtn){toggleBtn.addEventListener('click',function(){
+    if(menuOpen){mobileMenu.style.display='';menuOpen=false}
+    else{mobileMenu.style.display='flex';mobileMenu.style.flexDirection='column';mobileMenu.style.position='absolute';mobileMenu.style.top='100%';mobileMenu.style.left='0';mobileMenu.style.right='0';mobileMenu.style.background='rgba(255,255,255,.98)';mobileMenu.style.padding='1rem 2rem';mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.08)';mobileMenu.style.zIndex='999';menuOpen=true}
+  });}
+}catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
+</script>
+<script src="content-loader.js" data-page="insights"></script>
+<script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){e.preventDefault();var parent=a.parentElement;var wasOpen=parent.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});if(!wasOpen)parent.classList.add("open");}})});var navToggle=document.querySelector(".nav-toggle");if(navToggle){navToggle.addEventListener("click",function(){setTimeout(function(){var m=document.querySelector(".nav-links");if(m&&!m.style.display){document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});}},10);})}}catch(e){}</script></body>
 </html>
