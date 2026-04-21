@@ -139,7 +139,17 @@
       .footer-grid{grid-template-columns:1fr}
       .mega{display:none!important}.nav-links li{width:100%;text-align:left}.nav-links li a{display:block;padding:.5rem 0}.nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}.nav-drop{width:100%}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
     }
-  /*icon-kill*/.feature-card .icon,.svc-detail .svc-aside .icon,.svc-detail .icon,.sector-icon,.pillar-icon,.team-card .icon{display:none!important}.feature-grid{counter-reset:fc}.feature-card{counter-increment:fc;padding-top:2rem;position:relative}.feature-card>h3::before{content:counter(fc,decimal-leading-zero);display:block;font-size:1.6rem;font-weight:200;color:var(--teal);opacity:.45;margin-bottom:.5rem;letter-spacing:-.5px;font-family:var(--font-heading);line-height:1}.svc-detail .svc-aside h2{padding-top:.5rem;border-top:2px solid var(--teal);display:inline-block}/*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
+  /*icon-kill*/.feature-card .icon,.svc-detail .svc-aside .icon,.svc-detail .icon,.sector-icon,.pillar-icon,.team-card .icon{display:none!important}.feature-grid{counter-reset:fc}.feature-card{counter-increment:fc;padding-top:2rem;position:relative}.feature-card>h3::before{content:counter(fc,decimal-leading-zero);display:block;font-size:1.6rem;font-weight:200;color:var(--teal);opacity:.45;margin-bottom:.5rem;letter-spacing:-.5px;font-family:var(--font-heading);line-height:1}.svc-detail .svc-aside h2{padding-top:.5rem;border-top:2px solid var(--teal);display:inline-block}
+  /* Sector hub grid: 3 top + 2 centered bottom */
+  .sector-hub-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;margin-top:2.5rem}
+  .sector-hub-card{grid-column:span 2;padding:2rem 1.5rem;border-radius:8px;background:var(--white);border:1px solid var(--border);transition:all var(--ease)}
+  .sector-hub-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06)}
+  .sector-hub-card h3{font-size:1.05rem;font-weight:600;margin-bottom:.6rem;color:var(--dark)}
+  .sector-hub-card p{font-size:.85rem;color:var(--mid);line-height:1.7}
+  .sector-hub-card:nth-last-child(2){grid-column:2/span 2}
+  .sector-hub-card:nth-last-child(1){grid-column:4/span 2}
+  @media(max-width:768px){.sector-hub-grid{grid-template-columns:1fr}.sector-hub-card,.sector-hub-card:nth-last-child(2),.sector-hub-card:nth-last-child(1){grid-column:auto}}
+  /*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
 </head>
 <body>
 
@@ -217,34 +227,25 @@
     <div class="content-block reveal">
       <p data-content="overview.paragraphs.0">We provide operational clarity and robust governance frameworks across a wide range of sectors. Our clients trust us to manage complexity, ensure compliance, and deliver outcomes with precision and accountability.</p>
 
-      <!-- SECTORS GRID (4 columns) -->
-      <div class="feature-grid" style="grid-template-columns:repeat(4,1fr)">
-        <div class="feature-card reveal">
-          <div class="icon"><i class="fas fa-building"></i></div>
+      <!-- SECTORS GRID (3 top, 2 bottom centered) -->
+      <div class="sector-hub-grid">
+        <div class="sector-hub-card reveal">
           <h3 data-content="sectors.0.title">Businesses &amp; Corporates</h3>
           <p data-content="sectors.0.content">We support companies of all sizes, from start-ups to multinational corporations, ensuring statutory and regulatory obligations are met efficiently. Our approach enables management teams to focus on growth and strategy while we handle the operational details.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="icon"><i class="fas fa-gem"></i></div>
+        <div class="sector-hub-card reveal">
           <h3 data-content="sectors.1.title">Family Offices</h3>
           <p data-content="sectors.1.content">We provide family offices with bespoke governance, entity management, and reporting solutions. By simplifying administrative complexity, we help families protect wealth, structure investments effectively, and maintain control over their affairs.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="icon"><i class="fas fa-landmark"></i></div>
+        <div class="sector-hub-card reveal">
           <h3 data-content="sectors.2.title">Funds &amp; Investment Vehicles</h3>
           <p data-content="sectors.2.content">Our team helps investment funds and special purpose vehicles navigate corporate administration and compliance with confidence. From entity formation to ongoing reporting, we provide transparency, accountability, and operational reliability at every stage.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="icon"><i class="fas fa-handshake"></i></div>
+        <div class="sector-hub-card reveal">
           <h3 data-content="sectors.3.title">Advisors &amp; Professional Partners</h3>
           <p data-content="sectors.3.content">We work closely with lawyers, accountants, and other advisors to deliver a seamless service to their clients. By taking responsibility for operational execution, we allow advisors to focus on strategic advice while ensuring operational excellence is maintained.</p>
         </div>
-      </div>
-
-      <!-- ADDITIONAL SECTOR (International) -->
-      <div class="feature-grid" style="grid-template-columns:repeat(1,1fr);margin-top:1.5rem">
-        <div class="feature-card reveal">
-          <div class="icon"><i class="fas fa-globe"></i></div>
+        <div class="sector-hub-card reveal">
           <h3 data-content="sectors.4.title">International Law Firms</h3>
           <p data-content="sectors.4.content">We support international law firms with corporate administration services across multiple jurisdictions, providing seamless coordination and delivery of regulated services to their global client base.</p>
         </div>
