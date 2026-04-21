@@ -101,6 +101,15 @@
     .svc-detail .svc-body ul{margin:1rem 0 1.5rem 1.2rem}
     .svc-detail .svc-body ul li{font-size:.92rem;color:var(--dark-soft)}
 
+    /* STACK CARDS */
+    .stack-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.5rem 0}
+    .stack-card{background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:all var(--ease);position:relative;overflow:hidden}
+    .stack-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--teal)}
+    .stack-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.06);border-color:var(--teal)}
+    .stack-label{display:inline-block;font-family:var(--font-heading);font-size:1rem;font-weight:600;color:var(--teal);margin-bottom:.5rem}
+    .stack-card p{font-size:.85rem;color:var(--dark-soft);line-height:1.7;margin:0}
+    @media(max-width:768px){.stack-cards{grid-template-columns:1fr}}
+
     /* BTN */
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
     .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
@@ -242,6 +251,20 @@
       <p data-content="services.0.paragraphs.1">We offer ready-made HoldCo, MidCo, and BidCo entities available for immediate reservation. These structures are securely held to order exclusively for law firms and advisors, allowing you to focus on deal structuring and negotiation without administrative bottlenecks.</p>
       <h3>The Ready-Made Corporate Stack</h3>
       <p data-content="services.0.paragraphs.2">Our fully aligned three-tier acquisition structure is configurable to specific transaction requirements. All entities are established with clean corporate records, dormant status, and are maintained in good standing.</p>
+      <div class="stack-cards">
+        <div class="stack-card">
+          <span class="stack-label">HoldCo</span>
+          <p>Ultimate parent entity; structured to support ownership, financing, and long-term governance.</p>
+        </div>
+        <div class="stack-card">
+          <span class="stack-label">MidCo</span>
+          <p>Intermediary holding entity; designed for structural flexibility and risk segregation.</p>
+        </div>
+        <div class="stack-card">
+          <span class="stack-label">BidCo</span>
+          <p>Acquisition vehicle; purpose-built to execute the purchase and receive assets or shares at closing.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
