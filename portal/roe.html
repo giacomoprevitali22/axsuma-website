@@ -284,5 +284,6 @@ function switchType(type, el) {
   document.getElementById('panel-'+type).classList.add('active');
 }
 </script>
+<script>async function doLogout(){try{await fetch("/api/auth/logout",{method:"POST"})}catch(e){}window.location.href="/portal/login.html"}</script>
 </body>
 </html>

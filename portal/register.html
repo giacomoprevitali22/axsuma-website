@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Axsuma Client Portal</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root{--teal:#00594a;--teal-light:#007a66;--dark:#2a2f36;--dark-soft:#4a5568;--mid:#718096;--off-white:#f7f8f9;--white:#ffffff;--border:#e2e8f0;--red:#dc2626;--green:#16a34a;--font:'DM Sans',sans-serif;--font-heading:'Inter',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--off-white);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+    .auth-card{background:var(--white);border:1px solid var(--border);border-radius:12px;max-width:460px;width:100%;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+    .auth-logo{display:block;margin:0 auto 1.8rem;height:36px}
+    .auth-title{font-family:var(--font-heading);font-size:1.3rem;font-weight:600;color:var(--dark);text-align:center;margin-bottom:.4rem}
+    .auth-sub{font-size:.85rem;color:var(--mid);text-align:center;margin-bottom:2rem}
+    .field{margin-bottom:1.2rem}
+    .field label{display:block;font-size:.78rem;font-weight:500;color:var(--dark);margin-bottom:.4rem;letter-spacing:.3px}
+    .field input{width:100%;padding:.65rem .8rem;font-family:var(--font);font-size:.88rem;border:1px solid var(--border);border-radius:6px;transition:border-color .2s}
+    .field input:focus{border-color:var(--teal);outline:none;box-shadow:0 0 0 3px rgba(0,89,74,.08)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .btn-register{width:100%;padding:.75rem;background:var(--teal);color:#fff;font-family:var(--font);font-size:.9rem;font-weight:600;border:none;border-radius:6px;cursor:pointer;transition:background .2s;letter-spacing:.3px}
+    .btn-register:hover{background:var(--teal-light)}
+    .btn-register:disabled{opacity:.6;cursor:not-allowed}
+    .error-msg{background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.15);color:var(--red);font-size:.82rem;padding:.6rem .8rem;border-radius:6px;margin-bottom:1.2rem;display:none}
+    .error-msg.show{display:block}
+    .success-msg{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);color:var(--green);font-size:.85rem;padding:1rem;border-radius:6px;text-align:center;display:none}
+    .success-msg.show{display:block}
+    .success-msg i{font-size:1.5rem;display:block;margin-bottom:.5rem}
+    .auth-footer{text-align:center;margin-top:1.5rem;font-size:.82rem;color:var(--mid)}
+    .auth-footer a{color:var(--teal);text-decoration:none;font-weight:500}
+    .auth-footer a:hover{text-decoration:underline}
+    .back-link{display:block;text-align:center;margin-top:1.5rem;font-size:.78rem;color:var(--mid)}
+    .back-link a{color:var(--mid);text-decoration:none}
+    .back-link a:hover{color:var(--teal)}
+    .hint{font-size:.72rem;color:var(--mid);margin-top:.3rem}
+    @media(max-width:500px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<div class="auth-card">
+  <img src="../axsuma-brand.svg" alt="Axsuma" class="auth-logo">
+  <h1 class="auth-title">Request Access</h1>
+  <p class="auth-sub">Register for the Axsuma Client Portal</p>
+
+  <div id="errorMsg" class="error-msg"></div>
+  <div id="successMsg" class="success-msg">
+    <i class="fas fa-check-circle"></i>
+    <strong>Registration submitted.</strong><br>
+    An administrator will review your request shortly. You will be able to log in once approved.
+  </div>
+
+  <form id="registerForm" onsubmit="return handleRegister(event)">
+    <div class="row">
+      <div class="field">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required placeholder="John Smith">
+      </div>
+      <div class="field">
+        <label for="company">Firm / Company</label>
+        <input type="text" id="company" name="company" placeholder="Smith & Co LLP">
+      </div>
+    </div>
+    <div class="field">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com">
+    </div>
+    <div class="field">
+      <label for="password">Password *</label>
+      <input type="password" id="password" name="password" required minlength="8" autocomplete="new-password" placeholder="Minimum 8 characters">
+      <p class="hint">At least 8 characters</p>
+    </div>
+    <div class="field">
+      <label for="password2">Confirm Password *</label>
+      <input type="password" id="password2" name="password2" required minlength="8" autocomplete="new-password" placeholder="Re-enter your password">
+    </div>
+    <button type="submit" class="btn-register" id="btnRegister">
+      <i class="fas fa-user-plus" style="margin-right:.4rem"></i> Request Access
+    </button>
+  </form>
+
+  <div class="auth-footer">
+    Already have an account? <a href="login.html">Sign In</a>
+  </div>
+</div>
+
+<div class="back-link"><a href="../index.html"><i class="fas fa-arrow-left"></i> Back to axsuma.co.uk</a></div>
+
+<script>
+async function handleRegister(e) {
+  e.preventDefault();
+  var btn = document.getElementById('btnRegister');
+  var errEl = document.getElementById('errorMsg');
+  var successEl = document.getElementById('successMsg');
+  errEl.classList.remove('show');
+  successEl.classList.remove('show');
+
+  var password = document.getElementById('password').value;
+  var password2 = document.getElementById('password2').value;
+
+  if (password !== password2) {
+    errEl.textContent = 'Passwords do not match.';
+    errEl.classList.add('show');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+  try {
+    var res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('name').value,
+        company: document.getElementById('company').value,
+        email: document.getElementById('email').value,
+        password: password,
+      }),
+    });
+    var data = await res.json();
+
+    if (!res.ok) {
+      errEl.textContent = data.error || 'Registration failed.';
+      errEl.classList.add('show');
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-user-plus" style="margin-right:.4rem"></i> Request Access';
+      return;
+    }
+
+    // Show success
+    document.getElementById('registerForm').style.display = 'none';
+    if (data.message && data.message.includes('log in now')) {
+      successEl.innerHTML = '<i class="fas fa-check-circle"></i><strong>Registration successful!</strong><br>You can now <a href="login.html" style="color:var(--teal);font-weight:600">sign in</a> with your credentials.';
+    }
+    successEl.classList.add('show');
+
+  } catch (err) {
+    errEl.textContent = 'Connection error. Please try again.';
+    errEl.classList.add('show');
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-user-plus" style="margin-right:.4rem"></i> Request Access';
+  }
+}
+</script>
+</body>
+</html>
