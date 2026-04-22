@@ -138,14 +138,6 @@
           ]
         },
         {
-          "name": "Joanne Reader",
-          "role": "Finance Manager",
-          "bio": [
-            "Joanne is a qualified accountant who has operated in client accounting roles and in-house finance management roles. Joanne has a wealth of experience in Payroll, bookkeeping and VAT gained through her previous roles, including previous corporate services experience with Jordans.",
-            "Joanne is a dedicated member of the team and always on hand to support clients in respect of their finance, payroll, bookkeeping and VAT queries."
-          ]
-        },
-        {
           "name": "Sarah Youll",
           "role": "Accounting & Tax Advisory",
           "bio": [
@@ -154,12 +146,28 @@
           ]
         },
         {
+          "name": "Gurpreet Singh",
+          "role": "HR Consultancy",
+          "bio": [
+            "Gurpreet is a strategic HR leader and trusted advisor who works closely with founders, executives, and leadership teams across high-growth and international businesses. With experience spanning enterprise technology, SaaS, and private equity-backed environments, she focuses on building practical, scalable people strategies that drive performance, engagement, and long-term growth.",
+            "She brings a strong balance of strategic thinking and hands-on delivery, with a commercial and pragmatic approach."
+          ]
+        },
+        {
           "name": "Martin Palmer",
-          "role": "Consultant",
+          "role": "Consultant, Governance",
           "bio": [
             "Martin has worked in the UK and international trust and corporate services sector for nearly 40 years.",
             "He has a law degree from Nottingham University, and in 2012 was awarded the Advanced Diploma in International Taxation from the UK Chartered Institute of Taxation.",
             "He has spoken and written widely on corporate law and international tax matters since the mid 1990's. His written output includes articles for the Journal of International Tax Trust & Corporate Planning and a number of the Special Supplements of the well known legal textbook Gore Browne on Companies. He has written a book entitled 'UK Companies: Tax Advantages for International Business' now in its 5th Edition, published by Lexis Nexis."
+          ]
+        },
+        {
+          "name": "Joanne Reader",
+          "role": "Finance Manager",
+          "bio": [
+            "Joanne is a qualified accountant who has operated in client accounting roles and in-house finance management roles. Joanne has a wealth of experience in Payroll, bookkeeping and VAT gained through her previous roles, including previous corporate services experience with Jordans.",
+            "Joanne is a dedicated member of the team and always on hand to support clients in respect of their finance, payroll, bookkeeping and VAT queries."
           ]
         }
       ]
