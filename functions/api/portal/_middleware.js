@@ -26,10 +26,7 @@ export async function onRequest(context) {
 
   const kv = context.env.PORTAL_KV;
   if (!kv) {
-    return new Response(JSON.stringify({ error: 'Not configured' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return context.next();
   }
 
   const session = await getSession(context.request, kv);

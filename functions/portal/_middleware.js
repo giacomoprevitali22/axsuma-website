@@ -35,7 +35,8 @@ export async function onRequest(context) {
 
   const kv = context.env.PORTAL_KV;
   if (!kv) {
-    return Response.redirect(new URL('/portal/login.html', url.origin), 302);
+    // KV not configured yet — allow access without auth
+    return context.next();
   }
 
   const session = await getSession(context.request, kv);
