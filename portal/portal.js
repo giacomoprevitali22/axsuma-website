@@ -1,5 +1,19 @@
 /* ===== AXSUMA CLIENT PORTAL — Shared JS ===== */
 
+/* -- Auth Check: redirect to login if no session cookie -- */
+(function() {
+  // Skip auth check on login and register pages
+  var path = window.location.pathname;
+  if (path.indexOf('login') !== -1 || path.indexOf('register') !== -1) return;
+  // Check for portal_session cookie
+  var hasSession = document.cookie.split(';').some(function(c) {
+    return c.trim().indexOf('portal_session=') === 0;
+  });
+  if (!hasSession) {
+    window.location.href = '/portal/login.html';
+  }
+})();
+
 /* -- Repeatable Sections -- */
 function addRepeatable(btnEl, templateId, containerId) {
   var container = document.getElementById(containerId);
