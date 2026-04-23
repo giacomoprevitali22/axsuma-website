@@ -90,9 +90,8 @@
         <!-- OVERSEAS ENTITY -->
         <div class="form-section">
           <h3 class="form-section-title"><i class="fas fa-globe"></i> Part 2 &mdash; Overseas Entity Details</h3>
-          <div class="form-row">
+          <div class="form-row full">
             <div class="form-group"><label>Name of Overseas Entity <span class="req">*</span></label><input type="text" name="entity_name" required></div>
-            <div class="form-group"><label>Already on ROE? (OE ID if yes)</label><input type="text" name="oe_id" placeholder="OE..."></div>
           </div>
           <div class="form-row">
             <div class="form-group"><label>Country of Incorporation <span class="req">*</span></label><input type="text" name="entity_country" required></div>
@@ -114,38 +113,164 @@
         <!-- BENEFICIAL OWNERS -->
         <div class="form-section">
           <h3 class="form-section-title"><i class="fas fa-users"></i> Part 3 &mdash; Registrable Beneficial Owners</h3>
-          <p class="form-section-desc">Provide details of registrable beneficial owners. If the entity has no registrable beneficial owners, provide Managing Officer details instead.</p>
-          <div class="notice notice--info"><i class="fas fa-info-circle"></i> For complex structures with multiple beneficial owners (individuals, corporates, or trusts), our team will contact you to collect the complete details after this initial submission.</div>
+          <p class="form-section-desc">Select the type of beneficial owner and provide the required details. If the entity has no registrable beneficial owners, select "No Beneficial Owner" and provide Managing Officer details.</p>
 
           <div class="form-row">
             <div class="form-group"><label>Beneficial Owner Type <span class="req">*</span></label>
-              <select name="bo_type" required>
+              <select name="bo_type" id="bo_type" required onchange="showBOFields(this.value)">
                 <option value="">Select...</option>
                 <option value="individual">Individual</option>
                 <option value="corporate">Corporate Entity</option>
-                <option value="trust">Trustee of a Trust</option>
-                <option value="government">Government/Public Authority</option>
-                <option value="none">No Registrable Beneficial Owner</option>
+                <option value="government">Government / Public Authority</option>
+                <option value="none">No Beneficial Owner (Managing Officers)</option>
               </select>
             </div>
-            <div class="form-group"><label>Number of Beneficial Owners</label><input type="number" name="bo_count" min="0" value="1"></div>
           </div>
 
-          <p style="font-size:.82rem;font-weight:600;color:var(--dark);margin:.8rem 0 .4rem">Primary Beneficial Owner Details</p>
-          <div class="form-row">
-            <div class="form-group"><label>Full Name / Company Name <span class="req">*</span></label><input type="text" name="bo_name" required></div>
-            <div class="form-group"><label>Date of Birth / Date became BO</label><input type="date" name="bo_dob"></div>
+          <!-- INDIVIDUAL BO -->
+          <div id="bo_individual" class="bo-panel" style="display:none">
+            <div id="bo-individual-container">
+              <div class="repeatable">
+                <div class="repeatable-header"><h4>Individual Beneficial Owner #1</h4></div>
+                <div class="form-row">
+                  <div class="form-group"><label>First Name(s) <span class="req">*</span></label><input type="text" name="bo_ind_0_firstname"></div>
+                  <div class="form-group"><label>Last Name <span class="req">*</span></label><input type="text" name="bo_ind_0_lastname"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="bo_ind_0_dob"></div>
+                  <div class="form-group"><label>Nationality <span class="req">*</span></label><input type="text" name="bo_ind_0_nationality"></div>
+                </div>
+                <div class="form-row full"><div class="form-group"><label>Residential Address <span class="req">*</span> <span class="hint">This address will be shown on the public register unless an alternative correspondence address is provided below</span></label><input type="text" name="bo_ind_0_address"></div></div>
+                <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="bo_ind_0_correspondence"></div></div>
+                <div class="form-row full"><div class="form-group"><label>Date they became a beneficial owner of the Overseas Entity (DD/MM/YYYY) <span class="req">*</span></label><input type="date" name="bo_ind_0_became_bo_date"></div></div>
+                <p style="font-size:.82rem;font-weight:600;color:var(--dark);margin:.8rem 0 .4rem">Nature of Control <span style="font-weight:400;color:var(--mid)">(tick all that apply)</span></p>
+                <div class="form-check"><input type="checkbox" id="bo_ind_0_nc1" name="bo_ind_0_nature" value="shares_25"><label for="bo_ind_0_nc1">Holds directly or indirectly, more than 25% of the shares in the entity</label></div>
+                <div class="form-check"><input type="checkbox" id="bo_ind_0_nc2" name="bo_ind_0_nature" value="voting_25"><label for="bo_ind_0_nc2">Holds, directly or indirectly, more than 25% of the voting rights in the entity</label></div>
+                <div class="form-check"><input type="checkbox" id="bo_ind_0_nc3" name="bo_ind_0_nature" value="appoint_directors"><label for="bo_ind_0_nc3">Holds the right, directly or indirectly, to appoint or remove a majority of the board of directors of the entity</label></div>
+                <div class="form-check"><input type="checkbox" id="bo_ind_0_nc4" name="bo_ind_0_nature" value="significant_influence"><label for="bo_ind_0_nc4">Has the right to exercise, or actually exercises, significant influence or control over the entity</label></div>
+              </div>
+            </div>
+            <button type="button" class="btn-add" onclick="addBOIndividual()"><i class="fas fa-plus"></i> Add Another Individual Beneficial Owner</button>
           </div>
-          <div class="form-row">
-            <div class="form-group"><label>Nationality / Country of Incorporation</label><input type="text" name="bo_nationality"></div>
-            <div class="form-group"><label>Residential / Registered Office Address</label><input type="text" name="bo_address"></div>
+
+          <!-- CORPORATE BO -->
+          <div id="bo_corporate" class="bo-panel" style="display:none">
+            <div id="bo-corporate-container">
+              <div class="repeatable">
+                <div class="repeatable-header"><h4>Corporate Beneficial Owner #1</h4></div>
+                <div class="form-row full"><div class="form-group"><label>Company Name <span class="req">*</span></label><input type="text" name="bo_corp_0_name"></div></div>
+                <div class="form-row full"><div class="form-group"><label>Principal or Registered Office Address <span class="req">*</span></label><input type="text" name="bo_corp_0_address"></div></div>
+                <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="bo_corp_0_correspondence"></div></div>
+                <div class="form-row">
+                  <div class="form-group"><label>Legal Form <span class="req">*</span></label><input type="text" name="bo_corp_0_legal_form"></div>
+                  <div class="form-group"><label>Governing Law <span class="req">*</span></label><input type="text" name="bo_corp_0_governing_law"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>Registered on a public register?</label><select name="bo_corp_0_public_register"><option value="no">No</option><option value="yes">Yes</option></select></div>
+                  <div class="form-group"><label>Name of public register (incl. jurisdiction)</label><input type="text" name="bo_corp_0_register_name"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>Entity Registration Number</label><input type="text" name="bo_corp_0_reg_number"></div>
+                  <div class="form-group"><label>Date became beneficial owner (DD/MM/YYYY) <span class="req">*</span></label><input type="date" name="bo_corp_0_became_bo_date"></div>
+                </div>
+                <p style="font-size:.82rem;font-weight:600;color:var(--dark);margin:.8rem 0 .4rem">Nature of Control <span style="font-weight:400;color:var(--mid)">(tick all that apply)</span></p>
+                <div class="form-check"><input type="checkbox" id="bo_corp_0_nc1" name="bo_corp_0_nature" value="shares_25"><label for="bo_corp_0_nc1">Holds directly or indirectly, more than 25% of the shares in the entity</label></div>
+                <div class="form-check"><input type="checkbox" id="bo_corp_0_nc2" name="bo_corp_0_nature" value="voting_25"><label for="bo_corp_0_nc2">Holds, directly or indirectly, more than 25% of the voting rights in the entity</label></div>
+                <div class="form-check"><input type="checkbox" id="bo_corp_0_nc3" name="bo_corp_0_nature" value="appoint_directors"><label for="bo_corp_0_nc3">Holds the right, directly or indirectly, to appoint or remove a majority of the board of directors of the entity</label></div>
+                <div class="form-check"><input type="checkbox" id="bo_corp_0_nc4" name="bo_corp_0_nature" value="significant_influence"><label for="bo_corp_0_nc4">Has the right to exercise, or actually exercises, significant influence or control over the entity</label></div>
+              </div>
+            </div>
+            <button type="button" class="btn-add" onclick="addBOCorporate()"><i class="fas fa-plus"></i> Add Another Corporate Beneficial Owner</button>
           </div>
-          <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="bo_correspondence"></div></div>
-          <p style="font-size:.82rem;font-weight:600;color:var(--dark);margin:.8rem 0 .4rem">Nature of Control</p>
-          <div class="form-check"><input type="checkbox" id="nc1" name="nature_of_control" value="shares_25"><label for="nc1">Holds directly/indirectly &gt;25% of shares</label></div>
-          <div class="form-check"><input type="checkbox" id="nc2" name="nature_of_control" value="voting_25"><label for="nc2">Holds directly/indirectly &gt;25% of voting rights</label></div>
-          <div class="form-check"><input type="checkbox" id="nc3" name="nature_of_control" value="appoint_directors"><label for="nc3">Right to appoint/remove majority of board of directors</label></div>
-          <div class="form-check"><input type="checkbox" id="nc4" name="nature_of_control" value="significant_influence"><label for="nc4">Right to exercise significant influence or control</label></div>
+
+          <!-- GOVERNMENT BO -->
+          <div id="bo_government" class="bo-panel" style="display:none">
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Government / Public Authority</h4></div>
+              <div class="form-row full"><div class="form-group"><label>Name of the Government or Public Authority <span class="req">*</span></label><input type="text" name="bo_gov_name"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Principal or Registered Office Address <span class="req">*</span></label><input type="text" name="bo_gov_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="bo_gov_correspondence"></div></div>
+              <div class="form-row">
+                <div class="form-group"><label>Legal Form</label><input type="text" name="bo_gov_legal_form"></div>
+                <div class="form-group"><label>Governing Law</label><input type="text" name="bo_gov_governing_law"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Registered on a public register?</label><select name="bo_gov_public_register"><option value="no">No</option><option value="yes">Yes</option></select></div>
+                <div class="form-group"><label>Name of public register (incl. jurisdiction)</label><input type="text" name="bo_gov_register_name"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Entity Registration Number</label><input type="text" name="bo_gov_reg_number"></div>
+                <div class="form-group"><label>Date became beneficial owner (DD/MM/YYYY) <span class="req">*</span></label><input type="date" name="bo_gov_became_bo_date"></div>
+              </div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--dark);margin:.8rem 0 .4rem">Nature of Control <span style="font-weight:400;color:var(--mid)">(tick all that apply)</span></p>
+              <div class="form-check"><input type="checkbox" id="bo_gov_nc1" name="bo_gov_nature" value="shares_25"><label for="bo_gov_nc1">Holds directly or indirectly, more than 25% of the shares in the entity</label></div>
+              <div class="form-check"><input type="checkbox" id="bo_gov_nc2" name="bo_gov_nature" value="voting_25"><label for="bo_gov_nc2">Holds, directly or indirectly, more than 25% of the voting rights in the entity</label></div>
+              <div class="form-check"><input type="checkbox" id="bo_gov_nc3" name="bo_gov_nature" value="appoint_directors"><label for="bo_gov_nc3">Holds the right, directly or indirectly, to appoint or remove a majority of the board of directors of the entity</label></div>
+              <div class="form-check"><input type="checkbox" id="bo_gov_nc4" name="bo_gov_nature" value="significant_influence"><label for="bo_gov_nc4">Has the right to exercise, or actually exercises, significant influence or control over the entity</label></div>
+            </div>
+          </div>
+
+          <!-- NO BO — MANAGING OFFICERS -->
+          <div id="bo_none" class="bo-panel" style="display:none">
+            <div class="notice notice--info" style="margin-bottom:1rem"><i class="fas fa-info-circle"></i> If the overseas entity has no registrable beneficial owners, please provide details of the Managing Officers. For trust structures, please submit an enquiry and we will support you with our manual process.</div>
+            <div class="form-row">
+              <div class="form-group"><label>Is the managing officer an individual or corporate entity? <span class="req">*</span></label>
+                <select name="mo_type" id="mo_type" onchange="showMOFields(this.value)">
+                  <option value="">Select...</option>
+                  <option value="individual">Individual</option>
+                  <option value="corporate">Corporate Entity</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- INDIVIDUAL MO -->
+            <div id="mo_individual" style="display:none">
+              <div id="mo-individual-container">
+                <div class="repeatable">
+                  <div class="repeatable-header"><h4>Managing Officer #1</h4></div>
+                  <div class="form-row">
+                    <div class="form-group"><label>First Name(s) <span class="req">*</span></label><input type="text" name="mo_ind_0_firstname"></div>
+                    <div class="form-group"><label>Last Name <span class="req">*</span></label><input type="text" name="mo_ind_0_lastname"></div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group"><label>Date of Birth</label><input type="date" name="mo_ind_0_dob"></div>
+                    <div class="form-group"><label>Nationality</label><input type="text" name="mo_ind_0_nationality"></div>
+                  </div>
+                  <div class="form-row full"><div class="form-group"><label>Residential Address <span class="hint">This address will be shown on the public register unless an alternative correspondence address is provided below</span></label><input type="text" name="mo_ind_0_address"></div></div>
+                  <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="mo_ind_0_correspondence"></div></div>
+                  <div class="form-row full"><div class="form-group"><label>Occupation</label><input type="text" name="mo_ind_0_occupation"></div></div>
+                </div>
+              </div>
+              <button type="button" class="btn-add" onclick="addMOIndividual()"><i class="fas fa-plus"></i> Add Another Managing Officer</button>
+            </div>
+
+            <!-- CORPORATE MO -->
+            <div id="mo_corporate" style="display:none">
+              <div id="mo-corporate-container">
+                <div class="repeatable">
+                  <div class="repeatable-header"><h4>Corporate Managing Officer #1</h4></div>
+                  <div class="form-row full"><div class="form-group"><label>Company Name <span class="req">*</span></label><input type="text" name="mo_corp_0_name"></div></div>
+                  <div class="form-row full"><div class="form-group"><label>Principal or Registered Office Address</label><input type="text" name="mo_corp_0_address"></div></div>
+                  <div class="form-row full"><div class="form-group"><label>Correspondence Address</label><input type="text" name="mo_corp_0_correspondence"></div></div>
+                  <div class="form-row">
+                    <div class="form-group"><label>Legal Form</label><input type="text" name="mo_corp_0_legal_form"></div>
+                    <div class="form-group"><label>Governing Law</label><input type="text" name="mo_corp_0_governing_law"></div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group"><label>Registered on a public register?</label><select name="mo_corp_0_public_register"><option value="no">No</option><option value="yes">Yes</option></select></div>
+                    <div class="form-group"><label>Name of register (incl. jurisdiction)</label><input type="text" name="mo_corp_0_register_name"></div>
+                  </div>
+                  <div class="form-row full"><div class="form-group"><label>Registration Number</label><input type="text" name="mo_corp_0_reg_number"></div></div>
+                  <div class="form-row full"><div class="form-group"><label>Role and responsibilities in relation to the entity</label><textarea name="mo_corp_0_role" rows="2"></textarea></div></div>
+                  <div class="form-row">
+                    <div class="form-group"><label>Contact Name</label><input type="text" name="mo_corp_0_contact_name"></div>
+                    <div class="form-group"><label>Contact Email</label><input type="email" name="mo_corp_0_contact_email"></div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn-add" onclick="addMOCorporate()"><i class="fas fa-plus"></i> Add Another Corporate Managing Officer</button>
+            </div>
+          </div>
 
           <div class="form-row full" style="margin-top:1rem"><div class="form-group"><label>Protected information? <span class="hint">Names of any BOs/MOs with protected information at Companies House</span></label><textarea name="protected_info" rows="2"></textarea></div></div>
         </div>
@@ -282,6 +407,71 @@ function switchType(type, el) {
   document.querySelectorAll('.form-panel').forEach(function(p){p.classList.remove('active')});
   el.classList.add('active');
   document.getElementById('panel-'+type).classList.add('active');
+}
+</script>
+<script>
+function showBOFields(type) {
+  document.querySelectorAll('.bo-panel').forEach(function(p) { p.style.display = 'none'; });
+  if (type && document.getElementById('bo_' + type)) {
+    document.getElementById('bo_' + type).style.display = 'block';
+  }
+}
+function showMOFields(type) {
+  document.getElementById('mo_individual').style.display = type === 'individual' ? 'block' : 'none';
+  document.getElementById('mo_corporate').style.display = type === 'corporate' ? 'block' : 'none';
+}
+var boIndCount = 1, boCorpCount = 1, moIndCount = 1, moCorpCount = 1;
+function addBOIndividual() {
+  var c = document.getElementById('bo-individual-container');
+  var first = c.querySelector('.repeatable').cloneNode(true);
+  first.querySelector('h4').textContent = 'Individual Beneficial Owner #' + (++boIndCount);
+  first.querySelectorAll('input,select,textarea').forEach(function(el) {
+    el.name = el.name.replace(/_0_/, '_' + (boIndCount - 1) + '_');
+    el.value = '';
+    if (el.type === 'checkbox') { el.checked = false; el.id = el.id.replace(/_0_/, '_' + (boIndCount - 1) + '_'); }
+  });
+  first.querySelectorAll('label[for]').forEach(function(l) { l.setAttribute('for', l.getAttribute('for').replace(/_0_/, '_' + (boIndCount - 1) + '_')); });
+  var hdr = first.querySelector('.repeatable-header');
+  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="this.closest(\'.repeatable\').remove()"><i class="fas fa-times"></i> Remove</button>');
+  c.appendChild(first);
+}
+function addBOCorporate() {
+  var c = document.getElementById('bo-corporate-container');
+  var first = c.querySelector('.repeatable').cloneNode(true);
+  first.querySelector('h4').textContent = 'Corporate Beneficial Owner #' + (++boCorpCount);
+  first.querySelectorAll('input,select,textarea').forEach(function(el) {
+    el.name = el.name.replace(/_0_/, '_' + (boCorpCount - 1) + '_');
+    el.value = '';
+    if (el.type === 'checkbox') { el.checked = false; el.id = el.id.replace(/_0_/, '_' + (boCorpCount - 1) + '_'); }
+  });
+  first.querySelectorAll('label[for]').forEach(function(l) { l.setAttribute('for', l.getAttribute('for').replace(/_0_/, '_' + (boCorpCount - 1) + '_')); });
+  var hdr = first.querySelector('.repeatable-header');
+  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="this.closest(\'.repeatable\').remove()"><i class="fas fa-times"></i> Remove</button>');
+  c.appendChild(first);
+}
+function addMOIndividual() {
+  var c = document.getElementById('mo-individual-container');
+  var first = c.querySelector('.repeatable').cloneNode(true);
+  first.querySelector('h4').textContent = 'Managing Officer #' + (++moIndCount);
+  first.querySelectorAll('input,textarea').forEach(function(el) {
+    el.name = el.name.replace(/_0_/, '_' + (moIndCount - 1) + '_');
+    el.value = '';
+  });
+  var hdr = first.querySelector('.repeatable-header');
+  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="this.closest(\'.repeatable\').remove()"><i class="fas fa-times"></i> Remove</button>');
+  c.appendChild(first);
+}
+function addMOCorporate() {
+  var c = document.getElementById('mo-corporate-container');
+  var first = c.querySelector('.repeatable').cloneNode(true);
+  first.querySelector('h4').textContent = 'Corporate Managing Officer #' + (++moCorpCount);
+  first.querySelectorAll('input,select,textarea').forEach(function(el) {
+    el.name = el.name.replace(/_0_/, '_' + (moCorpCount - 1) + '_');
+    el.value = '';
+  });
+  var hdr = first.querySelector('.repeatable-header');
+  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="this.closest(\'.repeatable\').remove()"><i class="fas fa-times"></i> Remove</button>');
+  c.appendChild(first);
 }
 </script>
 <script>async function doLogout(){try{await fetch("/api/auth/logout",{method:"POST"})}catch(e){}window.location.href="/portal/login.html"}</script>

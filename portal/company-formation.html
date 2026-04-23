@@ -111,7 +111,11 @@
               <div id="ltd_ch_results" class="ch-results"></div>
             </div>
           </div>
-          <div class="form-row full">
+          <div class="form-check" style="margin-top:.8rem">
+            <input type="checkbox" id="cosec_ro_sub" name="cosec_ro_subscription" value="yes" onchange="toggleCoSecRO(this.checked)">
+            <label for="cosec_ro_sub">Subscribe to Axsuma's Full Company Secretarial &amp; Registered Office Service</label>
+          </div>
+          <div class="form-row full" id="ltd_ro_section">
             <div class="form-group"><label>Registered Office <label class="hint">Leave blank to use Axsuma's London address</label></label><input type="text" name="registered_office"></div>
           </div>
           <div class="form-row">
@@ -139,7 +143,7 @@
         </div>
 
         <!-- COMPANY SECRETARY (Optional) -->
-        <div class="form-section">
+        <div class="form-section" id="ltd_cosec_section">
           <h3 class="form-section-title"><i class="fas fa-user-shield"></i> Company Secretary <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
           <p class="form-section-desc">A company secretary is not required but can be appointed if you wish.</p>
           <div class="form-row triple">
@@ -187,6 +191,15 @@
                 <div class="form-group"><label>Nationality <span class="req">*</span></label><input type="text" name="dir_0_nationality" required></div>
               </div>
               <div class="form-row full"><div class="form-group"><label>Occupation</label><input type="text" name="dir_0_occupation"></div></div>
+              <div class="form-row">
+                <div class="form-group"><label>Unique Identifier Reference <span class="hint">Companies House unique reference code</span></label><input type="text" name="dir_0_unique_id" placeholder="e.g. Y1234567890"></div>
+                <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
+                  <div class="form-check" style="margin-bottom:0">
+                    <input type="checkbox" id="dir_0_idv_needed" name="dir_0_idv_needed" value="yes" onchange="showIdvNotice(this)">
+                    <label for="dir_0_idv_needed" style="font-size:.8rem">I don't have a unique identifier — please conduct Identity Verification (IDV)</label>
+                  </div>
+                </div>
+              </div>
               <div class="form-row full"><div class="form-group"><label>Service Address <span class="hint">Shown on public record. Leave blank if same as residential.</span></label><input type="text" name="dir_0_service_address"></div></div>
               <div class="form-row full"><div class="form-group"><label>Residential Address <span class="req">*</span></label><input type="text" name="dir_0_residential_address" required></div></div>
               <div class="form-row triple">
@@ -224,6 +237,15 @@
                 <div class="form-group"><label>Nationality</label><input type="text" name="dir___IDX___nationality"></div>
               </div>
               <div class="form-row full"><div class="form-group"><label>Occupation</label><input type="text" name="dir___IDX___occupation"></div></div>
+              <div class="form-row">
+                <div class="form-group"><label>Unique Identifier Reference <span class="hint">Companies House unique reference code</span></label><input type="text" name="dir___IDX___unique_id" placeholder="e.g. Y1234567890"></div>
+                <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
+                  <div class="form-check" style="margin-bottom:0">
+                    <input type="checkbox" id="dir___IDX___idv_needed" name="dir___IDX___idv_needed" value="yes" onchange="showIdvNotice(this)">
+                    <label for="dir___IDX___idv_needed" style="font-size:.8rem">I don't have a unique identifier — please conduct Identity Verification (IDV)</label>
+                  </div>
+                </div>
+              </div>
               <div class="form-row full"><div class="form-group"><label>Service Address</label><input type="text" name="dir___IDX___service_address"></div></div>
               <div class="form-row full"><div class="form-group"><label>Residential Address</label><input type="text" name="dir___IDX___residential_address"></div></div>
               <div class="form-row triple">
@@ -250,9 +272,78 @@
           <button type="button" class="btn-add" onclick="addRepeatable(this,'tpl-director','directors-container')"><i class="fas fa-plus"></i> Add Another Director</button>
         </div>
 
+        <!-- SHAREHOLDER ONLY -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-user-tag"></i> Shareholder Only <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
+          <p class="form-section-desc">Complete if a natural person is a shareholder but not a director or secretary.</p>
+          <div id="shareholders-only-container">
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Shareholder #1</h4></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Title</label><select name="sh_0_title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+                <div class="form-group"><label>First Forename(s)</label><input type="text" name="sh_0_forenames"></div>
+                <div class="form-group"><label>Surname</label><input type="text" name="sh_0_surname"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Service Address <span class="hint">Shown on public record</span></label><input type="text" name="sh_0_service_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Residential Address</label><input type="text" name="sh_0_residential_address"></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Town</label><input type="text" name="sh_0_town"></div>
+                <div class="form-group"><label>Post Code</label><input type="text" name="sh_0_postcode"></div>
+                <div class="form-group"><label>Country (if not UK)</label><input type="text" name="sh_0_country"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Total Shares Allotted &amp; Class</label><input type="text" name="sh_0_shares"></div></div>
+            </div>
+          </div>
+          <template id="tpl-shareholder">
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Shareholder #N</h4><button type="button" class="btn-remove" onclick="removeRepeatable(this)"><i class="fas fa-times"></i> Remove</button></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Title</label><select name="sh___IDX___title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
+                <div class="form-group"><label>First Forename(s)</label><input type="text" name="sh___IDX___forenames"></div>
+                <div class="form-group"><label>Surname</label><input type="text" name="sh___IDX___surname"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Service Address</label><input type="text" name="sh___IDX___service_address"></div></div>
+              <div class="form-row full"><div class="form-group"><label>Residential Address</label><input type="text" name="sh___IDX___residential_address"></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>Town</label><input type="text" name="sh___IDX___town"></div>
+                <div class="form-group"><label>Post Code</label><input type="text" name="sh___IDX___postcode"></div>
+                <div class="form-group"><label>Country</label><input type="text" name="sh___IDX___country"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Shares &amp; Class</label><input type="text" name="sh___IDX___shares"></div></div>
+            </div>
+          </template>
+          <button type="button" class="btn-add" onclick="addRepeatable(this,'tpl-shareholder','shareholders-only-container')"><i class="fas fa-plus"></i> Add Another Shareholder</button>
+        </div>
+
+        <!-- CORPORATE APPOINTMENT -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-building"></i> Corporate Appointment <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
+          <p class="form-section-desc">Complete if a corporate entity is being appointed as a director or secretary.</p>
+          <div class="form-row">
+            <div class="form-group"><label>Company Name</label><input type="text" name="corp_appt_name"></div>
+            <div class="form-group"><label>Company Number</label><input type="text" name="corp_appt_number"></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Registered Office Address</label><input type="text" name="corp_appt_address"></div></div>
+          <div class="form-row triple">
+            <div class="form-group"><label>Town</label><input type="text" name="corp_appt_town"></div>
+            <div class="form-group"><label>Post Code</label><input type="text" name="corp_appt_postcode"></div>
+            <div class="form-group"><label>Country</label><input type="text" name="corp_appt_country"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Appointment Type</label><select name="corp_appt_type"><option value="">Select...</option><option value="director">Director</option><option value="secretary">Secretary</option></select></div>
+            <div class="form-group"><label>Total Shares Allotted &amp; Class <span class="hint">If also a shareholder</span></label><input type="text" name="corp_appt_shares"></div>
+          </div>
+          <div class="notice notice--info"><i class="fas fa-info-circle"></i> For foreign corporate appointments, please also provide Registry Name, Legal Form, and Governing Law.</div>
+          <div class="form-row triple">
+            <div class="form-group"><label>Registry Name</label><input type="text" name="corp_appt_registry"></div>
+            <div class="form-group"><label>Legal Form</label><input type="text" name="corp_appt_legal_form"></div>
+            <div class="form-group"><label>Governing Law</label><input type="text" name="corp_appt_governing_law"></div>
+          </div>
+        </div>
+
         <!-- CORPORATE SHAREHOLDER (Optional) -->
         <div class="form-section">
-          <h3 class="form-section-title"><i class="fas fa-landmark"></i> Corporate Shareholder <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
+          <h3 class="form-section-title"><i class="fas fa-landmark"></i> Corporate Shareholder Only <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
           <p class="form-section-desc">Complete only if a corporate entity is a shareholder but not a director or secretary.</p>
           <div class="form-row">
             <div class="form-group">
@@ -278,25 +369,10 @@
           </div>
         </div>
 
-        <!-- HMRC REGISTRATION -->
+        <!-- ADDITIONAL SERVICES -->
         <div class="form-section">
-          <h3 class="form-section-title"><i class="fas fa-receipt"></i> HMRC Registration</h3>
-          <div class="form-row">
-            <div class="form-group"><label>Accounting Period Start Date</label><input type="date" name="hmrc_period_start"></div>
-            <div class="form-group"><label>First Accounts Prepared To</label><input type="date" name="hmrc_accounts_date"></div>
-          </div>
-          <div class="form-row full"><div class="form-group"><label>Principal Place of Business Address</label><input type="text" name="hmrc_business_address"></div></div>
-          <div class="form-row triple">
-            <div class="form-group"><label>Post Town</label><input type="text" name="hmrc_town"></div>
-            <div class="form-group"><label>County</label><input type="text" name="hmrc_county"></div>
-            <div class="form-group"><label>Postcode</label><input type="text" name="hmrc_postcode"></div>
-          </div>
-        </div>
-
-        <!-- ADDITIONAL PRODUCTS -->
-        <div class="form-section">
-          <h3 class="form-section-title"><i class="fas fa-plus-circle"></i> Additional Products <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
-          <p class="form-section-desc">Formation includes emailed certificate of incorporation, Articles of Association and draft minutes. Prices exclude VAT.</p>
+          <h3 class="form-section-title"><i class="fas fa-plus-circle"></i> Additional Services <span style="font-weight:300;font-size:.82rem;color:var(--mid)">(Optional)</span></h3>
+          <p class="form-section-desc">Formation includes emailed certificate of incorporation, Articles of Association and draft minutes. Tick to request additional services.</p>
           <div class="form-check"><input type="checkbox" id="opt_articles" name="opt_hard_articles" value="yes"><label for="opt_articles">Hard Bound Copies of Articles (&pound;5.00 each)</label></div>
           <div class="form-check"><input type="checkbox" id="opt_binder_slip" name="opt_binder_slipcover" value="yes"><label for="opt_binder_slip">Loose-Leaf Ring Binder Register with Slipcover (&pound;40.00)</label></div>
           <div class="form-check"><input type="checkbox" id="opt_binder" name="opt_binder" value="yes"><label for="opt_binder">Loose-Leaf Ring Binder Register (&pound;30.00)</label></div>
@@ -304,15 +380,26 @@
           <div class="form-check"><input type="checkbox" id="opt_stat_print" name="opt_stat_registers_print" value="yes"><label for="opt_stat_print">Completion of Statutory Registers &mdash; Printed Copy (&pound;30.00)</label></div>
           <div class="form-check"><input type="checkbox" id="opt_stat_pdf" name="opt_stat_registers_pdf" value="yes"><label for="opt_stat_pdf">Completion of Statutory Registers &mdash; PDF Copy (&pound;20.00)</label></div>
           <div class="form-check"><input type="checkbox" id="opt_cert" name="opt_printed_certificate" value="yes" checked><label for="opt_cert">Printed Certificate &mdash; Free</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_tax" name="opt_tax_services" value="yes"><label for="opt_tax">Tax Advisory Services</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_accounting" name="opt_accounting" value="yes"><label for="opt_accounting">Accounting Services</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_vat" name="opt_vat_registration" value="yes"><label for="opt_vat">VAT Registration</label></div>
+          <div class="form-check"><input type="checkbox" id="opt_payroll" name="opt_payroll" value="yes"><label for="opt_payroll">Payroll &amp; HR Services</label></div>
         </div>
 
-        <!-- AML -->
+        <!-- DIRECTORS CONSENT -->
         <div class="form-section">
-          <h3 class="form-section-title"><i class="fas fa-shield-alt"></i> Money Laundering Regulations</h3>
-          <div class="notice notice--info"><i class="fas fa-info-circle"></i> Under Money Laundering Regulations, we are required to maintain due diligence on all customers. Regulated practices can rely on third-party reliance. Unregulated parties will require SmartSearch AML checks.</div>
+          <h3 class="form-section-title"><i class="fas fa-file-signature"></i> Directors Consent to Act and PSC Statements</h3>
+          <div class="notice notice--info" style="margin-bottom:1rem">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <p style="margin-bottom:.5rem">I/We, being the customer of Axsuma Corporate Services Limited placing this order, confirm that:</p>
+              <p style="margin-bottom:.5rem">I/We are authorised by the subscribers to the memorandum of association to deliver a statement to the Registrar of Companies on behalf of the subscribers that each person named as a director, as secretary or as one of the joint secretaries has consented to act in the relevant capacity; and</p>
+              <p>The required particulars of each individual named as a Person with Significant Control are included with the knowledge of that individual.</p>
+            </div>
+          </div>
           <div class="form-check">
-            <input type="checkbox" id="aml_regulated_ltd" name="aml_regulated" value="yes">
-            <label for="aml_regulated_ltd">Our practice is regulated under the Money Laundering Regulations</label>
+            <input type="checkbox" id="consent_confirm" name="directors_consent" value="yes" required>
+            <label for="consent_confirm">I confirm both of the above statements <span class="req">*</span></label>
           </div>
         </div>
 
@@ -320,6 +407,15 @@
         <div class="form-section">
           <h3 class="form-section-title"><i class="fas fa-comment-alt"></i> Additional Notes</h3>
           <div class="form-row full"><div class="form-group"><textarea name="notes" rows="3" placeholder="Any special instructions or requirements..."></textarea></div></div>
+        </div>
+
+        <!-- TERMS & CONDITIONS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-balance-scale"></i> Terms &amp; Conditions</h3>
+          <div class="form-check">
+            <input type="checkbox" id="accept_tc_ltd" name="accept_terms" value="yes" required>
+            <label for="accept_tc_ltd">I accept Axsuma's <a href="../standard-terms.html" target="_blank" style="color:var(--teal);text-decoration:underline">standard terms and conditions</a> <span class="req">*</span></label>
+          </div>
         </div>
 
         <div class="form-actions">
@@ -507,6 +603,21 @@ function switchType(type, el) {
   document.querySelectorAll('.form-panel').forEach(function(p){p.classList.remove('active')});
   el.classList.add('active');
   document.getElementById('panel-'+type).classList.add('active');
+}
+
+function toggleCoSecRO(checked) {
+  var ro = document.getElementById('ltd_ro_section');
+  var cs = document.getElementById('ltd_cosec_section');
+  if (ro) ro.style.display = checked ? 'none' : '';
+  if (cs) cs.style.display = checked ? 'none' : '';
+}
+
+function showIdvNotice(el) {
+  if (el.checked) {
+    if (confirm('Identity Verification (IDV) must be completed first. Would you like to be directed to our IDV order form?')) {
+      window.open('idv.html', '_blank');
+    }
+  }
 }
 </script>
 <script>

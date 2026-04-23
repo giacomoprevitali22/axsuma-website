@@ -25,7 +25,7 @@
 <header class="portal-header">
   <div class="container">
     <p class="portal-breadcrumb"><a href="index.html">Portal</a> &rsaquo; Identity Verification</p>
-    <h1>Identity Verification (ID&amp;V)</h1>
+    <h1>Identity Verification (IDV)</h1>
     <p>Companies House authorised identity verification as an ACSP.</p>
   </div>
 </header>
@@ -33,26 +33,183 @@
 <main class="form-page">
   <div class="container">
     <div class="form-card" style="max-width:720px">
-      <div class="notice notice--info" style="margin-bottom:1.5rem">
-        <i class="fas fa-info-circle"></i>
+
+      <!-- FEE DISPLAY -->
+      <div style="background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
         <div>
-          <p style="margin-bottom:.5rem"><strong>Identity verification is now a legal requirement.</strong></p>
-          <p>From 18 November 2026, all directors, LLP members, PSCs, and individuals filing on behalf of companies must verify their identity with Companies House. Axsuma is a Companies House Authorised Corporate Service Provider (ACSP).</p>
+          <p style="font-size:.95rem;font-weight:600;color:var(--dark);margin:0">Identity Verification Fee</p>
+          <p style="font-size:.82rem;color:var(--mid);margin:0">&pound;125 + VAT (&pound;150 inc VAT) per individual</p>
+        </div>
+        <div style="text-align:right">
+          <p style="font-size:1.3rem;font-weight:700;color:var(--teal);margin:0" id="idv_total">&pound;150.00</p>
+          <p style="font-size:.72rem;color:var(--mid);margin:0" id="idv_total_label">1 individual &middot; inc VAT</p>
         </div>
       </div>
 
-      <h3 class="form-section-title" style="margin-bottom:1rem"><i class="fas fa-id-card"></i> Start Your Verification</h3>
-      <p style="font-size:.9rem;color:var(--mid);line-height:1.7;margin-bottom:1.5rem">To begin the identity verification process, please provide details for each individual requiring verification using the form on our main website. Our team will guide you through each step.</p>
+      <form id="formIdv" class="form-card" style="box-shadow:none;border:none;padding:0" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'idv-order')">
 
-      <div style="display:flex;gap:1rem;flex-wrap:wrap">
-        <a href="../id-verification.html" class="btn btn-teal btn-lg" target="_blank"><i class="fas fa-external-link-alt"></i> Go to ID Verification Page</a>
-        <a href="index.html" class="btn btn-outline">Back to Portal</a>
-      </div>
+        <!-- INDIVIDUALS TO VERIFY -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-id-card"></i> Individuals to Verify</h3>
+          <p class="form-section-desc">Enter the details for each person requiring identity verification.</p>
+
+          <div id="idv-individuals-container">
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Individual #1</h4></div>
+              <div class="form-row">
+                <div class="form-group"><label>Full Name <span class="req">*</span></label><input type="text" name="idv_0_fullname" required></div>
+                <div class="form-group"><label>Email Address <span class="req">*</span> <span class="hint">For verification link</span></label><input type="email" name="idv_0_email" required></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="idv_0_dob" required></div>
+                <div class="form-group"><label>Nationality <span class="req">*</span></label><input type="text" name="idv_0_nationality" required></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Document Type <span class="req">*</span></label>
+                  <select name="idv_0_doctype" required>
+                    <option value="">Select...</option>
+                    <option value="passport">Passport</option>
+                    <option value="driving_license">Driving Licence</option>
+                    <option value="national_id">National ID Card</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group"><label>Country <span class="req">*</span></label><input type="text" name="idv_0_country" required></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Address <span class="req">*</span></label><input type="text" name="idv_0_address" required></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>City / Town <span class="req">*</span></label><input type="text" name="idv_0_city" required></div>
+                <div class="form-group"><label>Postcode <span class="req">*</span></label><input type="text" name="idv_0_postcode" required></div>
+                <div class="form-group"><label>Country of Residence</label><input type="text" name="idv_0_res_country"></div>
+              </div>
+            </div>
+          </div>
+
+          <template id="tpl-idv-individual">
+            <div class="repeatable">
+              <div class="repeatable-header"><h4>Individual #N</h4><button type="button" class="btn-remove" onclick="removeIdvIndividual(this)"><i class="fas fa-times"></i> Remove</button></div>
+              <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" name="idv___IDX___fullname"></div>
+                <div class="form-group"><label>Email Address <span class="hint">For verification link</span></label><input type="email" name="idv___IDX___email"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Date of Birth</label><input type="date" name="idv___IDX___dob"></div>
+                <div class="form-group"><label>Nationality</label><input type="text" name="idv___IDX___nationality"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Document Type</label>
+                  <select name="idv___IDX___doctype">
+                    <option value="">Select...</option>
+                    <option value="passport">Passport</option>
+                    <option value="driving_license">Driving Licence</option>
+                    <option value="national_id">National ID Card</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group"><label>Country</label><input type="text" name="idv___IDX___country"></div>
+              </div>
+              <div class="form-row full"><div class="form-group"><label>Address</label><input type="text" name="idv___IDX___address"></div></div>
+              <div class="form-row triple">
+                <div class="form-group"><label>City / Town</label><input type="text" name="idv___IDX___city"></div>
+                <div class="form-group"><label>Postcode</label><input type="text" name="idv___IDX___postcode"></div>
+                <div class="form-group"><label>Country of Residence</label><input type="text" name="idv___IDX___res_country"></div>
+              </div>
+            </div>
+          </template>
+
+          <button type="button" class="btn-add" onclick="addIdvIndividual()"><i class="fas fa-plus"></i> Add Another Individual</button>
+        </div>
+
+        <!-- INVOICE DETAILS -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-file-invoice"></i> Invoice Details</h3>
+          <p class="form-section-desc">Please provide details of who the receipted invoice should be issued to.</p>
+          <div class="form-row full"><div class="form-group"><label>Invoice Recipient Name <span class="req">*</span></label><input type="text" name="invoice_name" required></div></div>
+          <div class="form-row full"><div class="form-group"><label>Invoice Address <span class="req">*</span></label><input type="text" name="invoice_address" required></div></div>
+          <div class="form-row triple">
+            <div class="form-group"><label>City / Town <span class="req">*</span></label><input type="text" name="invoice_city" required></div>
+            <div class="form-group"><label>Postcode <span class="req">*</span></label><input type="text" name="invoice_postcode" required></div>
+            <div class="form-group"><label>Country <span class="req">*</span></label><input type="text" name="invoice_country" required></div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group"><label>Email for invoice contact <span class="req">*</span></label><input type="email" name="invoice_email" id="invoice_email" required></div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="invoice_email_same" name="invoice_email_same" value="yes" onchange="copyIdvEmail(this.checked)">
+            <label for="invoice_email_same">Same as email provided for the individual being verified</label>
+          </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-credit-card"></i> Payment</h3>
+          <div class="notice notice--info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <p style="margin:0">Payment will be collected securely via Stripe after submission. You will receive an invoice by email.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- T&Cs -->
+        <div class="form-section">
+          <h3 class="form-section-title"><i class="fas fa-balance-scale"></i> Terms &amp; Conditions</h3>
+          <div class="form-check">
+            <input type="checkbox" id="accept_idv_tc" name="accept_idv_terms" value="yes" required>
+            <label for="accept_idv_tc">I accept Axsuma's <a href="../idv-terms.html" target="_blank" style="color:var(--teal);text-decoration:underline">standard IDV terms and conditions</a> <span class="req">*</span></label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit &amp; Proceed to Payment</button>
+          <a href="index.html" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
     </div>
   </div>
 </main>
 
+<div id="successOverlay" class="success-overlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="success-card">
+    <div class="icon"><i class="fas fa-check"></i></div>
+    <h2>Order Submitted</h2>
+    <p>Your identity verification order has been received. You will receive a payment link and further instructions by email.</p>
+    <a href="index.html" class="btn btn-teal">Back to Portal</a>
+  </div>
+</div>
+
 <footer class="portal-footer"><div class="container"><p>&copy; 2026 Axsuma Ltd. <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../standard-terms.html">Terms</a></p></div></footer>
 <script>async function doLogout(){try{await fetch("/api/auth/logout",{method:"POST"})}catch(e){}window.location.href="/portal/login.html"}</script>
+<script src="portal.js"></script>
+<script>
+var idvCount = 1;
+function addIdvIndividual() {
+  var tpl = document.getElementById('tpl-idv-individual');
+  var container = document.getElementById('idv-individuals-container');
+  var clone = tpl.content.cloneNode(true);
+  var html = clone.firstElementChild.outerHTML.replace(/__IDX__/g, idvCount).replace('#N', '#' + (idvCount + 1));
+  container.insertAdjacentHTML('beforeend', html);
+  idvCount++;
+  updateIdvTotal();
+}
+function removeIdvIndividual(btn) {
+  btn.closest('.repeatable').remove();
+  idvCount--;
+  updateIdvTotal();
+}
+function updateIdvTotal() {
+  var count = document.querySelectorAll('#idv-individuals-container .repeatable').length;
+  var net = count * 125;
+  var total = count * 150;
+  document.getElementById('idv_total').textContent = '\u00A3' + total.toFixed(2);
+  document.getElementById('idv_total_label').textContent = count + ' individual' + (count !== 1 ? 's' : '') + ' \u00B7 inc VAT';
+}
+function copyIdvEmail(checked) {
+  if (checked) {
+    var src = document.querySelector('[name="idv_0_email"]');
+    if (src) document.getElementById('invoice_email').value = src.value;
+  }
+}
+</script>
 </body>
 </html>
