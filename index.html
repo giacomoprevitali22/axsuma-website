@@ -7,8 +7,6 @@
   <title>Axsuma — We Handle the Complexity</title>
   <meta name="description" content="Axsuma delivers premium corporate administration, governance, M&A support and accounting for international funds, multinational enterprises and private clients operating in the United Kingdom.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,11 +85,10 @@
     .hero p.lead{font-size:1.15rem;line-height:1.8;font-weight:400;margin-bottom:0;color:rgba(255,255,255,.85);max-width:600px;opacity:0;animation:fadeIn .8s .5s forwards;text-shadow:0 1px 4px rgba(0,0,0,.3)}
     /* hero-btns removed per Charlotte's feedback */
 
-    /* ===== PILLAR BOXES (2+3 layout) ===== */
+    /* ===== PILLAR BOXES (5 in a row) ===== */
     .services-section{padding:2.5rem 0;background:var(--white);flex:1}
-    .pillars-top{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-bottom:1.2rem}
-    .pillars-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-    .pillar-box{text-align:center;padding:3rem 2rem;border-radius:6px;background:var(--off-white);border:1px solid var(--border);transition:all .25s ease;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .pillars-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem}
+    .pillar-box{text-align:center;padding:2.2rem 1.2rem;border-radius:6px;background:var(--off-white);border:1px solid var(--border);transition:all .25s ease;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center}
     .pillar-box:hover{background:var(--teal);border-color:var(--teal)}
     .pillar-box h3{font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:.6rem;transition:color .25s}
     .pillar-box p{font-size:.88rem;color:var(--mid);line-height:1.7;margin:0;transition:color .25s}
@@ -230,8 +227,7 @@
       .about-grid,.lawfirms-grid{grid-template-columns:1fr;gap:2rem}
       .footer-grid{grid-template-columns:1fr 1fr}
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
-      .pillars-top{grid-template-columns:repeat(2,1fr)}
-      .pillars-bottom{grid-template-columns:repeat(3,1fr)}
+      .pillars-row{grid-template-columns:repeat(3,1fr)}
       .pillars-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:768px){
@@ -244,8 +240,7 @@
       .section{padding:3.5rem 0}
       .s-title{font-size:1.8rem}
       .why-grid,.sectors-grid,.insights-grid,.sol-3{grid-template-columns:1fr}
-      .pillars-top{grid-template-columns:1fr}
-      .pillars-bottom{grid-template-columns:1fr}
+      .pillars-row{grid-template-columns:1fr}
       .pillars-grid{grid-template-columns:1fr}
       /* Glassmorphism pillar boxes on mobile */
       .pillar-box{background:rgba(247,248,249,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.55);box-shadow:0 4px 24px rgba(0,89,74,.06),inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(255,255,255,.25)}
@@ -364,17 +359,11 @@
 <!-- THREE PILLARS -->
 <section class="services-section">
   <div class="container">
-    <div class="pillars-top">
+    <div class="pillars-row">
       <a href="about-hub.html" class="pillar-box">
         <h3>About Axsuma</h3>
         <p>Who we are, how we work, and the team behind every engagement.</p>
       </a>
-      <a href="insights.html" class="pillar-box">
-        <h3>Insights</h3>
-        <p>Expert perspectives on UK corporate administration and compliance.</p>
-      </a>
-    </div>
-    <div class="pillars-bottom">
       <a href="formation-structure.html" class="pillar-box">
         <h3>Formation &amp; Structure</h3>
         <p>Company formations, SPV &amp; holding companies, and professional directorships.</p>
@@ -386,6 +375,10 @@
       <a href="compliance-governance.html" class="pillar-box">
         <h3>Compliance &amp; Governance</h3>
         <p>Overseas entities, process agent, ID verification, and regulatory compliance.</p>
+      </a>
+      <a href="insights.html" class="pillar-box">
+        <h3>Insights</h3>
+        <p>Expert perspectives on UK corporate administration and compliance.</p>
       </a>
     </div>
   </div>
