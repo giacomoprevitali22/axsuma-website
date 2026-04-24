@@ -35,7 +35,7 @@
     ],
     "contact": {
       "title": "Let's Talk",
-      "body": "Our experts are always happy to talk. Please get in touch and we will connect you with the appropriate specialist and reply within two working days.",
+      "body": "Get in touch and we'll connect you with the right specialist. We typically respond within two working days.",
       "ctaText": "Contact Us"
     }
   },
@@ -263,9 +263,9 @@
     "overview": {
       "title": "Complete UK Company Formation Solutions",
       "paragraphs": [
-        "Axsuma provides a complete solution, whether you are seeking a straightforward private limited company incorporation or need additional support for a bespoke entity or complex SPV. We guide you through every stage of formation—from name availability verification through to post-incorporation compliance and tax registration.",
+        "Axsuma provides a complete company formation solution, whether you are seeking a straightforward private limited company incorporation or need additional support for a bespoke entity or complex SPV. We guide you through every stage of formation—from name availability verification through to post-incorporation and statutory compliance.",
         "We specialise in navigating the Companies House registration process, managing articles of association, establishing company governance, and ensuring you meet all statutory obligations from incorporation onwards. Our team has processed hundreds of incorporations, from straightforward single-director companies to complex multi-shareholder corporate structures.",
-        "Every company we form is registered with Companies House under the Companies Act 2006 and comes with proper documentation, statutory registers, and a clear governance framework tailored to your business needs."
+        "Every company Axsuma incorporate is registered with Companies House under the Companies Act 2006."
       ]
     },
     "services": [
@@ -273,27 +273,21 @@
         "title": "Private Limited Companies",
         "paragraphs": [
           "A private company limited by shares is the most common business structure in the UK, offering its owners limited liability protection. UK private limited companies are a popular vehicle for operational businesses as well as being commonly used as Holding Companies or SPVs for specific transactions.",
-          "When you incorporate with Axsuma, we handle every detail: from submitting your incorporation documents to Companies House through to delivering your completed incorporation package. The incorporation process begins with choosing a unique company name that complies with Companies House naming rules and is not already registered. We verify name availability, ensure compliance with the Sensitive Words List, and confirm trade mark clearance.",
-          "Your memorandum and articles of association are prepared bespoke to your structure, outlining shareholdings, director powers, shareholder rights, voting procedures, and dividend distributions in line with the Companies Act 2006. A company can be incorporated using the Model Articles or with Axsuma's standard Articles.",
-          "We prepare all required statutory documents including the application for incorporation (Form IN01), confirmation of the company secretary (if applicable), statement of initial officers, and statement of capital and initial shareholdings. Our incorporations include setup of statutory registers (members, directors, secretaries, charges, and persons with significant control), issuance of share certificates, and registration for corporation tax with HMRC. We ensure your company is fully tax-registered and ready for trading immediately upon incorporation."
+          "Axsuma can create a new UK Private Limited Company with their standard Articles of Association, the Model Articles or can use bespoke Articles provided by clients."
         ]
       },
       {
         "title": "Ready-Made Company Stock",
         "paragraphs": [
-          "For businesses that need to operate immediately, ready-made companies offer instant trading capability. Axsuma holds a stock of UK ready-made private limited companies that can be made available and reserved for urgent transactions. You acquire the company through a transfer of shares, change directors and shareholders through standard resolutions, and commence trading the same day.",
-          "Ready-made companies are ideal for fast-moving ventures, time-sensitive acquisitions, or situations where waiting for Companies House processing is commercially unviable. The company arrives fully registered with Companies House, with a current Confirmation Statement, and registered with HMRC for corporation tax and PAYE. You simply provide your director, shareholder, and registered office details, we update the registers, and you're live.",
-          "We hold a stock of single stand-alone entities or stacks, comprising of Hold Co, Mid Co and Bid Co specifically for use with highly confidential Merger and Acquisition transactions. Each ready-made company includes a clean cap table, blank statutory registers, and a resignation letter from the existing director. The transfer process is completed within hours, making ready-made companies perfect for time-critical mandates such as immediate trading requirements, acquisition closings, or regulatory submissions under tight deadlines.",
-          "All ready-made companies comply fully with the Companies Act 2006 and Companies House requirements, with no hidden liabilities or historical baggage. You're acquiring a clean, dormant company structure ready for your business operations."
+          "Axsuma holds a stock of UK ready-made private limited companies that can be made available and reserved immediately, ideal for urgent transactions, such as time-sensitive acquisitions. You acquire the company through a transfer of shares, change directors and shareholders through standard resolutions.",
+          "We hold a stock of single stand-alone entities or stacks, comprising of Hold Co, Mid Co and Bid Co specifically for use with highly confidential Merger and Acquisition transactions that can be reserved on a \"held to order\" basis."
         ]
       },
       {
         "title": "Limited Liability Partnerships (LLPs)",
         "paragraphs": [
           "The UK Limited Liability Partnership (LLP) provides a UK vehicle that has the tax status and flexibility of a partnership, but with a separate legal personality and limited liability for its members. Unlike traditional partnerships, LLP members enjoy limited liability protection—you're not personally liable for the negligence or misconduct of other members.",
-          "LLP formation mirrors company incorporation but with distinct statutory requirements. We prepare the incorporation application alongside the LLP agreement. All new UK LLPs will need to operate under the provisions set out in the LLP Regulations (Regulation 7), however, Axsuma recommends that a specific LLP operating agreement is adopted. The LLP agreement defines member contributions, profit-sharing arrangements, management rights, member exit procedures, and dispute resolution.",
-          "The incorporation process involves submitting incorporation documents to Companies House, registration of initial members, and filing the LLP agreement. Upon completion, you'll receive confirmation of the LLP's registration number and incorporation certificate. We then register the LLP with HMRC for corporation tax and any relevant regulatory bodies.",
-          "We ensure your LLP is fully established, properly governed, and registered with all relevant authorities from day one. LLPs must file annual accounts and confirmation statements with Companies House, though they benefit from certain filing exemptions available to smaller LLPs."
+          "LLP formation mirrors company incorporation but with distinct statutory requirements. All new UK LLPs will need to operate under the provisions set out in the LLP Regulations (Regulation 7), however, Axsuma recommends that a specific LLP operating agreement is adopted. The LLP agreement defines member contributions, profit-sharing arrangements, management rights, member exit procedures, and dispute resolution."
         ]
       }
     ],
@@ -729,15 +723,15 @@
   },
   "overseas-entities": {
     "header": {
-      "title": "Overseas Entities & Beneficial Ownership",
-      "subtitle": "Register of Overseas Entities (ROE) compliance and beneficial ownership verification under the Economic Crime Act 2022."
+      "title": "Register of Overseas Entities",
+      "subtitle": "Register of Overseas Entities (ROE) Services"
     },
     "overview": {
       "title": "Register of Overseas Entities (ROE)",
       "paragraphs": [
-        "The UK's Register of Overseas Entities (ROE) came into force on the 1st August 2022 through the Economic Crime (Transparency and Enforcement) Act 2022 as part of the Government's response to combat criminal use of UK property and increase transparency of overseas entities owning UK land. ROE requires any overseas company, partnership, foundation, or similar entity with a legal personality that owns UK property to register with Companies House and keep the information up to date annually.",
-        "For overseas entities, ROE registration is mandatory before acquiring or holding UK property. Failure to register incurs significant penalties, and overseas entities cannot hold property in their own name without registration. Beneficial owners of registered overseas entities must be accurately identified, with ongoing reporting obligations if beneficial ownership structures change.",
-        "We guide overseas entities through ROE registration, collect beneficial ownership information, verify identity documentation, and manage ongoing reporting obligations. Our team provides a full end-to-end service for new registrations, annual update filings, and transfers of existing ROE cases from other ACSPs to support ongoing filings."
+        "The UK's Register of Overseas Entities (ROE) came into force in the UK on the 1st August 2022 through the Economic Crime (Transparency and Enforcement) Act 2022 as part of the Government's response to combat criminal use of UK property and increase transparency of overseas entities owning UK land.",
+        "ROE requires any overseas company, partnership, foundation, or similar entity with a legal personality that owns UK property to register with Companies House and keep the information up to date annually.",
+        "Our team provides a full end-to-end service for new registrations, annual update filings, and transfers of existing ROE cases from other ACSP's to support their ongoing filings."
       ]
     },
     "services": [
@@ -752,7 +746,7 @@
         ]
       },
       {
-        "title": "Complete registration support for overseas owners of UK property",
+        "title": "New ROE Registration Service",
         "paragraphs": [
           "We assist overseas entities in obtaining an Overseas Entity ID (OE ID) and meeting all statutory requirements under the Economic Crime and Corporate Transparency Act (ECCTA)."
         ],
@@ -788,9 +782,9 @@
         ]
       },
       {
-        "title": "Transfer-in service",
+        "title": "Transfer Existing ROE to Axsuma",
         "paragraphs": [
-          "If your overseas entity is already on the register but you want a new UK ACSP to manage filings or verification, we provide a smooth transfer process. Perfect if you have lost contact with your previous agent, changed ownership structure, or need a more responsive service."
+          "If your overseas entity is already on the register but you want a new UK ACSP to manage filings or verification, we provide a smooth transfer process."
         ],
         "subheadings": [
           "Our transfer-in service includes:"
@@ -804,10 +798,9 @@
         ]
       },
       {
-        "title": "Annual Updating Statement",
+        "title": "Annual Update Statement",
         "paragraphs": [
-          "Every overseas entity must file an Annual Updating Statement every 12 months, even if nothing has changed. Failure to update can lead to financial penalties, prosecution, and restrictions on selling or leasing UK property.",
-          "Our annual update service includes reviewing all previously submitted information, refreshing identity verification where required, preparing and filing the update with Companies House, and confirmation of acceptance for your records. We help you keep your OE ID active and compliant year after year."
+          "Every overseas entity must file an Annual Update Statement every 12 months, even if nothing has changed."
         ]
       }
     ],
@@ -826,22 +819,22 @@
       }
     ],
     "cta": {
-      "title": "Switch to us for faster, clearer, compliant management",
-      "body": "Whether you need a new application, annual report, or want to transfer your existing ROE registration, our team is ready to help. We'll connect you with the right specialist and reply within two working days.",
+      "title": "Need Help with Your Overseas Entity Registration?",
+      "body": "Whether you need a new ROE registration, annual update, or want to transfer your existing registration to Axsuma, our team is ready to help.",
       "ctaText": "Contact Us"
     }
   },
   "process-agent": {
     "header": {
       "title": "Process Agent Services",
-      "subtitle": "Legal process representation for overseas companies operating in the UK. CPR compliance and court document service."
+      "subtitle": "UK process agent representation for overseas companies or individuals entering into English law agreements/contracts."
     },
     "overview": {
-      "title": "Legal Process Representation for Overseas Companies",
+      "title": "Professional UK Process Agent Service",
       "paragraphs": [
-        "A UK Process Agent (also known as ASP or sometimes ASLP) is required when a party to a transaction does not have a physical presence in the UK where the transaction is taking place. A UK Process Agent can act for a company and/or individuals acting as the agent for court actions and/or arbitration proceedings, receiving notices where a UK presence is necessary for contracts under the laws of England and Wales.",
-        "The Process Agent's criteria are to accept delivery of any documents referring to court proceedings issued out of the courts of England and ensure that they are forwarded quickly to the client, to minimise delays allowing the client sufficient time to respond. We provide professional process agent services, acting as your authorized UK representative for legal service and court proceedings.",
-        "Our service ensures that all court documents, legal notices, and litigation correspondence are received promptly, secured confidentially, and forwarded immediately to your company's decision-makers. We maintain secure document handling, provide proof of service, and coordinate with your legal advisors throughout litigation processes."
+        "A UK Process Agent (also known as ASP or sometimes ASLP) is required when a party to a transaction does not have a physical presence in the UK where the transaction is taking place.",
+        "A UK Process Agent can act for a company and/or individuals acting as the agent for court actions and/or arbitration proceedings, receiving notices where a UK presence is necessary for contracts under the laws of England and Wales.",
+        "The Process Agent's criteria are to accept delivery of any documents referring to court proceedings issued out of the courts of England and ensure that they are forwarded quickly to the client, to minimise delays allowing the client sufficient time to respond."
       ]
     },
     "services": [
@@ -881,16 +874,14 @@
   },
   "id-verification": {
     "header": {
-      "title": "Identity Verification Services",
-      "subtitle": "Companies House authorised identity verification under the Economic Crime and Corporate Transparency Act. Streamlined, expert-guided verification for directors, PSCs, and company members."
+      "title": "Companies House Identity Verification & Registration Service",
+      "subtitle": "Identity verification and registration with Companies House under the Economic Crime and Corporate Transparency Act."
     },
     "overview": {
       "paragraphs": [
-        "From 18 November 2026, identity verification under the UK's Economic Crime and Corporate Transparency Act (ECCTA) became a legal requirement, initiating a 12-month transition period for compliance.",
-        "Axsuma is a Companies House Authorised Corporate Service Provider (ACSP), authorised to carry out identity verification on behalf of clients. As part of the UK Government's drive to enhance transparency and strengthen trust in corporate structures, the ECCTA requires all directors, LLP members, Persons with Significant Control (PSCs), and individuals filing on behalf of companies to verify their identity with Companies House. Upon successful verification, each individual will be issued with a unique personal code.",
-        "Where a corporate director or a corporate entity is listed as a PSC (i.e. a Relevant Legal Entity), details of at least one director of that entity must also be provided for identity verification. The unique reference code is assigned to the individual rather than their role or any specific company. As such, individuals holding multiple roles (for example, acting as both a director and PSC, or serving across multiple entities) are only required to complete the verification process once.",
-        "By choosing to verify through an ACSP, your ID documents and verification evidence are processed and stored by the ACSP rather than within the GOV.UK One Login identity system. This ensures your documentation is managed within a single regulated professional services relationship, rather than a centralised government identity platform.",
-        "We offer a streamlined, fully supported process to help you meet these requirements efficiently and with confidence. You can begin the process online, with expert guidance available at every stage."
+        "To improve transparency and build confidence in UK companies, the Economic Crime and Corporate Transparency Act requires all directors, LLP members, Persons with Significant Control (PSC) and individuals who file on behalf of Companies to have their identity verified and registered with Companies House, securing a personal code for that individual.",
+        "If a corporate director or entity is listed as a PSC (Relevant Legal Entity), it will be necessary to provide details for at least one director of that corporate entity for identity verification.",
+        "The personal unique reference code issued by Companies House is linked to the individual, not their role or the corporate entity. Therefore, if someone is both a director and a PSC, or a director of multiple companies, they'll only need to submit one application and obtain one unique reference code."
       ]
     },
     "why_cards": [
