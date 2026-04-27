@@ -3,28 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Process Agent Order – Client Portal – Axsuma</title>
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=3">
+  <title>Process Agent Order – Axsuma</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="portal.css">
+  <link rel="stylesheet" href="portal/portal.css">
 </head>
 <body>
 
 <nav class="portal-nav">
   <div class="container">
-    <a href="../index.html"><img src="../axsuma-brand.svg" alt="Axsuma" class="portal-nav-logo"></a>
+    <a href="index.html"><img src="axsuma-brand.svg" alt="Axsuma" class="portal-nav-logo"></a>
     <div class="portal-nav-right">
-      <a href="index.html" class="portal-nav-link"><i class="fas fa-th-large"></i> Portal</a>
-      <a href="../index.html" class="portal-nav-link"><i class="fas fa-arrow-left"></i> Site</a>
+      <a href="process-agent.html" class="portal-nav-link"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
   </div>
 </nav>
 
 <header class="portal-header">
   <div class="container">
-    <p class="portal-breadcrumb"><a href="index.html">Portal</a> &rsaquo; Process Agent</p>
+    <p class="portal-breadcrumb"><a href="process-agent.html">Process Agent</a> &rsaquo; Order Form</p>
     <h1>UK Process Agent &mdash; Order Form</h1>
     <p>Complete the form below to appoint Axsuma as your UK Process Agent.</p>
   </div>
@@ -167,7 +166,7 @@
 
       <div class="form-actions">
         <button type="submit" class="btn btn-teal btn-lg"><i class="fas fa-paper-plane"></i> Submit Order</button>
-        <a href="index.html" class="btn btn-outline">Cancel</a>
+        <a href="process-agent.html" class="btn btn-outline">Cancel</a>
       </div>
     </form>
   </div>
@@ -178,12 +177,11 @@
     <div class="icon"><i class="fas fa-check"></i></div>
     <h2>Order Submitted</h2>
     <p>Your Process Agent order has been received. A PDF confirmation will be sent to your email. We will be in touch shortly.</p>
-    <a href="index.html" class="btn btn-teal">Back to Portal</a>
+    <a href="process-agent.html" class="btn btn-teal">Back to Process Agent Page</a>
   </div>
 </div>
 
-<footer class="portal-footer"><div class="container"><p>&copy; 2026 Axsuma Ltd. <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../standard-terms.html">Terms</a></p></div></footer>
-<script src="portal.js"></script>
-<script>async function doLogout(){try{await fetch("/api/auth/logout",{method:"POST"})}catch(e){}window.location.href="/portal/login.html"}</script>
+<footer class="portal-footer"><div class="container"><p>&copy; 2026 Axsuma Ltd. <a href="privacy-policy.html">Privacy</a> &middot; <a href="standard-terms.html">Terms</a></p></div></footer>
+<script src="portal/portal.js"></script>
 </body>
 </html>
