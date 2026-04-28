@@ -10,7 +10,7 @@
     return c.trim().indexOf('portal_session=') === 0;
   });
   if (!hasSession) {
-    window.location.href = '/portal/login.html';
+    window.location.href = '/portal/login';
   }
 })();
 

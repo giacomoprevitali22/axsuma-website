@@ -24,7 +24,9 @@ export async function onRequest(context) {
   const path = url.pathname;
 
   // Allow access to login and register pages without auth
-  if (path === '/portal/login.html' || path === '/portal/register.html') {
+  // Check both with and without .html (Cloudflare Pages strips .html via 308 redirects)
+  if (path === '/portal/login.html' || path === '/portal/login' ||
+      path === '/portal/register.html' || path === '/portal/register') {
     return context.next();
   }
 
@@ -41,7 +43,7 @@ export async function onRequest(context) {
 
   const session = await getSession(context.request, kv);
   if (!session) {
-    return Response.redirect(new URL('/portal/login.html', url.origin), 302);
+    return Response.redirect(new URL('/portal/login', url.origin), 302);
   }
 
   // Store user info for downstream use
