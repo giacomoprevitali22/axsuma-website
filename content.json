@@ -697,7 +697,7 @@
         "description": "Companies House identity verification services as an Authorised Corporate Service Provider (ACSP)."
       },
       {
-        "title": "UK Address for Service",
+        "title": "UK Address for IP Service",
         "description": "UK address services for intellectual property rights and IP proceedings with document receipt and forwarding."
       }
     ],
@@ -908,12 +908,12 @@
   },
   "uk-afs": {
     "header": {
-      "title": "UK Address for Service",
+      "title": "UK Address for IP Service",
       "subtitle": "Address for Service for Intellectual Property Rights"
     },
     "overview": {
       "paragraphs": [
-        "We provide a UK Address for Service (UK AFS) for intellectual property matters, supporting compliance with the requirements of the UK Intellectual Property Office and use in UK IP proceedings, ensuring the effective receipt of formal notices and correspondence.",
+        "We provide a UK Address for IP Service (UK AFS) for intellectual property matters, supporting compliance with the requirements of the UK Intellectual Property Office and use in UK IP proceedings, ensuring the effective receipt of formal notices and correspondence.",
         "An address for service is the UK address to which the IPO or third parties may send correspondence relating to an application or registered right, and where documents in IP proceedings may be delivered.",
         "Share your requirements via the contact form and we will connect you with the appropriate specialist."
       ],
@@ -939,7 +939,7 @@
     ],
     "cta": {
       "title": "Talk to Our Team",
-      "body": "Our compliance specialists can help you establish UK Address for Service. We'll reply within two working days."
+      "body": "Our compliance specialists can help you establish UK Address for IP Service. We'll reply within two working days."
     }
   },
   "international": {

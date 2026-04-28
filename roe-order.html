@@ -114,22 +114,22 @@
           <h3 class="form-section-title"><i class="fas fa-users"></i> Part 3 &mdash; Registrable Beneficial Owners</h3>
           <p class="form-section-desc">Select the type of beneficial owner and provide the required details. If the entity has no registrable beneficial owners, select "No Beneficial Owner" and provide Managing Officer details.</p>
 
-          <div class="form-row">
-            <div class="form-group"><label>Beneficial Owner Type <span class="req">*</span></label>
-              <select name="bo_type" id="bo_type" required onchange="showBOFields(this.value)">
-                <option value="">Select...</option>
-                <option value="individual">Individual</option>
-                <option value="corporate">Corporate Entity</option>
-                <option value="government">Government / Public Authority</option>
-                <option value="none">No Beneficial Owner (Managing Officers)</option>
-              </select>
-            </div>
+          <p style="font-size:.85rem;color:var(--dark);margin-bottom:.8rem;font-weight:500">Add beneficial owners below. You can add a mix of individuals and corporate entities as needed.</p>
+
+          <div class="form-row" style="gap:.6rem;margin-bottom:1.2rem">
+            <button type="button" class="btn-add" onclick="addBOIndividual()" style="margin:0"><i class="fas fa-user-plus"></i> Add Individual Owner</button>
+            <button type="button" class="btn-add" onclick="addBOCorporate()" style="margin:0"><i class="fas fa-building"></i> Add Corporate Owner</button>
+            <button type="button" class="btn-add" onclick="showGovBO()" style="margin:0;background:transparent;border:1px solid var(--border);color:var(--mid)"><i class="fas fa-landmark"></i> Government / Public Authority</button>
+            <button type="button" class="btn-add" onclick="showNoBO()" style="margin:0;background:transparent;border:1px solid var(--border);color:var(--mid)"><i class="fas fa-user-cog"></i> No Beneficial Owner (Managing Officers)</button>
           </div>
 
+          <!-- Keep hidden field to track if any BO was added -->
+          <input type="hidden" name="bo_type" id="bo_type" value="mixed">
+
           <!-- INDIVIDUAL BO -->
-          <div id="bo_individual" class="bo-panel" style="display:none">
+          <div id="bo_individual" class="bo-panel">
             <div id="bo-individual-container">
-              <div class="repeatable">
+              <div class="repeatable" id="bo-ind-first">
                 <div class="repeatable-header"><h4>Individual Beneficial Owner #1</h4></div>
                 <div class="form-row">
                   <div class="form-group"><label>First Name(s) <span class="req">*</span></label><input type="text" name="bo_ind_0_firstname"></div>
@@ -277,9 +277,18 @@
         <!-- DECLARATION -->
         <div class="form-section">
           <h3 class="form-section-title"><i class="fas fa-pen-fancy"></i> Declaration</h3>
+          <div class="notice notice--info" style="margin-bottom:1rem">
+            <i class="fas fa-info-circle"></i>
+            <div style="font-size:.85rem;line-height:1.6">
+              <p style="margin:0 0 .6rem"><strong>I/we hereby confirm that:</strong></p>
+              <p style="margin:0 0 .6rem">The information supplied in this form is accurate and complete and has been given with the authority of all those that are named within.</p>
+              <p style="margin:0 0 .6rem">Axsuma Corporate Services Limited is authorised to utilise the data supplied to make all necessary reviews, verification and filings that are required in accordance with ECTEA.</p>
+              <p style="margin:0">I/we agree that the <a href="roe-terms.html" target="_blank" style="color:var(--teal);text-decoration:underline">terms and conditions of Axsuma Corporate Services Limited</a> shall apply to the provision of the Services.</p>
+            </div>
+          </div>
           <div class="form-check">
             <input type="checkbox" id="decl_roe" name="declaration" value="yes" required>
-            <label for="decl_roe">I confirm the information supplied is accurate and complete, given with the authority of all named parties. Axsuma is authorised to make all necessary reviews, verification and filings under ECTEA. <span class="req">*</span></label>
+            <label for="decl_roe">I confirm and accept the above declaration <span class="req">*</span></label>
           </div>
           <div class="form-row">
             <div class="form-group"><label>Full Name <span class="req">*</span></label><input type="text" name="declaration_name" required></div>
@@ -367,9 +376,18 @@
 
         <div class="form-section">
           <h3 class="form-section-title"><i class="fas fa-pen-fancy"></i> Declaration</h3>
+          <div class="notice notice--info" style="margin-bottom:1rem">
+            <i class="fas fa-info-circle"></i>
+            <div style="font-size:.85rem;line-height:1.6">
+              <p style="margin:0 0 .6rem"><strong>I/we hereby confirm that:</strong></p>
+              <p style="margin:0 0 .6rem">The information supplied in this form is accurate and complete and has been given with the authority of all those that are named within.</p>
+              <p style="margin:0 0 .6rem">Axsuma Corporate Services Limited is authorised to utilise the data supplied to make all necessary reviews, verification and filings that are required in accordance with ECTEA.</p>
+              <p style="margin:0">I/we agree that the <a href="roe-terms.html" target="_blank" style="color:var(--teal);text-decoration:underline">terms and conditions of Axsuma Corporate Services Limited</a> shall apply to the provision of the Services.</p>
+            </div>
+          </div>
           <div class="form-check">
             <input type="checkbox" id="decl_transfer" name="declaration" value="yes" required>
-            <label for="decl_transfer">I confirm the information is accurate and complete. Axsuma is authorised to make all necessary reviews, verification and filings under ECTEA. <span class="req">*</span></label>
+            <label for="decl_transfer">I confirm and accept the above declaration <span class="req">*</span></label>
           </div>
           <div class="form-row">
             <div class="form-group"><label>Full Name <span class="req">*</span></label><input type="text" name="declaration_name" required></div>
@@ -409,11 +427,13 @@ function switchType(type, el) {
 }
 </script>
 <script>
-function showBOFields(type) {
-  document.querySelectorAll('.bo-panel').forEach(function(p) { p.style.display = 'none'; });
-  if (type && document.getElementById('bo_' + type)) {
-    document.getElementById('bo_' + type).style.display = 'block';
-  }
+function showGovBO() {
+  document.getElementById('bo_government').style.display = 'block';
+  document.getElementById('bo_none').style.display = 'none';
+}
+function showNoBO() {
+  document.getElementById('bo_none').style.display = 'block';
+  document.getElementById('bo_government').style.display = 'none';
 }
 function showMOFields(type) {
   document.getElementById('mo_individual').style.display = type === 'individual' ? 'block' : 'none';

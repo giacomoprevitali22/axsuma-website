@@ -57,7 +57,7 @@ export async function onRequestPost(context) {
       'roe-transfer': 'ROE — Transfer-In',
       'ma-enquiry': 'M&A Support Enquiry',
       'director-enquiry': 'Professional Director Services Enquiry',
-      'address-for-service': 'UK Address for Service (IP)',
+      'address-for-service': 'UK Address for IP Service (IP)',
     };
     const typeLabel = typeLabels[formType] || formType;
 

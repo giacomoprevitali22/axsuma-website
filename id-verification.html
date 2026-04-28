@@ -206,7 +206,7 @@
               <li><a href="overseas-entities.html">Register of Overseas Entities</a></li>
               <li><a href="process-agent.html">Process Agent</a></li>
               <li><a href="id-verification.html">ID Verification</a></li>
-              <li><a href="uk-afs.html">UK Address for Service</a></li>
+              <li><a href="uk-afs.html">UK Address for IP Service</a></li>
             </ul>
           </div>
         </div>
@@ -265,46 +265,47 @@
         <div class="form-section-title">Individuals to Verify</div>
         <p style="font-size:.9rem;color:var(--mid);margin-bottom:1.2rem">Enter the details for each person. You can add details for additional individuals to be verified below.</p>
 
-        <div class="form-grid-2">
-          <div class="field">
-            <label>Full Name</label>
-            <input type="text" name="individual_1_fullname" placeholder="e.g. John Smith" required>
-          </div>
-          <div class="field">
-            <label>Date of Birth</label>
-            <input type="date" name="individual_1_dob" required>
-          </div>
-          <div class="field">
-            <label>Nationality</label>
-            <input type="text" name="individual_1_nationality" placeholder="e.g. British" required>
-          </div>
-          <div class="field">
-            <label>Document Type</label>
-            <select name="individual_1_doctype" required>
-              <option value="">Select a document type</option>
-              <option value="passport">Passport</option>
-              <option value="driving_license">Driving License</option>
-              <option value="national_id">National ID Card</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="field" style="grid-column:1/-1">
-            <label>Address</label>
-            <input type="text" name="individual_1_address" placeholder="Street address" required>
-          </div>
-          <div class="field" style="grid-column:1/-1">
-            <label>City / Town</label>
-            <input type="text" name="individual_1_city" placeholder="e.g. London" required>
-          </div>
-          <div class="field">
-            <label>Postcode</label>
-            <input type="text" name="individual_1_postcode" placeholder="e.g. EC2V 8AU" required>
-          </div>
-          <div class="field">
-            <label>Country</label>
-            <input type="text" name="individual_1_country" placeholder="e.g. United Kingdom" required>
+        <div id="idv-individuals-container">
+          <div class="idv-individual-block" data-idx="1">
+            <h4 style="font-family:var(--font-heading);font-size:.95rem;font-weight:600;color:var(--dark);margin-bottom:.8rem">Individual #1</h4>
+            <div class="form-grid-2">
+              <div class="field">
+                <label>Full Name</label>
+                <input type="text" name="individual_1_fullname" placeholder="e.g. John Smith" required>
+              </div>
+              <div class="field">
+                <label>Date of Birth</label>
+                <input type="date" name="individual_1_dob" required>
+              </div>
+              <div class="field">
+                <label>Nationality</label>
+                <input type="text" name="individual_1_nationality" placeholder="e.g. British" required>
+              </div>
+              <div class="field">
+                <label>Email Address <span style="font-size:.75rem;color:var(--mid)">(for biometrics link)</span></label>
+                <input type="email" name="individual_1_email" placeholder="e.g. john@example.com" required>
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label>Address</label>
+                <input type="text" name="individual_1_address" placeholder="Street address" required>
+              </div>
+              <div class="field" style="grid-column:1/-1">
+                <label>City / Town</label>
+                <input type="text" name="individual_1_city" placeholder="e.g. London" required>
+              </div>
+              <div class="field">
+                <label>Postcode</label>
+                <input type="text" name="individual_1_postcode" placeholder="e.g. EC2V 8AU" required>
+              </div>
+              <div class="field">
+                <label>Country</label>
+                <input type="text" name="individual_1_country" placeholder="e.g. United Kingdom" required>
+              </div>
+            </div>
           </div>
         </div>
+
+        <button type="button" onclick="addIdvPerson()" class="btn btn-outline" style="margin:1rem 0 1.5rem;font-size:.85rem"><i class="fas fa-plus" style="margin-right:.4rem"></i> Add Another Individual</button>
 
         <!-- Section: Invoice / Ordering Details -->
         <div class="form-section-title">Invoice Details</div>
@@ -418,6 +419,30 @@ try{
     else{mobileMenu.style.display='flex';mobileMenu.style.flexDirection='column';mobileMenu.style.position='absolute';mobileMenu.style.top='100%';mobileMenu.style.left='0';mobileMenu.style.right='0';mobileMenu.style.background='rgba(255,255,255,.98)';mobileMenu.style.padding='1rem 2rem';mobileMenu.style.boxShadow='0 10px 30px rgba(0,0,0,.08)';mobileMenu.style.zIndex='999';menuOpen=true}
   });}
 }catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
+</script>
+<script>
+var idvPersonCount = 1;
+function addIdvPerson() {
+  idvPersonCount++;
+  var idx = idvPersonCount;
+  var container = document.getElementById('idv-individuals-container');
+  var html = '<div class="idv-individual-block" data-idx="' + idx + '" style="border-top:1px solid var(--border);padding-top:1.2rem;margin-top:1.2rem">' +
+    '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem"><h4 style="font-family:var(--font-heading);font-size:.95rem;font-weight:600;color:var(--dark);margin:0">Individual #' + idx + '</h4><button type="button" onclick="removeIdvPerson(this)" style="background:none;border:none;color:#dc2626;cursor:pointer;font-size:.82rem;font-weight:500"><i class="fas fa-times"></i> Remove</button></div>' +
+    '<div class="form-grid-2">' +
+    '<div class="field"><label>Full Name</label><input type="text" name="individual_' + idx + '_fullname" required></div>' +
+    '<div class="field"><label>Date of Birth</label><input type="date" name="individual_' + idx + '_dob" required></div>' +
+    '<div class="field"><label>Nationality</label><input type="text" name="individual_' + idx + '_nationality" required></div>' +
+    '<div class="field"><label>Email Address <span style="font-size:.75rem;color:var(--mid)">(for biometrics link)</span></label><input type="email" name="individual_' + idx + '_email" required></div>' +
+    '<div class="field" style="grid-column:1/-1"><label>Address</label><input type="text" name="individual_' + idx + '_address" required></div>' +
+    '<div class="field" style="grid-column:1/-1"><label>City / Town</label><input type="text" name="individual_' + idx + '_city" required></div>' +
+    '<div class="field"><label>Postcode</label><input type="text" name="individual_' + idx + '_postcode" required></div>' +
+    '<div class="field"><label>Country</label><input type="text" name="individual_' + idx + '_country" required></div>' +
+    '</div></div>';
+  container.insertAdjacentHTML('beforeend', html);
+}
+function removeIdvPerson(btn) {
+  btn.closest('.idv-individual-block').remove();
+}
 </script>
 <script src="content-loader.js" data-page="id-verification"></script>
 <script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){e.preventDefault();var parent=a.parentElement;var wasOpen=parent.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});if(!wasOpen)parent.classList.add("open");}})});var navToggle=document.querySelector(".nav-toggle");if(navToggle){navToggle.addEventListener("click",function(){setTimeout(function(){var m=document.querySelector(".nav-links");if(m&&!m.style.display){document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});}},10);})}}catch(e){}</script></body>
