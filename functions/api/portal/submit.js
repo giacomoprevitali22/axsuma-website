@@ -87,7 +87,9 @@ export async function onRequestPost(context) {
     // Send email via Resend
     const resendKey = context.env.RESEND_API_KEY;
     if (resendKey) {
-      const recipients = ['enquiries@axsuma.co.uk'];
+      // ROE submissions go to ROE@axsuma.co.uk, everything else to enquiries@axsuma.co.uk
+      const isROE = formType === 'roe-new' || formType === 'roe-transfer';
+      const recipients = [isROE ? 'ROE@axsuma.co.uk' : 'enquiries@axsuma.co.uk'];
 
       // Send to Axsuma team
       await fetch('https://api.resend.com/emails', {
@@ -124,7 +126,7 @@ export async function onRequestPost(context) {
                 <div style="background:#fff;border:1px solid #e2e5e9;border-top:none;padding:24px;border-radius:0 0 8px 8px">
                   <p style="color:#2a2f36;font-size:14px;line-height:1.7">Dear ${contactName || 'Client'},</p>
                   <p style="color:#3d434d;font-size:14px;line-height:1.7">Thank you for your submission. We have received your <strong>${typeLabel}</strong> and our team will review it shortly.</p>
-                  <p style="color:#3d434d;font-size:14px;line-height:1.7">We will be in touch within two working days. If you have any urgent queries, please contact us at <a href="mailto:enquiries@axsuma.co.uk" style="color:#00594a">enquiries@axsuma.co.uk</a>.</p>
+                  <p style="color:#3d434d;font-size:14px;line-height:1.7">We will be in touch within two working days. If you have any urgent queries, please contact us at <a href="mailto:${isROE ? 'ROE@axsuma.co.uk' : 'enquiries@axsuma.co.uk'}" style="color:#00594a">${isROE ? 'ROE@axsuma.co.uk' : 'enquiries@axsuma.co.uk'}</a>.</p>
                   <p style="color:#8a919c;font-size:12px;margin-top:20px">Reference: ${submissionId}</p>
                 </div>
               </div>
