@@ -109,9 +109,9 @@
     @media(max-width:768px){
       .nav-links{display:none}
       .nav-toggle{display:block}
-      .nav-logo{height:52px}
+      .nav .container{padding:0 1rem}.nav-logo{height:44px}
       .hub-grid{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1 / -1}.footer-bottom{flex-direction:column;text-align:center;gap:.8rem;font-size:.68rem}.footer-legal{justify-content:center}
       .page-hero h1{font-size:2rem}
       .nav-links li{width:100%;text-align:left}
       .nav-links li a{display:block;padding:.5rem 0}
@@ -126,7 +126,25 @@
       .nav-drop>a i{transition:transform .25s}
       .nav-drop.open>a i{transform:rotate(180deg)}
     }
-  /*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
+  
+    @media(max-width:480px){
+      .container{padding:0 1rem}
+      .page-hero,.page-hero-dark{padding:5rem 0 1.2rem}
+      .page-hero h1{font-size:1.3rem}
+      .s-title{font-size:1.2rem}
+      .s-label{font-size:.65rem}
+      .feature-card{padding:1.2rem 1rem}
+      .feature-card h3{font-size:.92rem}
+      .feature-card p{font-size:.78rem}
+      .footer-grid{grid-template-columns:1fr}
+      .footer h4{font-size:.8rem;margin-bottom:.6rem}
+      .footer a{font-size:.76rem}
+      .footer-bottom{font-size:.62rem}
+      .footer-legal{gap:.8rem;font-size:.65rem}
+      .btn{padding:.6rem 1.2rem;font-size:.8rem}
+      .cookie-banner{flex-direction:column;text-align:center;padding:1rem 1rem;gap:.8rem}
+    }
+/*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
 </head>
 <body>
 

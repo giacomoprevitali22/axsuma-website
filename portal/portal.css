@@ -136,7 +136,31 @@ img{max-width:100%;display:block}
   .form-row.triple{grid-template-columns:1fr}
   .auth-grid{grid-template-columns:1fr}
   .form-card{padding:1.5rem}
+  .portal-header{padding:1.5rem 0 1rem}
   .portal-header h1{font-size:1.4rem}
+  .portal-header p{font-size:.82rem}
+  .portal-nav-logo{height:40px}
   .portal-nav-user span{display:none}
+  .portal-nav-link{font-size:.7rem;gap:.3rem}
   .form-actions{flex-direction:column}
+  .form-section-title{font-size:1rem}
+  .repeatable{padding:1rem}
+  .btn-lg{padding:.7rem 1.5rem;font-size:.85rem}
+  .notice{padding:.8rem 1rem;font-size:.8rem}
+  .success-card{padding:2rem 1.5rem}
+}
+@media(max-width:480px){
+  .container{padding:0 1rem}
+  .form-card{padding:1rem}
+  .portal-header h1{font-size:1.2rem}
+  .form-group input,.form-group select,.form-group textarea{font-size:.85rem;padding:.5rem .7rem}
+  .form-group label{font-size:.75rem}
+  .form-check label{font-size:.78rem}
+  .repeatable{padding:.8rem}
+  .repeatable-header h4{font-size:.82rem}
+  .tile{padding:1.2rem}
+  .tile h3{font-size:.92rem}
+  .tile p{font-size:.78rem}
+  .btn{padding:.55rem 1rem;font-size:.78rem}
+  .portal-footer p{font-size:.65rem}
 }

@@ -145,17 +145,37 @@
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:768px){
-      .nav-links{display:none}.nav-toggle{display:block}.nav-logo{height:52px}
-      .page-hero,.page-hero-dark{padding:6rem 0 2rem}
-      .page-hero h1{font-size:1.8rem}
-      .section{padding:3.5rem 0}
-      .s-title{font-size:1.7rem}
+      .nav-links{display:none}.nav-toggle{display:block}.nav .container{padding:0 1rem}.nav-logo{height:44px}
+      .page-hero,.page-hero-dark{padding:5.5rem 0 1.5rem}
+      .page-hero h1{font-size:1.5rem;line-height:1.2}
+      .page-hero p,.page-hero-dark p{font-size:.88rem}
+      .section{padding:2.5rem 0}
+      .s-title{font-size:1.4rem}
+      .s-sub{font-size:.85rem}
       .feature-grid,.team-grid{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1 / -1}.footer-bottom{flex-direction:column;text-align:center;gap:.8rem;font-size:.68rem}.footer-legal{justify-content:center}
       .nav-links li{width:100%;text-align:left}.nav-links li a{display:block;padding:.5rem 0}.nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}
       .nav-links .nav-portal{display:inline-block;margin-top:.3rem;padding:.4rem 1rem}.nav-drop{width:100%}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
     }
-  /*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
+  
+    @media(max-width:480px){
+      .container{padding:0 1rem}
+      .page-hero,.page-hero-dark{padding:5rem 0 1.2rem}
+      .page-hero h1{font-size:1.3rem}
+      .s-title{font-size:1.2rem}
+      .s-label{font-size:.65rem}
+      .feature-card{padding:1.2rem 1rem}
+      .feature-card h3{font-size:.92rem}
+      .feature-card p{font-size:.78rem}
+      .footer-grid{grid-template-columns:1fr}
+      .footer h4{font-size:.8rem;margin-bottom:.6rem}
+      .footer a{font-size:.76rem}
+      .footer-bottom{font-size:.62rem}
+      .footer-legal{gap:.8rem;font-size:.65rem}
+      .btn{padding:.6rem 1.2rem;font-size:.8rem}
+      .cookie-banner{flex-direction:column;text-align:center;padding:1rem 1rem;gap:.8rem}
+    }
+/*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
 </head>
 <body>
 

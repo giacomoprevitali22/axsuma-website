@@ -88,6 +88,7 @@
     /* ===== PILLAR BOXES (5 in a row) ===== */
     .services-section{padding:2.5rem 0;background:var(--white);flex:1}
     .pillars-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem}
+    .pillars-3{grid-template-columns:repeat(3,1fr)}
     .pillar-box{text-align:center;padding:2.2rem 1.2rem;border-radius:6px;background:var(--off-white);border:1px solid var(--border);transition:all .25s ease;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center}
     .pillar-box:hover{background:var(--teal);border-color:var(--teal)}
     .pillar-box h3{font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:.6rem;transition:color .25s}
@@ -228,29 +229,52 @@
       .footer-grid{grid-template-columns:1fr 1fr}
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
       .pillars-row{grid-template-columns:repeat(3,1fr)}
+      .pillars-3{grid-template-columns:repeat(3,1fr)}
       .pillars-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:768px){
       .nav-links{display:none}
       .nav-toggle{display:block}
-      .nav-logo{height:52px}
-      .hero{padding:6rem 0 1.5rem;max-height:50vh;align-items:center}
-      .hero h1{font-size:2.2rem}
+      .nav .container{padding:0 1rem}
+      .nav-logo{height:44px}
+      .hero{padding:5.5rem 0 1.5rem;max-height:45vh;align-items:center}
+      .hero h1{font-size:1.9rem;margin-bottom:1rem}
+      .hero p.lead{font-size:.95rem;line-height:1.6}
       .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top}
-      .section{padding:3.5rem 0}
-      .s-title{font-size:1.8rem}
+      .section{padding:2.5rem 0}
+      .s-title{font-size:1.5rem}
+      .s-sub{font-size:.88rem}
+      .services-section{padding:1.5rem 0}
       .why-grid,.sectors-grid,.insights-grid,.sol-3{grid-template-columns:1fr}
-      .pillars-row{grid-template-columns:1fr}
+      .pillars-row,.pillars-3{grid-template-columns:1fr 1fr;gap:.8rem}
       .pillars-grid{grid-template-columns:1fr}
+      .pillar-box{padding:1.4rem 1rem}
+      .pillar-box h3{font-size:.95rem;margin-bottom:.3rem}
+      .pillar-box p{font-size:.78rem;line-height:1.5}
       /* Glassmorphism pillar boxes on mobile */
       .pillar-box{background:rgba(247,248,249,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.55);box-shadow:0 4px 24px rgba(0,89,74,.06),inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(255,255,255,.25)}
       .pillar-box:hover{background:rgba(0,89,74,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:rgba(255,255,255,.3);box-shadow:0 8px 32px rgba(0,89,74,.15),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(255,255,255,.1)}
       .about-grid{grid-template-columns:1fr;gap:2rem}
+      .about-text h2{font-size:1.5rem}
       .about-video video{display:none}
       .about-section{background:var(--dark)}
       .lawfirms-grid{grid-template-columns:1fr;gap:2rem}
-      .footer-grid{grid-template-columns:1fr}
-      .cookie-banner{flex-direction:column;text-align:center}
+      .sector-card{padding:1.5rem 1rem}
+      .sector-icon{width:48px;height:48px;margin-bottom:.8rem}
+      .sector-card h3{font-size:.95rem}
+      .sector-card p{font-size:.8rem}
+      .why-card{padding:1.5rem 1.2rem}
+      .why-card h3{font-size:.92rem}
+      .why-card p{font-size:.82rem}
+      .cta{padding:4rem 0}
+      .cta h2{font-size:1.6rem}
+      .cta p{font-size:.88rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .footer-brand{grid-column:1 / -1}
+      .footer-brand p{font-size:.78rem}
+      .footer-bottom{flex-direction:column;text-align:center;gap:.8rem;font-size:.68rem}
+      .footer-legal{justify-content:center}
+      .cookie-banner{flex-direction:column;text-align:center;padding:1rem 1.2rem;gap:1rem}
       /* Mobile main menu alignment */
       .nav-links li{width:100%;text-align:left}
       .nav-links li a{display:block;padding:.5rem 0}
@@ -267,8 +291,27 @@
       .nav-drop.open>a i{transform:rotate(180deg)}
     }
     @media(max-width:480px){
-      .hero h1{font-size:1.8rem}
-      .container{padding:0 1.2rem}
+      .hero{padding:5rem 0 1.2rem;max-height:40vh}
+      .hero h1{font-size:1.55rem;line-height:1.2}
+      .hero p.lead{font-size:.85rem}
+      .hero-inner{max-width:100%}
+      .container{padding:0 1rem}
+      .pillars-row,.pillars-3{grid-template-columns:1fr;gap:.6rem}
+      .pillar-box{padding:1.2rem 1rem;flex-direction:row;justify-content:flex-start;text-align:left;gap:.8rem}
+      .pillar-box h3{font-size:.9rem;margin-bottom:.15rem}
+      .pillar-box p{font-size:.76rem;line-height:1.45}
+      .s-title{font-size:1.3rem}
+      .s-label{font-size:.65rem}
+      .sector-card{padding:1.2rem .8rem}
+      .sector-card h3{font-size:.88rem}
+      .sector-card p{font-size:.76rem}
+      .cta h2{font-size:1.35rem}
+      .footer-grid{grid-template-columns:1fr}
+      .footer h4{font-size:.8rem;margin-bottom:.6rem}
+      .footer a{font-size:.76rem}
+      .footer-bottom{font-size:.62rem}
+      .footer-legal{gap:.8rem;font-size:.65rem}
+      .btn{padding:.6rem 1.2rem;font-size:.8rem}
     }
   /*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
 </head>
@@ -353,7 +396,7 @@
 <!-- SERVICE BOXES (6 services) -->
 <section class="services-section">
   <div class="container">
-    <div class="pillars-row" style="grid-template-columns:repeat(3,1fr)">
+    <div class="pillars-row pillars-3">
       <a href="company-formations.html" class="pillar-box">
         <h3>Company Formations</h3>
         <p>Private limited companies, LLPs, and ready-made company stock for urgent transactions.</p>
@@ -385,7 +428,7 @@
 <!-- CATEGORY BOXES (3 pillars) -->
 <section style="padding:1.5rem 0 2.5rem;background:var(--white)">
   <div class="container">
-    <div class="pillars-row" style="grid-template-columns:repeat(3,1fr)">
+    <div class="pillars-row pillars-3">
       <a href="about-hub.html" class="pillar-box">
         <h3>About Axsuma</h3>
         <p>Who we are, how we work, and the team behind every engagement.</p>
