@@ -132,20 +132,20 @@
           <h3 class="form-section-title"><i class="fas fa-users"></i> Part 3 &mdash; Registrable Beneficial Owners</h3>
           <p class="form-section-desc">Select the type of beneficial owner and provide the required details. If the entity has no registrable beneficial owners, select "No Beneficial Owner" and provide Managing Officer details.</p>
 
-          <p style="font-size:.85rem;color:var(--dark);margin-bottom:.8rem;font-weight:500">Add beneficial owners below. You can add a mix of individuals and corporate entities as needed.</p>
+          <p style="font-size:.85rem;color:var(--dark);margin-bottom:.8rem;font-weight:500">Select the type of beneficial owner to add. You can add a mix of individuals and corporate entities.</p>
 
-          <div class="form-row" style="gap:.6rem;margin-bottom:1.2rem">
+          <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem">
             <button type="button" class="btn-add" onclick="addBOIndividual()" style="margin:0"><i class="fas fa-user-plus"></i> Add Individual Owner</button>
             <button type="button" class="btn-add" onclick="addBOCorporate()" style="margin:0"><i class="fas fa-building"></i> Add Corporate Owner</button>
             <button type="button" class="btn-add" onclick="showGovBO()" style="margin:0;background:transparent;border:1px solid var(--border);color:var(--mid)"><i class="fas fa-landmark"></i> Government / Public Authority</button>
-            <button type="button" class="btn-add" onclick="showNoBO()" style="margin:0;background:transparent;border:1px solid var(--border);color:var(--mid)"><i class="fas fa-user-cog"></i> No Beneficial Owner (Managing Officers)</button>
+            <button type="button" class="btn-add" onclick="showNoBO()" style="margin:0;background:transparent;border:1px solid var(--border);color:var(--mid)"><i class="fas fa-user-cog"></i> No Beneficial Owner</button>
           </div>
 
           <!-- Keep hidden field to track if any BO was added -->
           <input type="hidden" name="bo_type" id="bo_type" value="mixed">
 
           <!-- INDIVIDUAL BO -->
-          <div id="bo_individual" class="bo-panel">
+          <div id="bo_individual" class="bo-panel" style="display:none">
             <div id="bo-individual-container">
               <div class="repeatable" id="bo-ind-first">
                 <div class="repeatable-header"><h4>Individual Beneficial Owner #1</h4></div>
@@ -447,44 +447,90 @@ function switchType(type, el) {
 <script>
 function showGovBO() {
   document.getElementById('bo_government').style.display = 'block';
+  document.getElementById('bo_individual').style.display = 'none';
+  document.getElementById('bo_corporate').style.display = 'none';
   document.getElementById('bo_none').style.display = 'none';
 }
 function showNoBO() {
   document.getElementById('bo_none').style.display = 'block';
+  document.getElementById('bo_individual').style.display = 'none';
+  document.getElementById('bo_corporate').style.display = 'none';
   document.getElementById('bo_government').style.display = 'none';
 }
 function showMOFields(type) {
   document.getElementById('mo_individual').style.display = type === 'individual' ? 'block' : 'none';
   document.getElementById('mo_corporate').style.display = type === 'corporate' ? 'block' : 'none';
 }
+var boIndShown = false, boCorpShown = false;
 var boIndCount = 1, boCorpCount = 1, moIndCount = 1, moCorpCount = 1;
+
 function addBOIndividual() {
+  // Show individual panel (keep corporate visible if already shown — mixed owners)
+  document.getElementById('bo_individual').style.display = 'block';
+  document.getElementById('bo_government').style.display = 'none';
+  document.getElementById('bo_none').style.display = 'none';
+
+  // First click just reveals panel with entry #1; subsequent clicks add more
+  if (!boIndShown) {
+    boIndShown = true;
+    return;
+  }
+
   var c = document.getElementById('bo-individual-container');
-  var first = c.querySelector('.repeatable').cloneNode(true);
-  first.querySelector('h4').textContent = 'Individual Beneficial Owner #' + (++boIndCount);
-  first.querySelectorAll('input,select,textarea').forEach(function(el) {
-    el.name = el.name.replace(/_0_/, '_' + (boIndCount - 1) + '_');
+  var tpl = c.querySelector('.repeatable');
+  var clone = tpl.cloneNode(true);
+  boIndCount++;
+  clone.querySelector('h4').textContent = 'Individual Beneficial Owner #' + boIndCount;
+  clone.querySelectorAll('input,select,textarea').forEach(function(el) {
+    el.name = el.name.replace(/bo_ind_\d+_/, 'bo_ind_' + (boIndCount - 1) + '_');
     el.value = '';
-    if (el.type === 'checkbox') { el.checked = false; el.id = el.id.replace(/_0_/, '_' + (boIndCount - 1) + '_'); }
+    if (el.type === 'checkbox') { el.checked = false; el.id = el.id.replace(/bo_ind_\d+_/, 'bo_ind_' + (boIndCount - 1) + '_'); }
   });
-  first.querySelectorAll('label[for]').forEach(function(l) { l.setAttribute('for', l.getAttribute('for').replace(/_0_/, '_' + (boIndCount - 1) + '_')); });
-  var hdr = first.querySelector('.repeatable-header');
-  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="this.closest(\'.repeatable\').remove()"><i class="fas fa-times"></i> Remove</button>');
-  c.appendChild(first);
+  clone.querySelectorAll('label[for]').forEach(function(l) { l.setAttribute('for', l.getAttribute('for').replace(/bo_ind_\d+_/, 'bo_ind_' + (boIndCount - 1) + '_')); });
+  var hdr = clone.querySelector('.repeatable-header');
+  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="removeBOEntry(this,\'individual\')"><i class="fas fa-times"></i> Remove</button>');
+  c.appendChild(clone);
 }
+
 function addBOCorporate() {
+  // Show corporate panel (keep individual visible if already shown — mixed owners)
+  document.getElementById('bo_corporate').style.display = 'block';
+  document.getElementById('bo_government').style.display = 'none';
+  document.getElementById('bo_none').style.display = 'none';
+
+  // First click just reveals panel with entry #1; subsequent clicks add more
+  if (!boCorpShown) {
+    boCorpShown = true;
+    return;
+  }
+
   var c = document.getElementById('bo-corporate-container');
-  var first = c.querySelector('.repeatable').cloneNode(true);
-  first.querySelector('h4').textContent = 'Corporate Beneficial Owner #' + (++boCorpCount);
-  first.querySelectorAll('input,select,textarea').forEach(function(el) {
-    el.name = el.name.replace(/_0_/, '_' + (boCorpCount - 1) + '_');
+  var tpl = c.querySelector('.repeatable');
+  var clone = tpl.cloneNode(true);
+  boCorpCount++;
+  clone.querySelector('h4').textContent = 'Corporate Beneficial Owner #' + boCorpCount;
+  clone.querySelectorAll('input,select,textarea').forEach(function(el) {
+    el.name = el.name.replace(/bo_corp_\d+_/, 'bo_corp_' + (boCorpCount - 1) + '_');
     el.value = '';
-    if (el.type === 'checkbox') { el.checked = false; el.id = el.id.replace(/_0_/, '_' + (boCorpCount - 1) + '_'); }
+    if (el.type === 'checkbox') { el.checked = false; el.id = el.id.replace(/bo_corp_\d+_/, 'bo_corp_' + (boCorpCount - 1) + '_'); }
   });
-  first.querySelectorAll('label[for]').forEach(function(l) { l.setAttribute('for', l.getAttribute('for').replace(/_0_/, '_' + (boCorpCount - 1) + '_')); });
-  var hdr = first.querySelector('.repeatable-header');
-  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="this.closest(\'.repeatable\').remove()"><i class="fas fa-times"></i> Remove</button>');
-  c.appendChild(first);
+  clone.querySelectorAll('label[for]').forEach(function(l) { l.setAttribute('for', l.getAttribute('for').replace(/bo_corp_\d+_/, 'bo_corp_' + (boCorpCount - 1) + '_')); });
+  var hdr = clone.querySelector('.repeatable-header');
+  if (!hdr.querySelector('.btn-remove')) hdr.insertAdjacentHTML('beforeend', '<button type="button" class="btn-remove" onclick="removeBOEntry(this,\'corporate\')"><i class="fas fa-times"></i> Remove</button>');
+  c.appendChild(clone);
+}
+
+function removeBOEntry(btn, type) {
+  var panel = type === 'individual' ? 'bo_individual' : 'bo_corporate';
+  var container = type === 'individual' ? 'bo-individual-container' : 'bo-corporate-container';
+  btn.closest('.repeatable').remove();
+  // If no entries left, hide the panel and reset the shown flag
+  var remaining = document.getElementById(container).querySelectorAll('.repeatable').length;
+  if (remaining === 0) {
+    document.getElementById(panel).style.display = 'none';
+    if (type === 'individual') boIndShown = false;
+    else boCorpShown = false;
+  }
 }
 function addMOIndividual() {
   var c = document.getElementById('mo-individual-container');
