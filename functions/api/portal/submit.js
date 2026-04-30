@@ -58,6 +58,7 @@ export async function onRequestPost(context) {
       'ma-enquiry': 'M&A Support Enquiry',
       'director-enquiry': 'Professional Director Services Enquiry',
       'address-for-service': 'UK Address for IP Service (IP)',
+      'idv-order': 'Identity Verification (IDV)',
     };
     const typeLabel = typeLabels[formType] || formType;
 

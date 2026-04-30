@@ -277,9 +277,23 @@
 <section class="section">
   <div class="container">
     <div class="form-wrap reveal">
+      <div id="cancelledNotice" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1.2rem;font-size:.9rem;color:#991b1b"><i class="fas fa-exclamation-circle" style="margin-right:.4rem"></i> Payment was cancelled. You can re-submit the form below to try again.</div>
       <h2 data-content="form.title">Start Your Identity Verification</h2>
       <p class="form-subtitle" data-content="form.subtitle">Provide details for each individual requiring identity verification. Our team will guide you through the process.</p>
-      <form action="/api/idv-submit" method="POST">
+
+      <!-- Fee display -->
+      <div style="background:#f7f8f9;border:1px solid #e2e5e9;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
+        <div>
+          <p style="font-size:.9rem;font-weight:600;color:#2a2f36;margin:0">Identity Verification Fee</p>
+          <p style="font-size:.8rem;color:#6b7280;margin:0">&pound;125 + VAT (&pound;150 inc VAT) per individual</p>
+        </div>
+        <div style="text-align:right">
+          <p style="font-size:1.2rem;font-weight:700;color:#00594a;margin:0" id="idv_pub_total">&pound;150.00</p>
+          <p style="font-size:.7rem;color:#6b7280;margin:0" id="idv_pub_total_label">1 individual &middot; inc VAT</p>
+        </div>
+      </div>
+
+      <form id="formIdvPublic" onsubmit="event.preventDefault();submitIdvPublic(this)">
 
         <!-- Section: Individuals to Verify -->
         <div class="form-section-title">Individuals to Verify</div>
@@ -360,7 +374,7 @@
           <input type="email" name="contact_email" placeholder="your@email.com" required>
         </div>
 
-        <button type="submit" class="btn btn-teal" style="width:100%;justify-content:center">Begin Verification <i class="fas fa-arrow-right"></i></button>
+        <button type="submit" class="btn btn-teal" style="width:100%;justify-content:center"><i class="fas fa-credit-card" style="margin-right:.3rem"></i> Submit &amp; Proceed to Payment</button>
       </form>
     </div>
   </div>
@@ -459,9 +473,85 @@ function addIdvPerson() {
     '<div class="field"><label>Country</label><input type="text" name="individual_' + idx + '_country" required></div>' +
     '</div></div>';
   container.insertAdjacentHTML('beforeend', html);
+  updateIdvPubTotal();
 }
 function removeIdvPerson(btn) {
   btn.closest('.idv-individual-block').remove();
+  updateIdvPubTotal();
+}
+function updateIdvPubTotal() {
+  var count = document.querySelectorAll('#idv-individuals-container .idv-individual-block').length;
+  var total = count * 150;
+  document.getElementById('idv_pub_total').textContent = '£' + total.toFixed(2);
+  document.getElementById('idv_pub_total_label').textContent = count + ' individual' + (count !== 1 ? 's' : '') + ' · inc VAT';
+}
+// Show cancelled notice if returning from Stripe
+if (new URLSearchParams(window.location.search).get('cancelled') === '1') {
+  document.getElementById('cancelledNotice').style.display = 'block';
+}
+</script>
+<script>
+async function submitIdvPublic(formEl) {
+  var btn = formEl.querySelector('button[type="submit"]');
+  var origText = btn ? btn.innerHTML : '';
+  try {
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    }
+
+    // Collect form data
+    var data = {};
+    var inputs = formEl.querySelectorAll('input, select, textarea');
+    inputs.forEach(function(inp) {
+      if (inp.name && inp.type !== 'button') {
+        if (inp.type === 'checkbox') { if (inp.checked) data[inp.name] = inp.value || 'yes'; }
+        else { data[inp.name] = inp.value; }
+      }
+    });
+    data._formType = 'idv-order';
+    data._submittedAt = new Date().toISOString();
+
+    // Step 1: Save form data
+    var res = await fetch('/api/portal/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    var result = await res.json();
+    var submissionId = result.id;
+
+    // Step 2: Count individuals and create Stripe Checkout
+    var individualCount = document.querySelectorAll('#idv-individuals-container .idv-individual-block').length;
+    var customerEmail = data.contact_email || data.individual_1_email || '';
+
+    var stripeRes = await fetch('/api/stripe/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        submissionId: submissionId,
+        individualCount: individualCount,
+        customerEmail: customerEmail
+      })
+    });
+    if (!stripeRes.ok) throw new Error('Payment setup failed');
+    var stripeData = await stripeRes.json();
+
+    // Step 3: Redirect to Stripe Checkout
+    if (stripeData.url) {
+      window.location.href = stripeData.url;
+    } else {
+      throw new Error('No checkout URL received');
+    }
+  } catch (err) {
+    alert('There was an error processing your order. Please try again or contact enquiries@axsuma.co.uk.');
+    console.error(err);
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = origText;
+    }
+  }
 }
 </script>
 <script src="content-loader.js" data-page="id-verification"></script>

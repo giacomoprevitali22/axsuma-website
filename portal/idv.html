@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <form id="formIdv" class="form-card" style="box-shadow:none;border:none;padding:0" onsubmit="event.preventDefault();if(validateRequired(this))submitPortalForm(this,'idv-order')">
+      <form id="formIdv" class="form-card" style="box-shadow:none;border:none;padding:0" onsubmit="event.preventDefault();if(validateRequired(this))submitIdvWithPayment(this)">
 
         <!-- INDIVIDUALS TO VERIFY -->
         <div class="form-section">
@@ -155,7 +155,7 @@
   <div class="success-card">
     <div class="icon"><i class="fas fa-check"></i></div>
     <h2>Order Submitted</h2>
-    <p>Your identity verification order has been received. You will receive a payment link and further instructions by email.</p>
+    <p>Your identity verification order has been received. Redirecting you to secure payment...</p>
     <a href="index.html" class="btn btn-teal">Back to Portal</a>
   </div>
 </div>
@@ -190,6 +190,60 @@ function copyIdvEmail(checked) {
   if (checked) {
     var src = document.querySelector('[name="idv_0_email"]');
     if (src) document.getElementById('invoice_email').value = src.value;
+  }
+}
+
+async function submitIdvWithPayment(formEl) {
+  var btn = formEl.querySelector('button[type="submit"]');
+  var origText = btn ? btn.innerHTML : '';
+  try {
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    }
+    var data = collectFormData(formEl);
+    data._formType = 'idv-order';
+    data._submittedAt = new Date().toISOString();
+
+    // Step 1: Save form data to KV
+    var res = await fetch('/api/portal/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    var result = await res.json();
+    var submissionId = result.id;
+
+    // Step 2: Create Stripe Checkout session
+    var individualCount = document.querySelectorAll('#idv-individuals-container .repeatable').length;
+    var customerEmail = data.invoice_email || data.idv_0_email || '';
+
+    var stripeRes = await fetch('/api/stripe/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        submissionId: submissionId,
+        individualCount: individualCount,
+        customerEmail: customerEmail
+      })
+    });
+    if (!stripeRes.ok) throw new Error('Payment setup failed');
+    var stripeData = await stripeRes.json();
+
+    // Step 3: Redirect to Stripe Checkout
+    if (stripeData.url) {
+      window.location.href = stripeData.url;
+    } else {
+      throw new Error('No checkout URL received');
+    }
+  } catch (err) {
+    alert('There was an error processing your order. Please try again or contact enquiries@axsuma.co.uk.');
+    console.error(err);
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = origText;
+    }
   }
 }
 </script>
