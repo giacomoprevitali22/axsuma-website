@@ -54,12 +54,12 @@
     .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
 
     /* PAGE HERO (light variant) */
-    .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light)}
+    .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light);text-align:center}
     .page-hero .breadcrumb{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
     .page-hero .breadcrumb a{color:var(--teal)}
     .page-hero .breadcrumb a:hover{color:var(--teal-light)}
-    .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px}
-    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400}
+    .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px;margin-left:auto;margin-right:auto}
+    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400;margin:0 auto}
 
     /* SECTIONS */
     .section{padding:5rem 0}
@@ -186,14 +186,14 @@
     <ul class="nav-links">
       <li class="nav-drop">
         <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
-        <div class="mega" style="grid-template-columns:1fr;width:280px">
+        <div class="mega" style="grid-template-columns:1fr;width:200px">
           <div>
-            <h5>About Axsuma</h5>
+            <h5>About</h5>
             <ul>
               <li><a href="about.html">About Axsuma</a></li>
               <li><a href="our-approach.html">Our Approach</a></li>
-              <li><a href="meet-the-team.html">Meet the Team</a></li>
-              <li><a href="sectors.html">Sectors We Serve</a></li>
+              <li><a href="meet-the-team.html">Our Team</a></li>
+              <li><a href="sectors.html">Sectors We Support</a></li>
             </ul>
           </div>
         </div>
@@ -234,83 +234,80 @@
 </nav>
 
 <!-- PAGE HERO -->
-<section class="page-hero">
+<section class="page-hero" style="text-align:center">
   <div class="container">
     <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; International</p>
     <h1 data-content="header.title">International Expansion</h1>
-    <p class="lead" data-content="header.subtitle">Coordinate your multi-jurisdictional expansion with confidence, backed by trusted local expertise and UK-led oversight.</p>
+    <p class="lead" style="margin:0 auto" data-content="header.subtitle">Coordinate your multi-jurisdictional expansion with confidence, backed by trusted local expertise and UK-led oversight.</p>
   </div>
 </section>
 
 <!-- INTRO SECTION -->
 <section class="section">
   <div class="container">
-    <div class="content-block reveal">
-      <p data-content="intro.paragraph1">For over 20 years, our specialists have supported companies establishing and operating in the UK. We know that many businesses are not entering a single market but expanding across multiple jurisdictions at the same time and require a coordinated multi jurisdictional approach to expansion.</p>
-      <p data-content="intro.paragraph2">We support clients entering new markets by combining UK led coordination with a trusted international network of local service providers. This enables us to navigate administrative, legal, regulatory and cultural complexities, and removing friction from the expansion process.</p>
+    <div class="content-block reveal" style="text-align:center">
+      <p data-content="intro.paragraph1">For over 20 years, our specialists have supported companies establishing and operating in the UK. We know that many businesses are not entering a single market but expanding across multiple jurisdictions at the same time and require a coordinated multi-jurisdictional approach to expansion.</p>
+      <p data-content="intro.paragraph2">We support clients entering new markets by combining UK-led coordination with a trusted international network of local service providers. This enables us to navigate administrative, legal, regulatory and cultural complexities, removing friction from the expansion process.</p>
     </div>
   </div>
 </section>
 
 <!-- OUR NETWORK -->
-<section class="svc-detail">
-  <div class="container">
-    <div class="svc-aside">
-      <h2 data-content="network.title">Our Network</h2>
-    </div>
-    <div class="svc-body">
-      <p data-content="network.body">Our partners are firms we have worked with over many years, selected for their proven capability, responsiveness and alignment with our standards. This ensures consistent delivery while retaining the benefit of local expertise.</p>
-    </div>
+<section class="section section-alt">
+  <div class="container" style="text-align:center">
+    <p class="s-label">Our Partners</p>
+    <h2 class="s-title" data-content="network.title">Our Network</h2>
+    <p class="s-sub" style="margin:0 auto" data-content="network.body">Our partners are firms we have worked with over many years, selected for their proven capability, responsiveness and alignment with our standards. This ensures consistent delivery while retaining the benefit of local expertise.</p>
   </div>
 </section>
 
 <!-- SCOPE OF SUPPORT -->
-<section class="svc-detail">
-  <div class="container">
-    <div class="svc-aside">
-      <h2 data-content="scope.title">Scope of Support</h2>
-    </div>
-    <div class="svc-body">
-      <p data-content="scope.intro">Our six core service areas support your entire expansion journey:</p>
-      <div class="feature-grid">
-        <div class="feature-card reveal">
-          <h3 data-content="services.0.name">Entity Formation</h3>
-          <p data-content="services.0.desc">Establish legal entities across jurisdictions with seamless coordination and compliance.</p>
-        </div>
-        <div class="feature-card reveal">
-          <h3 data-content="services.1.name">Company Secretarial</h3>
-          <p data-content="services.1.desc">Registered office services and corporate governance support for your international entities.</p>
-        </div>
-        <div class="feature-card reveal">
-          <h3 data-content="services.2.name">Accounting &amp; Tax</h3>
-          <p data-content="services.2.desc">Local accounting expertise and tax-efficient structuring across multiple jurisdictions.</p>
-        </div>
-        <div class="feature-card reveal">
-          <h3 data-content="services.3.name">Payroll &amp; HR</h3>
-          <p data-content="services.3.desc">Global payroll administration and human resources management tailored to local requirements.</p>
-        </div>
-        <div class="feature-card reveal">
-          <h3 data-content="services.4.name">Employer of Record</h3>
-          <p data-content="services.4.desc">EOR solutions that simplify employment compliance and reduce administrative burden.</p>
-        </div>
-        <div class="feature-card reveal">
-          <h3 data-content="services.5.name">HR Consulting</h3>
-          <p data-content="services.5.desc">Strategic HR guidance navigating employment law and people practices in new markets.</p>
-        </div>
+<section class="section">
+  <div class="container" style="text-align:center">
+    <p class="s-label">What We Cover</p>
+    <h2 class="s-title" data-content="scope.title">Scope of Support</h2>
+    <p class="s-sub" style="margin:0 auto 2rem" data-content="scope.intro">Our six core service areas support your entire expansion journey:</p>
+    <div class="feature-grid" style="text-align:left">
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-file-signature"></i></div>
+        <h3 data-content="services.0.name">Entity Formation</h3>
+        <p data-content="services.0.desc">Establish legal entities across jurisdictions with seamless coordination and compliance.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-building-columns"></i></div>
+        <h3 data-content="services.1.name">Company Secretarial</h3>
+        <p data-content="services.1.desc">Registered office services and corporate governance support for your international entities.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-calculator"></i></div>
+        <h3 data-content="services.2.name">Accounting &amp; Tax</h3>
+        <p data-content="services.2.desc">Local accounting expertise and tax-efficient structuring across multiple jurisdictions.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-users"></i></div>
+        <h3 data-content="services.3.name">Payroll &amp; HR</h3>
+        <p data-content="services.3.desc">Global payroll administration and human resources management tailored to local requirements.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-id-badge"></i></div>
+        <h3 data-content="services.4.name">Employer of Record</h3>
+        <p data-content="services.4.desc">EOR solutions that simplify employment compliance and reduce administrative burden.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon"><i class="fas fa-people-arrows"></i></div>
+        <h3 data-content="services.5.name">HR Consulting</h3>
+        <p data-content="services.5.desc">Strategic HR guidance navigating employment law and people practices in new markets.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- COMMERCIAL APPROACH -->
-<section class="svc-detail">
-  <div class="container">
-    <div class="svc-aside">
-      <h2 data-content="commercial.title">Commercial Approach</h2>
-    </div>
-    <div class="svc-body">
-      <p data-content="commercial.body">We manage engagements centrally to ensure efficient execution, competitive pricing and seamless coordination across jurisdictions, so your expansion remains compliant and commercially effective, allowing you to focus on growth.</p>
-    </div>
+<section class="section section-alt">
+  <div class="container" style="text-align:center">
+    <p class="s-label">Working With Us</p>
+    <h2 class="s-title" data-content="commercial.title">Commercial Approach</h2>
+    <p class="s-sub" style="margin:0 auto" data-content="commercial.body">We manage engagements centrally to ensure efficient execution, competitive pricing and seamless coordination across jurisdictions, so your expansion remains compliant and commercially effective, allowing you to focus on growth.</p>
   </div>
 </section>
 
