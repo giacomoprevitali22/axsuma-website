@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insights – Axsuma</title>
-  <meta name="description" content="Expert perspectives on UK corporate administration, governance, and compliance from the Axsuma team.">
+  <title>ATED Returns 2026/27: Key Dates and Thresholds – Axsuma</title>
+  <meta name="description" content="Annual Tax on Enveloped Dwellings returns are due by 30 April. Here is what property-holding companies need to know about valuations, reliefs, and filing deadlines.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#ffffff">
@@ -28,8 +28,6 @@
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
     img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
-
-    /* NAV */
     .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
     .nav-logo{height:68px}
@@ -52,23 +50,29 @@
     .mega a:hover{color:var(--dark)!important}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer}
     .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
-
-    /* PAGE HERO */
     .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light)}
     .page-hero .breadcrumb{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
     .page-hero .breadcrumb a{color:var(--teal)}
     .page-hero .breadcrumb a:hover{color:var(--teal-light)}
     .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px}
-    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400}
-
-    /* SECTIONS */
     .section{padding:5rem 0}
     .section-alt{background:var(--off-white)}
     .s-label{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
     .s-title{font-size:2.2rem;font-weight:300;line-height:1.2;margin-bottom:1rem;color:var(--dark);letter-spacing:-.3px}
     .s-sub{font-size:.95rem;color:var(--mid);max-width:720px;line-height:1.8;font-weight:300}
-
-    /* INSIGHTS GRID */
+    .article-meta{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+    .article-tag{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);background:rgba(0,89,74,.06);padding:.3rem .8rem;border-radius:3px}
+    .article-date{font-size:.82rem;color:var(--light-text)}
+    .article-body{max-width:760px;margin:0 auto}
+    .article-body h2{font-size:1.4rem;font-weight:600;margin:2.5rem 0 1rem;color:var(--dark);line-height:1.3}
+    .article-body h3{font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--dark)}
+    .article-body p{font-size:.95rem;color:var(--dark-soft);line-height:1.85;margin-bottom:1.2rem}
+    .article-body ul,.article-body ol{margin:0 0 1.5rem 1.5rem;color:var(--dark-soft);font-size:.95rem;line-height:1.85}
+    .article-body li{margin-bottom:.4rem}
+    .key-box{background:var(--off-white);border-left:3px solid var(--teal);padding:1.5rem 2rem;margin:2rem 0;border-radius:0 6px 6px 0}
+    .key-box h4{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:.6rem}
+    .key-box p,.key-box ul{font-size:.9rem;color:var(--dark-soft);line-height:1.7;margin-bottom:.5rem}
+    .key-box ul{margin-left:1.2rem}
     .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
     .ins-card{border-radius:8px;overflow:hidden;background:var(--white);border:1px solid var(--border);transition:all var(--ease);display:flex;flex-direction:column}
     .ins-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06);border-color:var(--teal)}
@@ -80,18 +84,13 @@
     .ins-foot span{font-size:.72rem;color:var(--light-text)}
     .ins-foot a{font-size:.78rem;font-weight:600;color:var(--teal)}
     .ins-foot a:hover{color:var(--dark)}
-
-    /* BTN */
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
     .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
     .btn-teal:hover{background:var(--teal-light);border-color:var(--teal-light)}
-
-    /* CTA */
     .cta{padding:6rem 0;background:var(--white);text-align:center;border-top:1px solid var(--border-light)}
     .cta h2{font-size:2.2rem;font-weight:300;margin-bottom:1rem;color:var(--dark)}
     .cta p{font-size:1rem;color:var(--mid);max-width:500px;margin:0 auto 2rem;font-weight:300}
-
-    /* COOKIE */
     .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:var(--white);color:var(--dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;font-size:.82rem;border-top:1px solid var(--border);transform:translateY(100%);animation:slideUp .5s 2s forwards;box-shadow:0 -4px 20px rgba(0,0,0,.06)}
     .cookie-banner.hidden{display:none}
     @keyframes slideUp{to{transform:translateY(0)}}
@@ -99,8 +98,6 @@
     .cookie-btn{background:var(--teal);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:4px;cursor:pointer;font-family:var(--font);font-weight:600;font-size:.82rem;transition:background var(--ease)}
     .cookie-btn:hover{background:var(--teal-light)}
     .cookie-btn.sec{background:transparent;border:1px solid var(--border);color:var(--mid)}
-
-    /* FOOTER */
     .footer{background:var(--dark);color:rgba(255,255,255,.6);padding:4rem 0 0;border-top:1px solid var(--border)}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
     .footer-brand p{margin-top:1rem;font-size:.82rem;line-height:1.7}
@@ -114,14 +111,11 @@
     .footer-social{display:flex;gap:.8rem}
     .footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.5);transition:all var(--ease)}
     .footer-social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
-
-    /* REVEAL */
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
     .reveal.vis{opacity:1;transform:translateY(0)}
     .no-js .reveal{opacity:1;transform:none}
-
     @media(max-width:1024px){
-      .insights-grid{grid-template-columns:repeat(2,1fr)}
+      .insights-grid,.related-grid{grid-template-columns:repeat(2,1fr)}
       .footer-grid{grid-template-columns:1fr 1fr}
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
     }
@@ -131,22 +125,19 @@
       .page-hero h1{font-size:1.5rem;line-height:1.2}
       .section{padding:2.5rem 0}
       .s-title{font-size:1.4rem}
-      .insights-grid{grid-template-columns:1fr}
+      .insights-grid,.related-grid{grid-template-columns:1fr}
+      .article-body h2{font-size:1.2rem}
       .footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1 / -1}.footer-bottom{flex-direction:column;text-align:center;gap:.8rem;font-size:.68rem}.footer-legal{justify-content:center}
       .cookie-banner{flex-direction:column;text-align:center}
       .nav-links li{width:100%;text-align:left}.nav-links li a{display:block;padding:.5rem 0}.nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}
       .nav-links .nav-portal{display:inline-block;margin-top:.3rem;padding:.4rem 1rem}.nav-drop{width:100%}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
     }
-  
     @media(max-width:480px){
       .container{padding:0 1rem}
-      .page-hero,.page-hero-dark{padding:5rem 0 1.2rem}
+      .page-hero{padding:5rem 0 1.2rem}
       .page-hero h1{font-size:1.3rem}
       .s-title{font-size:1.2rem}
       .s-label{font-size:.65rem}
-      .feature-card{padding:1.2rem 1rem}
-      .feature-card h3{font-size:.92rem}
-      .feature-card p{font-size:.78rem}
       .footer-grid{grid-template-columns:1fr}
       .footer h4{font-size:.8rem;margin-bottom:.6rem}
       .footer a{font-size:.76rem}
@@ -155,7 +146,8 @@
       .btn{padding:.6rem 1.2rem;font-size:.8rem}
       .cookie-banner{flex-direction:column;text-align:center;padding:1rem 1rem;gap:.8rem}
     }
-/*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
+    @keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}
+  </style>
 </head>
 <body>
 
@@ -225,91 +217,148 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Insights</p>
-    <h1>Insights</h1>
-    <p class="lead">Expert perspectives on UK corporate administration, governance, and compliance.</p>
+    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="insights.html">Insights</a> &rsaquo; ATED Returns 2026/27</p>
+    <h1>ATED Returns 2026/27: Key Dates and Thresholds</h1>
+    <div class="article-meta">
+      <span class="article-tag">Tax &amp; Compliance</span>
+      <span class="article-date">10 February 2026</span>
+    </div>
   </div>
 </section>
 
-<!-- INSIGHTS GRID -->
+<!-- ARTICLE -->
 <section class="section">
   <div class="container">
-    <div class="insights-grid">
-      <!-- Article 1 -->
-      <div class="ins-card reveal">
-        <div class="ins-body">
-          <p class="ins-tag">Regulatory Update</p>
-          <h3>UK Companies House Reform: What Changes Mean for Your Business in 2026</h3>
-          <p>The Economic Crime and Corporate Transparency Act continues to reshape the corporate landscape. We outline the key filing and verification changes taking effect this year.</p>
-        </div>
-        <div class="ins-foot">
-          <span>15 April 2026</span>
-          <a href="insight-companies-house-reform.html">Read more &rarr;</a>
-        </div>
+    <div class="article-body reveal">
+
+      <p>The Annual Tax on Enveloped Dwellings (ATED) is one of those obligations that catches out more companies than it should. Introduced in 2013 as part of a package of measures designed to discourage the holding of high-value UK residential property through corporate structures, ATED imposes an annual charge on companies, partnerships with corporate members, and collective investment schemes that hold UK residential property valued above &pound;500,000.</p>
+
+      <p>With the 2026/27 ATED year beginning on 1 April 2026 and returns due by 30 April 2026, now is the time for affected entities to review their obligations, confirm property valuations, and ensure their returns are filed on time.</p>
+
+      <h2>Who Is Affected?</h2>
+
+      <p>ATED applies to "non-natural persons" (NNPs) that hold an interest in UK residential property valued above &pound;500,000. In practice, this means:</p>
+
+      <ul>
+        <li>Companies (UK or overseas)</li>
+        <li>Partnerships where at least one partner is a company</li>
+        <li>Collective investment schemes</li>
+      </ul>
+
+      <p>It is important to note that ATED applies regardless of where the company is incorporated. An overseas company holding a London flat worth &pound;600,000 is just as liable as a UK company holding the same property. The test is the nature of the holding entity and the value and type of the property, not the jurisdiction of incorporation.</p>
+
+      <h2>Current Banding and Charges for 2026/27</h2>
+
+      <p>ATED charges are based on the value of the property as at the most recent revaluation date. The annual charges for the 2026/27 period are expected to be broadly in line with the following bands (subject to confirmation by HMRC in the annual uprating):</p>
+
+      <ul>
+        <li><strong>&pound;500,001 to &pound;1 million:</strong> approximately &pound;4,400</li>
+        <li><strong>&pound;1,000,001 to &pound;2 million:</strong> approximately &pound;9,000</li>
+        <li><strong>&pound;2,000,001 to &pound;5 million:</strong> approximately &pound;30,550</li>
+        <li><strong>&pound;5,000,001 to &pound;10 million:</strong> approximately &pound;71,500</li>
+        <li><strong>&pound;10,000,001 to &pound;20 million:</strong> approximately &pound;143,550</li>
+        <li><strong>&pound;20,000,001 and above:</strong> approximately &pound;287,500</li>
+      </ul>
+
+      <p>These are significant sums. For companies holding high-value residential property, ATED represents a material annual cost that must be factored into investment returns and cash flow planning.</p>
+
+      <h2>Key Filing Dates</h2>
+
+      <div class="key-box">
+        <h4>Important Deadlines</h4>
+        <ul>
+          <li><strong>1 April 2026:</strong> Start of the 2026/27 ATED period</li>
+          <li><strong>30 April 2026:</strong> Deadline for filing ATED returns for the 2026/27 period (including relief returns)</li>
+          <li><strong>30 April 2026:</strong> Deadline for payment of the 2026/27 ATED charge (unless claiming relief)</li>
+          <li><strong>31 October 2026:</strong> Deadline for payment of any adjusted charge for the prior year (2025/26) where a return has been amended</li>
+        </ul>
       </div>
 
-      <!-- Article 2 -->
-      <div class="ins-card reveal">
+      <p>The filing and payment deadline of 30 April is unusually early &mdash; it falls just 30 days after the start of the ATED year. This means that in practice, companies need to have their returns prepared before the start of the new ATED period, not after it.</p>
+
+      <h2>Available Reliefs</h2>
+
+      <p>While the headline ATED charges are substantial, a number of reliefs are available that reduce or eliminate the charge entirely. However, and this is critical, even where a relief applies, a return must still be filed. Failure to file a relief return is treated the same as failure to file any return, and penalties will apply.</p>
+
+      <p>The most commonly claimed reliefs include:</p>
+
+      <ul>
+        <li><strong>Property rental business relief:</strong> Available where the property is held for the purposes of a property rental business and is, or is available for, commercial letting to an unconnected third party. This is the most widely claimed relief and applies to most buy-to-let properties held through companies.</li>
+        <li><strong>Property development relief:</strong> Available where the property is held by a developer for the purposes of a property development trade, with the intention of developing and selling the property. The property must not be occupied by a connected person.</li>
+        <li><strong>Property trading relief:</strong> Available where the property is held as stock of a property trading business.</li>
+        <li><strong>Dwellings open to the public:</strong> Available where the property is made available to the public for at least 28 days per year.</li>
+        <li><strong>Employee accommodation:</strong> Available where the property is provided as living accommodation for employees in connection with their employment, and the employee is not a connected person of the company.</li>
+        <li><strong>Farmhouse relief:</strong> Available for farmhouses occupied by a farm worker or former long-serving farm worker.</li>
+      </ul>
+
+      <h2>Common Pitfalls</h2>
+
+      <p>In our experience preparing and filing ATED returns for clients, the most frequent issues include:</p>
+
+      <ol>
+        <li><strong>Failing to file a relief return.</strong> This is the single most common mistake. Companies that qualify for a relief often assume they do not need to file a return at all. This is wrong. A relief return must be filed by the 30 April deadline, and failure to do so results in penalties even though no tax is ultimately due.</li>
+        <li><strong>Using an incorrect valuation.</strong> ATED charges are based on the property's value at a specific revaluation date, not its current market value. The most recent revaluation date was 1 April 2022, and this valuation applies until the next revaluation date (expected to be 1 April 2027). Companies that use an outdated or inaccurate valuation risk being placed in the wrong band.</li>
+        <li><strong>Forgetting about properties acquired mid-year.</strong> If a company acquires a qualifying property during the ATED year, a return must be filed within 30 days of acquisition (or within 90 days for new-build properties). This is a separate obligation from the annual return.</li>
+        <li><strong>Overlooking partnership structures.</strong> ATED applies to partnerships with at least one corporate partner. This is frequently overlooked, particularly where the corporate partner holds a minority interest.</li>
+        <li><strong>Late payment penalties.</strong> Even where a return is filed on time, late payment of the ATED charge attracts interest and penalties. Payment must be made by 30 April &mdash; it is not sufficient to file the return and pay later.</li>
+      </ol>
+
+      <h2>Revaluation Dates</h2>
+
+      <p>ATED property values are based on the value of the property at prescribed revaluation dates, which occur every five years. The most recent revaluation date was 1 April 2022. The next revaluation date is expected to be 1 April 2027.</p>
+
+      <p>Between revaluation dates, the value used for ATED purposes remains fixed unless the property is newly acquired (in which case the acquisition price is used) or there has been a significant alteration to the property that would materially affect its value.</p>
+
+      <p>Companies should review their property valuations as at 1 April 2022 to confirm they are accurate and supportable. Where a professional valuation was obtained at that date, it should be retained on file. Where no formal valuation was obtained, it may be prudent to obtain one retrospectively, particularly if the property falls close to a banding threshold.</p>
+
+      <div class="key-box">
+        <h4>How Axsuma Can Help</h4>
+        <p>Our <a href="accounting.html" style="color:var(--teal)">Accounting &amp; Tax</a> team handles ATED return preparation and filing for corporate property owners across all banding thresholds. We manage the annual calendar, prepare and submit returns (including relief returns), and coordinate with your property advisors on valuations. If you hold UK residential property through a company structure, <a href="contact.html" style="color:var(--teal)">contact us</a> to ensure your 2026/27 obligations are met.</p>
+      </div>
+
+      <p>ATED is a tax that rewards diligence and punishes inattention. The charges themselves are significant, but the reliefs are generous for legitimate commercial property holdings. The critical requirement is to file on time, every time &mdash; even when no tax is due. With the 30 April deadline approaching, companies holding UK residential property should act now to review their positions and prepare their returns.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="section section-alt">
+  <div class="container reveal">
+    <p class="s-label">Related Insights</p>
+    <h2 class="s-title">Further Reading</h2>
+    <div class="related-grid">
+      <div class="ins-card">
         <div class="ins-body">
           <p class="ins-tag">Compliance</p>
           <h3>Register of Overseas Entities: Annual Update Filing Requirements</h3>
-          <p>Overseas entities owning UK land must file annual updates. We explain the process, deadlines, and common pitfalls to avoid penalties.</p>
+          <p>Overseas entities owning UK land must file annual updates. We explain the process, deadlines, and common pitfalls.</p>
         </div>
         <div class="ins-foot">
           <span>28 March 2026</span>
           <a href="insight-roe-annual-update.html">Read more &rarr;</a>
         </div>
       </div>
-
-      <!-- Article 3 -->
-      <div class="ins-card reveal">
+      <div class="ins-card">
         <div class="ins-body">
           <p class="ins-tag">Corporate Structure</p>
           <h3>SPV Structures for Cross-Border Investment: A Practical Guide</h3>
-          <p>How to structure UK SPVs for international investment transactions, including tax considerations, governance requirements, and ongoing compliance obligations.</p>
+          <p>How to structure UK SPVs for international investment transactions, including tax considerations and governance requirements.</p>
         </div>
         <div class="ins-foot">
           <span>12 March 2026</span>
           <a href="insight-spv-cross-border.html">Read more &rarr;</a>
         </div>
       </div>
-
-      <!-- Article 4 -->
-      <div class="ins-card reveal">
+      <div class="ins-card">
         <div class="ins-body">
-          <p class="ins-tag">Governance</p>
-          <h3>The Role of the Professional Director in Modern Governance</h3>
-          <p>Independent professional directors bring credibility, compliance oversight, and local substance to corporate structures. We explore when and why they matter.</p>
+          <p class="ins-tag">Regulatory Update</p>
+          <h3>UK Companies House Reform: What Changes Mean for Your Business in 2026</h3>
+          <p>The ECCTA continues to reshape the corporate landscape. We outline the key filing and verification changes taking effect this year.</p>
         </div>
         <div class="ins-foot">
-          <span>25 February 2026</span>
-          <a href="insight-professional-director.html">Read more &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Article 5 -->
-      <div class="ins-card reveal">
-        <div class="ins-body">
-          <p class="ins-tag">Tax &amp; Compliance</p>
-          <h3>ATED Returns 2026/27: Key Dates and Thresholds</h3>
-          <p>Annual Tax on Enveloped Dwellings returns are due by 30 April. Here is what property-holding companies need to know about valuations, reliefs, and filing deadlines.</p>
-        </div>
-        <div class="ins-foot">
-          <span>10 February 2026</span>
-          <a href="insight-ated-returns.html">Read more &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Article 6 -->
-      <div class="ins-card reveal">
-        <div class="ins-body">
-          <p class="ins-tag">M&amp;A</p>
-          <h3>Post-Completion Governance: What Happens After the Deal Closes</h3>
-          <p>Acquisition vehicles require immediate attention after completion — board appointments, statutory filings, bank mandates, and compliance onboarding. We outline the critical first 30 days.</p>
-        </div>
-        <div class="ins-foot">
-          <span>28 January 2026</span>
-          <a href="insight-post-completion.html">Read more &rarr;</a>
+          <span>15 April 2026</span>
+          <a href="insight-companies-house-reform.html">Read more &rarr;</a>
         </div>
       </div>
     </div>
@@ -365,6 +414,7 @@ try{
   });}
 }catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
 </script>
-<script src="content-loader.js" data-page="insights"></script>
-<script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){e.preventDefault();var parent=a.parentElement;var wasOpen=parent.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});if(!wasOpen)parent.classList.add("open");}})});var navToggle=document.querySelector(".nav-toggle");if(navToggle){navToggle.addEventListener("click",function(){setTimeout(function(){var m=document.querySelector(".nav-links");if(m&&!m.style.display){document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});}},10);})}}catch(e){}</script></body>
+<script src="content-loader.js" data-page="insight-ated-returns"></script>
+<script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){e.preventDefault();var parent=a.parentElement;var wasOpen=parent.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});if(!wasOpen)parent.classList.add("open");}})});var navToggle=document.querySelector(".nav-toggle");if(navToggle){navToggle.addEventListener("click",function(){setTimeout(function(){var m=document.querySelector(".nav-links");if(m&&!m.style.display){document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});}},10);})}}catch(e){}</script>
+</body>
 </html>

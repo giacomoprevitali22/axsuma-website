@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insights – Axsuma</title>
-  <meta name="description" content="Expert perspectives on UK corporate administration, governance, and compliance from the Axsuma team.">
+  <title>Register of Overseas Entities: Annual Update Filing Requirements – Axsuma</title>
+  <meta name="description" content="Overseas entities owning UK land must file annual updates with Companies House. We explain the process, deadlines, and common pitfalls to avoid penalties.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#ffffff">
@@ -28,8 +28,6 @@
     a{text-decoration:none;color:inherit;transition:color var(--ease)}
     img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 2rem}
-
-    /* NAV */
     .nav{position:fixed;top:0;width:100%;z-index:1000;padding:.7rem 0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding-left:.5rem}
     .nav-logo{height:68px}
@@ -52,23 +50,29 @@
     .mega a:hover{color:var(--dark)!important}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer}
     .nav-toggle span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;transition:var(--ease)}
-
-    /* PAGE HERO */
     .page-hero{padding:9rem 0 3rem;background:var(--off-white);border-bottom:1px solid var(--border-light)}
     .page-hero .breadcrumb{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
     .page-hero .breadcrumb a{color:var(--teal)}
     .page-hero .breadcrumb a:hover{color:var(--teal-light)}
     .page-hero h1{font-size:2.6rem;font-weight:300;line-height:1.15;color:var(--dark);letter-spacing:-.5px;margin-bottom:1rem;max-width:820px}
-    .page-hero .lead{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:720px;font-weight:400}
-
-    /* SECTIONS */
     .section{padding:5rem 0}
     .section-alt{background:var(--off-white)}
     .s-label{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
     .s-title{font-size:2.2rem;font-weight:300;line-height:1.2;margin-bottom:1rem;color:var(--dark);letter-spacing:-.3px}
     .s-sub{font-size:.95rem;color:var(--mid);max-width:720px;line-height:1.8;font-weight:300}
-
-    /* INSIGHTS GRID */
+    .article-meta{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+    .article-tag{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);background:rgba(0,89,74,.06);padding:.3rem .8rem;border-radius:3px}
+    .article-date{font-size:.82rem;color:var(--light-text)}
+    .article-body{max-width:760px;margin:0 auto}
+    .article-body h2{font-size:1.4rem;font-weight:600;margin:2.5rem 0 1rem;color:var(--dark);line-height:1.3}
+    .article-body h3{font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--dark)}
+    .article-body p{font-size:.95rem;color:var(--dark-soft);line-height:1.85;margin-bottom:1.2rem}
+    .article-body ul,.article-body ol{margin:0 0 1.5rem 1.5rem;color:var(--dark-soft);font-size:.95rem;line-height:1.85}
+    .article-body li{margin-bottom:.4rem}
+    .key-box{background:var(--off-white);border-left:3px solid var(--teal);padding:1.5rem 2rem;margin:2rem 0;border-radius:0 6px 6px 0}
+    .key-box h4{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:.6rem}
+    .key-box p,.key-box ul{font-size:.9rem;color:var(--dark-soft);line-height:1.7;margin-bottom:.5rem}
+    .key-box ul{margin-left:1.2rem}
     .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
     .ins-card{border-radius:8px;overflow:hidden;background:var(--white);border:1px solid var(--border);transition:all var(--ease);display:flex;flex-direction:column}
     .ins-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06);border-color:var(--teal)}
@@ -80,18 +84,13 @@
     .ins-foot span{font-size:.72rem;color:var(--light-text)}
     .ins-foot a{font-size:.78rem;font-weight:600;color:var(--teal)}
     .ins-foot a:hover{color:var(--dark)}
-
-    /* BTN */
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
     .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
     .btn-teal:hover{background:var(--teal-light);border-color:var(--teal-light)}
-
-    /* CTA */
     .cta{padding:6rem 0;background:var(--white);text-align:center;border-top:1px solid var(--border-light)}
     .cta h2{font-size:2.2rem;font-weight:300;margin-bottom:1rem;color:var(--dark)}
     .cta p{font-size:1rem;color:var(--mid);max-width:500px;margin:0 auto 2rem;font-weight:300}
-
-    /* COOKIE */
     .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:var(--white);color:var(--dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;font-size:.82rem;border-top:1px solid var(--border);transform:translateY(100%);animation:slideUp .5s 2s forwards;box-shadow:0 -4px 20px rgba(0,0,0,.06)}
     .cookie-banner.hidden{display:none}
     @keyframes slideUp{to{transform:translateY(0)}}
@@ -99,8 +98,6 @@
     .cookie-btn{background:var(--teal);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:4px;cursor:pointer;font-family:var(--font);font-weight:600;font-size:.82rem;transition:background var(--ease)}
     .cookie-btn:hover{background:var(--teal-light)}
     .cookie-btn.sec{background:transparent;border:1px solid var(--border);color:var(--mid)}
-
-    /* FOOTER */
     .footer{background:var(--dark);color:rgba(255,255,255,.6);padding:4rem 0 0;border-top:1px solid var(--border)}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
     .footer-brand p{margin-top:1rem;font-size:.82rem;line-height:1.7}
@@ -114,14 +111,11 @@
     .footer-social{display:flex;gap:.8rem}
     .footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.5);transition:all var(--ease)}
     .footer-social a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
-
-    /* REVEAL */
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
     .reveal.vis{opacity:1;transform:translateY(0)}
     .no-js .reveal{opacity:1;transform:none}
-
     @media(max-width:1024px){
-      .insights-grid{grid-template-columns:repeat(2,1fr)}
+      .insights-grid,.related-grid{grid-template-columns:repeat(2,1fr)}
       .footer-grid{grid-template-columns:1fr 1fr}
       .mega{width:600px;grid-template-columns:repeat(2,1fr)}
     }
@@ -131,22 +125,19 @@
       .page-hero h1{font-size:1.5rem;line-height:1.2}
       .section{padding:2.5rem 0}
       .s-title{font-size:1.4rem}
-      .insights-grid{grid-template-columns:1fr}
+      .insights-grid,.related-grid{grid-template-columns:1fr}
+      .article-body h2{font-size:1.2rem}
       .footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1 / -1}.footer-bottom{flex-direction:column;text-align:center;gap:.8rem;font-size:.68rem}.footer-legal{justify-content:center}
       .cookie-banner{flex-direction:column;text-align:center}
       .nav-links li{width:100%;text-align:left}.nav-links li a{display:block;padding:.5rem 0}.nav-links .nav-cta{display:inline-block;margin-top:.5rem;padding:.5rem 1.3rem}
       .nav-links .nav-portal{display:inline-block;margin-top:.3rem;padding:.4rem 1rem}.nav-drop{width:100%}.nav-drop .mega{position:static;transform:none;width:100%!important;opacity:0;visibility:hidden;max-height:0;padding:0!important;border:none;box-shadow:none;display:block;grid-template-columns:1fr!important;overflow:hidden;transition:max-height .3s,opacity .3s,padding .3s;background:transparent}.nav-drop.open .mega{opacity:1;visibility:visible;max-height:800px;padding:.4rem 0 .8rem 1rem!important}.nav-drop .mega h5{color:var(--teal);font-size:.7rem;margin:.6rem 0 .3rem;border:none;padding:0}.nav-drop .mega ul{margin-bottom:.4rem}.nav-drop .mega li a{padding:.3rem 0!important;color:var(--dark)!important}.nav-drop>a i{transition:transform .25s}.nav-drop.open>a i{transform:rotate(180deg)}
     }
-  
     @media(max-width:480px){
       .container{padding:0 1rem}
-      .page-hero,.page-hero-dark{padding:5rem 0 1.2rem}
+      .page-hero{padding:5rem 0 1.2rem}
       .page-hero h1{font-size:1.3rem}
       .s-title{font-size:1.2rem}
       .s-label{font-size:.65rem}
-      .feature-card{padding:1.2rem 1rem}
-      .feature-card h3{font-size:.92rem}
-      .feature-card p{font-size:.78rem}
       .footer-grid{grid-template-columns:1fr}
       .footer h4{font-size:.8rem;margin-bottom:.6rem}
       .footer a{font-size:.76rem}
@@ -155,7 +146,8 @@
       .btn{padding:.6rem 1.2rem;font-size:.8rem}
       .cookie-banner{flex-direction:column;text-align:center;padding:1rem 1rem;gap:.8rem}
     }
-/*reveal-fallback*/@keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}</style>
+    @keyframes revealFallback{to{opacity:1;transform:none}}.reveal{animation:revealFallback 0s 1.5s forwards}
+  </style>
 </head>
 <body>
 
@@ -225,91 +217,136 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
-    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Insights</p>
-    <h1>Insights</h1>
-    <p class="lead">Expert perspectives on UK corporate administration, governance, and compliance.</p>
+    <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="insights.html">Insights</a> &rsaquo; ROE Annual Update</p>
+    <h1>Register of Overseas Entities: Annual Update Filing Requirements</h1>
+    <div class="article-meta">
+      <span class="article-tag">Compliance</span>
+      <span class="article-date">28 March 2026</span>
+    </div>
   </div>
 </section>
 
-<!-- INSIGHTS GRID -->
+<!-- ARTICLE -->
 <section class="section">
   <div class="container">
-    <div class="insights-grid">
-      <!-- Article 1 -->
-      <div class="ins-card reveal">
+    <div class="article-body reveal">
+
+      <p>Since the Register of Overseas Entities (ROE) came into force on 1 August 2022 under the Economic Crime (Transparency and Enforcement) Act, overseas entities that own or wish to acquire land in the UK have been required to register with Companies House and disclose their beneficial owners. What many entities and their advisors initially focused on was the registration itself &mdash; the annual update obligation has since emerged as an equally critical, and frequently misunderstood, compliance requirement.</p>
+
+      <p>Failure to file an annual update on time carries severe consequences: a daily default fine of up to &pound;2,500 and the potential for criminal prosecution of the entity and its officers. Getting this right is not a matter of administrative convenience &mdash; it is a legal obligation with real teeth.</p>
+
+      <h2>Who Must File an Annual Update?</h2>
+
+      <p>Every overseas entity that appears on the Register of Overseas Entities must file an annual update with Companies House. This applies regardless of whether the entity still holds UK land, and regardless of whether any information has changed since the last filing. The obligation continues until the entity is formally removed from the register.</p>
+
+      <p>An overseas entity is defined as a legal entity governed by the law of a country or territory outside the United Kingdom. This includes companies, partnerships, and other bodies corporate incorporated outside the UK that hold freehold or leasehold property (with a lease of more than seven years) in England, Wales, or Scotland.</p>
+
+      <h2>What Information Must Be Updated?</h2>
+
+      <p>The annual update requires the entity to confirm or update a range of information, including:</p>
+
+      <ul>
+        <li>The entity's name, registered or principal office, legal form, and governing law</li>
+        <li>Details of all registrable beneficial owners, including their name, date of birth, nationality, residential address, and the nature and extent of their interest</li>
+        <li>Details of any managing officers (directors or equivalent) of the entity</li>
+        <li>A statement as to whether the entity has identified any reasonable steps it could take to identify registrable beneficial owners but has not taken them</li>
+        <li>The date the information was last verified</li>
+      </ul>
+
+      <p>Even if nothing has changed, the entity must still file a "no change" update confirming that all previously submitted information remains accurate. This is a common source of confusion &mdash; many entities assume that if nothing has changed, no filing is required. That assumption is incorrect and can lead to default penalties.</p>
+
+      <h2>The 14-Day Filing Window</h2>
+
+      <p>The annual update must be filed within 14 days of the anniversary of the entity's registration on the ROE, or within 14 days of the anniversary of its last update statement. This is an unusually tight window compared to other Companies House filing deadlines, and it catches many entities off guard.</p>
+
+      <div class="key-box">
+        <h4>Critical Deadline</h4>
+        <p>The 14-day filing window is one of the shortest compliance deadlines in UK corporate law. Entities should begin preparing their annual update at least six weeks before the anniversary date to allow time for beneficial ownership verification, document collection, and ACSP coordination.</p>
+      </div>
+
+      <h2>The Role of a UK-Regulated ACSP</h2>
+
+      <p>All information submitted as part of an annual update must be verified by a UK-regulated agent &mdash; an Authorised Corporate Service Provider (ACSP), formerly known as a "relevant person" under the Money Laundering Regulations. The ACSP must confirm that it has verified the identity of each beneficial owner and managing officer disclosed in the update.</p>
+
+      <p>This verification requirement means that the entity cannot simply file the update itself. It must engage a UK-regulated professional firm to carry out the necessary identity checks and submit a verification statement alongside the update. The ACSP takes on legal responsibility for the accuracy of the verification, which is why reputable firms will require sufficient time and documentation to complete the process properly.</p>
+
+      <h2>Penalties for Non-Compliance</h2>
+
+      <p>The consequences of failing to file an annual update are significant:</p>
+
+      <ul>
+        <li><strong>Daily default fine:</strong> Up to &pound;2,500 per day for each day the update remains outstanding</li>
+        <li><strong>Criminal offence:</strong> Non-compliance is a criminal offence, and both the entity and every officer in default may be prosecuted</li>
+        <li><strong>Land transaction restrictions:</strong> An entity that is not compliant with its ROE obligations cannot register dispositions of land with HM Land Registry, effectively preventing it from selling or charging its UK property</li>
+        <li><strong>Annotation on the register:</strong> Non-compliance is noted on the public register, visible to lenders, purchasers, and other counterparties</li>
+      </ul>
+
+      <h2>Common Mistakes</h2>
+
+      <p>In our experience managing ROE compliance for clients across multiple jurisdictions, the most frequent issues include:</p>
+
+      <ol>
+        <li><strong>Missing the 14-day window.</strong> The tight filing deadline is the single most common cause of default. Entities that do not have a compliance calendar in place are particularly at risk.</li>
+        <li><strong>Assuming "no change" means "no filing."</strong> As noted above, a no-change update is still a required filing.</li>
+        <li><strong>Inadequate beneficial ownership analysis.</strong> The definition of "registrable beneficial owner" under the Act is broader than many entities expect. Trusts, nominees, and indirect interests all require careful analysis.</li>
+        <li><strong>Engaging an unregulated agent.</strong> Only a UK-regulated ACSP can provide the verification statement. Entities that engage unregulated intermediaries will find their filings rejected.</li>
+        <li><strong>Incomplete documentation.</strong> The verification process requires certified identity documents, proof of address, and supporting corporate documentation. Gathering these from beneficial owners in multiple jurisdictions takes time.</li>
+      </ol>
+
+      <div class="key-box">
+        <h4>Axsuma's ROE Service</h4>
+        <p>Axsuma provides end-to-end ROE compliance, from initial registration through to annual updates and ongoing monitoring. As a UK-regulated ACSP, we handle all beneficial ownership verification, Companies House filings, and deadline management.</p>
+        <ul>
+          <li>New ROE registration: from &pound;1,250 + Companies House fee</li>
+          <li>Transfer of existing registration to Axsuma: from &pound;750</li>
+          <li>Annual update filing: included in ongoing compliance retainers or available as a standalone service</li>
+        </ul>
+        <p>For more details, see our <a href="overseas-entities.html" style="color:var(--teal)">Register of Overseas Entities</a> service page.</p>
+      </div>
+
+      <p>The ROE annual update is a deceptively simple obligation with disproportionate consequences for non-compliance. The combination of a narrow filing window, mandatory third-party verification, and severe penalties means that proper planning and professional support are not luxuries &mdash; they are necessities. If your entity's anniversary date is approaching, now is the time to act.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="section section-alt">
+  <div class="container reveal">
+    <p class="s-label">Related Insights</p>
+    <h2 class="s-title">Further Reading</h2>
+    <div class="related-grid">
+      <div class="ins-card">
         <div class="ins-body">
           <p class="ins-tag">Regulatory Update</p>
           <h3>UK Companies House Reform: What Changes Mean for Your Business in 2026</h3>
-          <p>The Economic Crime and Corporate Transparency Act continues to reshape the corporate landscape. We outline the key filing and verification changes taking effect this year.</p>
+          <p>The ECCTA continues to reshape the corporate landscape. We outline the key filing and verification changes taking effect this year.</p>
         </div>
         <div class="ins-foot">
           <span>15 April 2026</span>
           <a href="insight-companies-house-reform.html">Read more &rarr;</a>
         </div>
       </div>
-
-      <!-- Article 2 -->
-      <div class="ins-card reveal">
-        <div class="ins-body">
-          <p class="ins-tag">Compliance</p>
-          <h3>Register of Overseas Entities: Annual Update Filing Requirements</h3>
-          <p>Overseas entities owning UK land must file annual updates. We explain the process, deadlines, and common pitfalls to avoid penalties.</p>
-        </div>
-        <div class="ins-foot">
-          <span>28 March 2026</span>
-          <a href="insight-roe-annual-update.html">Read more &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Article 3 -->
-      <div class="ins-card reveal">
+      <div class="ins-card">
         <div class="ins-body">
           <p class="ins-tag">Corporate Structure</p>
           <h3>SPV Structures for Cross-Border Investment: A Practical Guide</h3>
-          <p>How to structure UK SPVs for international investment transactions, including tax considerations, governance requirements, and ongoing compliance obligations.</p>
+          <p>How to structure UK SPVs for international investment transactions, including tax considerations and governance requirements.</p>
         </div>
         <div class="ins-foot">
           <span>12 March 2026</span>
           <a href="insight-spv-cross-border.html">Read more &rarr;</a>
         </div>
       </div>
-
-      <!-- Article 4 -->
-      <div class="ins-card reveal">
-        <div class="ins-body">
-          <p class="ins-tag">Governance</p>
-          <h3>The Role of the Professional Director in Modern Governance</h3>
-          <p>Independent professional directors bring credibility, compliance oversight, and local substance to corporate structures. We explore when and why they matter.</p>
-        </div>
-        <div class="ins-foot">
-          <span>25 February 2026</span>
-          <a href="insight-professional-director.html">Read more &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Article 5 -->
-      <div class="ins-card reveal">
+      <div class="ins-card">
         <div class="ins-body">
           <p class="ins-tag">Tax &amp; Compliance</p>
           <h3>ATED Returns 2026/27: Key Dates and Thresholds</h3>
-          <p>Annual Tax on Enveloped Dwellings returns are due by 30 April. Here is what property-holding companies need to know about valuations, reliefs, and filing deadlines.</p>
+          <p>Annual Tax on Enveloped Dwellings returns are due by 30 April. Here is what property-holding companies need to know.</p>
         </div>
         <div class="ins-foot">
           <span>10 February 2026</span>
           <a href="insight-ated-returns.html">Read more &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Article 6 -->
-      <div class="ins-card reveal">
-        <div class="ins-body">
-          <p class="ins-tag">M&amp;A</p>
-          <h3>Post-Completion Governance: What Happens After the Deal Closes</h3>
-          <p>Acquisition vehicles require immediate attention after completion — board appointments, statutory filings, bank mandates, and compliance onboarding. We outline the critical first 30 days.</p>
-        </div>
-        <div class="ins-foot">
-          <span>28 January 2026</span>
-          <a href="insight-post-completion.html">Read more &rarr;</a>
         </div>
       </div>
     </div>
@@ -365,6 +402,7 @@ try{
   });}
 }catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('vis')})}
 </script>
-<script src="content-loader.js" data-page="insights"></script>
-<script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){e.preventDefault();var parent=a.parentElement;var wasOpen=parent.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});if(!wasOpen)parent.classList.add("open");}})});var navToggle=document.querySelector(".nav-toggle");if(navToggle){navToggle.addEventListener("click",function(){setTimeout(function(){var m=document.querySelector(".nav-links");if(m&&!m.style.display){document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});}},10);})}}catch(e){}</script></body>
+<script src="content-loader.js" data-page="insight-roe-annual-update"></script>
+<script>try{document.querySelectorAll(".nav-drop>a").forEach(function(a){a.addEventListener("click",function(e){if(window.innerWidth<=768){e.preventDefault();var parent=a.parentElement;var wasOpen=parent.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});if(!wasOpen)parent.classList.add("open");}})});var navToggle=document.querySelector(".nav-toggle");if(navToggle){navToggle.addEventListener("click",function(){setTimeout(function(){var m=document.querySelector(".nav-links");if(m&&!m.style.display){document.querySelectorAll(".nav-drop.open").forEach(function(p){p.classList.remove("open")});}},10);})}}catch(e){}</script>
+</body>
 </html>
