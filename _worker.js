@@ -374,6 +374,101 @@ export default {
         return err('Method not allowed', 405);
       }
 
+      // Company search (proxy to Companies House API)
+      if (path === '/api/company-search' && request.method === 'GET') {
+        const query = url.searchParams.get('q');
+        if (!query || query.trim().length === 0) return err('Missing query parameter "q"');
+
+        const apiKey = env.CH_API_KEY;
+        if (!apiKey) return json({ error: 'API key not configured' }, 500);
+
+        const chUrl = `https://api.company-information.service.gov.uk/search/companies?q=${encodeURIComponent(query.trim())}&items_per_page=10`;
+        const chRes = await fetch(chUrl, {
+          headers: { 'Authorization': 'Basic ' + btoa(apiKey + ':') },
+        });
+
+        if (!chRes.ok) return json({ error: 'Companies House API error', status: chRes.status }, chRes.status);
+
+        const chData = await chRes.json();
+        const items = (chData.items || []).map(item => ({
+          title: item.title,
+          company_number: item.company_number,
+          company_status: item.company_status,
+          date_of_creation: item.date_of_creation,
+          address_snippet: item.address_snippet,
+        }));
+
+        return json({ items, total_results: chData.total_results || 0 });
+      }
+
+      // Stripe checkout
+      if (path === '/api/stripe/checkout' && request.method === 'POST') {
+        const STRIPE_KEY = env.STRIPE_SECRET_KEY;
+        if (!STRIPE_KEY) return json({ error: 'Stripe not configured' }, 500);
+
+        let body;
+        try { body = await request.json(); } catch { return err('Invalid JSON'); }
+
+        const { items, success_url, cancel_url } = body;
+        if (!items || !success_url) return err('Missing required fields');
+
+        const line_items = items.map(i => ({
+          price_data: {
+            currency: i.currency || 'gbp',
+            product_data: { name: i.name },
+            unit_amount: i.amount,
+          },
+          quantity: i.quantity || 1,
+        }));
+
+        const params = new URLSearchParams();
+        params.append('mode', 'payment');
+        params.append('success_url', success_url);
+        params.append('cancel_url', cancel_url || success_url);
+        line_items.forEach((li, idx) => {
+          params.append(`line_items[${idx}][price_data][currency]`, li.price_data.currency);
+          params.append(`line_items[${idx}][price_data][product_data][name]`, li.price_data.product_data.name);
+          params.append(`line_items[${idx}][price_data][unit_amount]`, li.price_data.unit_amount);
+          params.append(`line_items[${idx}][quantity]`, li.quantity);
+        });
+
+        const stripeRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Basic ' + btoa(STRIPE_KEY + ':'),
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: params.toString(),
+        });
+
+        const session = await stripeRes.json();
+        if (!stripeRes.ok) return json({ error: session.error?.message || 'Stripe error' }, stripeRes.status);
+        return json({ url: session.url, id: session.id });
+      }
+
+      // Stripe session lookup
+      if (path === '/api/stripe/session' && request.method === 'GET') {
+        const STRIPE_KEY = env.STRIPE_SECRET_KEY;
+        if (!STRIPE_KEY) return json({ error: 'Stripe not configured' }, 500);
+
+        const sessionId = url.searchParams.get('session_id');
+        if (!sessionId) return err('Missing session_id');
+
+        const stripeRes = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
+          headers: { 'Authorization': 'Basic ' + btoa(STRIPE_KEY + ':') },
+        });
+
+        const session = await stripeRes.json();
+        if (!stripeRes.ok) return json({ error: 'Session not found' }, 404);
+        return json({ payment_status: session.payment_status, customer_email: session.customer_details?.email });
+      }
+
+      // Portal form submission
+      if (path === '/api/portal/submit' && request.method === 'POST') {
+        // Pass through to Pages Function
+        return env.ASSETS.fetch(request);
+      }
+
       return err('Route not found', 404);
     } catch (e) {
       console.error('Worker error:', e);
