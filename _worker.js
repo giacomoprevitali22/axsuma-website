@@ -330,49 +330,8 @@ export default {
       return new Response(null, { status: 204, headers: CORS });
     }
 
-    // Check KV bindings exist
-    if (!env.CMS_USERS || !env.CMS_CONTENT) {
-      return json({
-        error: 'CMS not configured. Add KV namespace bindings (CMS_CONTENT and CMS_USERS) in Cloudflare Pages → Settings → Functions → KV namespace bindings.'
-      }, 503);
-    }
-
     try {
-      // Auth
-      if (path === '/api/auth/login' && request.method === 'POST')
-        return await handleLogin(request, env);
-
-      // Activity
-      if (path === '/api/activity' && request.method === 'GET')
-        return await handleGetActivity(request, env);
-
-      // Users collection
-      if (path === '/api/users') {
-        if (request.method === 'GET') return await handleGetUsers(request, env);
-        if (request.method === 'POST') return await handleCreateUser(request, env);
-        return err('Method not allowed', 405);
-      }
-
-      // Single user
-      const userMatch = path.match(/^\/api\/users\/([a-f0-9-]+)$/);
-      if (userMatch) {
-        if (request.method === 'PUT') return await handleUpdateUser(request, env, userMatch[1]);
-        if (request.method === 'DELETE') return await handleDeleteUser(request, env, userMatch[1]);
-        return err('Method not allowed', 405);
-      }
-
-      // Public content (no auth)
-      const pubMatch = path.match(/^\/api\/content-public\/([a-zA-Z0-9_-]+)$/);
-      if (pubMatch)
-        return await handleGetContentPublic(request, env, pubMatch[1]);
-
-      // Admin content (auth required)
-      const cMatch = path.match(/^\/api\/content\/([a-zA-Z0-9_-]+)$/);
-      if (cMatch) {
-        if (request.method === 'GET') return await handleGetContent(request, env, cMatch[1]);
-        if (request.method === 'POST') return await handleUpdateContent(request, env, cMatch[1]);
-        return err('Method not allowed', 405);
-      }
+      // ── Non-CMS routes (no KV needed) ──
 
       // Company search (proxy to Companies House API)
       if (path === '/api/company-search' && request.method === 'GET') {
@@ -463,10 +422,49 @@ export default {
         return json({ payment_status: session.payment_status, customer_email: session.customer_details?.email });
       }
 
-      // Portal form submission
-      if (path === '/api/portal/submit' && request.method === 'POST') {
-        // Pass through to Pages Function
-        return env.ASSETS.fetch(request);
+      // ── CMS routes (KV required) ──
+
+      // Check KV bindings exist
+      if (!env.CMS_USERS || !env.CMS_CONTENT) {
+        return json({
+          error: 'CMS not configured. Add KV namespace bindings (CMS_CONTENT and CMS_USERS) in Cloudflare Pages → Settings → Functions → KV namespace bindings.'
+        }, 503);
+      }
+
+      // Auth
+      if (path === '/api/auth/login' && request.method === 'POST')
+        return await handleLogin(request, env);
+
+      // Activity
+      if (path === '/api/activity' && request.method === 'GET')
+        return await handleGetActivity(request, env);
+
+      // Users collection
+      if (path === '/api/users') {
+        if (request.method === 'GET') return await handleGetUsers(request, env);
+        if (request.method === 'POST') return await handleCreateUser(request, env);
+        return err('Method not allowed', 405);
+      }
+
+      // Single user
+      const userMatch = path.match(/^\/api\/users\/([a-f0-9-]+)$/);
+      if (userMatch) {
+        if (request.method === 'PUT') return await handleUpdateUser(request, env, userMatch[1]);
+        if (request.method === 'DELETE') return await handleDeleteUser(request, env, userMatch[1]);
+        return err('Method not allowed', 405);
+      }
+
+      // Public content (no auth)
+      const pubMatch = path.match(/^\/api\/content-public\/([a-zA-Z0-9_-]+)$/);
+      if (pubMatch)
+        return await handleGetContentPublic(request, env, pubMatch[1]);
+
+      // Admin content (auth required)
+      const cMatch = path.match(/^\/api\/content\/([a-zA-Z0-9_-]+)$/);
+      if (cMatch) {
+        if (request.method === 'GET') return await handleGetContent(request, env, cMatch[1]);
+        if (request.method === 'POST') return await handleUpdateContent(request, env, cMatch[1]);
+        return err('Method not allowed', 405);
       }
 
       return err('Route not found', 404);
