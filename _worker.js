@@ -360,6 +360,32 @@ export default {
         return json({ items, total_results: chData.total_results || 0 });
       }
 
+      // Portal form submission (stores data, returns submission ID)
+      if (path === '/api/portal/submit' && request.method === 'POST') {
+        let body;
+        try { body = await request.json(); } catch { return err('Invalid JSON'); }
+
+        const submissionId = generateUUID();
+        body._id = submissionId;
+
+        // Store in CMS_CONTENT KV if available
+        if (env.CMS_CONTENT) {
+          try {
+            await env.CMS_CONTENT.put(`submission:${submissionId}`, JSON.stringify(body));
+            // Maintain submissions index
+            const idx = await env.CMS_CONTENT.get('submissions:index');
+            const ids = idx ? JSON.parse(idx) : [];
+            ids.unshift({ id: submissionId, formType: body._formType || 'unknown', submittedAt: body._submittedAt || new Date().toISOString() });
+            await env.CMS_CONTENT.put('submissions:index', JSON.stringify(ids.slice(0, 500)));
+          } catch (e) {
+            console.error('KV storage error:', e);
+            // Continue anyway — ID is still valid for Stripe flow
+          }
+        }
+
+        return json({ id: submissionId });
+      }
+
       // Stripe checkout
       if (path === '/api/stripe/checkout' && request.method === 'POST') {
         const STRIPE_KEY = env.STRIPE_SECRET_KEY;
@@ -368,7 +394,7 @@ export default {
         let body;
         try { body = await request.json(); } catch { return err('Invalid JSON'); }
 
-        const { items, success_url, cancel_url } = body;
+        const { items, success_url, cancel_url, metadata } = body;
         if (!items || !success_url) return err('Missing required fields');
 
         const line_items = items.map(i => ({
@@ -384,6 +410,16 @@ export default {
         params.append('mode', 'payment');
         params.append('success_url', success_url);
         params.append('cancel_url', cancel_url || success_url);
+        // Pass customer email if provided
+        if (metadata && metadata.customerEmail) {
+          params.append('customer_email', metadata.customerEmail);
+        }
+        // Pass metadata (submissionId etc.) to Stripe
+        if (metadata) {
+          Object.entries(metadata).forEach(([k, v]) => {
+            if (v) params.append(`metadata[${k}]`, v);
+          });
+        }
         line_items.forEach((li, idx) => {
           params.append(`line_items[${idx}][price_data][currency]`, li.price_data.currency);
           params.append(`line_items[${idx}][price_data][product_data][name]`, li.price_data.product_data.name);

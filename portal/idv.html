@@ -223,9 +223,15 @@ async function submitIdvWithPayment(formEl) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        submissionId: submissionId,
-        individualCount: individualCount,
-        customerEmail: customerEmail
+        items: [{
+          name: 'Identity Verification (IDV)',
+          amount: 15000,
+          currency: 'gbp',
+          quantity: individualCount
+        }],
+        success_url: window.location.origin + '/payment-success.html?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: window.location.origin + '/portal/idv.html',
+        metadata: { submissionId: submissionId, customerEmail: customerEmail }
       })
     });
     if (!stripeRes.ok) throw new Error('Payment setup failed');
