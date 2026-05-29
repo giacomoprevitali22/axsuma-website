@@ -268,7 +268,7 @@
                 </div>
                 <!-- 3-in-6: shown only when Shareholder is ticked -->
                 <div class="officer-auth-fields">
-                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(provide 3 of the following 6)</span></p>
+                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following 6 for the named individual)</span></p>
                   <div class="auth-grid">
                     <div class="form-group"><label>Town of Birth <span class="hint">First 3 letters</span></label><input type="text" name="off_0_auth_town" maxlength="3"></div>
                     <div class="form-group"><label>Telephone Number <span class="hint">Last 3 digits</span></label><input type="text" name="off_0_auth_phone" maxlength="3"></div>
@@ -302,12 +302,12 @@
                 <div class="auth-rep-section">
                   <p style="font-size:.88rem;font-weight:600;color:var(--dark);margin-bottom:.8rem"><i class="fas fa-user-tie" style="color:var(--teal);margin-right:.4rem"></i> Authorised Representative</p>
                   <p class="form-section-desc">Please supply the below details for the representative of the corporate entity.</p>
-                  <div class="form-row triple">
+                  <div class="form-row" style="grid-template-columns:auto 1fr 1fr 1fr">
                     <div class="form-group"><label>Title</label><select name="off_0_rep_title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
                     <div class="form-group"><label>First Name</label><input type="text" name="off_0_rep_forenames"></div>
+                    <div class="form-group"><label>Middle Name(s)</label><input type="text" name="off_0_rep_middle"></div>
                     <div class="form-group"><label>Surname</label><input type="text" name="off_0_rep_surname"></div>
                   </div>
-                  <div class="form-row full"><div class="form-group"><label>Middle Name(s)</label><input type="text" name="off_0_rep_middle"></div></div>
                   <div class="form-row">
                     <div class="form-group"><label>Unique Identifier Reference <span class="hint">Companies House unique reference code</span></label><input type="text" name="off_0_rep_unique_id" placeholder="e.g. Y1234567890"></div>
                     <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
@@ -317,7 +317,7 @@
                       </div>
                     </div>
                   </div>
-                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(provide 3 of the following 6)</span></p>
+                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following from 6 for the personal representative named)</span></p>
                   <div class="auth-grid">
                     <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="off_0_rep_auth_town" maxlength="3"></div>
                     <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="off_0_rep_auth_phone" maxlength="3"></div>
@@ -399,7 +399,7 @@
                   <div class="form-group"><label>Country (if not UK)</label><input type="text" name="off___IDX___country"></div>
                 </div>
                 <div class="officer-auth-fields">
-                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following 6 for the named individual)</span></p>
                   <div class="auth-grid">
                     <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="off___IDX___auth_town" maxlength="3"></div>
                     <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="off___IDX___auth_phone" maxlength="3"></div>
@@ -431,12 +431,12 @@
                 <div class="auth-rep-section">
                   <p style="font-size:.88rem;font-weight:600;color:var(--dark);margin-bottom:.8rem"><i class="fas fa-user-tie" style="color:var(--teal);margin-right:.4rem"></i> Authorised Representative</p>
                   <p class="form-section-desc">Please supply the below details for the representative of the corporate entity.</p>
-                  <div class="form-row triple">
+                  <div class="form-row" style="grid-template-columns:auto 1fr 1fr 1fr">
                     <div class="form-group"><label>Title</label><select name="off___IDX___rep_title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
                     <div class="form-group"><label>First Name</label><input type="text" name="off___IDX___rep_forenames"></div>
+                    <div class="form-group"><label>Middle Name(s)</label><input type="text" name="off___IDX___rep_middle"></div>
                     <div class="form-group"><label>Surname</label><input type="text" name="off___IDX___rep_surname"></div>
                   </div>
-                  <div class="form-row full"><div class="form-group"><label>Middle Name(s)</label><input type="text" name="off___IDX___rep_middle"></div></div>
                   <div class="form-row">
                     <div class="form-group"><label>Unique Identifier Reference</label><input type="text" name="off___IDX___rep_unique_id" placeholder="e.g. Y1234567890"></div>
                     <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
@@ -446,7 +446,7 @@
                       </div>
                     </div>
                   </div>
-                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following from 6 for the personal representative named)</span></p>
                   <div class="auth-grid">
                     <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="off___IDX___rep_auth_town" maxlength="3"></div>
                     <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="off___IDX___rep_auth_phone" maxlength="3"></div>
@@ -649,7 +649,7 @@
                   <div class="form-group"><label>Post Code <span class="req">*</span></label><input type="text" name="mem_0_postcode" required></div>
                   <div class="form-group"><label>Country (if not UK)</label><input type="text" name="mem_0_country"></div>
                 </div>
-                <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(provide 3 of the following 6)</span></p>
+                <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following 6 for the named individual)</span></p>
                 <div class="auth-grid">
                   <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="mem_0_auth_town" maxlength="3"></div>
                   <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="mem_0_auth_phone" maxlength="3"></div>
@@ -681,12 +681,12 @@
                 <div class="auth-rep-section">
                   <p style="font-size:.88rem;font-weight:600;color:var(--dark);margin-bottom:.8rem"><i class="fas fa-user-tie" style="color:var(--teal);margin-right:.4rem"></i> Authorised Representative</p>
                   <p class="form-section-desc">Please supply the below details for the representative of the corporate entity.</p>
-                  <div class="form-row triple">
+                  <div class="form-row" style="grid-template-columns:auto 1fr 1fr 1fr">
                     <div class="form-group"><label>Title</label><select name="mem_0_rep_title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
                     <div class="form-group"><label>First Name</label><input type="text" name="mem_0_rep_forenames"></div>
+                    <div class="form-group"><label>Middle Name(s)</label><input type="text" name="mem_0_rep_middle"></div>
                     <div class="form-group"><label>Surname</label><input type="text" name="mem_0_rep_surname"></div>
                   </div>
-                  <div class="form-row full"><div class="form-group"><label>Middle Name(s)</label><input type="text" name="mem_0_rep_middle"></div></div>
                   <div class="form-row">
                     <div class="form-group"><label>Unique Identifier Reference</label><input type="text" name="mem_0_rep_unique_id" placeholder="e.g. Y1234567890"></div>
                     <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
@@ -696,7 +696,7 @@
                       </div>
                     </div>
                   </div>
-                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following from 6 for the personal representative named)</span></p>
                   <div class="auth-grid">
                     <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="mem_0_rep_auth_town" maxlength="3"></div>
                     <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="mem_0_rep_auth_phone" maxlength="3"></div>
@@ -765,7 +765,7 @@
                   <div class="form-group"><label>Post Code <span class="req">*</span></label><input type="text" name="mem_1_postcode" required></div>
                   <div class="form-group"><label>Country (if not UK)</label><input type="text" name="mem_1_country"></div>
                 </div>
-                <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+                <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following 6 for the named individual)</span></p>
                 <div class="auth-grid">
                   <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="mem_1_auth_town" maxlength="3"></div>
                   <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="mem_1_auth_phone" maxlength="3"></div>
@@ -796,12 +796,12 @@
                 <div class="auth-rep-section">
                   <p style="font-size:.88rem;font-weight:600;color:var(--dark);margin-bottom:.8rem"><i class="fas fa-user-tie" style="color:var(--teal);margin-right:.4rem"></i> Authorised Representative</p>
                   <p class="form-section-desc">Please supply the below details for the representative of the corporate entity.</p>
-                  <div class="form-row triple">
+                  <div class="form-row" style="grid-template-columns:auto 1fr 1fr 1fr">
                     <div class="form-group"><label>Title</label><select name="mem_1_rep_title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
                     <div class="form-group"><label>First Name</label><input type="text" name="mem_1_rep_forenames"></div>
+                    <div class="form-group"><label>Middle Name(s)</label><input type="text" name="mem_1_rep_middle"></div>
                     <div class="form-group"><label>Surname</label><input type="text" name="mem_1_rep_surname"></div>
                   </div>
-                  <div class="form-row full"><div class="form-group"><label>Middle Name(s)</label><input type="text" name="mem_1_rep_middle"></div></div>
                   <div class="form-row">
                     <div class="form-group"><label>Unique Identifier Reference</label><input type="text" name="mem_1_rep_unique_id" placeholder="e.g. Y1234567890"></div>
                     <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
@@ -811,7 +811,7 @@
                       </div>
                     </div>
                   </div>
-                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following from 6 for the personal representative named)</span></p>
                   <div class="auth-grid">
                     <div class="form-group"><label>Town of Birth <span class="hint">First 3</span></label><input type="text" name="mem_1_rep_auth_town" maxlength="3"></div>
                     <div class="form-group"><label>Tel <span class="hint">Last 3</span></label><input type="text" name="mem_1_rep_auth_phone" maxlength="3"></div>
@@ -881,7 +881,7 @@
                   <div class="form-group"><label>Post Code</label><input type="text" name="mem___IDX___postcode"></div>
                   <div class="form-group"><label>Country</label><input type="text" name="mem___IDX___country"></div>
                 </div>
-                <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+                <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following 6 for the named individual)</span></p>
                 <div class="auth-grid">
                   <div class="form-group"><label>Town of Birth</label><input type="text" name="mem___IDX___auth_town" maxlength="3"></div>
                   <div class="form-group"><label>Tel</label><input type="text" name="mem___IDX___auth_phone" maxlength="3"></div>
@@ -912,12 +912,12 @@
                 <div class="auth-rep-section">
                   <p style="font-size:.88rem;font-weight:600;color:var(--dark);margin-bottom:.8rem"><i class="fas fa-user-tie" style="color:var(--teal);margin-right:.4rem"></i> Authorised Representative</p>
                   <p class="form-section-desc">Please supply the below details for the representative of the corporate entity.</p>
-                  <div class="form-row triple">
+                  <div class="form-row" style="grid-template-columns:auto 1fr 1fr 1fr">
                     <div class="form-group"><label>Title</label><select name="mem___IDX___rep_title"><option value="">--</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div>
                     <div class="form-group"><label>First Name</label><input type="text" name="mem___IDX___rep_forenames"></div>
+                    <div class="form-group"><label>Middle Name(s)</label><input type="text" name="mem___IDX___rep_middle"></div>
                     <div class="form-group"><label>Surname</label><input type="text" name="mem___IDX___rep_surname"></div>
                   </div>
-                  <div class="form-row full"><div class="form-group"><label>Middle Name(s)</label><input type="text" name="mem___IDX___rep_middle"></div></div>
                   <div class="form-row">
                     <div class="form-group"><label>Unique Identifier Reference</label><input type="text" name="mem___IDX___rep_unique_id" placeholder="e.g. Y1234567890"></div>
                     <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
@@ -927,7 +927,7 @@
                       </div>
                     </div>
                   </div>
-                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Authentication</p>
+                  <p style="font-size:.8rem;font-weight:600;color:var(--dark);margin:1rem 0 .5rem">3-in-6 Personal Authentication <span style="font-weight:400;color:var(--mid)">(Please provide 3 of the following from 6 for the personal representative named)</span></p>
                   <div class="auth-grid">
                     <div class="form-group"><label>Town of Birth</label><input type="text" name="mem___IDX___rep_auth_town" maxlength="3"></div>
                     <div class="form-group"><label>Tel</label><input type="text" name="mem___IDX___rep_auth_phone" maxlength="3"></div>

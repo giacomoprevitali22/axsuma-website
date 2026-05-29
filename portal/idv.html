@@ -38,7 +38,7 @@
       <div style="background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
         <div>
           <p style="font-size:.95rem;font-weight:600;color:var(--dark);margin:0">Identity Verification Fee</p>
-          <p style="font-size:.82rem;color:var(--mid);margin:0">&pound;125 + VAT (&pound;150 inc VAT) per individual</p>
+          <p style="font-size:.82rem;color:var(--mid);margin:0" id="idv_fee_desc">&pound;125 + VAT (&pound;150 inc VAT) per individual</p>
         </div>
         <div style="text-align:right">
           <p style="font-size:1.3rem;font-weight:700;color:var(--teal);margin:0" id="idv_total">&pound;150.00</p>
@@ -111,7 +111,7 @@
           <div class="form-row triple">
             <div class="form-group"><label>City / Town <span class="req">*</span></label><input type="text" name="invoice_city" required></div>
             <div class="form-group"><label>Postcode <span class="req">*</span></label><input type="text" name="invoice_postcode" required></div>
-            <div class="form-group"><label>Country <span class="req">*</span></label><input type="text" name="invoice_country" required></div>
+            <div class="form-group"><label>Country <span class="req">*</span></label><input type="text" name="invoice_country" required onchange="updateIdvTotal()" oninput="updateIdvTotal()"></div>
           </div>
           <div class="form-row full">
             <div class="form-group"><label>Email for invoice contact <span class="req">*</span></label><input type="email" name="invoice_email" id="invoice_email" required></div>
@@ -179,12 +179,30 @@ function removeIdvIndividual(btn) {
   idvCount--;
   updateIdvTotal();
 }
+/* EU countries list for VAT purposes */
+var euCountries = ['austria','belgium','bulgaria','croatia','cyprus','czech republic','czechia','denmark','estonia','finland','france','germany','greece','hungary','ireland','italy','latvia','lithuania','luxembourg','malta','netherlands','poland','portugal','romania','slovakia','slovenia','spain','sweden','united kingdom','uk','gb','great britain','england','scotland','wales','northern ireland'];
+
+function isEuCountry(country) {
+  if (!country) return true; /* default to EU/UK if blank */
+  return euCountries.indexOf(country.trim().toLowerCase()) !== -1;
+}
+
 function updateIdvTotal() {
   var count = document.querySelectorAll('#idv-individuals-container .repeatable').length;
   var net = count * 125;
-  var total = count * 150;
+  var countryField = document.querySelector('[name="invoice_country"]');
+  var country = countryField ? countryField.value : '';
+  var vatExempt = country.length > 0 && !isEuCountry(country);
+  var vat = vatExempt ? 0 : count * 25;
+  var total = net + vat;
   document.getElementById('idv_total').textContent = '\u00A3' + total.toFixed(2);
-  document.getElementById('idv_total_label').textContent = count + ' individual' + (count !== 1 ? 's' : '') + ' \u00B7 inc VAT';
+  if (vatExempt) {
+    document.getElementById('idv_total_label').textContent = count + ' individual' + (count !== 1 ? 's' : '') + ' \u00B7 VAT zero-rated';
+    document.getElementById('idv_fee_desc').innerHTML = '&pound;125 per individual (VAT zero-rated &mdash; non-EU billing address)';
+  } else {
+    document.getElementById('idv_total_label').textContent = count + ' individual' + (count !== 1 ? 's' : '') + ' \u00B7 inc VAT';
+    document.getElementById('idv_fee_desc').innerHTML = '&pound;125 + VAT (&pound;150 inc VAT) per individual';
+  }
 }
 function copyIdvEmail(checked) {
   if (checked) {
@@ -219,19 +237,23 @@ async function submitIdvWithPayment(formEl) {
     var individualCount = document.querySelectorAll('#idv-individuals-container .repeatable').length;
     var customerEmail = data.invoice_email || data.idv_0_email || '';
 
+    var invoiceCountry = data.invoice_country || '';
+    var vatExempt = invoiceCountry.length > 0 && !isEuCountry(invoiceCountry);
+    var unitAmount = vatExempt ? 12500 : 15000; /* £125 or £150 in pence */
+
     var stripeRes = await fetch('/api/stripe/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         items: [{
-          name: 'Identity Verification (IDV)',
-          amount: 15000,
+          name: vatExempt ? 'Identity Verification (IDV) — VAT zero-rated' : 'Identity Verification (IDV) — inc VAT',
+          amount: unitAmount,
           currency: 'gbp',
           quantity: individualCount
         }],
         success_url: window.location.origin + '/payment-success.html?session_id={CHECKOUT_SESSION_ID}',
         cancel_url: window.location.origin + '/portal/idv.html',
-        metadata: { submissionId: submissionId, customerEmail: customerEmail }
+        metadata: { submissionId: submissionId, customerEmail: customerEmail, vatExempt: vatExempt ? 'yes' : 'no', invoiceCountry: invoiceCountry }
       })
     });
     if (!stripeRes.ok) throw new Error('Payment setup failed');
