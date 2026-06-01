@@ -62,6 +62,9 @@
     /* Auth fields shown conditionally (Ltd: when Shareholder ticked) */
     .officer-auth-fields{display:none}
     .officer-auth-fields.show{display:block}
+    /* UID fields shown conditionally (Ltd: when Director or PSC ticked) */
+    .uid-fields{display:none}
+    .uid-fields.show{display:block}
     /* Authorised Rep section */
     .auth-rep-section{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--border)}
     /* Service address Axsuma option */
@@ -225,10 +228,10 @@
 
               <!-- Role checkboxes -->
               <div class="role-checks">
-                <div class="form-check"><input type="checkbox" id="off_0_role_dir" name="off_0_role_director" value="yes"><label for="off_0_role_dir">Director</label></div>
+                <div class="form-check"><input type="checkbox" id="off_0_role_dir" name="off_0_role_director" value="yes" onchange="toggleUidFields(this)"><label for="off_0_role_dir">Director</label></div>
                 <div class="form-check"><input type="checkbox" id="off_0_role_sec" name="off_0_role_secretary" value="yes"><label for="off_0_role_sec">Secretary</label></div>
                 <div class="form-check"><input type="checkbox" id="off_0_role_sh" name="off_0_role_shareholder" value="yes" onchange="toggleSharesRow(this);toggleAuthFields(this)"><label for="off_0_role_sh">Shareholder</label></div>
-                <div class="form-check"><input type="checkbox" id="off_0_role_psc" name="off_0_role_psc" value="yes" onchange="togglePscFields(this)"><label for="off_0_role_psc">PSC</label></div>
+                <div class="form-check"><input type="checkbox" id="off_0_role_psc" name="off_0_role_psc" value="yes" onchange="togglePscFields(this);toggleUidFields(this)"><label for="off_0_role_psc">PSC</label></div>
               </div>
 
               <!-- INDIVIDUAL FIELDS -->
@@ -244,6 +247,7 @@
                   <div class="form-group"><label>Nationality <span class="req">*</span></label><input type="text" name="off_0_nationality" required></div>
                 </div>
                 <div class="form-row full"><div class="form-group"><label>Occupation</label><input type="text" name="off_0_occupation"></div></div>
+                <div class="uid-fields">
                 <div class="form-row">
                   <div class="form-group"><label>Unique Identifier Reference <span class="hint">Companies House unique reference code</span></label><input type="text" name="off_0_unique_id" placeholder="e.g. Y1234567890"></div>
                   <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
@@ -252,6 +256,7 @@
                       <label for="off_0_idv_needed" style="font-size:.8rem">I don't have a unique identifier &mdash; please conduct Identity Verification (IDV)</label>
                     </div>
                   </div>
+                </div>
                 </div>
                 <!-- Service Address with Axsuma option -->
                 <div class="form-check" style="margin:.8rem 0 .4rem">
@@ -359,10 +364,10 @@
               <input type="hidden" name="off___IDX___type" value="individual">
 
               <div class="role-checks">
-                <div class="form-check"><input type="checkbox" id="off___IDX___role_dir" name="off___IDX___role_director" value="yes"><label for="off___IDX___role_dir">Director</label></div>
+                <div class="form-check"><input type="checkbox" id="off___IDX___role_dir" name="off___IDX___role_director" value="yes" onchange="toggleUidFields(this)"><label for="off___IDX___role_dir">Director</label></div>
                 <div class="form-check"><input type="checkbox" id="off___IDX___role_sec" name="off___IDX___role_secretary" value="yes"><label for="off___IDX___role_sec">Secretary</label></div>
                 <div class="form-check"><input type="checkbox" id="off___IDX___role_sh" name="off___IDX___role_shareholder" value="yes" onchange="toggleSharesRow(this);toggleAuthFields(this)"><label for="off___IDX___role_sh">Shareholder</label></div>
-                <div class="form-check"><input type="checkbox" id="off___IDX___role_psc" name="off___IDX___role_psc" value="yes" onchange="togglePscFields(this)"><label for="off___IDX___role_psc">PSC</label></div>
+                <div class="form-check"><input type="checkbox" id="off___IDX___role_psc" name="off___IDX___role_psc" value="yes" onchange="togglePscFields(this);toggleUidFields(this)"><label for="off___IDX___role_psc">PSC</label></div>
               </div>
 
               <div class="officer-individual-fields show">
@@ -377,6 +382,7 @@
                   <div class="form-group"><label>Nationality</label><input type="text" name="off___IDX___nationality"></div>
                 </div>
                 <div class="form-row full"><div class="form-group"><label>Occupation</label><input type="text" name="off___IDX___occupation"></div></div>
+                <div class="uid-fields">
                 <div class="form-row">
                   <div class="form-group"><label>Unique Identifier Reference</label><input type="text" name="off___IDX___unique_id" placeholder="e.g. Y1234567890"></div>
                   <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:.3rem">
@@ -385,6 +391,7 @@
                       <label for="off___IDX___idv_needed" style="font-size:.8rem">I don't have a unique identifier &mdash; please conduct IDV</label>
                     </div>
                   </div>
+                </div>
                 </div>
                 <div class="form-check" style="margin:.8rem 0 .4rem">
                   <input type="checkbox" id="off___IDX___axsuma_svc" name="off___IDX___axsuma_service_address" value="yes" onchange="toggleAxsumaServiceAddr(this)">
@@ -1096,6 +1103,18 @@ function toggleAuthFields(checkbox) {
   var block = checkbox.closest('.repeatable');
   var auth = block.querySelector('.officer-auth-fields');
   if (auth) auth.classList.toggle('show', checkbox.checked);
+}
+
+/* --- Show/hide UID fields when Director or PSC role ticked (Ltd individual only) --- */
+function toggleUidFields(checkbox) {
+  var block = checkbox.closest('.repeatable');
+  if (!block) return;
+  var uid = block.querySelector('.uid-fields');
+  if (!uid) return;
+  var dirCb = block.querySelector('[name$="_role_director"]');
+  var pscCb = block.querySelector('[name$="_role_psc"]');
+  var show = (dirCb && dirCb.checked) || (pscCb && pscCb.checked);
+  uid.classList.toggle('show', show);
 }
 
 /* --- Show/hide PSC fields when PSC role ticked --- */
