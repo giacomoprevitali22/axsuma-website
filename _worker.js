@@ -201,7 +201,18 @@ async function handleLogin(request, env) {
   if (ph !== user.passwordHash) return err('Invalid credentials', 401);
 
   const token = await createJWT({ sub: user.id, role: user.role }, getSecret(env));
-  return json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+  return new Response(JSON.stringify({
+    token,
+    redirect: '/portal/',
+    user: { id: user.id, name: user.name, email: user.email, role: user.role }
+  }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      ...CORS,
+      'Set-Cookie': `portal_token=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400`,
+    },
+  });
 }
 
 async function handleGetContent(request, env, pageKey) {
@@ -322,6 +333,25 @@ export default {
 
     // Only handle /api/* routes — everything else goes to static assets
     if (!path.startsWith('/api/')) {
+      // ── Portal authentication gate ──
+      if (path.startsWith('/portal') ) {
+        // Allow login page, register page, and static assets without auth
+        const portalPublic = ['/portal/login.html', '/portal/login', '/portal/register.html', '/portal/register'];
+        const isAsset = path.endsWith('.css') || path.endsWith('.js') || path.endsWith('.svg') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.ico');
+        if (!portalPublic.includes(path) && !isAsset) {
+          // Check for auth cookie
+          const cookie = request.headers.get('Cookie') || '';
+          const match = cookie.match(/portal_token=([^;]+)/);
+          let authenticated = false;
+          if (match) {
+            const payload = await verifyJWT(match[1], getSecret(env));
+            if (payload) authenticated = true;
+          }
+          if (!authenticated) {
+            return Response.redirect(new URL('/portal/login.html', url.origin).toString(), 302);
+          }
+        }
+      }
       return env.ASSETS.fetch(request);
     }
 
@@ -470,6 +500,17 @@ export default {
       // Auth
       if (path === '/api/auth/login' && request.method === 'POST')
         return await handleLogin(request, env);
+
+      if (path === '/api/auth/logout' && request.method === 'POST') {
+        return new Response(JSON.stringify({ ok: true }), {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/json',
+            ...CORS,
+            'Set-Cookie': 'portal_token=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0',
+          },
+        });
+      }
 
       // Activity
       if (path === '/api/activity' && request.method === 'GET')
