@@ -10,6 +10,7 @@
 /services/company-secretarial                   /governance                     301
 /services/ma                                    /ma-transactions                301
 /services/spv-holding-companies                 /spv-holding                    301
+/services/family-investment-companies           /family-investment-companies    301
 /services/directorships                         /directorships                  301
 /services/accounting-tax                        /accounting                     301
 /services/payroll-hr                            /payroll-hr                     301
