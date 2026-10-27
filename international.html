@@ -101,6 +101,15 @@
     .svc-detail .svc-body p{margin-bottom:1rem;font-size:.92rem;color:var(--dark-soft);line-height:1.8}
     .svc-detail .svc-body h3{font-size:1.05rem;font-weight:600;color:var(--dark);margin:1.5rem 0 .6rem}
 
+    /* GUIDE DOWNLOAD */
+    .guide{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center}
+    .guide-text p{font-size:.95rem;color:var(--dark-soft);line-height:1.8;margin-bottom:1rem}
+    .guide-text .btn{margin-top:.8rem}
+    .guide-cover{display:block;max-width:340px;margin:0 auto;border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.10);transition:transform var(--ease),box-shadow var(--ease)}
+    .guide-cover:hover{transform:translateY(-4px);box-shadow:0 24px 55px rgba(0,0,0,.14)}
+    .guide-meta{font-size:.75rem;color:var(--light-text);margin-top:.6rem;text-align:center}
+    @media(max-width:1024px){.guide{grid-template-columns:1fr;gap:2.5rem}}
+    @media(max-width:768px){.guide-cover{max-width:240px}}
     /* BTN */
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:4px;font-family:var(--font);font-size:.85rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:all var(--ease)}
     .btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
@@ -311,6 +320,25 @@
   </div>
 </section>
 
+<!-- UK EXPANSION GUIDE -->
+<section class="section" id="uk-expansion-guide">
+  <div class="container">
+    <div class="guide reveal">
+      <div class="guide-text">
+        <p class="s-label">UK Expansion Guide</p>
+        <h2 class="s-title">Your guide to expanding into the UK</h2>
+        <p>Expanding into the UK involves more than setting up a company. From choosing the right structure and meeting local requirements to managing ongoing governance and administration, there are a number of practical considerations to get right from the outset.</p>
+        <p>Our UK Expansion Guide provides a practical overview of the key steps and considerations for businesses entering the UK, helping you understand what is involved and where specialist support may be needed.</p>
+        <p>Download the guide to explore the essentials of establishing and operating in the UK.</p>
+        <a href="downloads/axsuma-uk-expansion-guide.pdf" class="btn btn-teal" download="Axsuma Guide - Expanding to the UK.pdf"><i class="fas fa-file-arrow-down"></i> Download the guide</a>
+      </div>
+      <div>
+        <a href="downloads/axsuma-uk-expansion-guide.pdf" class="guide-cover" target="_blank" rel="noopener" aria-label="Open the Axsuma UK Expansion Guide (PDF)"><img src="img-uk-guide-cover.jpg" alt="Axsuma guide: Expanding into the UK" loading="lazy" width="680" height="962"></a>
+        <p class="guide-meta">PDF &middot; 5 pages &middot; 570 KB</p>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- CTA -->
 <section class="cta">
   <div class="container reveal">
