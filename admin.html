@@ -909,7 +909,7 @@
                 <div id="usersContent" class="users-container" style="display: none;">
                     <div class="page-header">
                         <h2>User Management</h2>
-                        <p>Manage administrators and editors</p>
+                        <p>Manage clients, editors and administrators</p>
                     </div>
                     <div class="add-user-form">
                         <h3>Add New User</h3>
@@ -932,6 +932,7 @@
                                 <div class="form-group">
                                     <label for="newUserRole">Role</label>
                                     <select id="newUserRole" style="width: 100%; padding: 12px 16px; border: 1px solid #404854; background: #222831; color: #D0DCE3; border-radius: 6px; font-family: inherit; font-size: 14px;">
+                                        <option value="client">Client</option>
                                         <option value="editor">Editor</option>
                                         <option value="super_admin">Super Admin</option>
                                     </select>
@@ -988,7 +989,7 @@
 
     <script>
         // Configuration
-        const API_URL = 'https://axsuma-cms.giacomo-previtali.workers.dev/api';
+        const API_URL = '/api'; // same origin (_worker.js)
 
         // State
         let currentUser = null;
@@ -1077,6 +1078,10 @@
             try {
                 const result = await apiCall('POST', '/auth/login', { email, password });
                 sessionStorage.setItem('token', result.token);
+                if (result.user.role === 'client') {
+                    sessionStorage.removeItem('token');
+                    throw new Error('This account does not have admin access.');
+                }
                 currentUser = result.user;
                 goToDashboard();
                 loadDashboard();
@@ -1088,6 +1093,7 @@
 
         function handleLogout() {
             sessionStorage.removeItem('token');
+            fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
             currentUser = null;
             currentPage = null;
             contentData = {};
@@ -1405,16 +1411,20 @@
                 const tbody = document.getElementById('usersList');
                 tbody.innerHTML = '';
 
-                result.users.forEach(user => {
+                const users = Array.isArray(result) ? result : (result.users || []);
+                const roleLabel = r => r === 'super_admin' ? 'Super Admin' : (r === 'editor' ? 'Editor' : 'Client');
+                const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+                users.sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+                users.forEach(user => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td>${user.name}</td>
-                        <td>${user.email}</td>
-                        <td>${user.role === 'super_admin' ? 'Super Admin' : 'Editor'}</td>
+                        <td>${esc(user.name)}${user.company ? `<br><small style="opacity:.7">${esc(user.company)}</small>` : ''}</td>
+                        <td>${esc(user.email)}${user.createdAt ? `<br><small style="opacity:.7">Registered ${new Date(user.createdAt).toLocaleDateString('en-GB')}</small>` : ''}</td>
+                        <td><select onchange="changeUserRole('${user.id}', this.value)" ${user.id === currentUser.id ? 'disabled' : ''} style="padding:6px 8px;border:1px solid #404854;background:#222831;color:#D0DCE3;border-radius:6px">${['client','editor','super_admin'].map(r => `<option value="${r}" ${r === user.role ? 'selected' : ''}>${roleLabel(r)}</option>`).join('')}</select></td>
                         <td><span class="status-badge ${user.locked ? 'status-locked' : 'status-active'}">${user.locked ? 'Locked' : 'Active'}</span></td>
                         <td>
                             <button class="btn btn-sm" onclick="toggleUserLock('${user.id}', ${user.locked})">${user.locked ? 'Unlock' : 'Lock'}</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteUser('${user.id}', '${user.name}')">Delete</button>
+                            <button class="btn btn-sm btn-danger" data-name="${esc(user.name)}" onclick="deleteUser('${user.id}', this.dataset.name)">Delete</button>
                         </td>
                     `;
                     tbody.appendChild(tr);
@@ -1438,6 +1448,16 @@
                 loadUsers();
             } catch (error) {
                 showToast('Failed to create user', 'error');
+            }
+        }
+
+        async function changeUserRole(userId, role) {
+            try {
+                await apiCall('PUT', `/users/${userId}`, { role });
+                showToast('Role updated', 'success');
+                loadUsers();
+            } catch (error) {
+                loadUsers();
             }
         }
 

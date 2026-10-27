@@ -22,7 +22,7 @@
   // ── Configuration ──────────────────────────────────────────────
   // Change API_BASE to your Cloudflare Worker URL once deployed.
   // During local development you can point it at localhost:8787.
-  var API_BASE = 'https://axsuma-cms.giacomo-previtali.workers.dev';
+  var API_BASE = ''; // same origin: served by _worker.js on axsuma.co.uk
 
   // ── Detect page key from the script tag ────────────────────────
   var scripts  = document.querySelectorAll('script[data-page]');

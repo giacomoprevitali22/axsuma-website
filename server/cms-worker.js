@@ -137,19 +137,19 @@ const DEFAULT_USERS = [
   {
     name: 'Giacomo Previtali',
     email: 'giacomo.previtali@sdcprevitali.com',
-    password: '3548Omagreb.g22;',
+    password: null /* removed: passwords must not live in the repository */,
     role: 'super_admin',
   },
   {
     name: 'Jason Reader',
     email: 'jason.reader@axsuma.co.uk',
-    password: 'Axsuma2026!!',
+    password: null /* removed: passwords must not live in the repository */,
     role: 'editor',
   },
   {
     name: 'Charlotte Phipps-Hornby',
     email: 'charlotte.phippshornby@axsuma.co.uk',
-    password: 'Axsuma2026!!',
+    password: null /* removed: passwords must not live in the repository */,
     role: 'editor',
   },
 ];

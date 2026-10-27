@@ -20,7 +20,7 @@ function generateUUID() {
   });
 }
 
-async function hashPassword(password, salt = 'axsuma-cms-salt') {
+async function legacyHash(password, salt = 'axsuma-cms-salt') {
   const encoder = new TextEncoder();
   const data = encoder.encode(salt + password);
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
@@ -37,12 +37,46 @@ function base64UrlDecode(str) {
   return atob(padded.replace(/-/g, '+').replace(/_/g, '/'));
 }
 
+// PBKDF2 with a random per-user salt. Stored as "pbkdf2$<iterations>$<salt b64>$<hash b64>".
+const PBKDF2_ITER = 100000;
+function b64(bytes) { return btoa(String.fromCharCode(...new Uint8Array(bytes))); }
+async function pbkdf2(password, saltBytes, iter) {
+  const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+  return crypto.subtle.deriveBits({ name: 'PBKDF2', salt: saltBytes, iterations: iter, hash: 'SHA-256' }, km, 256);
+}
+async function hashPassword(password) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  return `pbkdf2$${PBKDF2_ITER}$${b64(salt)}$${b64(await pbkdf2(password, salt, PBKDF2_ITER))}`;
+}
+async function verifyPassword(password, stored) {
+  if (!stored) return false;
+  if (stored.startsWith('pbkdf2$')) {
+    const [, iter, saltB64, hashB64] = stored.split('$');
+    const salt = Uint8Array.from(atob(saltB64), c => c.charCodeAt(0));
+    return b64(await pbkdf2(password, salt, parseInt(iter, 10))) === hashB64;
+  }
+  return (await legacyHash(password)) === stored; // old format, upgraded on next login
+}
+
 // ── JWT ──────────────────────────────────────────────────────────
 
-const DEFAULT_JWT_SECRET = 'axsuma-cms-jwt-secret-k8f3m9x2q7w4';
-
+// Signing secret for logins. Uses the JWT_SECRET variable if set in Cloudflare; otherwise a random
+// secret is generated once and kept in the private CMS_USERS KV store. Never written in the repository.
+let SECRET_CACHE = null;
+async function loadSecret(env) {
+  if (env.JWT_SECRET && env.JWT_SECRET.length >= 32) { SECRET_CACHE = env.JWT_SECRET; return; }
+  if (SECRET_CACHE) return;
+  if (!env.CMS_USERS) return;
+  let s = await env.CMS_USERS.get('config:jwt_secret');
+  if (!s) {
+    s = b64(crypto.getRandomValues(new Uint8Array(48)));
+    await env.CMS_USERS.put('config:jwt_secret', s);
+  }
+  SECRET_CACHE = s;
+}
 function getSecret(env) {
-  return env.JWT_SECRET || DEFAULT_JWT_SECRET;
+  if (!SECRET_CACHE) throw new Error('Signing secret not available');
+  return SECRET_CACHE;
 }
 
 async function createJWT(payload, secret) {
@@ -115,34 +149,22 @@ function err(message, status = 400) {
   return json({ error: message }, status);
 }
 
-// ── Default users ────────────────────────────────────────────────
+// ── Roles ────────────────────────────────────────────────────────
 
-const DEFAULT_USERS = [
-  { name: 'Giacomo Previtali', email: 'giacomo.previtali@sdcprevitali.com', password: '3548Omagreb.g22;', role: 'super_admin' },
-  { name: 'Jason Reader', email: 'jason.reader@axsuma.co.uk', password: 'Axsuma2026!!', role: 'editor' },
-  { name: 'Charlotte Phipps-Hornby', email: 'charlotte.phippshornby@axsuma.co.uk', password: 'Axsuma2026!!', role: 'editor' },
-];
+// client = self-registered portal user; editor = CMS editor; super_admin = full admin (users, content).
+const ROLES = ['client', 'editor', 'super_admin'];
+// Axsuma partners: existing staff accounts with these emails are upgraded to super_admin on login.
+const OWNER_EMAILS = ['giacomo.previtali@sdcprevitali.com', 'jason.reader@axsuma.co.uk', 'charlotte.phippshornby@axsuma.co.uk'];
 
 // ── Data access ──────────────────────────────────────────────────
 
 async function initializeIfNeeded(env) {
-  const idx = await env.CMS_USERS.get('users:index');
-  if (idx) return;
-
-  const ids = [];
-  for (const u of DEFAULT_USERS) {
-    const id = generateUUID();
-    const ph = await hashPassword(u.password);
-    const user = { id, name: u.name, email: u.email, role: u.role, passwordHash: ph, locked: false, createdAt: new Date().toISOString() };
-    await env.CMS_USERS.put(`user:${id}`, JSON.stringify(user));
-    await env.CMS_USERS.put(`email:${u.email}`, id);
-    ids.push(id);
-  }
-  await env.CMS_USERS.put('users:index', JSON.stringify(ids));
+  // Users are no longer seeded from code (passwords must never live in the repository).
 }
 
 async function getUserByEmail(env, email) {
-  const id = await env.CMS_USERS.get(`email:${email}`);
+  const e = String(email || '').trim();
+  const id = (await env.CMS_USERS.get(`email:${e.toLowerCase()}`)) || (await env.CMS_USERS.get(`email:${e}`));
   if (!id) return null;
   const j = await env.CMS_USERS.get(`user:${id}`);
   return j ? JSON.parse(j) : null;
@@ -174,36 +196,31 @@ async function logActivity(env, userId, userName, pageKey) {
   await env.CMS_USERS.put('activity:log', JSON.stringify(log));
 }
 
-async function getAuthUser(request, env) {
+function getToken(request) {
   const ah = request.headers.get('Authorization');
-  if (!ah || !ah.startsWith('Bearer ')) return null;
-  const payload = await verifyJWT(ah.slice(7), getSecret(env));
-  if (!payload) return null;
-  return getUserById(env, payload.sub);
+  if (ah && ah.startsWith('Bearer ')) return ah.slice(7);
+  const m = (request.headers.get('Cookie') || '').match(/portal_token=([^;]+)/);
+  return m ? m[1] : null;
 }
 
-// ── Route handlers ───────────────────────────────────────────────
+async function getAuthUser(request, env) {
+  const t = getToken(request);
+  if (!t) return null;
+  const payload = await verifyJWT(t, getSecret(env));
+  if (!payload) return null;
+  const u = await getUserById(env, payload.sub);
+  if (!u || u.locked) return null;
+  return u;
+}
 
-async function handleLogin(request, env) {
-  let body;
-  try { body = await request.json(); } catch { return err('Invalid JSON'); }
+function safeNext(next) {
+  return (typeof next === 'string' && /^\/(?!\/)[\w\-./?=&%]*$/.test(next)) ? next : '/portal/';
+}
 
-  const { email, password } = body;
-  if (!email || !password) return err('Email and password required');
-
-  await initializeIfNeeded(env);
-
-  const user = await getUserByEmail(env, email);
-  if (!user) return err('Invalid credentials', 401);
-  if (user.locked) return err('User account is locked', 403);
-
-  const ph = await hashPassword(password);
-  if (ph !== user.passwordHash) return err('Invalid credentials', 401);
-
-  const token = await createJWT({ sub: user.id, role: user.role }, getSecret(env));
+function sessionResponse(user, token, next) {
   return new Response(JSON.stringify({
     token,
-    redirect: '/portal/',
+    redirect: safeNext(next),
     user: { id: user.id, name: user.name, email: user.email, role: user.role }
   }), {
     status: 200,
@@ -213,6 +230,82 @@ async function handleLogin(request, env) {
       'Set-Cookie': `portal_token=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400`,
     },
   });
+}
+
+// ── Route handlers ───────────────────────────────────────────────
+
+async function handleLogin(request, env) {
+  let body;
+  try { body = await request.json(); } catch { return err('Invalid JSON'); }
+
+  const { email, password, next } = body;
+  if (!email || !password) return err('Email and password required');
+
+  const user = await getUserByEmail(env, email);
+  if (!user) return err('Invalid email or password', 401);
+  if (user.locked) return err('This account has been suspended. Please contact Axsuma.', 403);
+  if (!(await verifyPassword(password, user.passwordHash))) return err('Invalid email or password', 401);
+
+  let changed = false;
+  if (!String(user.passwordHash).startsWith('pbkdf2$')) { user.passwordHash = await hashPassword(password); changed = true; }
+  if (OWNER_EMAILS.includes(String(user.email).toLowerCase()) && user.role === 'editor') { user.role = 'super_admin'; changed = true; }
+  user.lastLoginAt = new Date().toISOString(); changed = true;
+  if (changed) await env.CMS_USERS.put(`user:${user.id}`, JSON.stringify(user));
+
+  const token = await createJWT({ sub: user.id, role: user.role }, getSecret(env));
+  return sessionResponse(user, token, next);
+}
+
+async function handleRegister(request, env) {
+  let body;
+  try { body = await request.json(); } catch { return err('Invalid JSON'); }
+
+  const name = String(body.name || '').trim().slice(0, 120);
+  const company = String(body.company || '').trim().slice(0, 160);
+  const email = String(body.email || '').trim().toLowerCase();
+  const password = String(body.password || '');
+
+  if (!name || !email || !password) return err('Name, email and password are required.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200) return err('Please enter a valid email address.');
+  if (password.length < 8) return err('Password must be at least 8 characters.');
+  if (await getUserByEmail(env, email)) return err('An account with this email already exists. Please sign in.', 409);
+
+  const id = generateUUID();
+  const user = {
+    id, name, company, email, role: 'client', locked: false,
+    passwordHash: await hashPassword(password),
+    createdAt: new Date().toISOString(), source: 'self-registration',
+  };
+  await env.CMS_USERS.put(`user:${id}`, JSON.stringify(user));
+  await env.CMS_USERS.put(`email:${email}`, id);
+  const idx = await env.CMS_USERS.get('users:index');
+  const ids = idx ? JSON.parse(idx) : [];
+  ids.push(id);
+  await env.CMS_USERS.put('users:index', JSON.stringify(ids));
+
+  const token = await createJWT({ sub: id, role: 'client' }, getSecret(env));
+  return sessionResponse(user, token, body.next);
+}
+
+async function handleMe(request, env) {
+  const user = await getAuthUser(request, env);
+  if (!user) return err('Unauthorized', 401);
+  const { passwordHash, ...safe } = user;
+  return json(safe);
+}
+
+async function handleChangePassword(request, env) {
+  const user = await getAuthUser(request, env);
+  if (!user) return err('Unauthorized', 401);
+  let body;
+  try { body = await request.json(); } catch { return err('Invalid JSON'); }
+  const { currentPassword, newPassword } = body;
+  if (!(await verifyPassword(currentPassword || '', user.passwordHash))) return err('Current password is incorrect.', 401);
+  if (!newPassword || newPassword.length < 8) return err('New password must be at least 8 characters.');
+  user.passwordHash = await hashPassword(newPassword);
+  user.passwordChangedAt = new Date().toISOString();
+  await env.CMS_USERS.put(`user:${user.id}`, JSON.stringify(user));
+  return json({ ok: true });
 }
 
 async function handleGetContent(request, env, pageKey) {
@@ -259,16 +352,18 @@ async function handleCreateUser(request, env) {
 
   const { name, email, password, role } = body;
   if (!name || !email || !password || !role) return err('Missing required fields');
-  if (!['editor', 'super_admin'].includes(role)) return err('Invalid role');
+  if (!ROLES.includes(role)) return err('Invalid role');
+  if (password.length < 8) return err('Password must be at least 8 characters.');
 
   if (await getUserByEmail(env, email)) return err('Email already in use', 400);
 
   const id = generateUUID();
   const ph = await hashPassword(password);
-  const newUser = { id, name, email, role, passwordHash: ph, locked: false, createdAt: new Date().toISOString() };
+  const em = String(email).trim().toLowerCase();
+  const newUser = { id, name, email: em, company: body.company || '', role, passwordHash: ph, locked: false, createdAt: new Date().toISOString(), source: `created by ${user.name}` };
 
   await env.CMS_USERS.put(`user:${id}`, JSON.stringify(newUser));
-  await env.CMS_USERS.put(`email:${email}`, id);
+  await env.CMS_USERS.put(`email:${em}`, id);
 
   const idx = await env.CMS_USERS.get('users:index');
   const ids = idx ? JSON.parse(idx) : [];
@@ -292,7 +387,7 @@ async function handleUpdateUser(request, env, userId) {
 
   if (body.locked !== undefined) target.locked = body.locked;
   if (body.name !== undefined) target.name = body.name;
-  if (body.role !== undefined && ['editor', 'super_admin'].includes(body.role)) target.role = body.role;
+  if (body.role !== undefined && ROLES.includes(body.role)) target.role = body.role;
 
   await env.CMS_USERS.put(`user:${userId}`, JSON.stringify(target));
   return json({ ok: true });
@@ -309,6 +404,7 @@ async function handleDeleteUser(request, env, userId) {
 
   await env.CMS_USERS.delete(`user:${userId}`);
   await env.CMS_USERS.delete(`email:${target.email}`);
+  await env.CMS_USERS.delete(`email:${String(target.email).toLowerCase()}`);
 
   const idx = await env.CMS_USERS.get('users:index');
   const ids = idx ? JSON.parse(idx) : [];
@@ -330,6 +426,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
+    try { await loadSecret(env); } catch (e) { /* KV not reachable: auth stays disabled */ }
 
     // Only handle /api/* routes — everything else goes to static assets
     if (!path.startsWith('/api/')) {
@@ -340,15 +437,12 @@ export default {
         const isAsset = path.endsWith('.css') || path.endsWith('.js') || path.endsWith('.svg') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.ico');
         if (!portalPublic.includes(path) && !isAsset) {
           // Check for auth cookie
-          const cookie = request.headers.get('Cookie') || '';
-          const match = cookie.match(/portal_token=([^;]+)/);
           let authenticated = false;
-          if (match) {
-            const payload = await verifyJWT(match[1], getSecret(env));
-            if (payload) authenticated = true;
-          }
+          try { authenticated = !!(env.CMS_USERS && await getAuthUser(request, env)); } catch (e) { authenticated = false; }
           if (!authenticated) {
-            return Response.redirect(new URL('/portal/login.html', url.origin).toString(), 302);
+            const login = new URL('/portal/login.html', url.origin);
+            login.searchParams.set('next', path + url.search);
+            return Response.redirect(login.toString(), 302);
           }
         }
       }
@@ -500,6 +594,15 @@ export default {
       // Auth
       if (path === '/api/auth/login' && request.method === 'POST')
         return await handleLogin(request, env);
+
+      if (path === '/api/auth/register' && request.method === 'POST')
+        return await handleRegister(request, env);
+
+      if (path === '/api/auth/me' && request.method === 'GET')
+        return await handleMe(request, env);
+
+      if (path === '/api/auth/password' && request.method === 'POST')
+        return await handleChangePassword(request, env);
 
       if (path === '/api/auth/logout' && request.method === 'POST') {
         return new Response(JSON.stringify({ ok: true }), {

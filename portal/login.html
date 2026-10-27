@@ -57,13 +57,15 @@
   </form>
 
   <div class="auth-footer">
-    Don't have an account? <a href="register.html">Request Access</a>
+    Don't have an account? <a href="register.html" id="regLink">Create an account</a>
   </div>
 </div>
 
 <div class="back-link"><a href="../index.html"><i class="fas fa-arrow-left"></i> Back to axsuma.co.uk</a></div>
 
 <script>
+var NEXT = new URLSearchParams(location.search).get('next') || '';
+document.addEventListener('DOMContentLoaded',function(){if(NEXT){document.getElementById('regLink').href='register.html?next='+encodeURIComponent(NEXT);}});
 async function handleLogin(e) {
   e.preventDefault();
   var btn = document.getElementById('btnLogin');
@@ -79,6 +81,7 @@ async function handleLogin(e) {
       body: JSON.stringify({
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
+        next: NEXT,
       }),
     });
     var data = await res.json();

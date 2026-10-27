@@ -18,7 +18,9 @@
   <div class="container">
     <a href="../index.html"><img src="../axsuma-brand.svg" alt="Axsuma" class="portal-nav-logo"></a>
     <div class="portal-nav-right">
-      <span class="portal-nav-user"><i class="fas fa-user-circle"></i> <span>Client Portal</span></span>
+      <span class="portal-nav-user"><i class="fas fa-user-circle"></i> <span id="portalUserName">Client Portal</span></span>
+      <a href="account.html" class="portal-nav-link"><i class="fas fa-key"></i> My Account</a>
+      <a href="../admin.html" class="portal-nav-link" id="adminLink" style="display:none"><i class="fas fa-user-shield"></i> Admin</a>
       <a href="../index.html" class="portal-nav-link"><i class="fas fa-arrow-left"></i> Back to Site</a>
       <a href="#" class="portal-nav-link" onclick="doLogout()" style="color:#dc2626"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
@@ -105,6 +107,7 @@
   </div>
 </footer>
 
+<script>fetch("/api/auth/me").then(function(r){return r.ok?r.json():null}).then(function(u){if(!u)return;document.getElementById("portalUserName").textContent=u.name;if(u.role==="super_admin"||u.role==="editor")document.getElementById("adminLink").style.display="";}).catch(function(){});</script>
 <script>async function doLogout(){try{await fetch("/api/auth/logout",{method:"POST"})}catch(e){}window.location.href="/portal/login.html"}</script>
 </body>
 </html>
