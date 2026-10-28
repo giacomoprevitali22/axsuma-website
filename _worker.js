@@ -442,22 +442,27 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
+    // Normalised path for access checks: decode %-escapes (repeatedly), collapse slashes, lower-case.
+    // Prevents bypasses such as /%64ownloads/... or /downloads%2Ffile.pdf reaching the static assets.
+    let normPath = path;
+    try { for (let i = 0; i < 3 && /%[0-9a-f]{2}/i.test(normPath); i++) normPath = decodeURIComponent(normPath); } catch (e) { normPath = path; }
+    normPath = normPath.replace(/\\/g, '/').replace(/\/{2,}/g, '/').toLowerCase();
     try { await loadSecret(env); } catch (e) { /* KV not reachable: auth stays disabled */ }
 
     // Only handle /api/* routes — everything else goes to static assets
     if (!path.startsWith('/api/')) {
       // ── Gated downloads (registered users only) ──
-      if (path.startsWith('/downloads/')) {
+      if (normPath.startsWith('/downloads')) {
         let user = null;
         try { user = env.CMS_USERS ? await getAuthUser(request, env) : null; } catch (e) { user = null; }
         if (!user) {
           const reg = new URL('/portal/register', url.origin);
-          reg.searchParams.set('next', path);
+          reg.searchParams.set('next', normPath);
           return Response.redirect(reg.toString(), 302);
         }
-        const asset = await env.ASSETS.fetch(new Request(new URL(path, url.origin), request));
+        const file = normPath.split('/').pop();
+        const asset = await env.ASSETS.fetch(new Request(new URL('/downloads/' + file, url.origin), request));
         if (!asset.ok) return asset;
-        const file = path.split('/').pop();
         const niceName = DOWNLOAD_NAMES[file] || file;
         try {
           user.downloads = user.downloads || {};
@@ -472,11 +477,11 @@ export default {
       }
 
       // ── Portal authentication gate ──
-      if (path.startsWith('/portal') ) {
+      if (normPath.startsWith('/portal')) {
         // Allow login page, register page, and static assets without auth
         const portalPublic = ['/portal/login.html', '/portal/login', '/portal/register.html', '/portal/register'];
-        const isAsset = path.endsWith('.css') || path.endsWith('.js') || path.endsWith('.svg') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.ico');
-        if (!portalPublic.includes(path) && !isAsset) {
+        const isAsset = /\.(css|js|svg|png|jpg|ico)$/.test(normPath);
+        if (!portalPublic.includes(normPath) && !isAsset) {
           // Check for auth cookie
           let authenticated = false;
           try { authenticated = !!(env.CMS_USERS && await getAuthUser(request, env)); } catch (e) { authenticated = false; }
