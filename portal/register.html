@@ -50,7 +50,7 @@
   <div id="successMsg" class="success-msg">
     <i class="fas fa-check-circle"></i>
     <strong>Account created.</strong><br>
-    Taking you to the portal&hellip;
+    <span id="successNext">Taking you to the portal&hellip;</span>
   </div>
 
   <form id="registerForm" onsubmit="return handleRegister(event)">
@@ -95,6 +95,8 @@
 
 <script>
 var NEXT = new URLSearchParams(location.search).get('next') || '';
+var GUIDE = NEXT.indexOf('/downloads/') === 0;
+document.addEventListener('DOMContentLoaded',function(){if(GUIDE){document.querySelector('.auth-title').textContent='Download the UK Expansion Guide';document.querySelector('.auth-sub').textContent='Create a free account to download the guide. It takes less than a minute.';}});
 document.addEventListener('DOMContentLoaded',function(){if(NEXT){document.getElementById('loginLink').href='login.html?next='+encodeURIComponent(NEXT);}});
 async function handleRegister(e) {
   e.preventDefault();
@@ -142,7 +144,12 @@ async function handleRegister(e) {
     // Account is active immediately: the session cookie is already set
     document.getElementById('registerForm').style.display = 'none';
     successEl.classList.add('show');
-    setTimeout(function(){ window.location.href = data.redirect || '/portal/'; }, 900);
+    if (GUIDE) {
+      document.getElementById('successNext').innerHTML = 'Your download is starting. <a href="/international" style="color:var(--teal);font-weight:600">Back to the site</a>';
+      window.location.href = data.redirect;
+    } else {
+      setTimeout(function(){ window.location.href = data.redirect || '/portal/'; }, 900);
+    }
 
   } catch (err) {
     errEl.textContent = 'Connection error. Please try again.';

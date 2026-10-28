@@ -65,6 +65,8 @@
 
 <script>
 var NEXT = new URLSearchParams(location.search).get('next') || '';
+var GUIDE = NEXT.indexOf('/downloads/') === 0;
+document.addEventListener('DOMContentLoaded',function(){if(GUIDE){document.querySelector('.auth-title').textContent='Download the UK Expansion Guide';document.querySelector('.auth-sub').textContent='Sign in to download the guide.';}});
 document.addEventListener('DOMContentLoaded',function(){if(NEXT){document.getElementById('regLink').href='register.html?next='+encodeURIComponent(NEXT);}});
 async function handleLogin(e) {
   e.preventDefault();
@@ -94,6 +96,10 @@ async function handleLogin(e) {
       return;
     }
 
+    if (GUIDE) {
+      document.getElementById('loginForm').style.display = 'none';
+      document.querySelector('.auth-sub').innerHTML = 'Your download is starting. <a href="/international" style="color:var(--teal);font-weight:600">Back to the site</a>';
+    }
     window.location.href = data.redirect || '/portal/';
   } catch (err) {
     errEl.textContent = 'Connection error. Please try again.';

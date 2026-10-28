@@ -149,6 +149,11 @@ function err(message, status = 400) {
   return json({ error: message }, status);
 }
 
+// Friendly file names for gated downloads
+const DOWNLOAD_NAMES = {
+  'axsuma-uk-expansion-guide.pdf': 'Axsuma Guide - Expanding to the UK.pdf',
+};
+
 // ── Roles ────────────────────────────────────────────────────────
 
 // client = self-registered portal user; editor = CMS editor; super_admin = full admin (users, content).
@@ -441,6 +446,31 @@ export default {
 
     // Only handle /api/* routes — everything else goes to static assets
     if (!path.startsWith('/api/')) {
+      // ── Gated downloads (registered users only) ──
+      if (path.startsWith('/downloads/')) {
+        let user = null;
+        try { user = env.CMS_USERS ? await getAuthUser(request, env) : null; } catch (e) { user = null; }
+        if (!user) {
+          const reg = new URL('/portal/register', url.origin);
+          reg.searchParams.set('next', path);
+          return Response.redirect(reg.toString(), 302);
+        }
+        const asset = await env.ASSETS.fetch(new Request(new URL(path, url.origin), request));
+        if (!asset.ok) return asset;
+        const file = path.split('/').pop();
+        const niceName = DOWNLOAD_NAMES[file] || file;
+        try {
+          user.downloads = user.downloads || {};
+          if (!user.downloads[file]) user.downloads[file] = new Date().toISOString();
+          user.lastDownloadAt = new Date().toISOString();
+          await env.CMS_USERS.put(`user:${user.id}`, JSON.stringify(user));
+        } catch (e) { /* logging a download must never block it */ }
+        const h = new Headers(asset.headers);
+        h.set('Content-Disposition', `attachment; filename="${niceName}"`);
+        h.set('Cache-Control', 'private, no-store');
+        return new Response(asset.body, { status: 200, headers: h });
+      }
+
       // ── Portal authentication gate ──
       if (path.startsWith('/portal') ) {
         // Allow login page, register page, and static assets without auth

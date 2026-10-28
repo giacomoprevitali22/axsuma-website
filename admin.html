@@ -962,6 +962,7 @@
                                 <th>Company</th>
                                 <th>Registered</th>
                                 <th>Email</th>
+                                <th>UK Guide</th>
                                 <th>Role</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -1451,12 +1452,13 @@
                         'Company': u.company || '',
                         'Registration Date': u.createdAt ? new Date(u.createdAt) : '',
                         'Email': u.email || '',
+                        'UK Guide Downloaded': guideDate(u) || '',
                         'Role': roleLabel(u.role),
                         'Status': u.locked ? 'Locked' : 'Active'
                     };
                 });
                 const ws = XLSX.utils.json_to_sheet(rows, { cellDates: true, dateNF: 'dd/mm/yyyy' });
-                ws['!cols'] = [{ wch: 16 }, { wch: 18 }, { wch: 30 }, { wch: 18 }, { wch: 34 }, { wch: 12 }, { wch: 10 }];
+                ws['!cols'] = [{ wch: 16 }, { wch: 18 }, { wch: 30 }, { wch: 18 }, { wch: 34 }, { wch: 20 }, { wch: 12 }, { wch: 10 }];
                 ws['!autofilter'] = { ref: ws['!ref'] };
                 const wb = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(wb, ws, 'Users');
@@ -1469,6 +1471,11 @@
             } finally {
                 btn.disabled = false;
             }
+        }
+
+        function guideDate(u) {
+            const d = u.downloads && u.downloads['axsuma-uk-expansion-guide.pdf'];
+            return d ? new Date(d) : null;
         }
 
         function splitName(u) {
@@ -1496,6 +1503,7 @@
                         <td>${esc(user.company || '')}</td>
                         <td style="white-space:nowrap">${user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-GB') : '&ndash;'}</td>
                         <td>${esc(user.email)}</td>
+                        <td style="white-space:nowrap">${guideDate(user) ? guideDate(user).toLocaleDateString('en-GB') : '&ndash;'}</td>
                         <td><select onchange="changeUserRole('${user.id}', this.value)" ${user.id === currentUser.id ? 'disabled' : ''} style="padding:6px 8px;border:1px solid #404854;background:#222831;color:#D0DCE3;border-radius:6px">${['client','editor','super_admin'].map(r => `<option value="${r}" ${r === user.role ? 'selected' : ''}>${roleLabel(r)}</option>`).join('')}</select></td>
                         <td><span class="status-badge ${user.locked ? 'status-locked' : 'status-active'}">${user.locked ? 'Locked' : 'Active'}</span></td>
                         <td>
