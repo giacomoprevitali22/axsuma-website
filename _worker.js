@@ -260,19 +260,21 @@ async function handleRegister(request, env) {
   let body;
   try { body = await request.json(); } catch { return err('Invalid JSON'); }
 
-  const name = String(body.name || '').trim().slice(0, 120);
+  const firstName = String(body.firstName || '').trim().slice(0, 60);
+  const lastName = String(body.lastName || '').trim().slice(0, 60);
+  const name = (firstName || lastName) ? `${firstName} ${lastName}`.trim() : String(body.name || '').trim().slice(0, 120);
   const company = String(body.company || '').trim().slice(0, 160);
   const email = String(body.email || '').trim().toLowerCase();
   const password = String(body.password || '');
 
-  if (!name || !email || !password) return err('Name, email and password are required.');
+  if (!firstName || !lastName || !company || !email || !password) return err('First name, last name, company, email and password are required.');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200) return err('Please enter a valid email address.');
   if (password.length < 8) return err('Password must be at least 8 characters.');
   if (await getUserByEmail(env, email)) return err('An account with this email already exists. Please sign in.', 409);
 
   const id = generateUUID();
   const user = {
-    id, name, company, email, role: 'client', locked: false,
+    id, firstName, lastName, name, company, email, role: 'client', locked: false,
     passwordHash: await hashPassword(password),
     createdAt: new Date().toISOString(), source: 'self-registration',
   };
@@ -350,7 +352,10 @@ async function handleCreateUser(request, env) {
   let body;
   try { body = await request.json(); } catch { return err('Invalid JSON'); }
 
-  const { name, email, password, role } = body;
+  const firstName = String(body.firstName || '').trim();
+  const lastName = String(body.lastName || '').trim();
+  const name = (firstName || lastName) ? `${firstName} ${lastName}`.trim() : String(body.name || '').trim();
+  const { email, password, role } = body;
   if (!name || !email || !password || !role) return err('Missing required fields');
   if (!ROLES.includes(role)) return err('Invalid role');
   if (password.length < 8) return err('Password must be at least 8 characters.');
@@ -360,7 +365,7 @@ async function handleCreateUser(request, env) {
   const id = generateUUID();
   const ph = await hashPassword(password);
   const em = String(email).trim().toLowerCase();
-  const newUser = { id, name, email: em, company: body.company || '', role, passwordHash: ph, locked: false, createdAt: new Date().toISOString(), source: `created by ${user.name}` };
+  const newUser = { id, firstName, lastName, name, email: em, company: String(body.company || '').trim(), role, passwordHash: ph, locked: false, createdAt: new Date().toISOString(), source: `created by ${user.name}` };
 
   await env.CMS_USERS.put(`user:${id}`, JSON.stringify(newUser));
   await env.CMS_USERS.put(`email:${em}`, id);
@@ -387,6 +392,12 @@ async function handleUpdateUser(request, env, userId) {
 
   if (body.locked !== undefined) target.locked = body.locked;
   if (body.name !== undefined) target.name = body.name;
+  if (body.firstName !== undefined || body.lastName !== undefined) {
+    target.firstName = String(body.firstName ?? target.firstName ?? '').trim();
+    target.lastName = String(body.lastName ?? target.lastName ?? '').trim();
+    target.name = `${target.firstName} ${target.lastName}`.trim();
+  }
+  if (body.company !== undefined) target.company = String(body.company).trim();
   if (body.role !== undefined && ROLES.includes(body.role)) target.role = body.role;
 
   await env.CMS_USERS.put(`user:${userId}`, JSON.stringify(target));

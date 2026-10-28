@@ -916,8 +916,18 @@
                         <form id="addUserForm" onsubmit="handleAddUser(event)">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="newUserName">Name</label>
-                                    <input type="text" id="newUserName" required>
+                                    <label for="newUserFirstName">First Name</label>
+                                    <input type="text" id="newUserFirstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newUserLastName">Last Name</label>
+                                    <input type="text" id="newUserLastName" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="newUserCompany">Company</label>
+                                    <input type="text" id="newUserCompany">
                                 </div>
                                 <div class="form-group">
                                     <label for="newUserEmail">Email</label>
@@ -944,7 +954,10 @@
                     <table class="users-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Company</th>
+                                <th>Registered</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Status</th>
@@ -1405,6 +1418,12 @@
         }
 
         // Users Management
+        function splitName(u) {
+            if (u.firstName || u.lastName) return { first: u.firstName || '', last: u.lastName || '' };
+            const parts = String(u.name || '').trim().split(/\s+/);
+            return { first: parts.shift() || '', last: parts.join(' ') };
+        }
+
         async function loadUsers() {
             try {
                 const result = await apiCall('GET', '/users');
@@ -1418,8 +1437,11 @@
                 users.forEach(user => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td>${esc(user.name)}${user.company ? `<br><small style="opacity:.7">${esc(user.company)}</small>` : ''}</td>
-                        <td>${esc(user.email)}${user.createdAt ? `<br><small style="opacity:.7">Registered ${new Date(user.createdAt).toLocaleDateString('en-GB')}</small>` : ''}</td>
+                        <td>${esc(splitName(user).first)}</td>
+                        <td>${esc(splitName(user).last)}</td>
+                        <td>${esc(user.company || '')}</td>
+                        <td style="white-space:nowrap">${user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-GB') : '&ndash;'}</td>
+                        <td>${esc(user.email)}</td>
                         <td><select onchange="changeUserRole('${user.id}', this.value)" ${user.id === currentUser.id ? 'disabled' : ''} style="padding:6px 8px;border:1px solid #404854;background:#222831;color:#D0DCE3;border-radius:6px">${['client','editor','super_admin'].map(r => `<option value="${r}" ${r === user.role ? 'selected' : ''}>${roleLabel(r)}</option>`).join('')}</select></td>
                         <td><span class="status-badge ${user.locked ? 'status-locked' : 'status-active'}">${user.locked ? 'Locked' : 'Active'}</span></td>
                         <td>
@@ -1436,13 +1458,15 @@
 
         async function handleAddUser(event) {
             event.preventDefault();
-            const name = document.getElementById('newUserName').value;
+            const firstName = document.getElementById('newUserFirstName').value;
+            const lastName = document.getElementById('newUserLastName').value;
+            const company = document.getElementById('newUserCompany').value;
             const email = document.getElementById('newUserEmail').value;
             const password = document.getElementById('newUserPassword').value;
             const role = document.getElementById('newUserRole').value;
 
             try {
-                await apiCall('POST', '/users', { name, email, password, role });
+                await apiCall('POST', '/users', { firstName, lastName, company, email, password, role });
                 showToast('User created successfully!', 'success');
                 document.getElementById('addUserForm').reset();
                 loadUsers();

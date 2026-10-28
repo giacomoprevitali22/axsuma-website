@@ -56,13 +56,17 @@
   <form id="registerForm" onsubmit="return handleRegister(event)">
     <div class="row">
       <div class="field">
-        <label for="name">Full Name *</label>
-        <input type="text" id="name" name="name" required placeholder="John Smith">
+        <label for="firstName">First Name *</label>
+        <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="John">
       </div>
       <div class="field">
-        <label for="company">Firm / Company</label>
-        <input type="text" id="company" name="company" placeholder="Smith & Co LLP">
+        <label for="lastName">Last Name *</label>
+        <input type="text" id="lastName" name="lastName" required autocomplete="family-name" placeholder="Smith">
       </div>
+    </div>
+    <div class="field">
+      <label for="company">Firm / Company *</label>
+      <input type="text" id="company" name="company" required autocomplete="organization" placeholder="Smith & Co LLP">
     </div>
     <div class="field">
       <label for="email">Email Address *</label>
@@ -117,7 +121,8 @@ async function handleRegister(e) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: document.getElementById('name').value,
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
         company: document.getElementById('company').value,
         email: document.getElementById('email').value,
         password: password,
